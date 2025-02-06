@@ -44051,10 +44051,12 @@ a.u-link.u-text-hover-grey-90:hover {
 
 .u-footer .u-btn-1 {
   background-image: none;
+  padding: 0;
 }
 
 .u-footer .u-btn-2 {
   background-image: none;
+  padding: 0;
 }
 
 .u-footer .u-image-1 {
@@ -44074,26 +44076,22 @@ a.u-link.u-text-hover-grey-90:hover {
   width: 95px;
   min-width: 42px;
   white-space: nowrap;
-  margin: -49px 9px -38px auto;
+  margin: -49px 9px 12px auto;
 }
 @media (max-width: 1199px) {
   .u-footer .u-text-1 {
-    width: auto;
-    margin-top: 10px;
+    margin-top: 21px;
   }
 
   .u-footer .u-image-1 {
     width: 82px;
-    margin-top: -63px;
-    margin-left: 28px;
+    margin-top: -78px;
   }
 
   .u-footer .u-social-icons-1 {
-    height: 47px;
-    width: 104px;
-    margin-top: -51px;
-    margin-right: 15px;
-    margin-bottom: 19px;
+    height: 26px;
+    width: 61px;
+    margin-top: -40px;
   }
 }
 @media (max-width: 991px) {
@@ -44116,29 +44114,29 @@ a.u-link.u-text-hover-grey-90:hover {
     height: 46px;
     width: 101px;
     margin-top: -57px;
+    margin-right: 0;
     margin-bottom: 24px;
   }
 }
 @media (max-width: 767px) {
   .u-footer .u-sheet-1 {
-    min-height: 296px;
+    min-height: 246px;
   }
 
   .u-footer .u-text-1 {
-    margin-top: 202px;
+    width: auto;
+    margin-top: 154px;
   }
 
   .u-footer .u-image-1 {
-    width: 152px;
-    height: 103px;
-    margin-top: -255px;
+    width: 100px;
+    height: 67px;
+    margin-top: -209px;
     margin-left: auto;
   }
 
   .u-footer .u-social-icons-1 {
-    height: 54px;
-    width: 118px;
-    margin-top: 24px;
+    margin-top: 16px;
     margin-right: auto;
     margin-bottom: 60px;
   }
@@ -44152,14 +44150,6 @@ a.u-link.u-text-hover-grey-90:hover {
     margin-top: 183px;
   }
 
-  .u-footer .u-btn-1 {
-    padding: 0;
-  }
-
-  .u-footer .u-btn-2 {
-    padding: 0;
-  }
-
   .u-footer .u-image-1 {
     width: 128px;
     height: 86px;
@@ -44167,10 +44157,10 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 
   .u-footer .u-social-icons-1 {
-    height: 48px;
-    width: 106px;
-    margin-top: 21px;
-    margin-bottom: 74px;
+    height: 44px;
+    width: 98px;
+    margin-top: 19px;
+    margin-bottom: 0;
   }
 }
 
