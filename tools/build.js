@@ -9,6 +9,13 @@ const ATTR_URL_PATTERN =
   /(\s(?:src|href|poster|data-[\w-]*src)\s*=\s*)(["'])([^"']+)\2/gi;
 const CSS_URL_PATTERN = /url\(\s*(['"]?)([^'"\)]+)\1\s*\)/gi;
 
+const ASSET_MAP = {
+  "nicepage.css": path.join(SRC_DIR, "vendor/nicepage/nicepage.css"),
+  "nicepage.js": path.join(SRC_DIR, "vendor/nicepage/nicepage.js"),
+  "jquery.js": path.join(SRC_DIR, "vendor/jquery/jquery-1.9.1.min.js"),
+  "index.css": "GENERATE_INDEX_CSS",
+};
+
 const args = new Set(process.argv.slice(2));
 const options = {
   minify: args.has("--minify"),
@@ -223,6 +230,116 @@ async function copyReferencedAssets(html) {
   return missing;
 }
 
+async function recursiveFind(filename, searchDir) {
+  try {
+    const entries = await fs.readdir(searchDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(searchDir, entry.name);
+
+      if (entry.isDirectory()) {
+        const found = await recursiveFind(filename, fullPath);
+        if (found) return found;
+      } else if (entry.name === filename) {
+        return fullPath;
+      }
+    }
+  } catch (err) {
+    return null;
+  }
+
+  return null;
+}
+
+async function generateIndexCSS() {
+  const content = `/* Compatibility layer for Nicepage */\n@import "./styles/main.css";\n`;
+  await fs.writeFile(path.join(DIST_DIR, "index.css"), content, "utf-8");
+  console.log("  ✓ Generated index.css");
+}
+
+async function copyLegacyAssets() {
+  console.log("\n📦 Copying legacy assets...");
+
+  for (const [destName, sourcePath] of Object.entries(ASSET_MAP)) {
+    if (sourcePath === "GENERATE_INDEX_CSS") {
+      await generateIndexCSS();
+      continue;
+    }
+
+    const destPath = path.join(DIST_DIR, destName);
+
+    if (await fileExists(sourcePath)) {
+      await fs.copyFile(sourcePath, destPath);
+      console.log(`  ✓ Copied ${destName}`);
+    } else {
+      console.warn(`  ⚠ Source not found: ${sourcePath}`);
+    }
+  }
+}
+
+async function copyImagesFolder() {
+  console.log("\n🖼️  Copying images folder...");
+
+  const srcImagesDir = path.join(SRC_DIR, "assets/images");
+  const distImagesDir = path.join(DIST_DIR, "images");
+
+  await fs.mkdir(distImagesDir, { recursive: true });
+
+  async function copyRecursive(src, dest) {
+    const entries = await fs.readdir(src, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const srcPath = path.join(src, entry.name);
+      const destPath = path.join(dest, entry.name);
+
+      if (entry.isDirectory()) {
+        await fs.mkdir(destPath, { recursive: true });
+        await copyRecursive(srcPath, destPath);
+      } else {
+        await fs.copyFile(srcPath, destPath);
+        stats.copiedFiles++;
+        const stat = await fs.stat(srcPath);
+        stats.copiedBytes += stat.size;
+      }
+    }
+  }
+
+  await copyRecursive(srcImagesDir, distImagesDir);
+  console.log(`  ✓ Copied images folder`);
+}
+
+async function copyIntlTelInputFolder() {
+  console.log("\n📞 Copying intlTelInput folder...");
+
+  const srcIntlDir = path.join(SRC_DIR, "vendor/intlTelInput");
+  const distIntlDir = path.join(DIST_DIR, "intlTelInput");
+
+  await fs.mkdir(distIntlDir, { recursive: true });
+
+  async function copyRecursive(src, dest) {
+    const entries = await fs.readdir(src, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const srcPath = path.join(src, entry.name);
+      const destPath = path.join(dest, entry.name);
+
+      if (entry.isDirectory()) {
+        await fs.mkdir(destPath, { recursive: true });
+        await copyRecursive(srcPath, destPath);
+      } else {
+        await fs.copyFile(srcPath, destPath);
+      }
+    }
+  }
+
+  if (await fileExists(srcIntlDir)) {
+    await copyRecursive(srcIntlDir, distIntlDir);
+    console.log(`  ✓ Copied intlTelInput folder`);
+  } else {
+    console.warn(`  ⚠ Source folder not found: ${srcIntlDir}`);
+  }
+}
+
 async function build() {
   const templatePath = path.join(TEMPLATES_DIR, "index.html");
 
@@ -238,6 +355,11 @@ async function build() {
     `⚙️  Opções: minify=${options.minify} sourcemap=${options.sourcemap}`,
   );
 
+  await fs.mkdir(DIST_DIR, { recursive: true });
+  await copyLegacyAssets();
+  await copyImagesFolder();
+  await copyIntlTelInputFolder();
+
   const sourcemapEntries = [];
   const template = await fs.readFile(templatePath, "utf8");
 
@@ -247,8 +369,6 @@ async function build() {
   if (options.minify) {
     html = minifyHtml(html);
   }
-
-  await fs.mkdir(DIST_DIR, { recursive: true });
 
   if (options.sourcemap) {
     const map = {
