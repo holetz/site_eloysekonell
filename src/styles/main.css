@@ -2,13 +2,15 @@
  * Arquivo CSS principal.
  * Ordem de importação:
  * 1) Configurações (tokens/variáveis)
- * 2) Estilos globais (reset e base)
- * 3) Componentes/Seções da página
+ * 2) Componentes/Seções da página
+ *
+ * NOTA: reset.css e base.css foram removidos pois conflitam
+ * com as definições do framework Nicepage (nicepage.css).
+ * O Nicepage já fornece reset, utilitários (.u-clearfix, .u-sheet, etc.)
+ * e estilos base para tipografia e layout.
  */
 
 @import "./settings/variables.css";
-@import "./global/reset.css";
-@import "./global/base.css";
 @import "./components/header.css";
 @import "./components/hero.css";
 @import "./components/services.css";

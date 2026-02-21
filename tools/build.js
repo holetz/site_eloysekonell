@@ -9,11 +9,13 @@ const ATTR_URL_PATTERN =
   /(\s(?:src|href|poster|data-[\w-]*src)\s*=\s*)(["'])([^"']+)\2/gi;
 const CSS_URL_PATTERN = /url\(\s*(['"]?)([^'"\)]+)\1\s*\)/gi;
 
+const CSS_IMPORT_PATTERN = /@import\s+["']([^"']+)["']\s*;/g;
+
 const ASSET_MAP = {
   "nicepage.css": path.join(SRC_DIR, "vendor/nicepage/nicepage.css"),
   "nicepage.js": path.join(SRC_DIR, "vendor/nicepage/nicepage.js"),
   "jquery.js": path.join(SRC_DIR, "vendor/jquery/jquery-1.9.1.min.js"),
-  "index.css": "GENERATE_INDEX_CSS",
+  "index.css": "BUNDLE_INDEX_CSS",
 };
 
 const args = new Set(process.argv.slice(2));
@@ -178,6 +180,7 @@ function sourcePathFromDistReference(refPath) {
   const normalized = refPath.replace(/^\.\//, "").replace(/^\/+/, "");
 
   const srcPrefixMap = [
+    { prefix: "images/", base: path.join(SRC_DIR, "assets/images") },
     { prefix: "assets/", base: path.join(SRC_DIR, "assets") },
     { prefix: "vendor/", base: path.join(SRC_DIR, "vendor") },
     { prefix: "styles/", base: path.join(SRC_DIR, "styles") },
@@ -221,6 +224,11 @@ async function copyReferencedAssets(html) {
     const fromPath = sourcePathFromDistReference(ref);
     const toPath = path.join(DIST_DIR, normalizedRef);
 
+    // Skip files that were already copied by earlier build steps
+    if (await fileExists(toPath)) {
+      continue;
+    }
+
     const copied = await copyFileIfExists(fromPath, toPath);
     if (!copied) {
       missing.push({ ref, expectedSource: path.relative(ROOT_DIR, fromPath) });
@@ -251,17 +259,54 @@ async function recursiveFind(filename, searchDir) {
   return null;
 }
 
+async function bundleCSSFile(filePath, trace = []) {
+  if (trace.includes(filePath)) {
+    const cycle = trace.map((f) => path.relative(ROOT_DIR, f)).join(" -> ");
+    throw new Error(`CSS @import circular detectado: ${cycle}`);
+  }
+
+  if (!(await fileExists(filePath))) {
+    console.warn(
+      `  ⚠ CSS file not found: ${path.relative(ROOT_DIR, filePath)}`,
+    );
+    return "";
+  }
+
+  const content = await fs.readFile(filePath, "utf8");
+  const matches = [...content.matchAll(CSS_IMPORT_PATTERN)];
+
+  if (matches.length === 0) {
+    return content;
+  }
+
+  let result = content;
+
+  for (const match of matches) {
+    const importPath = match[1];
+    const fullPath = path.resolve(path.dirname(filePath), importPath);
+    const importedContent = await bundleCSSFile(fullPath, [...trace, filePath]);
+
+    result = result.replace(
+      match[0],
+      `/* --- ${path.relative(SRC_DIR, fullPath)} --- */\n${importedContent}`,
+    );
+  }
+
+  return result;
+}
+
 async function generateIndexCSS() {
-  const content = `/* Compatibility layer for Nicepage */\n@import "./styles/main.css";\n`;
-  await fs.writeFile(path.join(DIST_DIR, "index.css"), content, "utf-8");
-  console.log("  ✓ Generated index.css");
+  const mainCSSPath = path.join(SRC_DIR, "styles/main.css");
+  const bundled = await bundleCSSFile(mainCSSPath);
+  await fs.writeFile(path.join(DIST_DIR, "index.css"), bundled, "utf-8");
+  console.log("  ✓ Bundled index.css");
 }
 
 async function copyLegacyAssets() {
   console.log("\n📦 Copying legacy assets...");
 
   for (const [destName, sourcePath] of Object.entries(ASSET_MAP)) {
-    if (sourcePath === "GENERATE_INDEX_CSS") {
+    if (sourcePath === "BUNDLE_INDEX_CSS") {
       await generateIndexCSS();
       continue;
     }
@@ -340,6 +385,34 @@ async function copyIntlTelInputFolder() {
   }
 }
 
+async function copyScriptsFolder() {
+  console.log("\n📜 Copying scripts folder...");
+
+  const srcScriptsDir = path.join(SRC_DIR, "scripts");
+  const distScriptsDir = path.join(DIST_DIR, "scripts");
+
+  await fs.mkdir(distScriptsDir, { recursive: true });
+
+  if (await fileExists(srcScriptsDir)) {
+    const entries = await fs.readdir(srcScriptsDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) {
+        const srcPath = path.join(srcScriptsDir, entry.name);
+        const destPath = path.join(distScriptsDir, entry.name);
+        await fs.copyFile(srcPath, destPath);
+        stats.copiedFiles++;
+        const stat = await fs.stat(srcPath);
+        stats.copiedBytes += stat.size;
+      }
+    }
+
+    console.log(`  ✓ Copied scripts folder`);
+  } else {
+    console.warn(`  ⚠ Source folder not found: ${srcScriptsDir}`);
+  }
+}
+
 async function build() {
   const templatePath = path.join(TEMPLATES_DIR, "index.html");
 
@@ -359,6 +432,7 @@ async function build() {
   await copyLegacyAssets();
   await copyImagesFolder();
   await copyIntlTelInputFolder();
+  await copyScriptsFolder();
 
   const sourcemapEntries = [];
   const template = await fs.readFile(templatePath, "utf8");
