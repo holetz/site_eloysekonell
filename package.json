@@ -1,0 +1,26 @@
+{
+  "name": "eloyse-konell-website",
+  "version": "2.0.0",
+  "description": "Site corporativo Eloyse Konell - Gestão e Consultoria em RH",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist && mkdir -p dist",
+    "build": "node tools/build.js",
+    "build:min": "node tools/build.js --minify",
+    "build:prod": "npm run clean && node tools/build.js --minify --sourcemap",
+    "dev": "npm run build && python3 -m http.server 2603 --directory dist",
+    "preview": "python3 -m http.server 2603 --directory dist",
+    "watch": "nodemon --watch src --ext html,css,js --exec 'npm run build'"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "keywords": [
+    "website",
+    "corporativo",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "license": "UNLICENSED"
+}

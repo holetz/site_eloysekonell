@@ -1,0 +1,53 @@
+/*
+ * Tokens base do projeto Eloyse Konell.
+ * Fonte dos valores:
+ * - Paleta e tipografia: nicepage.css (classes u-palette-* e u-body/h1..h6)
+ * - Breakpoints: index.css (@media max-width: 1199/991/767/575)
+ * - Espaçamentos: frequências mais recorrentes em index.css
+ */
+
+:root {
+  /* Cores principais da paleta Nicepage usada no projeto */
+  --color-palette-1: #645d3b;
+  --color-palette-2: #31331f;
+  --color-palette-3: #d9bba8;
+  --color-palette-4: #ba8b68;
+  --color-palette-5: #d5cdbc;
+
+  /* Neutras base observadas no tema */
+  --color-text-default: #202425;
+  --color-white: #ffffff;
+
+  /* Tipografia */
+  --font-family-heading: Montserrat, sans-serif;
+  --font-family-body: Raleway, sans-serif;
+
+  /* Breakpoints (compatíveis com index.css) */
+  --breakpoint-lg: 1199px;
+  --breakpoint-md: 991px;
+  --breakpoint-sm: 767px;
+  --breakpoint-xs: 575px;
+
+  /* Larguras padrão de sheet (nicepage) */
+  --theme-sheet-width-xxl: 1140px;
+  --theme-sheet-width-xl: 1140px;
+  --theme-sheet-width-lg: 940px;
+  --theme-sheet-width-md: 720px;
+  --theme-sheet-width-sm: 540px;
+  --theme-sheet-width-xs: 340px;
+
+  /* Espaçamentos comuns em index.css */
+  --space-0: 0;
+  --space-2: 2px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-16: 16px;
+  --space-17: 17px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-30: 30px;
+  --space-40: 40px;
+  --space-45: 45px;
+  --space-60: 60px;
+  --space-70: 70px;
+}

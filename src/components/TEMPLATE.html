@@ -1,0 +1,41 @@
+<!-- 
+  COMPONENT: [Nome do Componente, ex: Hero Section]
+  ID: [nome-do-arquivo-sem-extensão, ex: hero]
+  DESCRIPTION: [Breve descrição do propósito deste componente]
+  
+  DEPENDENCIES:
+  - CSS: src/styles/components/[nome-do-arquivo].css
+  - JS: src/scripts/[se-houver].js (opcional)
+  - ASSETS: [lista de imagens ou assets principais usados aqui]
+  
+  NOTES:
+  - Mantenha o HTML semântico.
+  - Use classes BEM (Block Element Modifier) para estilização.
+  - Evite estilos inline.
+-->
+
+<section id="[ID-DA-SECAO]" class="[classe-base-do-componente]">
+  <div class="container">
+    <!-- Cabeçalho do Componente (Opcional) -->
+    <header class="[classe-base]__header">
+      <h2 class="[classe-base]__title">Título da Seção</h2>
+      <p class="[classe-base]__subtitle">Subtítulo ou descrição breve.</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="[classe-base]__content">
+      <!-- 
+        Exemplo de item:
+        <div class="[classe-base]__item">
+          Conteúdo do item...
+        </div>
+      -->
+      <p>Conteúdo do componente vai aqui...</p>
+    </div>
+
+    <!-- Rodapé do Componente (Opcional - ex: Botão de ação) -->
+    <footer class="[classe-base]__footer">
+      <a href="#" class="btn btn-primary">Ação Principal</a>
+    </footer>
+  </div>
+</section>

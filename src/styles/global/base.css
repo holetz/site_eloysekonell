@@ -1,0 +1,77 @@
+/*
+ * Base global da aplicação.
+ * Reproduz fundamentos de tipografia/layout do Nicepage com estrutura modular.
+ */
+
+body,
+.u-body {
+  color: var(--color-text-default);
+  background-color: var(--color-white);
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.u-body h1,
+.u-body h2,
+.u-body h3,
+.u-body h4,
+.u-body h5,
+.u-body h6 {
+  font-family: var(--font-family-heading);
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Utilitários de compatibilidade Nicepage */
+.u-clearfix::before,
+.u-clearfix::after {
+  content: "";
+  display: table;
+}
+
+.u-clearfix::after {
+  clear: both;
+}
+
+.u-sheet {
+  position: relative;
+  width: var(--theme-sheet-width-xl);
+  margin: 0 auto;
+}
+
+.u-body .u-sheet .u-sheet {
+  width: 100%;
+}
+
+@media (max-width: 1199px) {
+  .u-sheet {
+    width: var(--theme-sheet-width-lg);
+  }
+}
+
+@media (max-width: 991px) {
+  .u-sheet {
+    width: var(--theme-sheet-width-md);
+  }
+}
+
+@media (max-width: 767px) {
+  .u-sheet {
+    width: var(--theme-sheet-width-sm);
+  }
+}
+
+@media (max-width: 575px) {
+  .u-sheet {
+    width: var(--theme-sheet-width-xs);
+  }
+}

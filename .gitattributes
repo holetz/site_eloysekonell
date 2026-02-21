@@ -1,0 +1,28 @@
+* text=auto eol=lf
+
+# Imagens
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text eol=lf
+*.ico binary
+
+# Fontes
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+
+# Arquivos compactados e mídia
+*.zip binary
+*.gz binary
+*.mp4 binary
+*.mp3 binary
+*.pdf binary
+
+# Minificados permanecem como texto
+*.min.js text eol=lf
+*.min.css text eol=lf
