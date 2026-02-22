@@ -10,7 +10,7 @@
  * e estilos base para tipografia e layout.
  */
 
-/* --- styles\settings\variables.css --- */
+/* --- styles/settings/variables.css --- */
 /*
  * Tokens base do projeto Eloyse Konell.
  * Fonte dos valores:
@@ -65,11 +65,11 @@
   --space-70: 70px;
 }
 
-/* --- styles\components\header.css --- */
+/* --- styles/components/header.css --- */
 /* Componente: Header (.u-header)
    Nenhum estilo .u-header foi encontrado em index.css. */
 
-/* --- styles\components\hero.css --- */
+/* --- styles/components/hero.css --- */
 /* Componente: Hero (.u-section-1) */
 
 .u-section-1 {
@@ -155,7 +155,7 @@
   }
 }
 
-/* --- styles\components\services.css --- */
+/* --- styles/components/services.css --- */
 /* Componente: Services (.u-section-2) */
 
 .u-section-2 {
@@ -472,7 +472,7 @@
   }
 }
 
-/* --- styles\components\about-carousel.css --- */
+/* --- styles/components/about-carousel.css --- */
 /* Componente: About Carousel (.u-section-3) */
 
 .u-section-3 {
@@ -744,7 +744,7 @@
   }
 }
 
-/* --- styles\components\about-details.css --- */
+/* --- styles/components/about-details.css --- */
 /* Componente: About Details (.u-section-4) */
 
 .u-section-4 .u-sheet-1 {
@@ -1081,7 +1081,7 @@
   }
 }
 
-/* --- styles\components\partners.css --- */
+/* --- styles/components/partners.css --- */
 /* Componente: Partners (.u-section-7) */
 
 .u-section-7 .u-sheet-1 {
@@ -1253,7 +1253,7 @@
   }
 }
 
-/* --- styles\components\cta.css --- */
+/* --- styles/components/cta.css --- */
 /* Componente: CTA (.u-section-5) */
 
 .u-section-5 .u-sheet-1 {
@@ -1319,7 +1319,7 @@
   }
 }
 
-/* --- styles\components\footer.css --- */
+/* --- styles/components/footer.css --- */
 /* Componente: Footer (.u-footer)
    Nenhum estilo .u-footer foi encontrado em index.css. */
 

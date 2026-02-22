@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "file": "index.html",
+  "sourceRoot": ".",
+  "sources": [
+    "src/templates/index.html"
+  ],
+  "includes": [
+    {
+      "include": "components/common/header",
+      "source": "src/components/common/header.html"
+    },
+    {
+      "include": "components/sections/hero",
+      "source": "src/components/sections/hero.html"
+    },
+    {
+      "include": "components/sections/services",
+      "source": "src/components/sections/services.html"
+    },
+    {
+      "include": "components/sections/about-carousel",
+      "source": "src/components/sections/about-carousel.html"
+    },
+    {
+      "include": "components/sections/about-details",
+      "source": "src/components/sections/about-details.html"
+    },
+    {
+      "include": "components/sections/partners",
+      "source": "src/components/sections/partners.html"
+    },
+    {
+      "include": "components/sections/cta",
+      "source": "src/components/sections/cta.html"
+    },
+    {
+      "include": "components/common/footer",
+      "source": "src/components/common/footer.html"
+    }
+  ],
+  "generatedAt": "2026-02-22T18:50:59.414Z"
+}
