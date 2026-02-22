@@ -35,12 +35,12 @@ jobs:
       - name: Build site
         run: npm run build:prod
 
-      - name: Commit and push dist folder
+      - name: Commit and push docs folder
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/
+          git add docs/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

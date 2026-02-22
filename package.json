@@ -4,12 +4,12 @@
   "description": "Site corporativo Eloyse Konell - Gestão e Consultoria em RH",
   "private": true,
   "scripts": {
-    "clean": "rm -rf dist && mkdir -p dist",
+    "clean": "rm -rf docs && mkdir -p docs",
     "build": "node tools/build.js",
     "build:min": "node tools/build.js --minify",
     "build:prod": "npm run clean && node tools/build.js --minify --sourcemap",
-    "dev": "npm run build && python3 -m http.server 2603 --bind 127.0.0.1 --directory dist",
-    "preview": "python3 -m http.server 2603 --bind 127.0.0.1 --directory dist",
+    "dev": "npm run build && python3 -m http.server 2603 --bind 127.0.0.1 --directory docs",
+    "preview": "python3 -m http.server 2603 --bind 127.0.0.1 --directory docs",
     "watch": "nodemon --watch src --ext html,css,js --exec 'npm run build'"
   },
   "devDependencies": {
