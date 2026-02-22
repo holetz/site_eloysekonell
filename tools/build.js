@@ -413,6 +413,16 @@ async function copyScriptsFolder() {
   }
 }
 
+async function copyNojekyll() {
+  const noJekyllPath = path.join(ROOT_DIR, ".nojekyll");
+  const distNoJekyllPath = path.join(DIST_DIR, ".nojekyll");
+
+  if (await fileExists(noJekyllPath)) {
+    await fs.copyFile(noJekyllPath, distNoJekyllPath);
+    console.log("  ✓ Copied .nojekyll");
+  }
+}
+
 async function build() {
   const templatePath = path.join(TEMPLATES_DIR, "index.html");
 
@@ -429,6 +439,7 @@ async function build() {
   );
 
   await fs.mkdir(DIST_DIR, { recursive: true });
+  await copyNojekyll();
   await copyLegacyAssets();
   await copyImagesFolder();
   await copyIntlTelInputFolder();
