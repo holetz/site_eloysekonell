@@ -19,7 +19,6 @@ Gemfile.lock
 
 # Node / build artifacts
 node_modules/
-dist/
 
 # OS files
 .DS_Store
