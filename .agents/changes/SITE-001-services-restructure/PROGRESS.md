@@ -16,7 +16,7 @@
 |------|-------|--------|-----------------|
 | 01 | HTML dos Flip Cards — `services.html` | ✅ Completed | Verified 2026-03-08: all 9 acceptance criteria pass, build passes, 8 cards confirmed |
 | 02 | CSS dos Flip Cards — `services.css` | ✅ Completed | Verified on rework 2026-03-08: all fixes confirmed — 575px breakpoint present, no stray CSS, build passes |
-| 03 | JavaScript — `initServiceCards()` em `main.js` | ⬜ Not Started | |
+| 03 | JavaScript — `initServiceCards()` em `main.js` | ✅ Completed | |
 | 04 | Mensagem de Commit Final | ⬜ Not Started | |
 
 **Phase Status**: 🔄 In Progress
@@ -36,10 +36,10 @@
 ## Completion Summary
 
 - **Total Tasks**: 4
-- **Completed**: 2
+- **Completed**: 3
 - **Incomplete**: 0
 - **In Progress**: 0
-- **Remaining**: 2
+- **Remaining**: 1
 
 ---
 
@@ -62,3 +62,4 @@
 | 2026-03-08 | Task 02 | Inspected | Task Inspector | 🔴 INCOMPLETE — missing `@media (max-width: 575px)` breakpoint (explicit AC requirement); duplicate/stray CSS content found after line ~248 |
 | 2026-03-08 | Task 02 | Rework Completed | Coding Agent | Removed duplicate/stray CSS content (lines 259–296 were orphaned declarations + full duplicate of sections N and O); added missing `@media (max-width: 575px)` breakpoint; build verified ✅ |
 | 2026-03-08 | Task 02 | Re-inspected | Task Inspector | ✅ COMPLETE — all issues from initial inspection resolved: 575px breakpoint with `margin-top: -40px` present, file clean with no stray/duplicate CSS, all 8 AC pass, build passes |
+| 2026-03-08 | Task 03 | Completed | Coding Agent | Added `initServiceCards()` to `main.js` with click/keydown handlers, ARIA support, CTA guard, and `destroy()`; integrated into `initSiteModules()` and `destroySiteModules()`; build verified ✅ |
