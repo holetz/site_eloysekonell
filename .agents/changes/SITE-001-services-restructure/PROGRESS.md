@@ -15,7 +15,7 @@
 | Task | Title | Status | Inspector Notes |
 |------|-------|--------|-----------------|
 | 01 | HTML dos Flip Cards — `services.html` | ✅ Completed | Verified 2026-03-08: all 9 acceptance criteria pass, build passes, 8 cards confirmed |
-| 02 | CSS dos Flip Cards — `services.css` | ✅ Completed | Inspector 2026-03-08: FAIL — missing `@media (max-width: 575px)` breakpoint (required by AC); duplicate/stray CSS content after responsive block |
+| 02 | CSS dos Flip Cards — `services.css` | ✅ Completed | Verified on rework 2026-03-08: all fixes confirmed — 575px breakpoint present, no stray CSS, build passes |
 | 03 | JavaScript — `initServiceCards()` em `main.js` | ⬜ Not Started | |
 | 04 | Mensagem de Commit Final | ⬜ Not Started | |
 
@@ -61,3 +61,4 @@
 | 2026-03-08 | Task 02 | Completed | Coding Agent | Rewrote services.css with flip card 3D system, 2-col grid, pills, responsive; build verified ✅ |
 | 2026-03-08 | Task 02 | Inspected | Task Inspector | 🔴 INCOMPLETE — missing `@media (max-width: 575px)` breakpoint (explicit AC requirement); duplicate/stray CSS content found after line ~248 |
 | 2026-03-08 | Task 02 | Rework Completed | Coding Agent | Removed duplicate/stray CSS content (lines 259–296 were orphaned declarations + full duplicate of sections N and O); added missing `@media (max-width: 575px)` breakpoint; build verified ✅ |
+| 2026-03-08 | Task 02 | Re-inspected | Task Inspector | ✅ COMPLETE — all issues from initial inspection resolved: 575px breakpoint with `margin-top: -40px` present, file clean with no stray/duplicate CSS, all 8 AC pass, build passes |

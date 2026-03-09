@@ -1,32 +1,4 @@
-> ## 🔴 INSPECTOR FEEDBACK — 2026-03-08
->
-> **Status**: INCOMPLETE — do NOT proceed to Task 03 until this task is fixed and re-inspected.
->
-> ### Failures
->
-> **1. Missing `@media (max-width: 575px)` breakpoint** ❌
-> The acceptance criteria explicitly require breakpoints at 991px, 767px, **and 575px**.
-> The implementation contains only 991px and 767px. The 575px breakpoint is completely absent.
-> Per the spec, this block is required:
-> ```css
-> @media (max-width: 575px) {
->   .c-services {
->     width: 340px;
->   }
-> }
-> ```
->
-> **2. Duplicate / stray CSS content in the file** ❌
-> Starting around line 248, the file contains orphaned CSS declarations (`letter-spacing: 0.06em;`,
-> `text-decoration: none;`, etc.) floating outside any selector, followed by a duplicate copy of
-> section N (`.c-flip-card__cta:hover`) and section O (both `@media` blocks) with garbled
-> UTF-8 encoding. This indicates the agent appended a partial second write to the file.
-> The file must be cleaned so each rule appears exactly once.
->
-> ### Passed Criteria (for reference)
-> All 10 structural/functional criteria pass: perspective, transform-style, transitions,
-> backface-visibility, rotateY states, grid layout, pills, CTA button, 767px responsive,
-> Nicepage compat rules. Build also passes. Only the above two items need fixing.
+> **Re-inspection verdict (2026-03-08)**: All issues from initial inspection resolved. ✅
 
 # Task 02: CSS dos Flip Cards — `services.css`
 
