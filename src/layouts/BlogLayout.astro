@@ -1,0 +1,201 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  ogImage?: string;
+  tags?: string[];
+}
+
+const { title, description, pubDate, updatedDate, ogImage, tags = [] } = Astro.props;
+
+const SITE_URL = 'https://eloysekonell.com.br';
+const canonical = SITE_URL + Astro.url.pathname;
+const dateIso = pubDate.toISOString();
+const dateFormatted = pubDate.toLocaleDateString('pt-BR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  url: canonical,
+  datePublished: dateIso,
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Eloyse Konell',
+    url: SITE_URL,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Eloyse Konell — Gestão e Consultoria',
+    url: SITE_URL,
+  },
+  ...(ogImage && { image: ogImage }),
+  ...(tags.length && { keywords: tags.join(', ') }),
+};
+---
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogType="article"
+  ogImage={ogImage}
+  articleDate={dateIso}
+>
+  <Nav />
+
+  <main class="blog-post-main">
+    <div class="wrap">
+      <article class="blog-post" itemscope itemtype="https://schema.org/Article">
+        <header class="post-header">
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map(tag => <span class="post-tag">{tag}</span>)}
+            </div>
+          )}
+          <h1 itemprop="headline">{title}</h1>
+          <p class="post-description">{description}</p>
+          <div class="post-meta">
+            <time datetime={dateIso} itemprop="datePublished">{dateFormatted}</time>
+            <span class="post-author" itemprop="author">Eloyse Konell</span>
+          </div>
+          {updatedDate && (
+            <p class="post-updated">
+              Atualizado em{' '}
+              <time datetime={updatedDate.toISOString()}>
+                {updatedDate.toLocaleDateString('pt-BR', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+            </p>
+          )}
+        </header>
+
+        <div class="post-content" itemprop="articleBody">
+          <slot />
+        </div>
+
+        <footer class="post-footer">
+          <a href="/blog" class="btn btn-outline-dark">← Voltar ao Blog</a>
+        </footer>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</Layout>
+
+<style>
+  .blog-post-main {
+    padding-top: 140px;
+    padding-bottom: 100px;
+  }
+  .blog-post {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .post-header {
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+  }
+  .post-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .post-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    border: 1px solid var(--bronze);
+    padding: 4px 12px;
+  }
+  .post-header h1 {
+    margin-bottom: 16px;
+  }
+  .post-description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--taupe);
+    margin-bottom: 20px;
+  }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--taupe-soft);
+    text-transform: uppercase;
+  }
+  .post-meta time,
+  .post-author {
+    font-size: 0.8rem;
+  }
+  .post-updated {
+    font-size: 0.82rem;
+    color: var(--taupe-soft);
+    margin-top: 8px;
+  }
+  .post-content {
+    font-size: 1.06rem;
+    line-height: 1.8;
+    color: var(--olive-deep);
+  }
+  .post-content h2 {
+    margin: 48px 0 20px;
+  }
+  .post-content h3 {
+    margin: 36px 0 16px;
+  }
+  .post-content p {
+    margin-bottom: 24px;
+  }
+  .post-content ul,
+  .post-content ol {
+    margin: 0 0 24px 24px;
+  }
+  .post-content li {
+    margin-bottom: 8px;
+  }
+  .post-content blockquote {
+    border-left: 3px solid var(--bronze);
+    padding: 16px 24px;
+    margin: 32px 0;
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--taupe);
+    background: var(--sand-warm);
+  }
+  .post-footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 768px) {
+    .blog-post-main {
+      padding-top: 100px;
+    }
+  }
+</style>

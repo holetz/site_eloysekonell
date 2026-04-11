@@ -1,0 +1,36 @@
+---
+---
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="/" class="logo">
+    <img src="/images/logo.png" alt="Eloyse Konell" />
+  </a>
+  <nav class="menu" id="menu">
+    <a href="/#sobre">Sobre</a>
+    <a href="/#consultoria">Consultoria</a>
+    <a href="/#servicos">Serviços</a>
+    <a href="/#depoimentos">Depoimentos</a>
+    <a href="/blog">Blog</a>
+    <a href="/#contato" class="btn btn-ghost">Conversar</a>
+  </nav>
+  <button class="menu-toggle" id="toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<script>
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  }
+  const toggle = document.getElementById('toggle');
+  const menu = document.getElementById('menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => menu.classList.remove('open'))
+    );
+  }
+</script>

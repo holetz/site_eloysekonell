@@ -1,0 +1,165 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Layout
+  title="Blog"
+  description="Artigos sobre liderança de alta performance, gestão estratégica de pessoas e desenvolvimento de equipes — por Eloyse Konell."
+>
+  <Nav />
+
+  <main class="blog-main">
+    <div class="wrap">
+      <div class="blog-hero">
+        <span class="eyebrow">Blog</span>
+        <h1>Liderança. Estratégia. <em>Pessoas.</em></h1>
+        <p class="lead">
+          Reflexões e análises sobre o que separa organizações que crescem de forma sustentável
+          das que ficam presas em ciclos de urgência.
+        </p>
+      </div>
+
+      {posts.length === 0 ? (
+        <p class="no-posts">Novos artigos em breve.</p>
+      ) : (
+        <div class="posts-grid">
+          {posts.map((post) => {
+            const dateFormatted = post.data.pubDate.toLocaleDateString('pt-BR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+            return (
+              <article class="post-card">
+                {post.data.tags.length > 0 && (
+                  <div class="post-card-tags">
+                    {post.data.tags.slice(0, 2).map(tag => (
+                      <span class="post-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+                <h2>
+                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                </h2>
+                <p class="post-desc">{post.data.description}</p>
+                <div class="post-card-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>{dateFormatted}</time>
+                  <a href={`/blog/${post.slug}`} class="read-more">Ler artigo →</a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-main {
+    padding-top: 160px;
+    padding-bottom: 120px;
+  }
+  .blog-hero {
+    max-width: 700px;
+    margin-bottom: 80px;
+  }
+  .blog-hero h1 {
+    margin: 16px 0 20px;
+  }
+  .blog-hero h1 em {
+    font-style: italic;
+    color: var(--taupe);
+    font-weight: 300;
+  }
+  .blog-hero .lead {
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+  .no-posts {
+    font-size: 1.1rem;
+    color: var(--taupe-soft);
+    padding: 40px 0;
+  }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 40px;
+  }
+  .post-card {
+    padding: 40px;
+    border: 1px solid var(--line);
+    background: var(--sand-warm);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .post-card:hover {
+    border-color: var(--bronze);
+    transform: translateY(-4px);
+  }
+  .post-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .post-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    border: 1px solid var(--bronze);
+    padding: 3px 10px;
+  }
+  .post-card h2 {
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .post-card h2 a {
+    color: var(--olive-deep);
+    transition: color 0.3s;
+  }
+  .post-card h2 a:hover {
+    color: var(--bronze);
+  }
+  .post-desc {
+    margin-bottom: 24px;
+    line-height: 1.65;
+  }
+  .post-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--taupe-soft);
+    text-transform: uppercase;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .read-more {
+    color: var(--bronze);
+    font-weight: 600;
+    transition: letter-spacing 0.3s;
+  }
+  .read-more:hover {
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 768px) {
+    .blog-main {
+      padding-top: 110px;
+    }
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

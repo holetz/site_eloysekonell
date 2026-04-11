@@ -1,0 +1,128 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  articleDate?: string;
+  noindex?: boolean;
+}
+
+const SITE_URL = 'https://eloysekonell.com.br';
+const SITE_NAME = 'Eloyse Konell — Gestão e Consultoria';
+const DEFAULT_TITLE = 'Eloyse Konell — Liderança de Alta Performance & Estratégia de Pessoas';
+const DEFAULT_DESC =
+  'Eloyse Konell — Consultoria estratégica em desenvolvimento de lideranças de alta performance e gestão estratégica de pessoas. Blumenau, SC.';
+const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-cover.jpg`;
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESC,
+  canonical = SITE_URL + Astro.url.pathname,
+  ogImage = DEFAULT_OG_IMAGE,
+  ogType = 'website',
+  articleDate,
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title === DEFAULT_TITLE ? title : `${title} | ${SITE_NAME}`;
+
+// JSON-LD structured data
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Eloyse Konell',
+  url: SITE_URL,
+  jobTitle: 'Consultora em Liderança e Gestão Estratégica de Pessoas',
+  description: DEFAULT_DESC,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Blumenau',
+    addressRegion: 'SC',
+    addressCountry: 'BR',
+  },
+  sameAs: [
+    'https://www.instagram.com/ek_gestaoeconsultoria',
+    'https://www.linkedin.com/company/eloysekonell',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: DEFAULT_DESC,
+  inLanguage: 'pt-BR',
+};
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO primário -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="pt_BR" />
+    {articleDate && <meta property="article:published_time" content={articleDate} />}
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Reveal observer -->
+    <script>
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+---
+---
+<!-- ASSESSMENT SPOTLIGHT -->
+<section class="assessment-spotlight" id="assessment">
+  <div class="wrap">
+    <div class="spotlight-content">
+      <span class="eyebrow reveal">Serviço Especializado</span>
+      <h2 class="reveal delay-1">Assessment de <em>Lideranças</em></h2>
+      <p class="lead reveal delay-2">
+        Um processo de avaliação que transforma percepção em dados estratégicos. Escolha a
+        jornada que faz sentido para você:
+      </p>
+
+      <!-- TABS -->
+      <div class="spotlight-tabs reveal delay-2" role="tablist">
+        <button class="tab-btn active" data-view="empresa" role="tab" aria-selected="true">
+          Para Empresas
+        </button>
+        <button class="tab-btn" data-view="individual" role="tab" aria-selected="false">
+          Para Você
+        </button>
+      </div>
+
+      <!-- VIEW: EMPRESA -->
+      <div class="spotlight-view active" data-view="empresa">
+        <p class="view-lead">
+          Um processo estruturado de avaliação que traz visibilidade sobre potencial,
+          performance, prontidão, estilos de liderança e oportunidades de desenvolvimento dos
+          líderes da sua organização. Oferece base objetiva para decisões de desenvolvimento,
+          promoção e sucessão.
+        </p>
+        <div class="spotlight-features">
+          <div class="feature">
+            <span class="fnum">i.</span>
+            <h4>Avaliação Individual</h4>
+            <p>
+              Diagnóstico aprofundado de cada líder sob diferentes ângulos, dos comportamentos
+              visíveis aos drivers que sustentam decisão e performance.
+            </p>
+          </div>
+          <div class="feature">
+            <span class="fnum">ii.</span>
+            <h4>Mapeamento Estratégico</h4>
+            <p>
+              Tradução dos dados em inteligência de negócio: prontidão para os desafios atuais e
+              futuros, riscos ocultos de performance e gaps críticos que comprometem resultados.
+            </p>
+          </div>
+          <div class="feature">
+            <span class="fnum">iii.</span>
+            <h4>Relatórios Executivos</h4>
+            <p>
+              Visão individual e consolidada que conecta dados de avaliação às decisões
+              estratégicas do negócio.
+            </p>
+          </div>
+          <div class="feature">
+            <span class="fnum">iv.</span>
+            <h4>Devolutiva Estratégica</h4>
+            <p>
+              Recomendações concretas para desenvolvimento, promoção e sucessão de cada líder
+              avaliado.
+            </p>
+          </div>
+        </div>
+        <a href="https://api.whatsapp.com/send/?phone=5547991443844&text=Olá%2C+gostaria+de+saber+mais+sobre+o+Assessment+Corporativo." class="btn btn-spotlight" target="_blank" rel="noopener">
+          Solicitar Assessment Corporativo
+        </a>
+      </div>
+
+      <!-- VIEW: INDIVIDUAL -->
+      <div class="spotlight-view" data-view="individual">
+        <p class="view-lead">
+          Um assessment completo de autoconhecimento e posicionamento profissional. Ideal para
+          líderes em momento de transição, profissionais em busca de clareza sobre seu perfil ou
+          quem quer dar o próximo passo de carreira de forma estratégica.
+        </p>
+        <div class="spotlight-features">
+          <div class="feature">
+            <span class="fnum">i.</span>
+            <h4>Autoconhecimento Profundo</h4>
+            <p>
+              Entenda como você realmente lidera, decide e se posiciona. Identifica padrões
+              inconscientes, gatilhos e os pontos que sustentam ou limitam sua performance hoje.
+            </p>
+          </div>
+          <div class="feature">
+            <span class="fnum">ii.</span>
+            <h4>Direcionamento de Carreira</h4>
+            <p>
+              Clareza sobre onde você está, onde pode chegar e o que precisa desenvolver para
+              isso. Sai do "achismo" sobre o próximo passo e ganha um caminho concreto.
+            </p>
+          </div>
+          <div class="feature">
+            <span class="fnum">iii.</span>
+            <h4>Relatório Personalizado</h4>
+            <p>
+              Documento estratégico com seu perfil completo, prontidão para novos desafios e os
+              movimentos que aceleram sua trajetória profissional.
+            </p>
+          </div>
+          <div class="feature">
+            <span class="fnum">iv.</span>
+            <h4>Sessão de Devolutiva</h4>
+            <p>
+              Conversa 1:1 para traduzir os dados em decisões práticas, com plano de
+              desenvolvimento individual focado no que realmente vai mover sua carreira.
+            </p>
+          </div>
+        </div>
+        <a href="https://api.whatsapp.com/send/?phone=5547991443844&text=Olá%2C+gostaria+de+saber+mais+sobre+o+Assessment+Individual." class="btn btn-spotlight" target="_blank" rel="noopener">
+          Quero fazer meu Assessment
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const view = (btn as HTMLButtonElement).dataset.view;
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        const isActive = (b as HTMLButtonElement).dataset.view === view;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', String(isActive));
+      });
+      document.querySelectorAll('.spotlight-view').forEach(v => {
+        v.classList.toggle('active', (v as HTMLElement).dataset.view === view);
+      });
+    });
+  });
+</script>

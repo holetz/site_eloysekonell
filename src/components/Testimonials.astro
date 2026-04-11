@@ -1,0 +1,49 @@
+---
+const testimonials = [
+  {
+    quote:
+      'A transição de especialistas técnicos para gestores de pessoas é sempre um desafio. Com o apoio da Elo, formatamos uma jornada de liderança focada justamente em desmistificar a gestão, tratando-a como a disciplina técnica que ela é. O resultado? Um time altamente engajado e satisfeito. As sessões foram densas em conteúdo, mas muito práticas, permitindo que as novas lideranças implementassem o que aprenderam quase que instantaneamente.',
+    name: 'Patrícia Stazak',
+    role: 'People Partner',
+    company: 'DataRunk',
+    delay: '',
+  },
+  {
+    quote:
+      '[Substituir por depoimento real — destaque a capacidade de ler o negócio antes de propor soluções de pessoas, e o diferencial estratégico entregue.]',
+    name: 'Nome do Cliente',
+    role: 'Cargo',
+    company: 'Empresa',
+    delay: 'delay-1',
+  },
+  {
+    quote:
+      '[Substituir por depoimento real — fale sobre mentoria executiva, jornada de desenvolvimento ou arquitetura de sucessão construída junto.]',
+    name: 'Nome do Cliente',
+    role: 'Cargo',
+    company: 'Empresa',
+    delay: 'delay-2',
+  },
+];
+---
+<!-- DEPOIMENTOS -->
+<section class="testimonials" id="depoimentos">
+  <div class="wrap">
+    <div class="testimonials-head reveal">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>O que dizem os líderes <em>e organizações.</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      {testimonials.map(({ quote, name, role, company, delay }) => (
+        <div class={`testimonial reveal ${delay}`}>
+          <span class="mark">"</span>
+          <blockquote>{quote}</blockquote>
+          <cite>
+            {name}
+            <small>{role} • {company}</small>
+          </cite>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

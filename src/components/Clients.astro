@@ -1,0 +1,27 @@
+---
+const clients = [
+  { src: '/images/logos/logo_datarunk.png',    alt: 'Datarunk' },
+  { src: '/images/logos/logo_dgsis.png',       alt: 'DGSis' },
+  { src: '/images/logos/logo_grupo_top.png',   alt: 'Grupo Top' },
+  { src: '/images/logos/logo_possibilitar.png',alt: 'Possibilitar' },
+  { src: '/images/logos/logo_nuvme.png',       alt: 'Nuvme' },
+  { src: '/images/logos/logo_straas.png',      alt: 'Straas' },
+  { src: '/images/logos/logo_colablife.png',   alt: 'Colablife' },
+  { src: '/images/logos/logo_techlinker.webp', alt: 'Techlinker' },
+  { src: '/images/logos/logo_mtech.png',       alt: 'Mtech' },
+  { src: '/images/logos/logo_guion.png',       alt: 'Guion' },
+];
+---
+<!-- CLIENTES -->
+<section class="clients">
+  <div class="wrap">
+    <div class="clients-head reveal">
+      <span class="eyebrow">Alianças que Transformam</span>
+    </div>
+    <div class="clients-grid reveal delay-1">
+      {clients.map(({ src, alt }) => (
+        <img class="client-logo" src={src} alt={alt} loading="lazy" />
+      ))}
+    </div>
+  </div>
+</section>
