@@ -18,10 +18,14 @@ const { Content } = await post.render();
 <BlogLayout
   title={post.data.title}
   description={post.data.description}
+  deck={post.data.deck}
   pubDate={post.data.pubDate}
   updatedDate={post.data.updatedDate}
   ogImage={post.data.ogImage}
+  coverImage={post.data.coverImage}
   tags={post.data.tags}
+  readingTime={post.data.readingTime}
+  related={post.data.related}
 >
   <Content />
 </BlogLayout>

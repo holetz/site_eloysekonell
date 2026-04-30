@@ -5,11 +5,15 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    deck: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    ogImage: z.string().optional(),
+    coverImage: z.string().url().optional(),
+    ogImage: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
+    readingTime: z.string(),
     draft: z.boolean().default(false),
+    related: z.array(z.string()).default([]),
   }),
 });
 
