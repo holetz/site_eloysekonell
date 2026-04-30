@@ -18,6 +18,9 @@ index.html
 .env.local
 .env.*.local
 
+# Worktrees
+.worktrees/
+
 # Editor
 .vscode/*
 !.vscode/extensions.json
