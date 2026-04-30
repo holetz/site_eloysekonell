@@ -6,7 +6,7 @@
 
 **Architecture:** Add `remark-directive` + custom plugin to parse `::pullquote`, `:::data-grid`, `:::inline-cta`, `:::exercise` blocks in Markdown content. Rewrite `BlogLayout.astro` and `blog/index.astro`. Migrate all 7 HTML reference articles to Markdown. Add CSS to `global.css`.
 
-**Tech Stack:** Astro 4, Content Collections, remark-directive 3.x, TypeScript
+**Tech Stack:** Astro 4, Content Collections, remark-directive 4.x, TypeScript
 
 ---
 
