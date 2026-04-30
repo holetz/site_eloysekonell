@@ -1,0 +1,80 @@
+<style>
+  :root {
+    --sand: #F1EBE0; --sand-warm: #E8DED0; --sand-deep: #D9CDB8;
+    --taupe: #6B5D4E; --taupe-soft: #8A7E6C;
+    --olive: #3F3E30; --olive-deep: #2E2D22;
+    --bronze: #A88656; --bronze-soft: #C2A679;
+    --line: rgba(46,45,34,0.14);
+    --serif: Georgia, serif; --sans: system-ui, sans-serif;
+  }
+  .mock-article { background: var(--sand); font-family: var(--sans); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .mock-nav { background: var(--olive); color: #f1ebe0; padding: 10px 20px; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; display: flex; justify-content: space-between; }
+  .article-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
+  .breadcrumb { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe-soft); margin-bottom: 10px; }
+  .art-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); border: 1px solid var(--bronze); padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+  .art-title { font-family: var(--serif); font-size: 1.15rem; color: var(--olive-deep); margin: 0 0 6px; line-height: 1.25; }
+  .art-deck { font-size: 0.75rem; color: var(--taupe); line-height: 1.6; font-style: italic; margin-bottom: 8px; }
+  .art-meta { font-size: 0.6rem; color: var(--taupe-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  .cover-img-below { width: 100%; height: 110px; background: linear-gradient(135deg, #8A7E6C 0%, #6B5D4E 50%, #3F3E30 100%); display: flex; align-items: center; justify-content: center; color: rgba(241,235,224,0.5); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
+  .article-body { padding: 16px 20px; }
+  .body-text { font-size: 0.72rem; color: var(--olive-deep); line-height: 1.7; margin-bottom: 8px; }
+  .pullquote { border-left: 3px solid var(--bronze); padding: 8px 12px; margin: 10px 0; font-family: var(--serif); font-style: italic; color: var(--taupe); background: var(--sand-warm); font-size: 0.82rem; line-height: 1.5; }
+</style>
+
+<h2>Posição da imagem de capa no artigo</h2>
+<p class="subtitle">Cabeçalho (título + meta) → imagem full-width → corpo do artigo. Obrigatória ou opcional?</p>
+
+<div class="cards">
+
+  <!-- Option A: Header → Cover image → Body (required) -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 14px; background: #f7f4ef;">
+      <div class="mock-article">
+        <div class="mock-nav"><span>EK</span><span>Sobre · Serviços · Blog</span></div>
+        <div class="article-header">
+          <div class="breadcrumb">Blog → Liderança</div>
+          <span class="art-tag">Liderança</span>
+          <div class="art-title">O que separa líderes de alta performance dos demais</div>
+          <div class="art-deck">"Alta performance não é talento inato — é uma disciplina construída com intenção."</div>
+          <div class="art-meta">Eloyse Konell · 15 mar 2026 · 6 min de leitura</div>
+        </div>
+        <div class="cover-img-below">Imagem de capa (full-width)</div>
+        <div class="article-body">
+          <div class="body-text">Quando falo em liderança de alta performance com executivos, a primeira reação costuma ser a mesma: a busca por uma fórmula.</div>
+          <div class="pullquote">"Líderes de alta performance constroem intencionalmente o que outros deixam acontecer por acaso."</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Imagem obrigatória</h3>
+      <p>Todo artigo precisa de uma imagem de capa em <code>public/images/blog/</code>. O campo <code>coverImage</code> passa a ser required no frontmatter. Estrutura: cabeçalho → imagem → corpo.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Header → Body (image optional, shown only if provided) -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 14px; background: #f7f4ef;">
+      <div class="mock-article">
+        <div class="mock-nav"><span>EK</span><span>Sobre · Serviços · Blog</span></div>
+        <div class="article-header">
+          <div class="breadcrumb">Blog → Liderança</div>
+          <span class="art-tag">Liderança</span>
+          <div class="art-title">O que separa líderes de alta performance dos demais</div>
+          <div class="art-deck">"Alta performance não é talento inato — é uma disciplina construída com intenção."</div>
+          <div class="art-meta">Eloyse Konell · 15 mar 2026 · 6 min de leitura</div>
+        </div>
+        <!-- no cover image section -->
+        <div style="border-bottom: 1px solid var(--line); margin: 0 20px;"></div>
+        <div class="article-body">
+          <div class="body-text">Quando falo em liderança de alta performance com executivos, a primeira reação costuma ser a mesma: a busca por uma fórmula.</div>
+          <div class="pullquote">"Líderes de alta performance constroem intencionalmente o que outros deixam acontecer por acaso."</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Imagem opcional</h3>
+      <p>O campo <code>coverImage</code> existe no frontmatter mas não é obrigatório. Se informado, aparece entre o cabeçalho e o corpo. Se ausente, o artigo fica só com o cabeçalho tipográfico. Mais flexível para publicar.</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,115 @@
+<style>
+  :root {
+    --sand: #F1EBE0;
+    --sand-warm: #E8DED0;
+    --sand-deep: #D9CDB8;
+    --taupe: #6B5D4E;
+    --taupe-soft: #8A7E6C;
+    --olive: #3F3E30;
+    --olive-deep: #2E2D22;
+    --bronze: #A88656;
+    --bronze-soft: #C2A679;
+    --line: rgba(46,45,34,0.14);
+    --serif: 'Georgia', serif;
+    --sans: system-ui, sans-serif;
+  }
+  .mock-blog { background: var(--sand); font-family: var(--sans); padding: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .mock-nav { background: var(--olive); color: #f1ebe0; padding: 14px 28px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+  .mock-nav .logo { font-family: var(--serif); font-size: 1rem; letter-spacing: 0.05em; }
+  .mock-content-area { padding: 40px 28px 28px; }
+  .blog-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze); margin-bottom: 6px; font-weight: 600; }
+  .blog-h1 { font-family: var(--serif); font-size: 1.5rem; color: var(--olive-deep); margin: 0 0 8px; line-height: 1.2; }
+  .blog-h1 em { color: var(--taupe); font-weight: 300; }
+  .blog-lead { font-size: 0.8rem; color: var(--taupe); line-height: 1.6; margin-bottom: 32px; }
+  /* Featured card */
+  .featured-card { background: var(--olive-deep); color: var(--sand); padding: 28px; margin-bottom: 24px; display: flex; gap: 24px; align-items: stretch; }
+  .featured-img { width: 200px; flex-shrink: 0; background: var(--olive); min-height: 130px; display: flex; align-items: center; justify-content: center; color: var(--taupe-soft); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .featured-body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .feat-tag { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze-soft); border: 1px solid var(--bronze-soft); padding: 2px 8px; display: inline-block; margin-bottom: 10px; }
+  .feat-title { font-family: var(--serif); font-size: 1.15rem; color: #f1ebe0; margin: 0 0 8px; line-height: 1.25; }
+  .feat-desc { font-size: 0.75rem; color: var(--sand-deep); line-height: 1.6; margin-bottom: 14px; }
+  .feat-meta { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe-soft); }
+  /* Grid */
+  .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .post-card { background: var(--sand-warm); border: 1px solid var(--line); padding: 18px; }
+  .card-tag { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bronze); border: 1px solid var(--bronze); padding: 2px 7px; display: inline-block; margin-bottom: 8px; }
+  .card-title { font-family: var(--serif); font-size: 0.95rem; color: var(--olive-deep); margin: 0 0 6px; line-height: 1.25; }
+  .card-desc { font-size: 0.7rem; color: var(--taupe); line-height: 1.5; margin-bottom: 10px; }
+  .card-meta { font-size: 0.62rem; color: var(--taupe-soft); text-transform: uppercase; letter-spacing: 0.06em; border-top: 1px solid var(--line); padding-top: 8px; display: flex; justify-content: space-between; }
+  .card-link { color: var(--bronze); font-weight: 600; }
+  /* Uniform grid variant */
+  .posts-grid-uniform { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .post-card-lg { background: var(--sand-warm); border: 1px solid var(--line); padding: 22px; }
+  .card-title-lg { font-family: var(--serif); font-size: 1.1rem; color: var(--olive-deep); margin: 0 0 8px; line-height: 1.25; }
+  .card-desc-lg { font-size: 0.75rem; color: var(--taupe); line-height: 1.55; margin-bottom: 12px; }
+  .divider { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe-soft); margin: 24px 0 16px; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<h2>Layout da página de listagem do Blog</h2>
+<p class="subtitle">Como exibir os artigos na página /blog?</p>
+
+<div class="cards">
+
+  <!-- Option A: Featured + grid -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f7f4ef;">
+      <div class="mock-blog">
+        <div class="mock-nav"><span class="logo">EK</span><span>Blog · Sobre · Contato</span></div>
+        <div class="mock-content-area">
+          <div class="blog-eyebrow">Blog</div>
+          <div class="blog-h1">Liderança. Estratégia. <em>Pessoas.</em></div>
+          <div class="blog-lead">Reflexões sobre o que separa organizações que crescem de forma sustentável das que ficam presas em urgência.</div>
+          <!-- Featured -->
+          <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--taupe-soft);margin-bottom:8px;">— Artigo em destaque</div>
+          <div class="featured-card">
+            <div class="featured-img">Foto de capa</div>
+            <div class="featured-body">
+              <div>
+                <span class="feat-tag">Liderança</span>
+                <div class="feat-title">O que separa líderes de alta performance dos demais</div>
+                <div class="feat-desc">Alta performance não é talento inato — é uma disciplina construída com autoconhecimento e decisões consistentes.</div>
+              </div>
+              <div class="feat-meta">15 mar 2026 · 6 min de leitura</div>
+            </div>
+          </div>
+          <!-- Grid -->
+          <div class="divider">Todos os artigos</div>
+          <div class="posts-grid">
+            <div class="post-card"><span class="card-tag">Estratégia</span><div class="card-title">Por que gestão de pessoas ainda é tratada como suporte</div><div class="card-desc">O custo invisível de tratar pessoas como operação.</div><div class="card-meta"><span>20 fev 2026</span><span class="card-link">Ler →</span></div></div>
+            <div class="post-card"><span class="card-tag">Liderança</span><div class="card-title">A cadeira vazia na sala de reunião</div><div class="card-desc">O que a ausência de um líder revela sobre a cultura.</div><div class="card-meta"><span>10 jan 2026</span><span class="card-link">Ler →</span></div></div>
+            <div class="post-card"><span class="card-tag">Pessoas</span><div class="card-title">Hora de mudar: quando a empresa resiste</div><div class="card-desc">Como conduzir transformações sem perder o time.</div><div class="card-meta"><span>5 jan 2026</span><span class="card-link">Ler →</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Destaque + Grid</h3>
+      <p>O artigo mais recente ocupa posição de destaque (fundo escuro, imagem + texto). Os demais aparecem num grid de 3 colunas abaixo. Hierarquia editorial clara.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Uniform 2-col grid -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #f7f4ef;">
+      <div class="mock-blog">
+        <div class="mock-nav"><span class="logo">EK</span><span>Blog · Sobre · Contato</span></div>
+        <div class="mock-content-area">
+          <div class="blog-eyebrow">Blog</div>
+          <div class="blog-h1">Liderança. Estratégia. <em>Pessoas.</em></div>
+          <div class="blog-lead">Reflexões sobre o que separa organizações que crescem de forma sustentável.</div>
+          <div class="posts-grid-uniform">
+            <div class="post-card-lg"><span class="card-tag">Liderança</span><div class="card-title-lg">O que separa líderes de alta performance dos demais</div><div class="card-desc-lg">Alta performance não é talento inato — é uma disciplina construída com autoconhecimento e decisões consistentes.</div><div class="card-meta"><span>15 mar 2026 · 6 min</span><span class="card-link">Ler →</span></div></div>
+            <div class="post-card-lg"><span class="card-tag">Estratégia</span><div class="card-title-lg">Por que gestão de pessoas ainda é tratada como suporte</div><div class="card-desc-lg">O custo invisível de tratar pessoas como operação e o que muda quando isso é estratégia.</div><div class="card-meta"><span>20 fev 2026 · 5 min</span><span class="card-link">Ler →</span></div></div>
+            <div class="post-card-lg"><span class="card-tag">Liderança</span><div class="card-title-lg">A cadeira vazia na sala de reunião</div><div class="card-desc-lg">O que a ausência de um líder revela sobre a cultura organizacional que ninguém quer admitir.</div><div class="card-meta"><span>10 jan 2026 · 4 min</span><span class="card-link">Ler →</span></div></div>
+            <div class="post-card-lg"><span class="card-tag">Pessoas</span><div class="card-title-lg">Hora de mudar: quando a empresa resiste</div><div class="card-desc-lg">Como conduzir transformações sem perder o engajamento do time ao longo do processo.</div><div class="card-meta"><span>5 jan 2026 · 5 min</span><span class="card-link">Ler →</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Grid Uniforme 2 colunas</h3>
+      <p>Todos os artigos no mesmo peso visual em grid de 2 colunas com cards maiores. Mais democrático, sem hierarquia entre artigos. Mais simples de manter.</p>
+    </div>
+  </div>
+
+</div>

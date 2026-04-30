@@ -1,0 +1,83 @@
+<style>
+  :root {
+    --sand: #F1EBE0; --sand-warm: #E8DED0; --sand-deep: #D9CDB8;
+    --taupe: #6B5D4E; --taupe-soft: #8A7E6C;
+    --olive: #3F3E30; --olive-deep: #2E2D22;
+    --bronze: #A88656; --bronze-soft: #C2A679;
+    --line: rgba(46,45,34,0.14);
+    --serif: Georgia, serif; --sans: system-ui, sans-serif;
+  }
+  .mock-article { background: var(--sand); font-family: var(--sans); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .mock-nav { background: var(--olive); color: #f1ebe0; padding: 10px 20px; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; display: flex; justify-content: space-between; }
+  .cover-img { width: 100%; height: 130px; background: linear-gradient(135deg, #3F3E30 0%, #2E2D22 60%, #A88656 100%); display: flex; align-items: flex-end; padding: 16px 20px; }
+  .cover-overlay { color: #f1ebe0; }
+  .cover-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze-soft); border: 1px solid var(--bronze-soft); padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+  .cover-title { font-family: var(--serif); font-size: 1.2rem; line-height: 1.2; margin: 0 0 6px; color: #f1ebe0; }
+  .cover-meta { font-size: 0.62rem; color: rgba(241,235,224,0.65); letter-spacing: 0.06em; text-transform: uppercase; }
+  .article-body { padding: 20px; }
+  .article-header-plain { padding: 20px 20px 0; }
+  .plain-breadcrumb { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--taupe-soft); margin-bottom: 12px; }
+  .plain-tag { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); border: 1px solid var(--bronze); padding: 2px 8px; display: inline-block; margin-bottom: 10px; }
+  .plain-title { font-family: var(--serif); font-size: 1.2rem; color: var(--olive-deep); margin: 0 0 6px; line-height: 1.25; }
+  .plain-desc { font-size: 0.75rem; color: var(--taupe); line-height: 1.6; margin-bottom: 8px; }
+  .plain-meta { font-size: 0.62rem; color: var(--taupe-soft); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .body-text { font-size: 0.75rem; color: var(--olive-deep); line-height: 1.7; margin-bottom: 10px; }
+  .pullquote { border-left: 3px solid var(--bronze); padding: 10px 14px; margin: 12px 0; font-family: var(--serif); font-style: italic; color: var(--taupe); background: var(--sand-warm); font-size: 0.85rem; line-height: 1.5; }
+</style>
+
+<h2>Imagem de capa nos artigos</h2>
+<p class="subtitle">Como o cabeçalho do artigo deve aparecer?</p>
+
+<div class="cards">
+
+  <!-- Option A: Full cover image -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 14px; background: #f7f4ef;">
+      <div class="mock-article">
+        <div class="mock-nav"><span>EK</span><span>Sobre · Serviços · Blog</span></div>
+        <div class="cover-img">
+          <div class="cover-overlay">
+            <span class="cover-tag">Liderança</span>
+            <div class="cover-title">O que separa líderes de alta performance dos demais</div>
+            <div class="cover-meta">Eloyse Konell · 15 mar 2026 · 6 min de leitura</div>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="body-text">Quando falo em liderança de alta performance com executivos e gestores, a primeira reação costuma ser a mesma: a busca por uma fórmula.</div>
+          <div class="pullquote">"Líderes de alta performance constroem intencionalmente o que outros deixam acontecer por acaso."</div>
+          <div class="body-text">A verdade é mais incômoda do que isso. Trata-se de um conjunto de práticas deliberadas executadas com consistência.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Capa com imagem</h3>
+      <p>Foto full-width com título e meta sobrepostos. Imagem obrigatória para cada artigo (salva em <code>public/images/blog/</code>). Visual mais impactante, similar ao HTML de referência.</p>
+    </div>
+  </div>
+
+  <!-- Option B: No cover image, text header -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 14px; background: #f7f4ef;">
+      <div class="mock-article">
+        <div class="mock-nav"><span>EK</span><span>Sobre · Serviços · Blog</span></div>
+        <div class="article-header-plain">
+          <div class="plain-breadcrumb">Blog → Liderança</div>
+          <span class="plain-tag">Liderança</span>
+          <div class="plain-title">O que separa líderes de alta performance dos demais</div>
+          <div class="plain-desc">Alta performance não é talento inato — é uma disciplina construída com autoconhecimento, clareza de papéis e decisões consistentes.</div>
+          <div class="plain-meta">Eloyse Konell · 15 mar 2026 · 6 min de leitura</div>
+        </div>
+        <div class="article-body">
+          <div class="body-text">Quando falo em liderança de alta performance com executivos e gestores, a primeira reação costuma ser a mesma: a busca por uma fórmula.</div>
+          <div class="pullquote">"Líderes de alta performance constroem intencionalmente o que outros deixam acontecer por acaso."</div>
+          <div class="body-text">A verdade é mais incômoda do que isso. Trata-se de um conjunto de práticas deliberadas executadas com consistência.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Cabeçalho tipográfico</h3>
+      <p>Sem imagem obrigatória — título, deck e meta em texto limpo. Opcionalmente um campo <code>coverImage</code> no frontmatter pode existir mas não é exibido. Mais fácil de publicar novos artigos.</p>
+    </div>
+  </div>
+
+</div>
