@@ -1,0 +1,42 @@
+Planejar a execução do que for possível (o que for edição do projeto) da estratégia em aberta de SEO.
+
+Contexto:
+- Estratégia documentada em SEO-STRATEGY.md (raiz do repo).
+- Itens marcados como ✅ na estratégia já estão implementados; foco aqui é o que está em aberto.
+- "Edição do projeto" = alterações no código/conteúdo do repositório Astro. Excluir tarefas
+  manuais externas (Google Business Profile, Search Console, GA4, reviews, PR, citations,
+  outreach, webinars, podcasts, pesquisa anual).
+
+Itens em aberto que envolvem edição do projeto (resumo):
+
+Phase 1 (Foundation):
+- Criar páginas dedicadas /servicos, /sobre, /contato (extrair das anchors da home).
+- Sub-páginas /servicos/desenvolvimento-de-liderancas, /gestao-estrategica-de-pessoas,
+  /assessment, /mentoria-executiva.
+- Schema Service por página de serviço (linkado ao ProfessionalService da home via @id).
+- mainEntityOfPage faltante no Article dos posts (BlogLayout.astro).
+- hasOfferCatalog no ProfessionalService (após páginas de serviço existirem).
+
+Phase 2 (Expansion):
+- 3 pillar pages (1.500+ palavras cada).
+- 4 posts blog do cluster novo (cadência mensal — não necessariamente todos no mesmo PR).
+- /cases — case studies (3 iniciais, dependem de autorização do cliente).
+- /metodologia — diferencial competitivo.
+- Internal linking estratégico (post → pillar → serviço → contato).
+
+Phase 3 (Scale):
+- /faq com 15-20 Q&As (FAQPage schema) para AI Overviews.
+- 1 bloco FAQ por post (3-5 perguntas extractables).
+- Reestruturar posts existentes com H2 pergunta + resposta direta (citability).
+- Imagens WebP/AVIF (CWV).
+- BreadcrumbList schema em rotas profundas (/blog/*, /servicos/*, /cases/*).
+
+Phase 4 (Authority): majoritariamente fora do escopo (PR/menções), exceto:
+- Person.knowsAbout / Person.alumniOf no Person schema quando aplicável.
+
+Restrições do projeto:
+- Astro SSG → docs/ → GitHub Pages (sem SSR, sem APIs).
+- Não alterar a estrutura visual sem aprovação explícita (CLAUDE.md).
+- Não committar imagens base64 — sempre extrair para public/images/.
+- Manter outDir: docs e CNAME.
+- Conteúdo em pt-BR.
