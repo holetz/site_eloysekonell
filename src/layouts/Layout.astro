@@ -34,6 +34,7 @@ const fullTitle = title === DEFAULT_TITLE ? title : `${title} | ${SITE_NAME}`;
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${SITE_URL}#eloyse`,
   name: 'Eloyse Konell',
   url: SITE_URL,
   jobTitle: 'Consultora em Liderança e Gestão Estratégica de Pessoas',
@@ -47,6 +48,7 @@ const personSchema = {
   sameAs: [
     'https://www.instagram.com/ek_gestaoeconsultoria',
     'https://www.linkedin.com/company/eloysekonell',
+    'https://www.linkedin.com/in/eloysekonell',
   ],
 };
 
@@ -57,6 +59,40 @@ const websiteSchema = {
   url: SITE_URL,
   description: DEFAULT_DESC,
   inLanguage: 'pt-BR',
+};
+
+const professionalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}#business`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: DEFAULT_DESC,
+  image: DEFAULT_OG_IMAGE,
+  founder: { '@id': `${SITE_URL}#eloyse` },
+  email: 'consultoria@eloysekonell.com.br',
+  telephone: '+55-47-99144-3844',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Blumenau',
+    addressRegion: 'SC',
+    addressCountry: 'BR',
+  },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Santa Catarina' },
+    { '@type': 'AdministrativeArea', name: 'Sul do Brasil' },
+    { '@type': 'Country', name: 'Brasil' },
+  ],
+  serviceType: [
+    'Desenvolvimento de Liderança',
+    'Gestão Estratégica de Pessoas',
+    'Assessment de Liderança',
+    'Mentoria Executiva',
+  ],
+  sameAs: [
+    'https://www.instagram.com/ek_gestaoeconsultoria',
+    'https://www.linkedin.com/company/eloysekonell',
+  ],
 };
 ---
 <!doctype html>
@@ -105,6 +141,7 @@ const websiteSchema = {
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(professionalServiceSchema)} />
   </head>
   <body>
     <slot />
