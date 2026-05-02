@@ -1,0 +1,134 @@
+{
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\env.d.ts": {
+    "mtime": 1777719785.0895808,
+    "hash": "a34c63603f2fc704c29af63d4a960109"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\config.ts": {
+    "mtime": 1777719785.0895808,
+    "hash": "065185949c403b5e102b13b4fe924e82"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\pages\\sitemap.xml.ts": {
+    "mtime": 1777719785.0895808,
+    "hash": "5369773d5e68070ca9a5538005fc577f"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\About.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "2752989b792093efb44cd83d3a6e641e"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\AssessmentSpotlight.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "02535dc3b0c207d0c6a945f48c99962e"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Campanha.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "3123cf886d29fb75b56ab8e86c6651f0"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Clients.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "f243a9da58381c252d55e8a3d28b1762"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Consultoria.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "cc8fd93c97feda65952bbe918d0302c3"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Cta.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "3635dea8c56870834580e71f45ead95e"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Footer.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "2b9870e5f090355200248c2258831373"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Hero.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "2dfeb30b5314aa1b987b3de45ba12310"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Nav.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "9f5ba993a7526809c125abc3dd679231"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Proposito.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "0b60c4bb9d76c613026c7c0cbf331c54"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Services.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "ff31d45205a4275a95cb43b17895fb8e"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\components\\Testimonials.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "4a535b139dc4f0c5bf6b23887266e6ee"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\layouts\\BlogLayout.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "b5330d975d3b3b70ccf2ca24060cd49d"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\layouts\\Layout.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "700e40e3a95baec28bfd1d65e2b66bc1"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\pages\\index.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "f5a82e19750f7557fc97e22526d72972"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\pages\\blog\\index.astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "b3ac31f15ddf8e4ddfbce2105c839022"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\pages\\blog\\[...slug].astro": {
+    "mtime": 1777719785.0895808,
+    "hash": "3ef85ce8f5be6d5088c095d0a3aa9f32"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\astro.config.mjs": {
+    "mtime": 1777719785.0046854,
+    "hash": "99ce4c3abc9e425fc8c2d5f593e9e2c4"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\remark-blog-directives.mjs": {
+    "mtime": 1777719785.0895808,
+    "hash": "73e37605adee8160788c8950bd3f2bb1"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\styles\\global.css": {
+    "mtime": 1777719785.0895808,
+    "hash": "0bf4b892209e5f4569d0c4d754be251b"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\cadeira-vazia.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "48d0789c707d3c54770f2e011060f438"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\hora-de-mudar.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "9f93d5b09e9dacbcfc9cc2ab63272cf1"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\rh-futuro.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "4220f6888cefc17deee376b1c98708a0"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\saude-mental-estrategia.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "c24efcc4ac42cb27b76d89aba5e538e8"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\sucessao-mal-planejada.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "234f0375d048a2be892c0af4e67f92b3"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\sucessor-e-sucessao.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "39b2c1d46f83e9c1a1c64b6129666fa6"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\src\\content\\blog\\tecnico-virou-gestor.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "1feefec77eaeffcbf8776a74673ffa06"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\CLAUDE.md": {
+    "mtime": 1777719785.0046854,
+    "hash": "d82e0e05939d267b2544a817dfac0dbe"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\specs\\2026-04-29-blog-redesign.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "8566eefd6bdc9ac9643a0d8bddfe6b72"
+  },
+  "C:\\Users\\eloys\\Repos\\site_eloysekonell\\specs\\plans\\2026-04-29-blog-redesign-plan.md": {
+    "mtime": 1777719785.0895808,
+    "hash": "353ae115d5e300c68ee436c4aab48265"
+  }
+}
