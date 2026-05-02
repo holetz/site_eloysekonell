@@ -6,7 +6,7 @@ pubDate: 2026-05-02
 tags: ["Liderança", "Pessoas"]
 readingTime: "6 min de leitura"
 related: ["tecnico-virou-gestor", "saude-mental-estrategia", "hora-de-mudar"]
-draft: false
+draft: true
 ---
 
 Você terminou a reunião achando que foi clara. Direta. Profissional.
