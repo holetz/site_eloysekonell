@@ -412,7 +412,7 @@ const serviceSchema = {
     color: var(--taupe);
     font-size: 1.05rem;
     line-height: 1.7;
-    margin-bottom: 48px;
+    margin-bottom: var(--space-9);
   }
 
   /* Seções de texto corrido */
@@ -443,8 +443,8 @@ const serviceSchema = {
 
   .framework-item {
     display: flex;
-    gap: 40px;
-    padding: 36px 0;
+    gap: var(--space-8);
+    padding: var(--space-7) 0;
     border-bottom: 1px solid var(--line);
   }
 
@@ -459,8 +459,8 @@ const serviceSchema = {
     color: var(--bronze);
     line-height: 1;
     flex-shrink: 0;
-    width: 56px;
-    padding-top: 4px;
+    width: var(--space-9);
+    padding-top: var(--space-1);
   }
 
   .framework-content h3 {
@@ -482,15 +482,15 @@ const serviceSchema = {
   .frentes-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
   }
 
   .frente-card {
     background: var(--sand-warm);
     border: 1px solid var(--sand-deep);
     border-radius: 4px;
-    padding: 32px 28px;
+    padding: var(--space-7) var(--space-7);
     position: relative;
   }
 
@@ -524,7 +524,7 @@ const serviceSchema = {
     line-height: 1.7;
     font-size: 0.97rem;
     border-left: 3px solid var(--bronze);
-    padding-left: 20px;
+    padding-left: var(--space-5);
     margin: 0;
     max-width: 680px;
   }
@@ -533,7 +533,7 @@ const serviceSchema = {
   .gep-prazo-inner {
     display: grid;
     grid-template-columns: 1fr 340px;
-    gap: 64px;
+    gap: var(--space-10);
     align-items: start;
   }
 
@@ -545,7 +545,7 @@ const serviceSchema = {
     font-size: 1.2rem;
     line-height: 1.6;
     margin: 0;
-    padding: 36px 32px;
+    padding: var(--space-7) var(--space-7);
     border-radius: 4px;
     quotes: none;
   }
@@ -585,7 +585,7 @@ const serviceSchema = {
   .gep-cta-inner {
     background: var(--olive-deep);
     border-radius: 4px;
-    padding: 64px 56px;
+    padding: var(--space-10) var(--space-9);
     text-align: center;
     max-width: 720px;
     margin: 0 auto;
@@ -603,7 +603,7 @@ const serviceSchema = {
   .gep-cta-sub {
     color: var(--taupe-soft);
     font-size: 1rem;
-    margin: 0 0 40px;
+    margin: 0 0 var(--space-8);
     line-height: 1.6;
   }
 
@@ -615,15 +615,15 @@ const serviceSchema = {
 
     .gep-prazo-inner {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: var(--space-8);
     }
   }
 
   @media (max-width: 768px) {
     .framework-item {
       flex-direction: column;
-      gap: 12px;
-      padding: 28px 0;
+      gap: var(--space-3);
+      padding: var(--space-7) 0;
     }
 
     .framework-num {
@@ -632,11 +632,11 @@ const serviceSchema = {
     }
 
     .gep-cta-inner {
-      padding: 48px 28px;
+      padding: var(--space-9) var(--space-7);
     }
 
     .frentes-grid {
-      gap: 16px;
+      gap: var(--space-4);
     }
   }
 </style>

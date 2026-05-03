@@ -133,26 +133,26 @@ const SITE_URL = 'https://eloysekonell.com.br';
 
 <style>
   .contato-wrap {
-    padding-bottom: 80px;
+    padding-bottom: var(--space-10);
   }
 
   /* Contact cards */
   .contact-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 64px;
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
   }
 
   .contact-card {
     background: var(--sand-warm);
     border: 1px solid var(--line);
     border-radius: 12px;
-    padding: 36px 28px;
+    padding: var(--space-7) var(--space-7);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: var(--space-3);
   }
 
   .contact-card__icon {
@@ -195,24 +195,24 @@ const SITE_URL = 'https://eloysekonell.com.br';
     background: var(--sand-deep);
     border-left: 3px solid var(--bronze);
     border-radius: 0 8px 8px 0;
-    padding: 40px 48px;
-    margin-bottom: 64px;
+    padding: var(--space-8) var(--space-9);
+    margin-bottom: var(--space-10);
   }
 
   .before-contact__title {
     font-size: 1.5rem;
     color: var(--olive-deep);
-    margin: 0 0 12px;
+    margin: 0 0 var(--space-3);
   }
 
   .before-contact__intro {
     color: var(--taupe);
-    margin: 0 0 16px;
+    margin: 0 0 var(--space-4);
   }
 
   .before-contact__list {
-    margin: 0 0 16px;
-    padding-left: 20px;
+    margin: 0 0 var(--space-4);
+    padding-left: var(--space-5);
     color: var(--taupe);
     line-height: 1.8;
   }
@@ -237,21 +237,21 @@ const SITE_URL = 'https://eloysekonell.com.br';
   .social-links__title {
     font-size: 1.4rem;
     color: var(--olive-deep);
-    margin: 0 0 24px;
+    margin: 0 0 var(--space-6);
   }
 
   .social-links__row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    gap: var(--space-4);
   }
 
   .social-link {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 24px;
+    padding: var(--space-3) var(--space-6);
     border: 1.5px solid var(--bronze);
     border-radius: 8px;
     color: var(--olive-deep);
@@ -293,7 +293,7 @@ const SITE_URL = 'https://eloysekonell.com.br';
     }
 
     .before-contact {
-      padding: 28px 24px;
+      padding: var(--space-7) var(--space-6);
     }
   }
 </style>
