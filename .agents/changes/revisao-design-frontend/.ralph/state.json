@@ -1,5 +1,5 @@
 {
-  "current_phase": 4,
+  "current_phase": 5,
   "phases": [
     { "id": 1, "name": "Foundation", "status": "completed" },
     { "id": 2, "name": "Independent fixes + parallel tracks", "status": "completed" },
@@ -186,7 +186,7 @@
       "depends_on": ["11"],
       "files": ["CLAUDE.md"],
       "status": "completed",
-      "commit": "TBD",
+      "commit": "11d1dca",
       "feedback": null
     }
   }
