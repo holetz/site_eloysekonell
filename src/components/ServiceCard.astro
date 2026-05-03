@@ -25,7 +25,7 @@ const { title, deck, href, icon, bullets } = Astro.props;
 <style>
   .service-card {
     background: var(--sand-warm);
-    border: 1px solid var(--line);
+    border: var(--border-line);
     padding: 44px 40px;
     display: flex;
     flex-direction: column;
@@ -35,8 +35,8 @@ const { title, deck, href, icon, bullets } = Astro.props;
 
   .service-card:hover {
     border-color: var(--bronze);
-    box-shadow: 0 12px 36px rgba(46, 45, 34, 0.08);
-    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(calc(var(--space-1) * -1));
   }
 
   .service-card__icon {

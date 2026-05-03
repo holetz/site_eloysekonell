@@ -34,15 +34,15 @@ const { client, sector, metric, problem } = entry.data;
 <style>
   .case-card {
     background: var(--sand);
-    border: 1px solid var(--line);
-    border-top: 2px solid var(--bronze);
+    border: var(--border-line);
+    border-top: var(--border-accent);
     transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
                 box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .case-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px -12px rgba(46, 45, 34, 0.14);
+    transform: translateY(calc(var(--space-1) * -1));
+    box-shadow: var(--shadow-md);
   }
 
   .case-card__inner {
@@ -78,7 +78,7 @@ const { client, sector, metric, problem } = entry.data;
   .case-card__metric {
     padding: 14px 18px;
     background: var(--sand-warm);
-    border-left: 2px solid var(--bronze);
+    border-left: var(--border-accent);
   }
 
   .metric-value {
