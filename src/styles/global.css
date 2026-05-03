@@ -12,6 +12,37 @@
     --line:        rgba(46, 45, 34, 0.14);
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans:  'Manrope', system-ui, sans-serif;
+
+    /* Spacing scale — 4px base */
+    --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+    --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
+    --space-7: 32px;  --space-8: 40px;  --space-9: 56px;
+    --space-10: 72px; --space-11: 96px; --space-12: 120px;
+    --space-13: 160px;
+
+    /* Shadow scale */
+    --shadow-sm: 0 2px 8px rgba(46,45,34,.08);
+    --shadow-md: 0 12px 32px -8px rgba(46,45,34,.18);
+    --shadow-lg: 0 40px 80px -20px rgba(46,45,34,.35);
+
+    /* Radius scale */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+
+    /* Filter presets */
+    --filter-photo-warm: saturate(.92) contrast(1.02);
+    --filter-photo-neutral: saturate(.9);
+    --filter-logo-mute: brightness(0) opacity(.45);
+
+    /* Z-index scale */
+    --z-base: 1;
+    --z-sticky: 50;
+    --z-header: 100;
+    --z-modal: 200;
+
+    /* Border tokens */
+    --border-line: 1px solid var(--line);
+    --border-accent: 2px solid var(--bronze);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
