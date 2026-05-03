@@ -15,6 +15,7 @@ function isCurrent(href: string) {
     <Image src={logoImg} alt="Eloyse Konell" width={140} height={40} loading="eager" />
   </a>
   <nav class="menu" id="mobile-menu" aria-label="Navegação principal">
+    <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Início</a>
     <a href="/sobre/" aria-current={isCurrent('/sobre/') ? 'page' : undefined}>Sobre</a>
     <a href="/metodologia/" aria-current={isCurrent('/metodologia/') ? 'page' : undefined}>Consultoria</a>
     <a href="/servicos/" aria-current={isCurrent('/servicos/') ? 'page' : undefined}>Serviços</a>
@@ -37,6 +38,35 @@ function isCurrent(href: string) {
 <script>
   const nav = document.getElementById('nav');
   if (nav) {
+    let rafId = 0;
+
+    function syncNavHeight() {
+      document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+    }
+
+    function animLoop() {
+      syncNavHeight();
+      rafId = requestAnimationFrame(animLoop);
+    }
+
+    function stopAnim() {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+      syncNavHeight();
+    }
+
+    syncNavHeight();
+
+    nav.addEventListener('transitionstart', (e) => {
+      if ((e as TransitionEvent).propertyName === 'padding-top' && !rafId) animLoop();
+    });
+    nav.addEventListener('transitionend', (e) => {
+      if ((e as TransitionEvent).propertyName === 'padding-top') stopAnim();
+    });
+    nav.addEventListener('transitioncancel', (e) => {
+      if ((e as TransitionEvent).propertyName === 'padding-top') stopAnim();
+    });
+
+    window.addEventListener('resize', syncNavHeight);
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     });

@@ -11,4 +11,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkDirective, remarkBlogDirectives],
   },
+  devToolbar: {
+    enabled: true,
+  },
 });

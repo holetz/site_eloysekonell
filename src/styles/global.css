@@ -67,7 +67,7 @@
   a{color:inherit;text-decoration:none}
 
   .wrap{max-width:1280px;margin:0 auto;padding:0 var(--space-7)}
-  section{padding:var(--space-13) 0;position:relative}
+  section{padding:var(--space-12) 0;position:relative}
   @media (max-width:768px){section{padding:var(--space-10) 0}.wrap{padding:0 var(--space-6)}}
 
   h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-0.015em;line-height:1.08;color:var(--olive-deep)}
@@ -177,7 +177,7 @@
 
   /* HERO */
   .hero{
-    min-height:100vh;display:flex;align-items:center;
+    display:flex;align-items:center;
     padding-top:var(--space-13);padding-bottom:var(--space-11);position:relative;
     background:
       radial-gradient(ellipse 60% 50% at 90% 30%, rgba(168, 134, 86, 0.18), transparent 65%),
@@ -389,7 +389,7 @@
   .spotlight-content h2 em{font-style:italic;color:var(--bronze)}
   .spotlight-content .lead{
     color:rgba(241,235,224,.8);font-size:1.1rem;line-height:1.75;
-    max-width:720px;margin:0 auto var(--space-9);
+    margin:0 auto var(--space-9);
   }
 
   /* TABS */
@@ -439,7 +439,7 @@
   }
   .view-lead{
     color:rgba(241,235,224,.78);font-size:1.02rem;line-height:1.7;
-    max-width:720px;margin:0 auto var(--space-9);
+    margin:0 auto var(--space-9);
   }
 
   .spotlight-features{
@@ -531,7 +531,7 @@
 
   /* DEPOIMENTOS */
   .testimonials{background:var(--sand-warm);position:relative}
-  .testimonials-head{text-align:center;max-width:760px;margin:0 auto var(--space-10)}
+  .testimonials-head{text-align:center;margin:0 auto var(--space-10)}
   .testimonials-head h2{margin:var(--space-6) 0 var(--space-5)}
   .testimonials-head h2 em{font-style:italic;color:var(--taupe)}
 
@@ -659,16 +659,6 @@
   /* Remove outline on :focus for mouse users */
   :where(a, button):focus:not(:focus-visible) { outline: none; }
 
-  /* Skip link */
-  .skip-link {
-    position: absolute; top: -40px; left: var(--space-3);
-    background: var(--olive-deep); color: var(--sand);
-    padding: var(--space-3) var(--space-5);
-    text-decoration: none; z-index: var(--z-modal);
-    transition: top .2s;
-  }
-  .skip-link:focus { top: var(--space-3); }
-
   /* FOOTER — portfólio link */
   .foot-portfolio{
     display:inline-flex;align-items:center;gap:8px;margin-top:16px;
@@ -695,7 +685,7 @@
   .article-main .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-7); }
 
   .article-main .breadcrumb {
-    padding: var(--space-12) 0 0;
+    padding: calc(var(--nav-h, 104px) + var(--space-4)) 0 0;
     font-size: 12px;
     color: var(--taupe);
     letter-spacing: 1px;
@@ -738,7 +728,6 @@
     font-size: clamp(1.1rem, 2vw, 1.45rem);
     line-height: 1.45;
     color: var(--taupe);
-    max-width: 680px;
     margin: 0 auto var(--space-8);
   }
   .article-meta {
@@ -764,15 +753,16 @@
   .cover {
     max-width: 1200px;
     margin: 0 auto var(--space-10);
-    height: 520px;
+    aspect-ratio: 21 / 9;
+    max-height: 520px;
     background-size: cover;
     background-position: center;
   }
 
   .article-body {
-    max-width: 720px;
     margin: 0 auto;
     padding: 0 var(--space-7);
+    max-width: 860px;
   }
   .article-body p {
     font-size: 18px;
@@ -932,7 +922,6 @@
 
   /* AUTHOR BIO */
   .author-bio {
-    max-width: 720px;
     margin: var(--space-10) auto 0;
     padding: var(--space-9) var(--space-7) 0;
     border-top: var(--border-line);
@@ -973,7 +962,6 @@
 
   /* SHARE */
   .share-section {
-    max-width: 720px;
     margin: var(--space-9) auto 0;
     padding: 0 var(--space-7) var(--space-10);
     text-align: center;
@@ -1028,7 +1016,7 @@
     box-shadow: var(--shadow-md);
   }
   .related-img {
-    height: 200px;
+    aspect-ratio: 16 / 9;
     background-size: cover;
     background-position: center;
     background-color: var(--sand-warm);
@@ -1057,10 +1045,10 @@
 
   /* ─── RESPONSIVE — BLOG ─── */
   @media (max-width: 900px) {
-    .article-main .breadcrumb { padding-top: var(--space-11); }
+    .article-main .breadcrumb { padding-top: calc(var(--nav-h, 96px) + var(--space-3)); }
     .article-title { font-size: clamp(1.8rem, 6vw, 2.6rem); }
     .article-deck { font-size: 1.1rem; }
-    .cover { height: 280px; margin-bottom: var(--space-8); }
+    .cover { margin-bottom: var(--space-8); }
     .pullquote { margin: var(--space-8) -16px; padding: var(--space-7) var(--space-6); }
     .pullquote p { font-size: clamp(1.1rem, 4vw, 1.4rem); }
     .data-grid { grid-template-columns: 1fr; margin: var(--space-7) -16px; padding: var(--space-7); }
@@ -1079,21 +1067,20 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 var(--space-7);
-    padding-bottom: var(--space-11);
+    padding-bottom: var(--space-7);
   }
 
   .page-breadcrumb-wrap {
-    padding-top: var(--space-11);
+    padding-top: calc(var(--nav-h, 104px) + var(--space-3));
   }
 
   @media (max-width: 768px) {
     .page-main { padding: 0 var(--space-6) var(--space-10); }
-    .page-breadcrumb-wrap { padding-top: var(--space-10); }
+    .page-breadcrumb-wrap { padding-top: calc(var(--nav-h, 96px) + var(--space-3)); }
   }
 
   /* Prose de página interna — espelha .article-body */
   .page-prose {
-    max-width: 720px;
     margin: 0 auto;
   }
 
@@ -1205,7 +1192,7 @@
 
   /* Separador entre seções de página interna */
   .page-section {
-    padding: var(--space-10) 0;
+    padding: var(--space-8) 0;
     position: relative;
   }
 
@@ -1214,7 +1201,7 @@
   }
 
   @media (max-width: 768px) {
-    .page-section { padding: var(--space-9) 0; }
+    .page-section { padding: var(--space-7) 0; }
   }
 
   /* ─── UTILITÁRIOS DE PÁGINA INTERNA ─── */
@@ -1234,7 +1221,6 @@
   /* Bloco de prosa com max-width e separação vertical */
   .prose-section {
     margin-bottom: var(--space-10);
-    max-width: 720px;
   }
   .prose-section h2 { margin-bottom: var(--space-5); }
   .prose-section p { margin-bottom: var(--space-4); line-height: 1.75; }

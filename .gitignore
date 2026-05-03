@@ -32,3 +32,6 @@ index.html
 *.sw?
 .DS_Store
 Thumbs.db
+
+# LLMs
+.agents

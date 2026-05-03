@@ -443,7 +443,6 @@ git commit -m "feat: update blog schema with deck, coverImage, readingTime, rela
   font-size: clamp(1.1rem, 2vw, 1.45rem);
   line-height: 1.45;
   color: var(--taupe);
-  max-width: 680px;
   margin: 0 auto 40px;
 }
 .article-meta {
@@ -475,7 +474,6 @@ git commit -m "feat: update blog schema with deck, coverImage, readingTime, rela
 }
 
 .article-body {
-  max-width: 720px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -651,7 +649,6 @@ git commit -m "feat: update blog schema with deck, coverImage, readingTime, rela
 
 /* AUTHOR BIO */
 .author-bio {
-  max-width: 720px;
   margin: 80px auto 0;
   padding: 50px 32px 0;
   border-top: 1px solid var(--line);
@@ -692,7 +689,6 @@ git commit -m "feat: update blog schema with deck, coverImage, readingTime, rela
 
 /* SHARE */
 .share-section {
-  max-width: 720px;
   margin: 50px auto 0;
   padding: 0 32px 80px;
   text-align: center;
