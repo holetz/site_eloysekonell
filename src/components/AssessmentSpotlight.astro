@@ -12,17 +12,39 @@
       </p>
 
       <!-- TABS -->
-      <div class="spotlight-tabs reveal delay-2" role="tablist">
-        <button class="tab-btn active" data-view="empresa" role="tab" aria-selected="true">
+      <div class="spotlight-tabs reveal delay-2" role="tablist" aria-label="Modalidades de Assessment">
+        <button
+          class="tab-btn active"
+          id="tab-empresa"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-empresa"
+          data-view="empresa"
+        >
           Para Empresas
         </button>
-        <button class="tab-btn" data-view="individual" role="tab" aria-selected="false">
+        <button
+          class="tab-btn"
+          id="tab-individual"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-individual"
+          data-view="individual"
+          tabindex="-1"
+        >
           Para Você
         </button>
       </div>
 
       <!-- VIEW: EMPRESA -->
-      <div class="spotlight-view active" data-view="empresa">
+      <div
+        class="spotlight-view active"
+        id="panel-empresa"
+        role="tabpanel"
+        aria-labelledby="tab-empresa"
+        tabindex="0"
+        data-view="empresa"
+      >
         <p class="view-lead">
           Um processo estruturado de avaliação que traz visibilidade sobre potencial,
           performance, prontidão, estilos de liderança e oportunidades de desenvolvimento dos
@@ -63,13 +85,21 @@
             </p>
           </div>
         </div>
-        <a href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Corporativo." class="btn" target="_blank" rel="noopener">
+        <a href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Corporativo." class="btn" target="_blank" rel="noopener noreferrer" aria-label="Solicitar Assessment Corporativo via WhatsApp">
           Solicitar Assessment Corporativo
         </a>
       </div>
 
       <!-- VIEW: INDIVIDUAL -->
-      <div class="spotlight-view" data-view="individual">
+      <div
+        class="spotlight-view"
+        id="panel-individual"
+        role="tabpanel"
+        aria-labelledby="tab-individual"
+        tabindex="0"
+        hidden
+        data-view="individual"
+      >
         <p class="view-lead">
           Um assessment completo de autoconhecimento e posicionamento profissional. Ideal para
           líderes em momento de transição, profissionais em busca de clareza sobre seu perfil ou
@@ -109,7 +139,7 @@
             </p>
           </div>
         </div>
-        <a href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Individual." class="btn" target="_blank" rel="noopener">
+        <a href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Individual." class="btn" target="_blank" rel="noopener noreferrer" aria-label="Quero fazer meu Assessment Individual via WhatsApp">
           Quero fazer meu Assessment
         </a>
       </div>
@@ -118,17 +148,47 @@
 </section>
 
 <script>
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const view = (btn as HTMLButtonElement).dataset.view;
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        const isActive = (b as HTMLButtonElement).dataset.view === view;
-        b.classList.toggle('active', isActive);
-        b.setAttribute('aria-selected', String(isActive));
-      });
-      document.querySelectorAll('.spotlight-view').forEach(v => {
-        v.classList.toggle('active', (v as HTMLElement).dataset.view === view);
-      });
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+
+  function activateTab(tab: HTMLButtonElement) {
+    const targetView = tab.dataset.view;
+    tabs.forEach(t => {
+      const isActive = t.dataset.view === targetView;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', String(isActive));
+      t.tabIndex = isActive ? 0 : -1;
+    });
+    panels.forEach(p => {
+      const isActive = p.dataset.view === targetView;
+      p.classList.toggle('active', isActive);
+      if (isActive) {
+        p.removeAttribute('hidden');
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activateTab(tab));
+    tab.addEventListener('keydown', (e: KeyboardEvent) => {
+      const currentIdx = tabs.indexOf(tab);
+      let nextIdx = currentIdx;
+      if (e.key === 'ArrowRight') {
+        nextIdx = (currentIdx + 1) % tabs.length;
+      } else if (e.key === 'ArrowLeft') {
+        nextIdx = (currentIdx - 1 + tabs.length) % tabs.length;
+      } else if (e.key === 'Home') {
+        nextIdx = 0;
+      } else if (e.key === 'End') {
+        nextIdx = tabs.length - 1;
+      } else {
+        return;
+      }
+      e.preventDefault();
+      activateTab(tabs[nextIdx]);
+      tabs[nextIdx].focus();
     });
   });
 </script>

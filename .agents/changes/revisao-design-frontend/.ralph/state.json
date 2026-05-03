@@ -144,8 +144,8 @@
       "complexity": "medium",
       "depends_on": ["06"],
       "files": ["src/pages/sobre.astro", "src/styles/global.css"],
-      "status": "in_progress",
-      "commit": null,
+      "status": "completed",
+      "commit": "2c142b1",
       "feedback": null
     },
     "10": {
@@ -163,7 +163,7 @@
         "src/components/BreadcrumbList.astro",
         "src/layouts/Layout.astro"
       ],
-      "status": "not_started",
+      "status": "in_progress",
       "commit": null,
       "feedback": null
     },

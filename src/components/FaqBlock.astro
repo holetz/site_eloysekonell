@@ -23,16 +23,57 @@ const faqSchema = {
 <section class="faq-block">
   <h2 class="faq-title">{title}</h2>
   <div class="faq-list">
-    {faqs.map(({ q, a }) => (
-      <details class="faq-item">
-        <summary class="faq-question">{q}</summary>
-        <div class="faq-answer"><p>{a}</p></div>
-      </details>
+    {faqs.map(({ q, a }, i) => (
+      <div class="faq-item">
+        <button
+          class="faq-question"
+          aria-expanded="false"
+          aria-controls={`faq-resp-${i}`}
+          id={`faq-btn-${i}`}
+          type="button"
+        >
+          {q}
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div
+          class="faq-answer"
+          id={`faq-resp-${i}`}
+          role="region"
+          aria-labelledby={`faq-btn-${i}`}
+          hidden
+        >
+          <p>{a}</p>
+        </div>
+      </div>
     ))}
   </div>
 </section>
 
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const panelId = btn.getAttribute('aria-controls');
+      const panel = panelId ? document.getElementById(panelId) : null;
+      const icon = btn.querySelector('.faq-icon');
+
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      if (panel) {
+        if (isExpanded) {
+          panel.setAttribute('hidden', '');
+        } else {
+          panel.removeAttribute('hidden');
+        }
+      }
+      if (icon) {
+        (icon as HTMLElement).style.transform = isExpanded ? '' : 'rotate(45deg)';
+      }
+      btn.closest('.faq-item')?.classList.toggle('open', !isExpanded);
+    });
+  });
+</script>
 
 <style>
   .faq-block {
@@ -60,12 +101,15 @@ const faqSchema = {
     transition: border-color 0.2s;
   }
 
-  .faq-item[open] {
+  .faq-item.open {
     border-color: var(--bronze);
   }
 
   .faq-question {
-    list-style: none;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -79,21 +123,13 @@ const faqSchema = {
     user-select: none;
   }
 
-  .faq-question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-question::after {
-    content: '+';
+  .faq-icon {
     font-size: 1.25rem;
     font-weight: 300;
     color: var(--bronze);
     flex-shrink: 0;
     transition: transform 0.2s;
-  }
-
-  .faq-item[open] .faq-question::after {
-    transform: rotate(45deg);
+    display: inline-block;
   }
 
   .faq-answer {

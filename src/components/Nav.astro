@@ -1,22 +1,35 @@
 ---
 import { Image } from 'astro:assets';
 import logoImg from '../assets/logos/logo_principal.png';
+
+const pathname = Astro.url.pathname;
+
+function isCurrent(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
 ---
 <!-- NAV -->
 <header class="nav" id="nav">
   <a href="/" class="logo">
     <Image src={logoImg} alt="Eloyse Konell" width={140} height={40} loading="eager" />
   </a>
-  <nav class="menu" id="menu">
-    <a href="/sobre/">Sobre</a>
-    <a href="/metodologia/">Consultoria</a>
-    <a href="/servicos/">Serviços</a>
+  <nav class="menu" id="mobile-menu" aria-label="Navegação principal">
+    <a href="/sobre/" aria-current={isCurrent('/sobre/') ? 'page' : undefined}>Sobre</a>
+    <a href="/metodologia/" aria-current={isCurrent('/metodologia/') ? 'page' : undefined}>Consultoria</a>
+    <a href="/servicos/" aria-current={isCurrent('/servicos/') ? 'page' : undefined}>Serviços</a>
     <a href="/#depoimentos">Depoimentos</a>
-    <a href="/blog/">Blog</a>
-    <a href="/cases/">Cases</a>
-    <a href="/contato/" class="btn-ghost btn-ghost--light">Conversar</a>
+    <a href="/blog/" aria-current={isCurrent('/blog/') ? 'page' : undefined}>Blog</a>
+    <a href="/cases/" aria-current={isCurrent('/cases/') ? 'page' : undefined}>Cases</a>
+    <a href="/contato/" class="btn-ghost btn-ghost--light" aria-current={isCurrent('/contato/') ? 'page' : undefined}>Conversar</a>
   </nav>
-  <button class="menu-toggle" id="toggle" aria-label="Menu">
+  <button
+    class="menu-toggle"
+    id="toggle"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+  >
     <span></span><span></span><span></span>
   </button>
 </header>
@@ -28,12 +41,31 @@ import logoImg from '../assets/logos/logo_principal.png';
       nav.classList.toggle('scrolled', window.scrollY > 20);
     });
   }
-  const toggle = document.getElementById('toggle');
-  const menu = document.getElementById('menu');
+  const toggle = document.getElementById('toggle') as HTMLButtonElement | null;
+  const menu = document.getElementById('mobile-menu');
   if (toggle && menu) {
-    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    const openMenu = () => {
+      menu.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Fechar menu');
+    };
+    const closeMenu = () => {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menu');
+    };
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
+    });
     menu.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => menu.classList.remove('open'))
+      a.addEventListener('click', () => closeMenu())
     );
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu();
+        toggle.focus();
+      }
+    });
   }
 </script>

@@ -649,6 +649,26 @@
 
   ::selection{background:var(--bronze);color:var(--olive-deep)}
 
+  /* ─── ACCESSIBILITY ─── */
+  /* Focus-visible global — low specificity via :where() */
+  :where(a, button, [role="tab"], [role="button"], input, select, textarea, summary):focus-visible {
+    outline: 2px solid var(--bronze);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+  /* Remove outline on :focus for mouse users */
+  :where(a, button):focus:not(:focus-visible) { outline: none; }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute; top: -40px; left: var(--space-3);
+    background: var(--olive-deep); color: var(--sand);
+    padding: var(--space-3) var(--space-5);
+    text-decoration: none; z-index: var(--z-modal);
+    transition: top .2s;
+  }
+  .skip-link:focus { top: var(--space-3); }
+
   /* FOOTER — portfólio link */
   .foot-portfolio{
     display:inline-flex;align-items:center;gap:8px;margin-top:16px;

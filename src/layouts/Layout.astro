@@ -197,7 +197,10 @@ const professionalServiceSchema = {
     <slot name="head" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+    <div id="main-content">
     <slot />
+    </div>
 
     <!-- Reveal observer -->
     <script>
