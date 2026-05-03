@@ -309,7 +309,7 @@ const faqs = [
         </ul>
         <a
           href={`https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Corporativo.`}
-          class="btn-publico"
+          class="btn"
           target="_blank"
           rel="noopener"
         >
@@ -349,7 +349,7 @@ const faqs = [
         </ul>
         <a
           href={`https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Individual.`}
-          class="btn-publico"
+          class="btn"
           target="_blank"
           rel="noopener"
         >
@@ -441,7 +441,7 @@ const faqs = [
       <p class="assessment-cta-sub">
         Vamos conversar sobre o escopo certo para o seu contexto.
       </p>
-      <a href="/contato/" class="btn-primary">Falar com a Eloyse</a>
+      <a href="/contato/" class="btn">Falar com a Eloyse</a>
     </div>
   </section>
 </PageLayout>
@@ -616,25 +616,10 @@ const faqs = [
     background: var(--bronze);
   }
 
-  .btn-publico {
-    display: inline-block;
-    background: var(--olive-deep);
-    color: var(--sand);
-    font-family: var(--sans);
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 14px 28px;
-    border-radius: 2px;
-    transition: background 0.2s;
+  /* Button alignment inside publico-card (flex column) */
+  .publico-card .btn {
     align-self: flex-start;
     margin-top: auto;
-  }
-
-  .btn-publico:hover {
-    background: var(--bronze);
   }
 
   /* Entregáveis */
@@ -711,25 +696,6 @@ const faqs = [
     font-size: 1rem;
     margin: 0 0 40px;
     line-height: 1.6;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    background: var(--bronze);
-    color: #fff;
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 16px 40px;
-    border-radius: 2px;
-    transition: background 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--bronze-soft);
   }
 
   /* FAQ section */

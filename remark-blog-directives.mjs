@@ -101,7 +101,7 @@ export function remarkBlogDirectives() {
   <span class="art-eyebrow">${eyebrow}</span>
   <h3>${heading}</h3>
   <p>${text}</p>
-  <a href="${link}" target="_blank" rel="noopener" class="btn-cta">Falar com Eloyse</a>
+  <a href="${link}" target="_blank" rel="noopener" class="btn">Falar com Eloyse</a>
 </div>`,
           children: undefined,
           name: undefined,
