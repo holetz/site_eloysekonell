@@ -3,15 +3,15 @@ export interface Props {
   title: string;
   deck: string;
   href: string;
-  icon?: string;
+  iconHtml?: string;
   bullets?: string[];
 }
 
-const { title, deck, href, icon, bullets } = Astro.props;
+const { title, deck, href, iconHtml, bullets } = Astro.props;
 ---
 
 <article class="service-card">
-  {icon && <span class="service-card__icon" aria-hidden="true">{icon}</span>}
+  {iconHtml && <span class="service-card__icon" aria-hidden="true" set:html={iconHtml} />}
   <h2 class="service-card__title">{title}</h2>
   <p class="service-card__deck">{deck}</p>
   {bullets && bullets.length > 0 && (
@@ -40,8 +40,16 @@ const { title, deck, href, icon, bullets } = Astro.props;
   }
 
   .service-card__icon {
-    font-size: 2rem;
-    line-height: 1;
+    display: inline-flex;
+    width: var(--space-8, 40px);
+    height: var(--space-8, 40px);
+    color: var(--bronze);
+    margin-bottom: var(--space-5, 20px);
+  }
+
+  .service-card__icon :global(svg) {
+    width: 100%;
+    height: 100%;
   }
 
   .service-card__title {

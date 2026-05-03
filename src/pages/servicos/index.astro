@@ -2,6 +2,10 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
+import leadershipIcon from '../../assets/icons/leadership.svg?raw';
+import strategyIcon from '../../assets/icons/strategy.svg?raw';
+import assessmentIcon from '../../assets/icons/assessment.svg?raw';
+import mentoringIcon from '../../assets/icons/mentoring.svg?raw';
 
 const SITE_URL = 'https://eloysekonell.com.br';
 
@@ -20,7 +24,7 @@ const services = [
     title: 'Desenvolvimento de Líderes',
     deck: 'Para empresas que precisam preparar gestores para o próximo nível de complexidade.',
     href: '/servicos/desenvolvimento-de-liderancas/',
-    icon: '🎯',
+    iconHtml: leadershipIcon,
     bullets: [
       'Programas sob medida para líderes em formação e gestores em transição',
       'Abordagem baseada em neurociência e análise comportamental',
@@ -31,7 +35,7 @@ const services = [
     title: 'Gestão Estratégica de Pessoas',
     deck: 'Para PMEs que crescem e precisam estruturar gestão de pessoas sem montar um RH inteiro.',
     href: '/servicos/gestao-estrategica-de-pessoas/',
-    icon: '🏗️',
+    iconHtml: strategyIcon,
     bullets: [
       'Diagnóstico e estruturação de processos de pessoas',
       'Políticas, trilhas de carreira e retenção de talentos',
@@ -42,7 +46,7 @@ const services = [
     title: 'Assessment',
     deck: 'Para tomadores de decisão que querem clareza sobre o potencial e o gap dos seus líderes.',
     href: '/servicos/assessment/',
-    icon: '🔍',
+    iconHtml: assessmentIcon,
     bullets: [
       'Mapeamento comportamental e de competências com ferramentas certificadas',
       'Relatórios executivos para decisões de promoção, sucessão e equipes',
@@ -53,7 +57,7 @@ const services = [
     title: 'Mentoria Executiva',
     deck: 'Para executivos em transição ou em novos desafios — espaço seguro para pensar a própria liderança.',
     href: '/servicos/mentoria-executiva/',
-    icon: '💬',
+    iconHtml: mentoringIcon,
     bullets: [
       'Processo individual com foco em resultados e autoconhecimento',
       'Desenvolvimento de repertório para decisões de alta complexidade',
@@ -112,7 +116,7 @@ const collectionPageSchema = {
           title={s.title}
           deck={s.deck}
           href={s.href}
-          icon={s.icon}
+          iconHtml={s.iconHtml}
           bullets={s.bullets}
         />
       ))}
