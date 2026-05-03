@@ -139,6 +139,10 @@
   }
   .btn-ghost:hover{background:var(--bronze);border-color:var(--bronze);color:var(--olive-deep)}
 
+  /* Modificador para uso em fundos escuros (ex: nav) */
+  .btn-ghost--light{color:var(--sand);border-color:var(--sand)}
+  .btn-ghost--light:hover{background:var(--bronze);border-color:var(--bronze);color:var(--olive-deep)}
+
   .link-arrow{
     display:inline-flex;
     align-items:center;
