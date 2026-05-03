@@ -163,8 +163,8 @@
         "src/components/BreadcrumbList.astro",
         "src/layouts/Layout.astro"
       ],
-      "status": "in_progress",
-      "commit": null,
+      "status": "completed",
+      "commit": "6068eb3",
       "feedback": null
     },
     "11": {
