@@ -1,9 +1,9 @@
 {
-  "current_phase": 3,
+  "current_phase": 4,
   "phases": [
     { "id": 1, "name": "Foundation", "status": "completed" },
     { "id": 2, "name": "Independent fixes + parallel tracks", "status": "completed" },
-    { "id": 3, "name": "Consolidation (sobre + a11y)", "status": "not_started" },
+    { "id": 3, "name": "Consolidation (sobre + a11y)", "status": "completed" },
     { "id": 4, "name": "Final sweep + docs", "status": "not_started" }
   ],
   "tasks": {
