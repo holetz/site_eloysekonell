@@ -7,6 +7,17 @@ tags: ["Estratégia"]
 readingTime: "9 min de leitura"
 coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85"
 related: ["cadeira-vazia", "sucessao-mal-planejada", "tecnico-virou-gestor"]
+faq:
+  - q: "Qual a diferença entre ter um sucessor nomeado e ter um processo de sucessão?"
+    a: "Ter um sucessor nomeado é uma decisão. Ter um processo de sucessão é uma construção que leva anos. O nome no organograma não prepara ninguém para tomar decisões complexas sob pressão, gerir conflitos ou navegar a ambiguidade estratégica. Sem exposição progressiva e desenvolvimento real, o nome é apenas um símbolo — não uma garantia de continuidade."
+  - q: "Em quanto tempo se prepara um sucessor de forma adequada?"
+    a: "Entre três e sete anos, dependendo da complexidade do cargo e do nível de desenvolvimento atual do candidato. Isso inclui exposição a decisões progressivamente mais complexas, formação em áreas de baixo domínio, autonomia real sobre projetos estratégicos e acompanhamento com feedback estruturado."
+  - q: "Como identificar se a pessoa escolhida como sucessor é a certa?"
+    a: "O critério mais confiável não é lealdade, senioridade ou semelhança com o fundador — é capacidade de aprender e adaptar em contextos novos. O perfil que mais falha é o do excelente executor promovido a estrategista. A pergunta decisiva: essa pessoa consegue tomar decisões difíceis em ambiguidade, sem necessidade constante de validação?"
+  - q: "O que fazer quando o sucessor escolhido não está performando como esperado?"
+    a: "Primeiro, separar dois problemas distintos: o candidato não está pronto, ou o processo de preparação foi insuficiente? Na maioria dos casos, é o segundo. Se a pessoa foi nomeada sem exposição adequada, o problema não é dela — é do processo. A resposta é ajustar o plano de desenvolvimento, não necessariamente substituir a pessoa."
+  - q: "Sucessão em empresas familiares tem diferenças em relação a empresas não familiares?"
+    a: "Sim. Em empresas familiares, a sucessão acontece em três dimensões simultâneas: gestão, propriedade e família. Uma transição bem-sucedida exige alinhar as expectativas nos três planos, o que torna o processo mais complexo e exige muito mais comunicação explícita sobre papéis, direitos e critérios de decisão."
 ---
 
 Na edição passada, escrevi sobre o melhor técnico do time virando gestor sem preparo. Hoje trato de uma versão maior, e mais cara, do mesmo erro de lógica.
@@ -19,7 +30,7 @@ Dezoito meses depois, o sucessor pediu transferência, foi reposicionado em uma 
 
 E quase nunca é sobre a pessoa escolhida. Quem é escolhido para suceder costuma ser o melhor executor. **Quem precisa ser formado é outra pessoa.** E raramente é a mesma.
 
-## Sucessão não é decisão. É construção.
+## Por que ter um plano de sucessão não é o mesmo que construir uma sucessão?
 
 Existe uma confusão que custa caro: tratar "plano de sucessão" e "construção de sucessão" como sinônimos. Não são.
 
@@ -29,7 +40,7 @@ Existe uma confusão que custa caro: tratar "plano de sucessão" e "construção
 
 Pesquisa da PwC Family Business Survey indica que **apenas 34% das empresas familiares americanas** têm um plano de sucessão robusto, documentado e comunicado. E plano comunicado, vale dizer, ainda é menos do que sucessão construída.
 
-## O critério usado é quase sempre o errado
+## Por que os critérios mais usados para escolher sucessores costumam falhar?
 
 Quem costuma ser escolhido para suceder: o mais leal, o mais antigo, o mais técnico, o que mais se parece com quem está saindo. **Quatro critérios que dizem muito sobre o passado e quase nada sobre a capacidade de sustentar o futuro.**
 
@@ -64,7 +75,7 @@ E há o custo invisível. Cultura organizacional que se quebra. Time da segunda 
 03 | **Existe alguém na sua empresa hoje que pode te dizer "não" e ser ouvido?** | Sucessores não se formam em ambientes onde só uma voz importa. Se ninguém te confronta, ninguém está aprendendo a ocupar o seu lugar.
 :::
 
-## Onde a construção começa
+## Por onde começar a construção real de sucessão hoje?
 
 **Sucessão começa quando o líder atual decide formar pessoas. Não quando decide sair.**
 

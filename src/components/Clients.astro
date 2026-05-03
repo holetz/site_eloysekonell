@@ -1,15 +1,27 @@
 ---
+import { Image } from 'astro:assets';
+import logoDatarunk from '../assets/logos/logo_datarunk.png';
+import logoDgsis from '../assets/logos/logo_dgsis.png';
+import logoGrupoTop from '../assets/logos/logo_grupo_top.png';
+import logoPossibilitar from '../assets/logos/logo_possibilitar.png';
+import logoNuvme from '../assets/logos/logo_nuvme.png';
+import logoStraas from '../assets/logos/logo_straas.png';
+import logoColablife from '../assets/logos/logo_colablife.png';
+import logoTechlinker from '../assets/logos/logo_techlinker.webp';
+import logoMtech from '../assets/logos/logo_mtech.png';
+import logoGuion from '../assets/logos/logo_guion.png';
+
 const clients = [
-  { src: '/images/logos/logo_datarunk.png',    alt: 'Datarunk' },
-  { src: '/images/logos/logo_dgsis.png',       alt: 'DGSis' },
-  { src: '/images/logos/logo_grupo_top.png',   alt: 'Grupo Top' },
-  { src: '/images/logos/logo_possibilitar.png',alt: 'Possibilitar' },
-  { src: '/images/logos/logo_nuvme.png',       alt: 'Nuvme' },
-  { src: '/images/logos/logo_straas.png',      alt: 'Straas' },
-  { src: '/images/logos/logo_colablife.png',   alt: 'Colablife' },
-  { src: '/images/logos/logo_techlinker.webp', alt: 'Techlinker' },
-  { src: '/images/logos/logo_mtech.png',       alt: 'Mtech' },
-  { src: '/images/logos/logo_guion.png',       alt: 'Guion' },
+  { src: logoDatarunk,    alt: 'Datarunk' },
+  { src: logoDgsis,       alt: 'DGSis' },
+  { src: logoGrupoTop,    alt: 'Grupo Top' },
+  { src: logoPossibilitar,alt: 'Possibilitar' },
+  { src: logoNuvme,       alt: 'Nuvme' },
+  { src: logoStraas,      alt: 'Straas' },
+  { src: logoColablife,   alt: 'Colablife' },
+  { src: logoTechlinker,  alt: 'Techlinker' },
+  { src: logoMtech,       alt: 'Mtech' },
+  { src: logoGuion,       alt: 'Guion' },
 ];
 ---
 <!-- CLIENTES -->
@@ -20,7 +32,15 @@ const clients = [
     </div>
     <div class="clients-grid reveal delay-1">
       {clients.map(({ src, alt }) => (
-        <img class="client-logo" src={src} alt={alt} loading="lazy" />
+        <Image
+          class="client-logo"
+          src={src}
+          alt={alt}
+          width={240}
+          height={80}
+          loading="lazy"
+          formats={['avif', 'webp']}
+        />
       ))}
     </div>
   </div>

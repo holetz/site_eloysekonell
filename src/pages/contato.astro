@@ -1,0 +1,299 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+---
+
+<PageLayout
+  title="Contato — Eloyse Konell | Consultoria em Liderança"
+  description="Fale comigo via WhatsApp, e-mail ou agende uma conversa. Atendimento em Blumenau-SC e remoto."
+  canonical={`${SITE_URL}/contato/`}
+  breadcrumb={[{ label: 'Início', href: '/' }, { label: 'Contato' }]}
+>
+
+  <PageHero
+    slot="hero"
+    eyebrow="Contato"
+    title="Vamos conversar"
+    deck="Conte um pouco sobre o desafio que você está vivendo na liderança ou na gestão de pessoas. Respondo em até 1 dia útil."
+    align="center"
+  />
+
+  <section class="contato-wrap wrap">
+
+    <div class="contact-cards">
+      <!-- WhatsApp -->
+      <div class="contact-card">
+        <div class="contact-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.46 9.46 0 01-4.83-1.32l-.35-.21-3.59.94.96-3.5-.23-.36a9.43 9.43 0 01-1.45-5.04c0-5.21 4.25-9.45 9.5-9.45 2.54 0 4.92.99 6.71 2.78a9.39 9.39 0 012.78 6.68c0 5.21-4.25 9.45-9.5 9.45zM20.5 3.5A11.6 11.6 0 0012.04 0C5.46 0 .1 5.34.1 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.32-1.65a11.93 11.93 0 005.71 1.45h.01c6.58 0 11.94-5.34 11.94-11.9a11.81 11.81 0 00-3.49-8.4z"/>
+          </svg>
+        </div>
+        <h2 class="contact-card__title">WhatsApp</h2>
+        <p class="contact-card__value">+55 47 99144-3844</p>
+        <p class="contact-card__note">Resposta em horário comercial</p>
+        <a
+          href="https://wa.me/5547991443844?text=Ol%C3%A1%20Eloyse%2C%20gostaria%20de%20conversar%20sobre..."
+          class="btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir WhatsApp
+        </a>
+      </div>
+
+      <!-- E-mail -->
+      <div class="contact-card">
+        <div class="contact-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <h2 class="contact-card__title">E-mail</h2>
+        <p class="contact-card__value">consultoria@eloysekonell.com.br</p>
+        <p class="contact-card__note">&nbsp;</p>
+        <a
+          href="mailto:consultoria@eloysekonell.com.br?subject=Contato%20pelo%20site"
+          class="btn-primary"
+        >
+          Enviar e-mail
+        </a>
+      </div>
+
+      <!-- Onde estou -->
+      <div class="contact-card">
+        <div class="contact-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <h2 class="contact-card__title">Onde estou</h2>
+        <p class="contact-card__value">Blumenau-SC, Vale do Itajaí</p>
+        <p class="contact-card__note">Atendimento presencial na região e remoto para todo o Brasil.</p>
+      </div>
+    </div>
+
+    <div class="before-contact reveal">
+      <h2 class="before-contact__title">Antes de me escrever</h2>
+      <p class="before-contact__intro">Para que nossa conversa seja mais produtiva, inclua na sua mensagem:</p>
+      <ul class="before-contact__list">
+        <li>O contexto da empresa — segmento, porte e momento atual</li>
+        <li>O principal desafio de liderança ou gestão que você enfrenta</li>
+        <li>O tamanho do time ou da estrutura envolvida</li>
+        <li>Se há urgência ou um prazo importante em vista</li>
+      </ul>
+      <p class="before-contact__closing">Sem compromisso. A primeira conversa é para entender se faz sentido trabalharmos juntos.</p>
+    </div>
+
+    <div class="social-links reveal">
+      <h2 class="social-links__title">Também estou por aqui</h2>
+      <div class="social-links__row">
+        <a
+          href="https://www.linkedin.com/in/eloysekonell"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn pessoal de Eloyse Konell"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.13 2.06 2.06 0 01.01 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+          LinkedIn Pessoal
+        </a>
+        <a
+          href="https://www.linkedin.com/company/eloysekonell"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn da empresa Eloyse Konell"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.13 2.06 2.06 0 01.01 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+          LinkedIn Empresa
+        </a>
+        <a
+          href="https://www.instagram.com/ek_gestaoeconsultoria"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de Eloyse Konell"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.06.37-2.23.42-1.27.06-1.64.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.42-.37-1.06-.42-2.23-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.06-.37 2.23-.42C8.42 2.2 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.33 0 7.05.07 5.78.13 4.9.33 4.14.63c-.8.3-1.47.72-2.13 1.38S.93 3.34.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.8.72 1.47 1.38 2.13.66.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.8-.3 1.47-.72 2.13-1.38.66-.66 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.8-.72-1.47-1.38-2.13C21.34.93 20.66.51 19.86.21c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+  </section>
+</PageLayout>
+
+<style>
+  .contato-wrap {
+    padding-bottom: 80px;
+  }
+
+  /* Contact cards */
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .contact-card {
+    background: var(--sand-warm);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contact-card__icon {
+    width: 48px;
+    height: 48px;
+    color: var(--bronze);
+    flex-shrink: 0;
+  }
+
+  .contact-card__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-card__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--olive-deep);
+    margin: 0;
+    font-family: var(--sans);
+  }
+
+  .contact-card__value {
+    font-size: 1rem;
+    color: var(--taupe);
+    margin: 0;
+    word-break: break-word;
+  }
+
+  .contact-card__note {
+    font-size: 0.875rem;
+    color: var(--taupe-soft);
+    margin: 0;
+    min-height: 1.2em;
+    flex-grow: 1;
+  }
+
+  /* Before contact section */
+  .before-contact {
+    background: var(--sand-deep);
+    border-left: 3px solid var(--bronze);
+    border-radius: 0 8px 8px 0;
+    padding: 40px 48px;
+    margin-bottom: 64px;
+  }
+
+  .before-contact__title {
+    font-size: 1.5rem;
+    color: var(--olive-deep);
+    margin: 0 0 12px;
+  }
+
+  .before-contact__intro {
+    color: var(--taupe);
+    margin: 0 0 16px;
+  }
+
+  .before-contact__list {
+    margin: 0 0 16px;
+    padding-left: 20px;
+    color: var(--taupe);
+    line-height: 1.8;
+  }
+
+  .before-contact__list li {
+    margin-bottom: 4px;
+  }
+
+  .before-contact__closing {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--taupe);
+    margin: 0;
+  }
+
+  /* Social links */
+  .social-links {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .social-links__title {
+    font-size: 1.4rem;
+    color: var(--olive-deep);
+    margin: 0 0 24px;
+  }
+
+  .social-links__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border: 1.5px solid var(--bronze);
+    border-radius: 8px;
+    color: var(--olive-deep);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .social-link:hover {
+    background: var(--bronze);
+    color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-cards .contact-card:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-cards .contact-card:last-child {
+      grid-column: auto;
+    }
+
+    .before-contact {
+      padding: 28px 24px;
+    }
+  }
+</style>

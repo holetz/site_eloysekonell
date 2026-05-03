@@ -1,0 +1,389 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { credenciais } from '../data/credenciais';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const title = 'Metodologia — Como atuo | Eloyse Konell';
+const description =
+  'Abordagem aplicada para desenvolvimento de líderes e gestão de pessoas — baseada em neurociência, análise comportamental e contexto da PME.';
+const canonical = `${SITE_URL}/metodologia/`;
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Metodologia' },
+];
+
+// Formações referenciadas contextualmente nesta página
+const neurocriencia = credenciais.formacao.find((f) => f.sigla === 'PUCRS');
+const analiseComportamental = credenciais.formacao.find((f) => f.sigla === 'GROU');
+const coaching = credenciais.formacao.find((f) => f.titulo.includes('PCC'));
+const governanca = credenciais.formacao.find((f) => f.sigla === 'IBGC');
+
+const pilares = [
+  {
+    titulo: 'Transformação com Propósito',
+    texto:
+      'Cada processo de desenvolvimento parte de um propósito claro: o que essa liderança precisa entregar para o negócio? Sem essa ancora, o desenvolvimento vira treinamento genérico. Com ela, vira mudança real de comportamento.',
+  },
+  {
+    titulo: 'Conexões que Inspiram',
+    texto:
+      'Relações autênticas são pré-requisito para aprendizado. Escuta, empatia e presença não são soft skills decorativas — são o canal por onde a mudança de padrão acontece. Cada processo que conduzo é construído sobre esse fundamento.',
+  },
+  {
+    titulo: 'Impacto Sustentável',
+    texto:
+      'Resultado de curto prazo sem sustentabilidade é ilusão. O que entrego precisa funcionar depois que eu não estou mais lá: líderes mais autônomos, estruturas mais sólidas, cultura que não depende de uma pessoa só.',
+  },
+];
+
+const etapas = [
+  {
+    numero: '01',
+    titulo: 'Diagnóstico',
+    texto:
+      'Começo por entender o que está acontecendo de verdade — não o sintoma que aparece na superfície, mas a causa raiz. Usamos análise comportamental, entrevistas, observação do contexto e, quando pertinente, assessments estruturados.',
+  },
+  {
+    numero: '02',
+    titulo: 'Plano personalizado',
+    texto:
+      'Com base no diagnóstico, construímos juntos um plano específico para aquele negócio, aquela liderança, aquele momento. Não existe solução de prateleira aqui. O plano define o que vai ser desenvolvido, como e em quanto tempo.',
+  },
+  {
+    numero: '03',
+    titulo: 'Execução com acompanhamento',
+    texto:
+      'A execução acontece em campo — nas situações reais do cotidiano do líder. Workshops, sessões individuais, trabalho com equipes. O acompanhamento garante que o aprendizado não fique na teoria.',
+  },
+  {
+    numero: '04',
+    titulo: 'Ajuste contínuo',
+    texto:
+      'Contextos mudam. O plano precisa ser revisado à luz do que está emergindo. Essa flexibilidade é estrutural, não improviso — é o que diferencia um processo de desenvolvimento vivo de um programa rígido que não se adapta.',
+  },
+  {
+    numero: '05',
+    titulo: 'Mensuração de impacto',
+    texto:
+      'No fechamento do processo, avaliamos o que mudou: comportamento dos líderes, resultados do time, indicadores que definimos no início. Essa etapa é o que transforma experiência em aprendizado organizacional.',
+  },
+];
+
+const ganhos = [
+  'Líderes mais autônomos e seguros nas suas decisões',
+  'Decisões mais consistentes com a estratégia do negócio',
+  'Ciclos curtos de feedback que aceleram o desenvolvimento',
+  'Redução de conflitos por falta de clareza de papéis',
+  'Sucessão planejada com critérios objetivos',
+  'Cultura que sustenta crescimento sem depender de uma pessoa',
+  'Times mais engajados e menor rotatividade',
+];
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  breadcrumb={breadcrumb}
+>
+  <PageHero
+    slot="hero"
+    eyebrow="Metodologia"
+    title="Método aplicado, não treinamento de prateleira"
+    deck="Cada processo parte do que o negócio realmente precisa — não de um currículo pré-definido."
+  />
+
+  <!-- OS 3 PILARES -->
+  <section class="page-section metodologia-pilares">
+    <h2>Os três pilares que guiam cada processo</h2>
+    <p class="metodologia-intro">
+      Estes pilares não são valores decorativos. São os critérios que uso para tomar decisão dentro
+      de qualquer projeto — do diagnóstico inicial até o encerramento.
+    </p>
+    <div class="pilares-grid">
+      {pilares.map((p) => (
+        <div class="pilar-card">
+          <h3>{p.titulo}</h3>
+          <p>{p.texto}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- COMO APLICO -->
+  <section class="page-section metodologia-etapas">
+    <h2>Como cada processo acontece</h2>
+    <p class="metodologia-intro">
+      Da primeira conversa à entrega final, cada etapa tem propósito. Não é burocracia — é
+      estrutura que garante que o desenvolvimento seja real, não aparente.
+    </p>
+    <ol class="etapas-lista">
+      {etapas.map((e) => (
+        <li class="etapa-item">
+          <span class="etapa-numero">{e.numero}</span>
+          <div class="etapa-content">
+            <h3>{e.titulo}</h3>
+            <p>{e.texto}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- POR QUE FUNCIONA -->
+  <section class="page-section metodologia-bases">
+    <h2>Por que essa abordagem funciona</h2>
+    <p>
+      Não é intuição e não é metodologia importada sem adaptação. A abordagem que uso é construída
+      sobre formação técnica sólida e anos de prática em contextos reais de PMEs brasileiras.
+    </p>
+    <p>
+      Minha formação em neurociência e comportamento ({neurocriencia?.sigla}) informa como o
+      aprendizado de adultos funciona — e por que treinamentos tradicionais de um dia não mudam
+      comportamento. A certificação em análise comportamental avançada ({analiseComportamental?.sigla})
+      dá precisão ao diagnóstico: entender padrões de comportamento antes de propor mudança.
+    </p>
+    <p>
+      A certificação PCC® em coaching profissional ({coaching?.sigla?.replace('®', '')?.replace('—', '')?.trim().split(' ')[0]})
+      estrutura como conduzo o acompanhamento individual — com rigor metodológico, não com conversa
+      de apoio. E a certificação em governança corporativa ({governanca?.sigla}) amplia a lente para
+      empresas familiares, onde os desafios de liderança se cruzam com dinâmicas de família e
+      propriedade.
+    </p>
+    <p>
+      O resultado é uma abordagem que une rigor técnico com adaptação ao contexto. Não existe
+      receita única. Existe método.
+    </p>
+  </section>
+
+  <!-- O QUE MUDA NA EMPRESA -->
+  <section class="page-section metodologia-ganhos">
+    <h2>O que muda depois do processo</h2>
+    <p class="metodologia-intro">
+      Desenvolvimento de liderança que funciona deixa rastros visíveis. Esses são os ganhos que
+      empresas e líderes relatam ao final dos processos:
+    </p>
+    <ul class="ganhos-lista">
+      {ganhos.map((g) => (
+        <li>{g}</li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="page-section metodologia-cta">
+    <div class="metodologia-cta-inner">
+      <p class="metodologia-cta-texto">
+        Quer aplicar isso na sua liderança?
+      </p>
+      <p class="metodologia-cta-sub">
+        Vamos conversar sobre o que o seu negócio precisa que aconteça — e como chegar lá.
+      </p>
+      <a href="/contato/" class="btn-primary">Falar com a Eloyse</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .metodologia-intro {
+    max-width: 680px;
+    margin-bottom: 48px;
+    color: var(--taupe);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  /* Pilares */
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .pilar-card {
+    background: var(--sand-warm);
+    border: 1px solid var(--sand-deep);
+    border-radius: 4px;
+    padding: 36px 32px;
+  }
+
+  .pilar-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 16px;
+  }
+
+  .pilar-card p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+    font-size: 0.96rem;
+  }
+
+  /* Etapas */
+  .etapas-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .etapa-item {
+    display: flex;
+    gap: 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .etapa-item:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .etapa-numero {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--bronze);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 56px;
+    padding-top: 4px;
+  }
+
+  .etapa-content h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 12px;
+  }
+
+  .etapa-content p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  /* Por que funciona */
+  .metodologia-bases p {
+    max-width: 740px;
+    line-height: 1.75;
+    color: var(--taupe);
+    margin-bottom: 20px;
+  }
+
+  .metodologia-bases p:last-child {
+    margin-bottom: 0;
+    color: var(--olive-deep);
+    font-weight: 500;
+  }
+
+  /* Ganhos */
+  .ganhos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 48px;
+  }
+
+  .ganhos-lista li {
+    color: var(--taupe);
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .ganhos-lista li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 2px;
+    background: var(--bronze);
+  }
+
+  /* CTA */
+  .metodologia-cta-inner {
+    background: var(--olive-deep);
+    border-radius: 4px;
+    padding: 64px 56px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .metodologia-cta-texto {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--sand);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+
+  .metodologia-cta-sub {
+    color: var(--taupe-soft);
+    font-size: 1rem;
+    margin: 0 0 40px;
+    line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--bronze);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--bronze-soft);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .pilares-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .ganhos-lista {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .etapa-item {
+      flex-direction: column;
+      gap: 12px;
+      padding: 28px 0;
+    }
+
+    .etapa-numero {
+      font-size: 2rem;
+      width: auto;
+    }
+
+    .metodologia-cta-inner {
+      padding: 48px 28px;
+    }
+  }
+</style>

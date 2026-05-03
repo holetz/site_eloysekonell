@@ -124,7 +124,6 @@
   .hero-visual{position:relative;aspect-ratio:4/5;max-width:460px;margin-left:auto;width:100%}
   .hero-visual .photo{
     position:absolute;inset:0;
-    background-image:url('/images/photos/eloyse-hero.jpg');
     background-size:cover;background-position:center 20%;
     filter:saturate(.92) contrast(1.02);
     box-shadow:0 40px 80px -20px rgba(46,45,34,.35);
@@ -987,4 +986,149 @@
     .author-bio-photo { margin: 0 auto; }
     .author-links { justify-content: center; }
     .related-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── PÁGINAS INTERNAS ─── */
+
+  /* Container principal de página interna */
+  .page-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    padding-bottom: 100px;
+  }
+
+  .page-breadcrumb-wrap {
+    padding-top: 100px;
+  }
+
+  @media (max-width: 768px) {
+    .page-main { padding: 0 22px 80px; }
+    .page-breadcrumb-wrap { padding-top: 80px; }
+  }
+
+  /* Prose de página interna — espelha .article-body */
+  .page-prose {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-prose p {
+    font-size: 1.08rem;
+    line-height: 1.78;
+    color: var(--olive);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .page-prose h2 {
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    margin: 56px 0 22px;
+    color: var(--olive-deep);
+    font-weight: 500;
+  }
+
+  .page-prose h3 {
+    font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+    margin: 40px 0 14px;
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+
+  .page-prose strong { color: var(--olive-deep); font-weight: 600; }
+  .page-prose em { font-style: italic; color: var(--taupe); }
+
+  .page-prose ul {
+    margin: 22px 0 28px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .page-prose ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 14px;
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: var(--olive);
+  }
+
+  .page-prose ul li::before {
+    content: '—';
+    color: var(--bronze);
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .page-prose ol {
+    margin: 22px 0 28px;
+    padding-left: 24px;
+  }
+
+  .page-prose ol li {
+    margin-bottom: 12px;
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: var(--olive);
+  }
+
+  .page-prose blockquote {
+    margin: 40px 0;
+    padding: 28px 36px;
+    border-left: 2px solid var(--bronze);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: var(--olive-deep);
+    background: var(--sand-warm);
+  }
+
+  /* Bloco CTA reutilizável */
+  .cta-block {
+    background: var(--sand-warm);
+    padding: 48px 44px;
+    text-align: center;
+    margin: 60px 0;
+    border-top: 2px solid var(--bronze);
+  }
+
+  .cta-block .eyebrow {
+    justify-content: center;
+    display: inline-flex;
+    margin-bottom: 18px;
+  }
+
+  .cta-block h3 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    margin-bottom: 16px;
+    color: var(--olive-deep);
+  }
+
+  .cta-block p {
+    font-size: 1.02rem;
+    color: var(--taupe);
+    max-width: 520px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .cta-block { padding: 36px 24px; }
+  }
+
+  /* Separador entre seções de página interna */
+  .page-section {
+    padding: 80px 0;
+    position: relative;
+  }
+
+  .page-section + .page-section {
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 768px) {
+    .page-section { padding: 56px 0; }
   }

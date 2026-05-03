@@ -1,17 +1,20 @@
 ---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logos/logo_principal.png';
 ---
 <!-- NAV -->
 <header class="nav" id="nav">
   <a href="/" class="logo">
-    <img src="/images/logo.png" alt="Eloyse Konell" />
+    <Image src={logoImg} alt="Eloyse Konell" width={140} height={40} loading="eager" />
   </a>
   <nav class="menu" id="menu">
-    <a href="/#sobre">Sobre</a>
-    <a href="/#consultoria">Consultoria</a>
-    <a href="/#servicos">Serviços</a>
+    <a href="/sobre/">Sobre</a>
+    <a href="/metodologia/">Consultoria</a>
+    <a href="/servicos/">Serviços</a>
     <a href="/#depoimentos">Depoimentos</a>
-    <a href="/blog">Blog</a>
-    <a href="/#contato" class="btn btn-ghost">Conversar</a>
+    <a href="/blog/">Blog</a>
+    <a href="/cases/">Cases</a>
+    <a href="/contato/" class="btn btn-ghost">Conversar</a>
   </nav>
   <button class="menu-toggle" id="toggle" aria-label="Menu">
     <span></span><span></span><span></span>

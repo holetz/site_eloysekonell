@@ -24,21 +24,20 @@ site_eloysekonell/
 ├── CNAME                          # domínio raiz (não editar)
 ├── astro.config.mjs               # config Astro (outDir: docs, sitemap)
 ├── package.json
+├── remark-blog-directives.mjs     # plugin remark para diretivas customizadas
 ├── tsconfig.json
 │
 ├── public/                        # Arquivos copiados 1:1 para docs/
 │   ├── CNAME
 │   ├── robots.txt
+│   ├── llms.txt                   # Índice de conteúdo para LLMs/AI crawlers
 │   ├── files/
 │   │   └── portfolio_eloyse_konell.pdf
 │   └── images/
 │       ├── logo.png               # Logo principal (nav + favicon)
 │       ├── og-cover.jpg           # Imagem OG (1200×630) — criar se ausente
-│       ├── photos/
-│       │   ├── eloyse-hero.jpg    # Foto hero (CSS background)
-│       │   ├── eloyse-portrait.jpg# Foto seção Sobre
-│       │   └── eloyse-study.jpg   # Foto seção Consultoria
-│       ├── logos/                 # Logos dos clientes
+│       ├── photos/                # Fotos para uso via URL pública
+│       ├── logos/                 # Logos dos clientes (uso público)
 │       │   ├── logo_datarunk.png
 │       │   ├── logo_dgsis.png
 │       │   ├── logo_grupo_top.png
@@ -52,26 +51,54 @@ site_eloysekonell/
 │       └── backgrounds/           # Imagens de fundo (reserva)
 │
 ├── src/
-│   ├── components/                # Um componente por seção
-│   │   ├── Nav.astro
-│   │   ├── Hero.astro
-│   │   ├── About.astro
-│   │   ├── Consultoria.astro
-│   │   ├── Proposito.astro
-│   │   ├── Services.astro
-│   │   ├── AssessmentSpotlight.astro
-│   │   ├── Testimonials.astro
-│   │   ├── Clients.astro
-│   │   ├── Cta.astro
-│   │   └── Footer.astro
+│   ├── assets/                    # Imagens importadas via astro:assets (WebP/AVIF otimizados)
+│   │   ├── photos/                # Fotos da Eloyse (hero, portrait, study)
+│   │   └── logos/                 # Logos dos clientes (para <Image> em componentes)
+│   ├── components/                # Componentes reutilizáveis
+│   │   ├── Nav.astro              # Navegação principal (home + páginas internas)
+│   │   ├── Hero.astro             # Hero da landing page
+│   │   ├── About.astro            # Seção Sobre (home)
+│   │   ├── Consultoria.astro      # Seção Consultoria (home)
+│   │   ├── Proposito.astro        # Seção Propósito (home)
+│   │   ├── Services.astro         # Seção Serviços (home)
+│   │   ├── AssessmentSpotlight.astro  # Seção Assessment (home)
+│   │   ├── Testimonials.astro     # Depoimentos (home)
+│   │   ├── Clients.astro          # Grid de logos de clientes
+│   │   ├── Cta.astro              # CTA WhatsApp
+│   │   ├── Campanha.astro         # Banner de campanha (home)
+│   │   ├── Footer.astro           # Rodapé
+│   │   ├── BreadcrumbList.astro   # Breadcrumb + schema BreadcrumbList (NOVO)
+│   │   ├── PageHero.astro         # Hero para páginas internas (NOVO)
+│   │   ├── ServiceCard.astro      # Card de serviço para /servicos (NOVO)
+│   │   ├── CaseCard.astro         # Card de case study para /cases (NOVO)
+│   │   └── FaqBlock.astro         # Bloco FAQ com schema FAQPage (NOVO)
 │   ├── content/
-│   │   ├── config.ts              # Schema do blog (Zod)
-│   │   └── blog/                  # Posts em Markdown (.md)
+│   │   ├── config.ts              # Schema Zod para blog e cases
+│   │   ├── blog/                  # Posts de blog em Markdown (.md)
+│   │   └── cases/                 # Case studies em Markdown (.md) — draft: true por padrão
+│   ├── data/
+│   │   └── credenciais.ts         # Fonte única de verdade para dados factuais (anos, números)
 │   ├── layouts/
-│   │   ├── Layout.astro           # Layout base com SEO completo
-│   │   └── BlogLayout.astro       # Layout para posts de blog
+│   │   ├── Layout.astro           # Layout base com SEO completo (Person + ProfessionalService JSON-LD)
+│   │   ├── BlogLayout.astro       # Layout para posts de blog (Article JSON-LD + FaqBlock)
+│   │   ├── PageLayout.astro       # Layout para páginas internas com breadcrumb (NOVO)
+│   │   └── CaseLayout.astro       # Layout para case studies (NOVO)
 │   ├── pages/
-│   │   ├── index.astro            # Landing page principal
+│   │   ├── index.astro            # Landing page principal (home)
+│   │   ├── sobre.astro            # Página /sobre (NOVO)
+│   │   ├── contato.astro          # Página /contato (NOVO)
+│   │   ├── metodologia.astro      # Página /metodologia (NOVO)
+│   │   ├── faq.astro              # Página /faq com schema FAQPage (NOVO)
+│   │   ├── sitemap.xml.ts         # Sitemap dinâmico (auto-detect de rotas)
+│   │   ├── servicos/
+│   │   │   ├── index.astro        # Listagem de serviços /servicos (NOVO)
+│   │   │   ├── desenvolvimento-de-liderancas.astro
+│   │   │   ├── gestao-estrategica-de-pessoas.astro
+│   │   │   ├── assessment.astro
+│   │   │   └── mentoria-executiva.astro
+│   │   ├── cases/
+│   │   │   ├── index.astro        # Listagem de cases /cases (NOVO)
+│   │   │   └── [slug].astro       # Rota dinâmica para cada case
 │   │   └── blog/
 │   │       ├── index.astro        # Listagem do blog
 │   │       └── [...slug].astro    # Rota dinâmica dos posts
@@ -118,19 +145,36 @@ site_eloysekonell/
 - Posts em `src/content/blog/*.md`
 - Frontmatter obrigatório: `title`, `description`, `pubDate`, `tags`
 - `draft: true` oculta o post na listagem e rota
-- Imagens de post ficam em `public/images/blog/`
+- Cover de post pode ser URL externa (ex: Unsplash) ou caminho em `public/images/blog/`
 - Slugs são derivados automaticamente do nome do arquivo
+- Campo opcional `faq: [{q: ..., a: ...}]` — renderiza `<FaqBlock>` e emite schema `FAQPage`
+
+### Cases (Content Collections)
+- Cases em `src/content/cases/*.md`
+- **Sempre criar com `draft: true`** — Eloyse ativa manualmente após aprovar
+- Frontmatter obrigatório: `title`, `description`, `pubDate`, `client`, `sector`, `results`
+- Schema definido em `src/content/config.ts`
+- Slugs kebab-case ASCII (ex: `datarunk`, `nuvme`, `grupo-top`)
+
+### Dados factuais
+- Importar **sempre** de `src/data/credenciais.ts` — nunca duplicar números em `.astro` ou `.md`
+- Contém: anos de atuação, empresas atendidas, líderes desenvolvidos, assessments realizados
 
 ### SEO
 - `Layout.astro` gerencia todos os meta tags (OG, Twitter, canonical, JSON-LD)
-- JSON-LD: `Person` e `WebSite` na home; `Article` em posts de blog
-- Sitemap gerado automaticamente pelo `@astrojs/sitemap`
+- JSON-LD global: `Person` + `ProfessionalService` + `WebSite` em todas as páginas
+- `BlogLayout.astro`: emite `Article` JSON-LD; renderiza `<FaqBlock>` se frontmatter tiver `faq`
+- `PageLayout.astro`: inclui `<BreadcrumbList>` automático
+- `CaseLayout.astro`: emite `Article` JSON-LD para cases
+- Sitemap dinâmico via `src/pages/sitemap.xml.ts` (auto-detect de rotas)
 - `robots.txt` em `public/robots.txt`
+- `llms.txt` em `public/llms.txt` (índice para AI crawlers)
 
 ### Imagens
-- **Nunca** usar base64 inline — salvar arquivo em `public/images/`
-- Logos de clientes: `public/images/logos/logo_[nome].png`
-- Fotos: `public/images/photos/`
+- **Imagens de uso interno** (componentes Astro): ficam em `src/assets/` e são importadas via `astro:assets` com `<Image>` para WebP/AVIF automático e CLS zero
+- **Imagens públicas** (favicon, og-cover, portfólio PDF): ficam em `public/`
+- **Cover de posts** de blog: pode ser URL externa (Unsplash) ou arquivo em `public/images/blog/`
+- **Nunca** usar base64 inline no HTML/CSS
 - OG cover: `public/images/og-cover.jpg` (1200×630px)
 
 ---
@@ -155,14 +199,29 @@ site_eloysekonell/
 
 ### Adicionar um novo post de blog
 1. Criar `src/content/blog/[slug].md` com frontmatter correto
-2. Opcional: adicionar imagem OG em `public/images/blog/`
+2. Opcional: adicionar imagem OG em `public/images/blog/` ou usar URL externa
 3. `npm run build` para verificar
+
+### Adicionar FAQ a um post
+1. No frontmatter do post, adicionar `faq: [{q: "Pergunta?", a: "Resposta."}, ...]`
+2. O bloco `<FaqBlock>` renderiza automaticamente após o corpo do post
+3. Schema `FAQPage` é emitido automaticamente no `<head>`
+
+### Adicionar um novo case study
+1. Criar `src/content/cases/[slug].md` com frontmatter completo (ver schema em `src/content/config.ts`)
+2. **Sempre usar `draft: true`** — Eloyse ativa manualmente após aprovar
+3. `npm run build` para verificar
+
+### Adicionar uma nova página de serviço
+1. Criar `src/pages/servicos/[slug].astro` usando `<PageLayout>` e `<PageHero>`
+2. Emitir `Service` schema JSON-LD com `@id` estável: `https://eloysekonell.com.br/servicos/[slug]/#service`
+3. Adicionar entrada ao `hasOfferCatalog` em `src/layouts/Layout.astro`
 
 ### Adicionar depoimento
 - Editar array `testimonials` em `src/components/Testimonials.astro`
 
 ### Adicionar logo de cliente
-1. Adicionar imagem em `public/images/logos/`
+1. Adicionar imagem em `public/images/logos/` (uso via URL pública) ou `src/assets/logos/` (uso via `<Image>`)
 2. Adicionar entrada ao array `clients` em `src/components/Clients.astro`
 
 ### Alterar informações de contato

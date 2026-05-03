@@ -1,0 +1,206 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const title = 'Serviços — Eloyse Konell | Liderança e Gestão Estratégica de Pessoas';
+const description =
+  'Desenvolvimento de líderes, gestão estratégica de pessoas, assessment executivo e mentoria para empresas e líderes no Sul do Brasil. Conheça as frentes de atuação.';
+const canonical = `${SITE_URL}/servicos/`;
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Serviços' },
+];
+
+const services = [
+  {
+    title: 'Desenvolvimento de Líderes',
+    deck: 'Para empresas que precisam preparar gestores para o próximo nível de complexidade.',
+    href: '/servicos/desenvolvimento-de-liderancas/',
+    icon: '🎯',
+    bullets: [
+      'Programas sob medida para líderes em formação e gestores em transição',
+      'Abordagem baseada em neurociência e análise comportamental',
+      'Acompanhamento contínuo com metas e indicadores claros',
+    ],
+  },
+  {
+    title: 'Gestão Estratégica de Pessoas',
+    deck: 'Para PMEs que crescem e precisam estruturar gestão de pessoas sem montar um RH inteiro.',
+    href: '/servicos/gestao-estrategica-de-pessoas/',
+    icon: '🏗️',
+    bullets: [
+      'Diagnóstico e estruturação de processos de pessoas',
+      'Políticas, trilhas de carreira e retenção de talentos',
+      'Implantação prática, não apenas consultoria teórica',
+    ],
+  },
+  {
+    title: 'Assessment',
+    deck: 'Para tomadores de decisão que querem clareza sobre o potencial e o gap dos seus líderes.',
+    href: '/servicos/assessment/',
+    icon: '🔍',
+    bullets: [
+      'Mapeamento comportamental e de competências com ferramentas certificadas',
+      'Relatórios executivos para decisões de promoção, sucessão e equipes',
+      'Devolutivas individuais com plano de desenvolvimento',
+    ],
+  },
+  {
+    title: 'Mentoria Executiva',
+    deck: 'Para executivos em transição ou em novos desafios — espaço seguro para pensar a própria liderança.',
+    href: '/servicos/mentoria-executiva/',
+    icon: '💬',
+    bullets: [
+      'Processo individual com foco em resultados e autoconhecimento',
+      'Desenvolvimento de repertório para decisões de alta complexidade',
+      'Acompanhamento de 3 a 6 meses com sessões estruturadas',
+    ],
+  },
+];
+
+const collectionPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': canonical,
+  name: 'Serviços',
+  url: canonical,
+  description,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@id': `${SITE_URL}/#business` },
+  hasPart: [
+    { '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service` },
+    { '@id': `${SITE_URL}/servicos/gestao-estrategica-de-pessoas/#service` },
+    { '@id': `${SITE_URL}/servicos/assessment/#service` },
+    { '@id': `${SITE_URL}/servicos/mentoria-executiva/#service` },
+  ],
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  breadcrumb={breadcrumb}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(collectionPageSchema)} />
+  </Fragment>
+
+  <PageHero
+    slot="hero"
+    eyebrow="Serviços"
+    title="Como posso ajudar"
+    deck="Quatro frentes de atuação para empresas e líderes que querem método, não treinamento de prateleira."
+  />
+
+  <div class="wrap servicos-wrap">
+    <p class="servicos-intro">
+      Cada empresa atravessa momentos distintos: há quem precise formar líderes do zero, quem precise
+      estruturar o RH que nunca existiu, quem precise de um diagnóstico preciso antes de tomar uma
+      decisão estratégica, e quem precise de um espaço para pensar com clareza. Os quatro serviços
+      abaixo foram desenhados para esses momentos — não como pacotes genéricos, mas como respostas
+      a perguntas reais que líderes e empresas me trazem todos os dias.
+    </p>
+
+    <div class="servicos-grid">
+      {services.map((s) => (
+        <ServiceCard
+          title={s.title}
+          deck={s.deck}
+          href={s.href}
+          icon={s.icon}
+          bullets={s.bullets}
+        />
+      ))}
+    </div>
+
+    <div class="servicos-cta">
+      <p class="servicos-cta__text">Não sabe qual serviço encaixa? Vamos conversar.</p>
+      <a href="/contato/" class="btn">Falar com Eloyse →</a>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+  .servicos-wrap {
+    padding-bottom: 100px;
+  }
+
+  .servicos-intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--taupe);
+    max-width: 760px;
+    margin: 0 0 64px;
+  }
+
+  .servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  .servicos-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+
+  .servicos-cta__text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    color: var(--olive-deep);
+    margin: 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: transparent;
+    border: 1px solid var(--olive-deep);
+    color: var(--olive-deep);
+    font-family: var(--sans);
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: var(--bronze);
+    color: var(--olive-deep);
+    border-color: var(--bronze);
+  }
+
+  @media (max-width: 900px) {
+    .servicos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .servicos-intro {
+      margin-bottom: 40px;
+    }
+
+    .servicos-grid {
+      gap: 20px;
+    }
+
+    .servicos-cta {
+      padding: 48px 0;
+    }
+  }
+</style>

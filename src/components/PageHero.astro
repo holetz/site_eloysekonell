@@ -1,0 +1,111 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  deck?: string;
+  align?: 'left' | 'center';
+  image?: ImageMetadata;
+}
+
+const {
+  eyebrow,
+  title,
+  deck,
+  align = 'left',
+  image,
+} = Astro.props;
+---
+
+<header class={`page-hero page-hero--${align}${image ? ' page-hero--has-image' : ''}`}>
+  <div class="page-hero__content">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1 class="page-hero__title">{title}</h1>
+    {deck && <p class="page-hero__deck">{deck}</p>}
+    <slot />
+  </div>
+  {image && (
+    <div class="page-hero__image">
+      <Image src={image} alt={title} widths={[400, 720]} sizes="(max-width: 768px) 100vw, 480px" />
+    </div>
+  )}
+</header>
+
+<style>
+  .page-hero {
+    padding: 120px 0 60px;
+    position: relative;
+  }
+
+  .page-hero--has-image {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .page-hero--center .page-hero__content {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .page-hero--center .eyebrow {
+    justify-content: center;
+    display: inline-flex;
+  }
+
+  .page-hero__title {
+    margin: 20px 0 24px;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.08;
+  }
+
+  .page-hero__deck {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    line-height: 1.5;
+    color: var(--taupe);
+    max-width: 640px;
+    margin: 0;
+  }
+
+  .page-hero--center .page-hero__deck {
+    margin: 0 auto;
+  }
+
+  .page-hero__image {
+    flex-shrink: 0;
+  }
+
+  .page-hero__image img {
+    width: 480px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero--has-image {
+      grid-template-columns: 1fr;
+    }
+
+    .page-hero__image {
+      order: -1;
+    }
+
+    .page-hero__image img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 100px 0 40px;
+    }
+  }
+</style>

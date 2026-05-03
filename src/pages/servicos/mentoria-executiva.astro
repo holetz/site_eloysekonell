@@ -1,0 +1,329 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
+import { credenciais } from '../../data/credenciais';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const title = 'Mentoria Executiva 1-1 | Eloyse Konell';
+const description =
+  'Mentoria 1-1 para executivos em transição, novos desafios ou momentos de inflexão na carreira. Processo individual com repertório e método.';
+const canonical = `${SITE_URL}/servicos/mentoria-executiva/`;
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/servicos/' },
+  { label: 'Mentoria Executiva' },
+];
+
+const pcc = credenciais.formacao.find((f) => f.titulo.includes('PCC'));
+
+const temas = [
+  'Posicionamento e construção de autoridade na função',
+  'Gestão de stakeholders e navegação política organizacional',
+  'Decisões difíceis: demitir, promover, mudar escopo ou área',
+  'Construção e desenvolvimento de time',
+  'Transição cultural em fusões, aquisições ou mudanças de liderança',
+  'Conflitos com pares, sócios ou acionistas',
+  'Autogestão emocional em contextos de alta pressão',
+];
+
+const faqs = [
+  {
+    q: 'A mentoria funciona de forma remota?',
+    a: 'Sim. Os encontros acontecem por videoconferência como padrão. Para executivos fora de Blumenau ou com agenda intensa, o formato remoto é o mais frequente — e funciona muito bem. Quando há possibilidade de encontro presencial, pode ser combinado pontualmente.',
+  },
+  {
+    q: 'Qual é o investimento?',
+    a: 'O valor varia conforme a frequência dos encontros, a duração do ciclo e o contexto do processo. Solicite uma conversa inicial — sem compromisso — para entender o que faz sentido para a sua situação antes de falarmos sobre valores.',
+  },
+  {
+    q: 'Posso indicar a mentoria para alguém da minha empresa?',
+    a: 'Sim, com uma ressalva importante: o processo de mentoria executiva é confidencial e centrado na agenda do mentorado, não da empresa. Se o objetivo for desenvolvimento alinhado a uma estratégia organizacional, o formato de consultoria de pessoas pode ser mais adequado. Posso ajudar a avaliar qual abordagem faz mais sentido.',
+  },
+  {
+    q: 'A mentoria atende profissionais de nível gerencial ou apenas C-level?',
+    a: 'Atendo executivos em diferentes estágios — desde coordenadores sênior em primeira transição para gestão até diretores e CEOs em inflexões estratégicas. O critério não é o título: é o momento de carreira. Se você está diante de um novo escopo, uma responsabilidade maior ou uma decisão que define trajetória, o processo pode ser relevante.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/servicos/mentoria-executiva/#service`,
+  name: 'Mentoria Executiva',
+  serviceType: 'Mentoria Executiva',
+  description:
+    'Processo individual de mentoria executiva para líderes em transição de carreira, novos escopos ou momentos de inflexão profissional.',
+  provider: {
+    '@id': `${SITE_URL}/#business`,
+  },
+  areaServed: ['Brasil'],
+  url: `${SITE_URL}/servicos/mentoria-executiva/`,
+};
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  breadcrumb={breadcrumb}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <PageHero
+    slot="hero"
+    eyebrow="Mentoria Executiva"
+    title="Um espaço para pensar com quem já esteve lá"
+    deck="Processo individual para executivos que precisam de mais do que uma resposta — precisam de repertório para construir as suas."
+  />
+
+  <!-- PARA QUEM É -->
+  <section class="page-section mentoria-section">
+    <h2>Para quem é a mentoria executiva?</h2>
+    <p>
+      A mentoria executiva é para quem está em transição ou diante de um desafio que exige mais do
+      que competência técnica. Isso inclui executivos que acabaram de assumir uma promoção e precisam
+      reposicionar a forma como lideram, profissionais migrando para uma empresa de cultura muito
+      diferente da anterior, líderes que herdaram um time em crise e precisam construir autoridade
+      rapidamente, e sucessores em fase de preparação formal ou informal para assumir um cargo maior.
+    </p>
+    <p>
+      Também trabalho com executivos que simplesmente chegaram num momento de inflexão — aquele ponto
+      em que a pergunta "estou no caminho certo?" não tem resposta óbvia. Não precisa ter uma crise
+      visível para valer o processo.
+    </p>
+    <p>
+      A mentoria <strong>não é indicada</strong> para quem busca treinamento técnico-operacional
+      (gestão de projetos, domínio de ferramentas, atualização de área funcional). Para esses casos,
+      há formações e cursos mais adequados. O que ofereço aqui é repertório de liderança, perspectiva
+      e método de pensamento — não conteúdo técnico.
+    </p>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="page-section mentoria-section mentoria-section--alt">
+    <h2>Como funciona?</h2>
+    <p>
+      O processo começa com um diagnóstico inicial: uma conversa estruturada para entender onde você
+      está, o que está em jogo e o que você quer que seja diferente ao final do processo. Esse
+      diagnóstico define a âncora do trabalho — sem ela, os encontros viram conversa sem norte.
+    </p>
+    <p>
+      A partir daí, os encontros acontecem em formato quinzenal, com duração aproximada de 75 minutos
+      cada. A agenda de cada sessão é do mentorado — você chega com o que está ocupando mais espaço
+      na sua cabeça. Meu papel é trazer repertório, questionar os pressupostos, oferecer perspectivas
+      que não estão visíveis de dentro, e ajudar a organizar o pensamento para a decisão ou ação.
+    </p>
+    <p>
+      O ciclo mínimo é de três meses. É o tempo necessário para que o processo tenha profundidade
+      real — não apenas algumas conversas inspiradoras. Muitos processos se estendem além disso, mas
+      a decisão de continuar é sempre revisada ao final de cada ciclo.
+    </p>
+    <p>
+      Devolutivas escritas são opcionais: quando fazem sentido para o contexto (por exemplo, síntese
+      de uma decisão importante ou mapa de stakeholders), entrego um documento curto como registro.
+      Não é regra — é um recurso disponível quando agrega.
+    </p>
+  </section>
+
+  <!-- TEMAS -->
+  <section class="page-section mentoria-section">
+    <h2>Que temas costumam aparecer?</h2>
+    <p>
+      Cada processo é único, mas alguns temas aparecem com frequência — independentemente do setor ou
+      do nível hierárquico. Eles refletem os desafios que mais marcam as transições de liderança:
+    </p>
+    <ul class="mentoria-lista">
+      {temas.map((t) => (
+        <li>{t}</li>
+      ))}
+    </ul>
+    <p>
+      Esses temas não são uma lista fechada. O que define a pauta é sempre o que está sendo vivido
+      agora — não um roteiro pré-definido.
+    </p>
+  </section>
+
+  <!-- MENTORIA OU COACHING -->
+  <section class="page-section mentoria-section mentoria-section--alt">
+    <h2>Mentoria ou coaching?</h2>
+    <p>
+      A diferença é real e vale entender antes de contratar qualquer coisa. Na mentoria, o mentor
+      traz repertório: experiência acumulada, modelos mentais, perspectivas de quem já navegou
+      situações parecidas. Há troca de conhecimento, não apenas de perguntas. No coaching, o
+      profissional estimula a descoberta interna — o processo parte do pressuposto de que o cliente
+      tem as respostas e precisa de um espaço estruturado para acessá-las.
+    </p>
+    <p>
+      Na prática, os limites se cruzam. Tenho a certificação {pcc?.titulo} ({pcc?.sigla}) e opero
+      com rigor metodológico de coaching quando o momento pede reflexão e autopercepção. Mas também
+      trago repertório direto quando o contexto exige: frameworks, exemplos, perspectivas de outros
+      líderes em situações similares, questionamentos baseados em padrões que vi se repetir em
+      processos anteriores.
+    </p>
+    <p>
+      A forma como me movo entre os dois depende do que você precisa em cada sessão. Alguns momentos
+      pedem que eu compartilhe o que vejo. Outros pedem que eu cale e deixe o espaço trabalhar. Esse
+      discernimento é parte do que diferencia um bom processo de um encontro genérico.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="page-section mentoria-section">
+    <FaqBlock faqs={faqs} title="Perguntas frequentes" />
+  </section>
+
+  <!-- CTA -->
+  <section class="page-section mentoria-cta">
+    <div class="mentoria-cta-inner">
+      <p class="mentoria-cta-texto">
+        Pronto para ter esse espaço para si?
+      </p>
+      <p class="mentoria-cta-sub">
+        A primeira conversa é sem compromisso. Vamos entender se o processo faz sentido para o seu
+        momento antes de qualquer decisão.
+      </p>
+      <a href="/contato/" class="btn-primary">Falar com a Eloyse</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .mentoria-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--olive-deep);
+    margin: 0 0 28px;
+    line-height: 1.2;
+  }
+
+  .mentoria-section p {
+    max-width: 740px;
+    line-height: 1.75;
+    color: var(--taupe);
+    margin-bottom: 20px;
+  }
+
+  .mentoria-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .mentoria-section p strong {
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+
+  .mentoria-section--alt {
+    background: var(--sand-warm);
+    border-radius: 4px;
+    padding: 48px 56px;
+    margin-left: -56px;
+    margin-right: -56px;
+  }
+
+  .mentoria-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 48px;
+    max-width: 740px;
+  }
+
+  .mentoria-lista li {
+    color: var(--taupe);
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.55;
+    font-size: 0.96rem;
+  }
+
+  .mentoria-lista li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 2px;
+    background: var(--bronze);
+  }
+
+  .mentoria-cta {
+    padding-top: 0;
+  }
+
+  .mentoria-cta-inner {
+    background: var(--olive-deep);
+    border-radius: 4px;
+    padding: 64px 56px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .mentoria-cta-texto {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--sand);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+
+  .mentoria-cta-sub {
+    color: var(--taupe-soft);
+    font-size: 1rem;
+    margin: 0 0 40px;
+    line-height: 1.6;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--bronze);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--bronze-soft);
+  }
+
+  @media (max-width: 900px) {
+    .mentoria-lista {
+      grid-template-columns: 1fr;
+    }
+
+    .mentoria-section--alt {
+      margin-left: -24px;
+      margin-right: -24px;
+      padding: 36px 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mentoria-cta-inner {
+      padding: 48px 28px;
+    }
+
+    .mentoria-section--alt {
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: 0;
+    }
+  }
+</style>

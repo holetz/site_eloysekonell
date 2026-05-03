@@ -1,0 +1,113 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  entry: CollectionEntry<'cases'>;
+}
+
+const { entry } = Astro.props;
+const { client, sector, metric, problem } = entry.data;
+---
+
+<article class="case-card">
+  <div class="case-card__inner">
+    <div class="case-card__meta">
+      <span class="eyebrow">{sector}</span>
+    </div>
+
+    <h2 class="case-card__client">{client}</h2>
+
+    <p class="case-card__problem">{problem}</p>
+
+    {metric && (
+      <div class="case-card__metric">
+        <span class="metric-value">{metric}</span>
+      </div>
+    )}
+
+    <a href={`/cases/${entry.slug}/`} class="case-card__link">
+      Ler caso <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .case-card {
+    background: var(--sand);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--bronze);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -12px rgba(46, 45, 34, 0.14);
+  }
+
+  .case-card__inner {
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+  }
+
+  .case-card__meta {
+    display: flex;
+    align-items: center;
+  }
+
+  .case-card__client {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-weight: 500;
+    color: var(--olive-deep);
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .case-card__problem {
+    font-size: 0.96rem;
+    color: var(--taupe);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+  }
+
+  .case-card__metric {
+    padding: 14px 18px;
+    background: var(--sand-warm);
+    border-left: 2px solid var(--bronze);
+  }
+
+  .metric-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--olive-deep);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .case-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--olive-deep);
+    border-bottom: 1px solid var(--bronze);
+    padding-bottom: 2px;
+    width: fit-content;
+    margin-top: 8px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .case-card__link:hover {
+    color: var(--bronze);
+    border-color: var(--bronze);
+  }
+</style>

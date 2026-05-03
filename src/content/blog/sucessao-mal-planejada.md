@@ -7,6 +7,15 @@ tags: ["Estratégia"]
 readingTime: "6 min de leitura"
 coverImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=85"
 related: ["cadeira-vazia", "sucessor-e-sucessao", "tecnico-virou-gestor"]
+faq:
+  - q: "Quais são os erros mais comuns em processos de sucessão?"
+    a: "Os erros mais frequentes são: tratar a sucessão como emergência em vez de processo contínuo; escolher o sucessor pelo critério da lealdade ou senioridade, não do potencial; não preparar o sucessor escolhido com exposição real às decisões; e subestimar o impacto cultural da transição no time de segunda linha."
+  - q: "Como evitar uma sucessão apressada e desorganizada?"
+    a: "Começando cedo. A sucessão começa quando o líder atual decide formar pessoas — não quando decide sair. Isso significa criar um pipeline de talentos com desenvolvimento progressivo, exposição a decisões estratégicas e clareza sobre critérios de prontidão. Quem planeja com antecedência transforma a saída de um líder em renovação, não em crise."
+  - q: "O que acontece com o clima organizacional quando a sucessão não é planejada?"
+    a: "O clima deteriora rapidamente. Há incerteza sobre direção, sobrecarga para gestores que assumem partes da função vacante, e uma onda de conversas informais que preenche o vácuo de comunicação. Talentos da segunda linha perdem referência e, frequentemente, começam a buscar outras oportunidades."
+  - q: "Empresas pequenas também precisam de plano de sucessão?"
+    a: "Especialmente elas. Em PMEs, a concentração de conhecimento e decisão em um ou dois líderes é ainda maior. Quando esse líder sai sem preparação, o impacto é proporcionalmente mais grave. A questão não é o tamanho — é o risco de dependência de pessoas sem alternativa estruturada."
 ---
 
 Imagine uma organização como um grande navio, navegando em águas turbulentas. O capitão, experiente e conhecedor de cada detalhe da embarcação, é o responsável por guiar a tripulação com segurança. Agora, pense no que aconteceria se, de repente, esse capitão desaparecesse, sem que houvesse um substituto preparado para assumir o leme. O navio ficaria à deriva, os tripulantes entrariam em pânico e o risco de colisão ou naufrágio seria iminente.
@@ -19,7 +28,7 @@ A sucessão de liderança é um dos pilares mais críticos para o sucesso organi
 
 Processos são interrompidos, conhecimento estratégico se perde, a produtividade despenca e, no meio do caos, a confiança da equipe é abalada.
 
-## Além da substituição de um líder
+## Por que uma sucessão mal planejada vai além de perder um líder?
 
 O problema vai além da substituição de um líder. Uma sucessão mal planejada é como arrancar uma peça fundamental de uma engrenagem sem ter um substituto à mão. A organização não perde um profissional; perde a continuidade estratégica, a estabilidade e a visão de longo prazo que mantêm o negócio funcionando.
 
@@ -29,7 +38,7 @@ O vazio deixado por um líder que parte sem uma transição cuidadosa pode desen
 - Decisões impulsivas e desalinhadas
 - Clima organizacional marcado pela incerteza e desmotivação
 
-## Da crise à oportunidade
+## Como transformar a sucessão de crise em oportunidade estratégica?
 
 Para evitar esse cenário, é essencial que a sucessão seja tratada como um processo contínuo e estratégico, e não como uma medida de emergência. Imagine uma organização que, em vez de esperar pela crise, constrói um pipeline de talentos robusto, alinhado à sua estratégia e cultura.
 

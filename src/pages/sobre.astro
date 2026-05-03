@@ -1,0 +1,424 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { credenciais } from '../data/credenciais';
+import { Image } from 'astro:assets';
+import portraitImg from '../assets/photos/eloyse-portrait.jpg';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const profilePageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${SITE_URL}/sobre/`,
+  url: `${SITE_URL}/sobre/`,
+  name: 'Sobre Eloyse Konell',
+  mainEntity: { '@id': `${SITE_URL}/#eloyse` },
+};
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Sobre' },
+];
+---
+
+<PageLayout
+  title="Sobre Eloyse Konell — Consultora em Liderança e Gestão de Pessoas"
+  description="Conheça Eloyse Konell: consultora com 18 anos de atuação em liderança de alta performance e gestão estratégica de pessoas, baseada em Blumenau-SC, Vale do Itajaí."
+  canonical={`${SITE_URL}/sobre/`}
+  breadcrumb={breadcrumb}
+>
+  <PageHero
+    slot="hero"
+    eyebrow="Sobre"
+    title="Eloyse Konell"
+    deck="Consultora em liderança de alta performance e gestão estratégica de pessoas, baseada em Blumenau-SC."
+  />
+
+  <section class="sobre-page wrap">
+
+    <!-- Foto + Trajetória -->
+    <div class="sobre-grid reveal">
+      <div class="sobre-foto">
+        <Image
+          src={portraitImg}
+          alt="Eloyse Konell — consultora em liderança e gestão de pessoas"
+          width={480}
+          height={600}
+          loading="eager"
+          formats={['avif', 'webp']}
+        />
+      </div>
+
+      <div class="sobre-texto">
+        <h2>Trajetória</h2>
+        <p>
+          Com {credenciais.anosAtuacao} anos de atuação na interseção entre liderança, performance
+          de times e estratégia de pessoas, Eloyse Konell construiu sua trajetória dentro de
+          contextos reais de negócio — onde decisões sobre pessoas impactam diretamente resultado,
+          cultura e continuidade.
+        </p>
+        <p>
+          Ao longo desse caminho, desenvolveu líderes em todos os níveis de pipeline, de
+          coordenadores assumindo sua primeira equipe a executivos reposicionando sua atuação em
+          cenários de alta complexidade. Ajudou organizações a estruturar áreas de pessoas do zero,
+          a redesenhar arquiteturas organizacionais que já não sustentavam o crescimento, e a
+          construir pipelines de sucessão que antes simplesmente não existiam.
+        </p>
+        <p>
+          Ao todo, foram mais de {credenciais.lideresDesenvolvidos} líderes desenvolvidos,{' '}
+          {credenciais.assessmentsRealizados}+ assessments realizados e{' '}
+          {credenciais.empresasAtendidas}+ empresas atendidas — em sua maioria PMEs do Sul do
+          Brasil, com foco no Vale do Itajaí e Santa Catarina.
+        </p>
+        <p>
+          O que diferencia o trabalho de Eloyse não é apenas a experiência técnica: é a capacidade
+          de ler o negócio antes de falar sobre pessoas. Cada projeto é desenhado sob medida, com
+          soluções que chegam à ponta.
+        </p>
+
+        <div class="sobre-stats">
+          <div class="sobre-stat">
+            <span class="num">{credenciais.anosAtuacao}+</span>
+            <span class="label">Anos de atuação</span>
+          </div>
+          <div class="sobre-stat">
+            <span class="num">{credenciais.empresasAtendidas}+</span>
+            <span class="label">Empresas atendidas</span>
+          </div>
+          <div class="sobre-stat">
+            <span class="num">{credenciais.lideresDesenvolvidos}+</span>
+            <span class="label">Líderes desenvolvidos</span>
+          </div>
+          <div class="sobre-stat">
+            <span class="num">{credenciais.assessmentsRealizados}+</span>
+            <span class="label">Assessments realizados</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formação -->
+    <div class="sobre-formacao reveal delay-1">
+      <h2>Formação</h2>
+      <ul class="formacao-lista">
+        {credenciais.formacao.map((item) => (
+          <li class={`formacao-item formacao-item--${item.tipo}`}>
+            <span class="formacao-tipo">{item.tipo === 'graduacao' ? 'Graduação' : item.tipo === 'pos' ? 'Pós-graduação' : item.tipo === 'mba' ? 'MBA' : 'Certificação'}</span>
+            <span class="formacao-titulo">{item.titulo}</span>
+            <span class="formacao-instituicao">{item.sigla}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Como atuo -->
+    <div class="sobre-metodologia reveal delay-2">
+      <h2>Como atuo</h2>
+      <p>
+        A abordagem de Eloyse une neurociência, análise comportamental e visão estratégica de
+        negócio. Isso significa que cada diagnóstico começa pela leitura do contexto organizacional —
+        suas tensões, seu estágio de maturidade e o perfil das pessoas envolvidas — antes de qualquer
+        intervenção.
+      </p>
+      <p>
+        Ferramentas como análise comportamental avançada e coaching executivo são aplicadas de forma
+        integrada, não isolada. O resultado é um processo de desenvolvimento que faz sentido para
+        quem está na operação e para quem toma decisões estratégicas.
+      </p>
+      <a href="/metodologia/" class="link-arrow">Conheça a metodologia →</a>
+    </div>
+
+    <!-- Onde me encontro -->
+    <div class="sobre-localizacao reveal delay-3">
+      <h2>Onde me encontro</h2>
+      <p>
+        Baseada em {credenciais.localizacao.cidade}-{credenciais.localizacao.estado}, no{' '}
+        {credenciais.localizacao.regiao}, atende presencialmente empresas da região Sul e
+        remotamente em todo o Brasil.
+      </p>
+      <div class="sobre-redes">
+        <a
+          href="https://www.linkedin.com/in/eloysekonell"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-arrow"
+        >LinkedIn →</a>
+        <a
+          href="https://www.instagram.com/ek_gestaoeconsultoria"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-arrow"
+        >Instagram →</a>
+      </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="cta-block reveal">
+      <p class="cta-block__headline">Vamos conversar sobre sua liderança?</p>
+      <div class="cta-block__actions">
+        <a
+          href="https://wa.me/5547991443844"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--primary"
+        >Falar no WhatsApp</a>
+        <a href="/contato/" class="link-arrow">Ver formas de contato →</a>
+      </div>
+    </div>
+
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+</PageLayout>
+
+<style>
+  .sobre-page {
+    padding-bottom: 80px;
+  }
+
+  /* Grid foto + texto */
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 72px;
+  }
+
+  .sobre-foto img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .sobre-texto h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .sobre-texto p {
+    margin-bottom: 16px;
+    line-height: 1.75;
+  }
+
+  /* Stats */
+  .sobre-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .sobre-stat .num {
+    display: block;
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--bronze);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .sobre-stat .label {
+    font-size: 0.85rem;
+    color: var(--taupe);
+    line-height: 1.4;
+  }
+
+  /* Formação */
+  .sobre-formacao {
+    margin-bottom: 64px;
+  }
+
+  .sobre-formacao h2 {
+    margin-bottom: 28px;
+  }
+
+  .formacao-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .formacao-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .formacao-item:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .formacao-tipo {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--taupe-soft);
+    width: 100px;
+  }
+
+  .formacao-titulo {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--olive-deep);
+    line-height: 1.5;
+  }
+
+  .formacao-instituicao {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bronze);
+  }
+
+  /* Como atuo */
+  .sobre-metodologia {
+    margin-bottom: 64px;
+    max-width: 720px;
+  }
+
+  .sobre-metodologia h2 {
+    margin-bottom: 20px;
+  }
+
+  .sobre-metodologia p {
+    margin-bottom: 16px;
+    line-height: 1.75;
+  }
+
+  /* Onde me encontro */
+  .sobre-localizacao {
+    margin-bottom: 64px;
+    max-width: 720px;
+  }
+
+  .sobre-localizacao h2 {
+    margin-bottom: 20px;
+  }
+
+  .sobre-localizacao p {
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .sobre-redes {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* Link arrow */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bronze);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .link-arrow:hover {
+    color: var(--bronze-soft);
+  }
+
+  /* CTA block */
+  .cta-block {
+    background: var(--sand-warm);
+    border-radius: 8px;
+    padding: 48px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .cta-block__headline {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0;
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .cta-block__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn--primary {
+    background: var(--bronze);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    background: var(--bronze-soft);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .sobre-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .sobre-foto img {
+      max-height: 400px;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sobre-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .formacao-item {
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .formacao-tipo {
+      width: auto;
+    }
+
+    .cta-block {
+      padding: 32px 24px;
+    }
+
+    .cta-block__actions {
+      width: 100%;
+    }
+  }
+</style>

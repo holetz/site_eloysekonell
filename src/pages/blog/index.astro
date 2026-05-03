@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import { getImage } from 'astro:assets';
+import authorPhotoSrc from '../../assets/photos/eloyse-author-blog.jpg';
 
 const allPosts = (await getCollection('blog', ({ data }: any) => !data.draft || import.meta.env.DEV))
   .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -13,6 +15,7 @@ const categoryOrder = ['Estratégia', 'Liderança', 'Performance', 'Pessoas'];
 const tagSet = new Set<string>();
 allPosts.forEach((p: any) => p.data.tags.forEach((t: string) => tagSet.add(t)));
 const categories = categoryOrder.filter((c) => tagSet.has(c));
+const authorPhoto = await getImage({ src: authorPhotoSrc, width: 120, height: 120, format: 'webp' });
 
 function slugifyTag(tag: string) {
   return tag
@@ -207,7 +210,7 @@ function formatDate(date: Date) {
         <div class="author">
           <div
             class="author-photo"
-            style="background-image:url('/images/photos/eloyse-author-blog.jpg')"
+            style={`background-image:url('${authorPhoto.src}')`}
             aria-label="Eloyse Konell"
           ></div>
           <div class="author-content">
@@ -333,7 +336,7 @@ function formatDate(date: Date) {
   /* HERO */
   .b-hero {
     background: var(--sand-warm);
-    padding: 200px 0 110px;
+    padding: 160px 0 90px;
     text-align: center;
     border-bottom: 1px solid var(--line);
   }
@@ -445,7 +448,7 @@ function formatDate(date: Date) {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 56px;
+    margin-bottom: 40px;
   }
   .cat-pill {
     padding: 11px 24px;
@@ -494,7 +497,7 @@ function formatDate(date: Date) {
     background-size: cover;
     background-position: center;
   }
-  .article-body { padding: 32px 30px; }
+  .article-body { padding: 32px; }
   .article-body .b-eyebrow { margin-bottom: 14px; display: block; }
   .article h3 {
     font-size: 1.4rem;
@@ -531,7 +534,7 @@ function formatDate(date: Date) {
   .nl-section {
     background: var(--olive-deep);
     color: var(--sand);
-    margin: 90px 0;
+    margin: 0;
     position: relative;
     overflow: hidden;
   }
@@ -681,7 +684,6 @@ function formatDate(date: Date) {
   }
 
   /* AUTHOR */
-  .b-author-section { padding-top: 0; }
   .author {
     display: grid;
     grid-template-columns: 1fr 1.6fr;
@@ -693,6 +695,7 @@ function formatDate(date: Date) {
   }
   .author-photo {
     aspect-ratio: 4 / 5;
+    max-width: 320px;
     background-color: var(--olive);
     background-size: cover;
     background-position: center;
@@ -727,7 +730,7 @@ function formatDate(date: Date) {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
-  .partners-header { text-align: center; margin-bottom: 60px; }
+  .partners-header { text-align: center; max-width: 1040px; margin: 0 auto 60px; }
   .partners-header .b-eyebrow { display: inline-block; margin-bottom: 14px; }
   .partners-header h2 {
     font-size: clamp(1.9rem, 3.4vw, 2.6rem);
@@ -780,7 +783,7 @@ function formatDate(date: Date) {
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .b-hero { padding: 140px 0 80px; }
+    .b-hero { padding: 120px 0 70px; }
     .blog-main .b-section { padding: 60px 0; }
 
     .featured-card { grid-template-columns: 1fr; }
@@ -788,7 +791,7 @@ function formatDate(date: Date) {
     .featured-body { padding: 36px 28px; gap: 28px; }
     .featured-foot { flex-wrap: wrap; gap: 14px; }
 
-    .articles-grid { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
     .nl-grid { grid-template-columns: 1fr; }
     .nl-left, .nl-right { padding: 50px 32px; }
@@ -800,10 +803,15 @@ function formatDate(date: Date) {
     .nl-meta { gap: 24px; flex-wrap: wrap; }
 
     .author { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
+    .author-photo { max-width: 280px; margin: 0 auto; }
 
     .partners-grid { grid-template-columns: 1fr; }
     .partner-card { grid-template-columns: 1fr; text-align: center; }
     .partner-logo { margin: 0 auto; }
+  }
+
+  @media (max-width: 560px) {
+    .articles-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 640px) {

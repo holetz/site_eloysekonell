@@ -1,5 +1,6 @@
 {
   "enabledPlugins": {
-    "claude-seo@agricidaniel-seo": true
+    "claude-seo@agricidaniel-seo": true,
+    "frontend-design@claude-plugins-official": true
   }
 }

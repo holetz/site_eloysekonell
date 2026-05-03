@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import studyImg from '../assets/photos/eloyse-study.jpg';
 ---
 <!-- CONSULTORIA -->
 <section class="consultoria" id="consultoria">
@@ -24,7 +26,14 @@
         </div>
       </div>
       <div class="consultoria-photo reveal delay-2">
-        <img src="/images/photos/eloyse-study.jpg" alt="Eloyse Konell — estudo e preparação" />
+        <Image
+          src={studyImg}
+          alt="Eloyse Konell — estudo e preparação"
+          width={560}
+          height={700}
+          loading="lazy"
+          formats={['avif', 'webp']}
+        />
       </div>
     </div>
   </div>

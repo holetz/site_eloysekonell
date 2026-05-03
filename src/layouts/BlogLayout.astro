@@ -2,7 +2,11 @@
 import Layout from './Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import BreadcrumbList from '../components/BreadcrumbList.astro';
+import FaqBlock from '../components/FaqBlock.astro';
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import authorPhotoSrc from '../assets/photos/eloyse-author-blog.jpg';
 
 export interface Props {
   title: string;
@@ -15,6 +19,7 @@ export interface Props {
   tags?: string[];
   readingTime: string;
   related?: string[];
+  faq?: Array<{ q: string; a: string }>;
 }
 
 const {
@@ -28,6 +33,7 @@ const {
   tags = [],
   readingTime,
   related = [],
+  faq,
 } = Astro.props;
 
 const SITE_URL = 'https://eloysekonell.com.br';
@@ -52,6 +58,8 @@ if (related.length > 0) {
 const shareUrl = encodeURIComponent(canonical);
 const shareTitle = encodeURIComponent(title);
 
+const authorPhoto = await getImage({ src: authorPhotoSrc, width: 120, height: 120, format: 'webp' });
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -60,7 +68,8 @@ const articleSchema = {
   url: canonical,
   datePublished: dateIso,
   dateModified: (updatedDate ?? pubDate).toISOString(),
-  author: { '@type': 'Person', name: 'Eloyse Konell', url: SITE_URL },
+  author: { '@id': `${SITE_URL}#eloyse` },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
   publisher: {
     '@type': 'Organization',
     name: 'Eloyse Konell — Gestão e Consultoria',
@@ -83,11 +92,11 @@ const articleSchema = {
 
   <main class="article-main">
     <div class="wrap">
-      <div class="breadcrumb">
-        <a href="/blog">Artigos</a>
-        {category && <><span>/</span><span>{category}</span></>}
-        <span>/</span><span>{title}</span>
-      </div>
+      <BreadcrumbList items={[
+        { label: 'Início', href: SITE_URL },
+        { label: 'Blog', href: `${SITE_URL}/blog/` },
+        { label: title },
+      ]} />
     </div>
 
     <header class="article-header">
@@ -104,17 +113,23 @@ const articleSchema = {
     </header>
 
     {coverImage && (
-      <div class="cover" style={`background-image:url('${coverImage}')`}></div>
+      <div class="cover" style={`background-image:url('${coverImage}');aspect-ratio:16/7`}></div>
     )}
 
     <article class="article-body" itemscope itemtype="https://schema.org/Article">
       <slot />
     </article>
 
+    {faq && faq.length > 0 && (
+      <div class="wrap faq-wrap">
+        <FaqBlock faqs={faq} />
+      </div>
+    )}
+
     <div class="author-bio">
       <div
         class="author-bio-photo"
-        style="background-image:url('/images/photos/eloyse-author-blog.jpg')"
+        style={`background-image:url('${authorPhoto.src}')`}
       ></div>
       <div>
         <span class="art-eyebrow">Sobre a autora</span>

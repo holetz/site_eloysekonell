@@ -1,0 +1,110 @@
+---
+export interface Props {
+  faqs: Array<{ q: string; a: string }>;
+  title?: string;
+}
+
+const { faqs, title = 'Perguntas frequentes' } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a,
+    },
+  })),
+};
+---
+
+<section class="faq-block">
+  <h2 class="faq-title">{title}</h2>
+  <div class="faq-list">
+    {faqs.map(({ q, a }) => (
+      <details class="faq-item">
+        <summary class="faq-question">{q}</summary>
+        <div class="faq-answer"><p>{a}</p></div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faq-block {
+    margin: 3rem 0;
+  }
+
+  .faq-title {
+    font-family: var(--font-serif, 'Cormorant Garamond', serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--olive-deep);
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .faq-item {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--sand);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item[open] {
+    border-color: var(--bronze);
+  }
+
+  .faq-question {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-sans, 'Manrope', sans-serif);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--olive-deep);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--bronze);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1rem;
+    font-family: var(--font-sans, 'Manrope', sans-serif);
+    font-size: 0.9375rem;
+    color: var(--taupe);
+    line-height: 1.7;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+</style>

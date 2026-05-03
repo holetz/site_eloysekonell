@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { credenciais } from '../data/credenciais';
 
 export interface Props {
   title?: string;
@@ -50,6 +51,21 @@ const personSchema = {
     'https://www.linkedin.com/company/eloysekonell',
     'https://www.linkedin.com/in/eloysekonell',
   ],
+  knowsAbout: credenciais.areasConhecimento,
+  alumniOf: credenciais.alumniOf.map((inst) => ({
+    '@type': 'EducationalOrganization',
+    name: inst.name,
+    url: inst.url,
+  })),
+  hasCredential: credenciais.formacao.map((f) => ({
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: f.tipo === 'certificacao' ? 'certification' : 'degree',
+    name: f.titulo,
+    recognizedBy: {
+      '@type': 'Organization',
+      name: f.sigla,
+    },
+  })),
 };
 
 const websiteSchema = {
@@ -93,6 +109,40 @@ const professionalServiceSchema = {
     'https://www.instagram.com/ek_gestaoeconsultoria',
     'https://www.linkedin.com/company/eloysekonell',
   ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Serviços',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${SITE_URL}/servicos/gestao-estrategica-de-pessoas/#service`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${SITE_URL}/servicos/assessment/#service`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${SITE_URL}/servicos/mentoria-executiva/#service`,
+        },
+      },
+    ],
+  },
 };
 ---
 <!doctype html>
@@ -142,6 +192,9 @@ const professionalServiceSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(professionalServiceSchema)} />
+
+    <!-- Slot for additional head content (JSON-LD, meta tags) -->
+    <slot name="head" />
   </head>
   <body>
     <slot />

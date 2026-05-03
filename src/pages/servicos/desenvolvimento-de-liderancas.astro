@@ -1,0 +1,530 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
+import { credenciais } from '../../data/credenciais';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service`,
+  name: 'Desenvolvimento de Líderes',
+  serviceType: 'Desenvolvimento de Líderes',
+  provider: { '@id': `${SITE_URL}/#business` },
+  areaServed: ['Brasil', 'Santa Catarina', 'Vale do Itajaí'],
+  description:
+    'Programas estruturados de desenvolvimento de líderes para PMEs: diagnóstico comportamental, trilhas individuais e coletivas, acompanhamento e mensuração de resultados.',
+  url: `${SITE_URL}/servicos/desenvolvimento-de-liderancas/`,
+};
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/servicos/' },
+  { label: 'Desenvolvimento de Líderes' },
+];
+
+const faqs = [
+  {
+    q: 'Quanto tempo leva para ver resultado?',
+    a: 'Os primeiros sinais aparecem entre o segundo e o terceiro mês — mudanças de postura, conversas mais diretas, menor dependência do gestor sênior. Resultados mensuráveis em clima, retenção e entrega costumam ser visíveis entre 4 e 12 meses, dependendo do ponto de partida e da frequência do acompanhamento. Desenvolvimento de liderança não é sprint; é processo com ritmo definido.',
+  },
+  {
+    q: 'Funciona para empresa pequena (até 30 pessoas)?',
+    a: 'Sim — e muitas vezes é nesse porte que o desenvolvimento de líderes causa impacto mais rápido. Em empresas menores, cada liderança tem influência direta sobre clima, produtividade e resultado. O formato é adaptado ao contexto: sem burocracia de grandes corporações, focado no que o negócio realmente precisa.',
+  },
+  {
+    q: 'É treinamento ou consultoria?',
+    a: 'Não é treinamento de prateleira. É um processo consultivo que começa com diagnóstico do perfil comportamental e do contexto organizacional, define planos individuais e coletivos, acompanha a execução e mensura resultados. Diferente de um workshop isolado, o trabalho é contínuo — o líder não recebe conteúdo, recebe acompanhamento.',
+  },
+  {
+    q: 'Como é cobrado?',
+    a: 'O modelo de contratação é discutido a partir do diagnóstico inicial, que define escopo, frequência e duração. Não há pacotes fixos: cada proposta é desenhada para o tamanho e a complexidade do projeto. A conversa começa sem compromisso — o objetivo é entender se faz sentido antes de qualquer proposta.',
+  },
+  {
+    q: 'Trabalha com líderes técnicos (engenharia/TI)?',
+    a: 'Sim. Líderes técnicos que assumem gestão de pessoas são um dos perfis mais comuns nos projetos. A transição de especialista para gestor tem dinâmicas específicas — perda de identidade técnica, dificuldade com feedback, resistência a delegar — e o acompanhamento é desenhado justamente para essas tensões. A base em análise comportamental avançada e neurociência permite trabalhar com perfis de alta racionalidade sem forçar modelos genéricos.',
+  },
+];
+---
+
+<PageLayout
+  title="Desenvolvimento de Líderes na PME | Eloyse Konell"
+  description="Programas estruturados de desenvolvimento de líderes para PMEs: diagnóstico comportamental, trilhas individuais e coletivas, com acompanhamento e mensuração real de resultados."
+  canonical={`${SITE_URL}/servicos/desenvolvimento-de-liderancas/`}
+  breadcrumb={breadcrumb}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    slot="hero"
+    eyebrow="Serviços"
+    title="Desenvolvimento de líderes na PME"
+    deck="Líderes não nascem prontos. E esperar que amadureçam por conta própria tem um custo que a maioria das empresas só percebe quando já é tarde."
+  />
+
+  <article class="servico-page wrap">
+
+    <!-- O que é -->
+    <section class="servico-section reveal">
+      <h2>O que é desenvolvimento de líderes na PME?</h2>
+      <p>
+        Desenvolvimento de líderes é o processo estruturado de ampliar a capacidade de uma pessoa
+        de conduzir times, tomar decisões sob pressão, influenciar sem autoridade e sustentar
+        resultados no longo prazo. Não é sinônimo de treinamento — treinamento transmite conteúdo;
+        desenvolvimento muda comportamento.
+      </p>
+      <p>
+        Para a PME, isso tem uma tradução prática: o gestor que gritava para cobrar aprende a dar
+        feedback direto sem destruir relacionamento. O líder técnico que evitava conflito começa a
+        fazer conversas difíceis na semana certa, não dois meses depois. O sócio-fundador que
+        centralizava tudo constrói uma segunda camada de liderança que realmente funciona.
+      </p>
+      <p>
+        A diferença entre o desenvolvimento praticado em grandes corporações e o que funciona na PME
+        está no ritmo e na ancoragem. Nas grandes empresas, há estrutura para absorver programas
+        longos com trilhas padronizadas. Na PME, o líder está na operação enquanto aprende — e o
+        desenvolvimento precisa ser aplicado no mesmo dia, no contexto real, não em sala de aula.
+        É essa lógica que orienta cada projeto conduzido por Eloyse Konell.
+      </p>
+    </section>
+
+    <!-- Quando investir -->
+    <section class="servico-section reveal delay-1">
+      <h2>Quando uma PME precisa investir em desenvolvimento de líderes?</h2>
+      <p>
+        O sinal mais comum é a sensação de que "as pessoas certas estão nos lugares errados" —
+        mas raramente a questão é só de posicionamento. Na maioria dos casos, o que está faltando
+        é repertório de liderança. Os sinais que aparecem com mais frequência:
+      </p>
+      <ol class="servico-lista">
+        <li>
+          <strong>Turnover de liderança recorrente.</strong> Coordenadores e gerentes que entram,
+          parecem promissores nos primeiros meses e saem antes de completar um ano. Normalmente um
+          indicativo de que o contexto não oferece suporte suficiente para a curva de adaptação.
+        </li>
+        <li>
+          <strong>Gestores técnicos sem repertório de gente.</strong> O melhor desenvolvedor virou
+          tech lead. O engenheiro mais experiente virou gerente de engenharia. A competência técnica
+          está lá; a competência de gestão, não. O resultado: times dependentes, feedbacks que não
+          acontecem, problemas que viram crises.
+        </li>
+        <li>
+          <strong>Sucessão sem planejamento.</strong> A empresa depende de uma ou duas pessoas para
+          funcionar. Se elas saem — por escolha, por doença, por oportunidade — o negócio para.
+          Nenhum processo de sucessão estruturado existe; há apenas nomes informais.
+        </li>
+        <li>
+          <strong>Conflitos recorrentes entre líderes.</strong> Desentendimentos que voltam todo
+          mês, áreas que não conversam, decisões que ficam presas entre dois gestores com visões
+          diferentes e sem habilidade para resolver o impasse. Sintoma frequente de lideranças sem
+          habilidade relacional desenvolvida.
+        </li>
+        <li>
+          <strong>Expansão exigindo nova camada de gestão.</strong> A empresa cresceu. Precisa
+          criar a função de gerência onde antes havia só coordenação, ou estruturar a diretoria que
+          antes era informal. As pessoas estão lá — falta prepará-las para o novo nível de
+          responsabilidade.
+        </li>
+      </ol>
+      <p>
+        Se dois ou mais desses sinais estão presentes, o investimento em desenvolvimento de
+        liderança não é uma iniciativa de RH — é uma decisão de negócio.
+      </p>
+    </section>
+
+    <!-- Como funciona na prática -->
+    <section class="servico-section reveal delay-1">
+      <h2>Como o desenvolvimento de líderes funciona na prática?</h2>
+      <p>
+        O trabalho segue uma estrutura em quatro etapas, desenhada para que cada fase informe
+        a seguinte — sem pular para soluções antes de entender o problema real.
+      </p>
+
+      <div class="etapas">
+        <div class="etapa">
+          <span class="etapa-num">01</span>
+          <div>
+            <h3>Diagnóstico</h3>
+            <p>
+              Antes de qualquer intervenção, mapeamos o perfil comportamental de cada líder —
+              usando análise comportamental avançada com base em metodologia GROU — e o contexto
+              organizacional no qual ele atua. O diagnóstico responde duas perguntas: o que esse
+              líder precisa desenvolver, e o que o contexto está ou não favorecendo. Sem esse mapa,
+              qualquer programa é aposta.
+            </p>
+          </div>
+        </div>
+
+        <div class="etapa">
+          <span class="etapa-num">02</span>
+          <div>
+            <h3>Plano individual e coletivo</h3>
+            <p>
+              A partir do diagnóstico, construímos trilhas. O plano individual foca nos gaps e
+              alavancas de cada líder — o que precisa ser trabalhado e em que ordem. O plano
+              coletivo, quando há um time de líderes, olha para as dinâmicas de grupo: onde a
+              equipe de gestão trava, como as lideranças se complementam ou se atritam. Os dois
+              planos coexistem e se retroalimentam.
+            </p>
+          </div>
+        </div>
+
+        <div class="etapa">
+          <span class="etapa-num">03</span>
+          <div>
+            <h3>Execução acompanhada</h3>
+            <p>
+              O desenvolvimento acontece em sessões regulares — individuais, em grupo ou ambos —
+              com cadência definida. Não é palestra. Cada sessão trabalha um desafio real que o
+              líder está enfrentando no momento: a conversa difícil que adiou, a decisão que trava,
+              o conflito que voltou. O aprendizado é aplicado em contexto, não em abstrato. A
+              certificação PCC® e a formação em neurociência e comportamento informam as
+              intervenções — sem forçar modelos que não se encaixam na realidade de quem está
+              na operação.
+            </p>
+          </div>
+        </div>
+
+        <div class="etapa">
+          <span class="etapa-num">04</span>
+          <div>
+            <h3>Mensuração</h3>
+            <p>
+              Definimos indicadores no início do processo — não depois. Podem ser quantitativos
+              (turnover de time, absenteísmo, NPS interno) ou qualitativos (qualidade do feedback
+              percebida, clareza de expectativas, autonomia no time). Ao longo do processo, esses
+              indicadores são revisitados para ajustar o que precisa ser ajustado e evidenciar o
+              que está evoluindo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultados -->
+    <section class="servico-section reveal">
+      <h2>Que resultados esperar?</h2>
+      <p>
+        Projetos bem conduzidos de desenvolvimento de liderança geram impacto em três dimensões:
+        nas pessoas, nos times e no negócio. Os resultados mais frequentes nos projetos
+        acompanhados por Eloyse Konell:
+      </p>
+      <ul class="servico-bullets">
+        <li>Redução de turnover em times liderados, especialmente nos primeiros 12 meses.</li>
+        <li>Decisões mais consistentes e menos dependentes do fundador ou CEO.</li>
+        <li>Ciclos de feedback que acontecem, não que ficam na intenção.</li>
+        <li>Sucessão visível: um banco de talentos identificado e em desenvolvimento ativo.</li>
+        <li>
+          Retenção de talentos críticos — pessoas que ficam não apenas pelo salário, mas porque
+          percebem que estão crescendo.
+        </li>
+        <li>
+          Menos crises de liderança: conflitos resolvidos antes de virar problema de negócio.
+        </li>
+      </ul>
+      <p class="cautela">
+        <strong>Prazo realista:</strong> os primeiros sinais aparecem entre o 2.º e o 3.º mês.
+        Resultados sólidos e mensuráveis se consolidam entre 4 e 12 meses — dependendo do ponto
+        de partida, da frequência do processo e do comprometimento dos líderes envolvidos.
+        Quem busca solução em 30 dias está buscando a resposta errada.
+      </p>
+    </section>
+
+    <!-- Por que essa abordagem -->
+    <section class="servico-section reveal delay-1">
+      <h2>Por que essa abordagem?</h2>
+      <p>
+        A maioria do que é vendido como "desenvolvimento de líderes" no mercado são treinamentos
+        genéricos: conteúdo excelente para o contexto de quem o escreveu, de difícil aplicação no
+        contexto de quem o recebeu. Um workshop de dois dias sobre feedback não transforma o gestor
+        que nunca deu feedback difícil em alguém que dá feedback difícil toda semana.
+        Conteúdo sem acompanhamento não muda comportamento — apenas atualiza repertório intelectual.
+      </p>
+      <p>
+        A abordagem praticada aqui parte de uma premissa diferente: o que precisa mudar não é o
+        que o líder sabe, mas o que ele faz — e sob qual condição ele faz isso com consistência.
+        Isso exige entender o perfil comportamental (para onde esse líder vai naturalmente e onde
+        precisa de esforço consciente), o contexto organizacional (o que o sistema está reforçando
+        ou punindo) e a neurociência da mudança de comportamento (como o cérebro consolida novos
+        padrões em condições de pressão).
+      </p>
+      <p>
+        É essa integração — análise comportamental avançada (GROU), coaching executivo (PCC® SLAC),
+        neurociência e comportamento (MBA PUCRS) e {credenciais.anosAtuacao} anos de prática em
+        contextos reais de PME — que diferencia o trabalho. Não é método de prateleira.
+        É um processo desenhado para o líder que está na operação agora.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="servico-section reveal">
+      <FaqBlock faqs={faqs} title="Perguntas frequentes sobre desenvolvimento de líderes" />
+    </section>
+
+    <!-- Posts relacionados -->
+    <section class="servico-section servico-leituras reveal delay-1">
+      <h2>Leituras relacionadas</h2>
+      <p>Aprofunde o tema nos artigos do blog:</p>
+      <ul class="leituras-lista">
+        <li>
+          <a href="/blog/tecnico-virou-gestor/" class="leitura-link">
+            O Melhor Técnico do Time Virou Gestor. E Tudo Desmoronou. →
+          </a>
+        </li>
+        <li>
+          <a href="/blog/sucessor-e-sucessao/" class="leitura-link">
+            Sua Empresa Tem um Sucessor. Mas Tem uma Sucessão? →
+          </a>
+        </li>
+        <li>
+          <a href="/blog/cadeira-vazia/" class="leitura-link">
+            A Cadeira Vazia na Sala de Reuniões: O Custo Invisível de Não Preparar Seus Líderes →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-block reveal">
+      <p class="cta-block__headline">
+        Vamos avaliar como aplicar isso na sua empresa?
+      </p>
+      <div class="cta-block__actions">
+        <a
+          href="https://wa.me/5547991443844"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--primary"
+        >Falar no WhatsApp</a>
+        <a href="/contato/" class="link-arrow">Ver formas de contato →</a>
+      </div>
+    </div>
+
+  </article>
+</PageLayout>
+
+<style>
+  .servico-page {
+    padding-bottom: 80px;
+  }
+
+  .servico-section {
+    max-width: 760px;
+    margin-bottom: 64px;
+  }
+
+  .servico-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--olive-deep);
+    margin-top: 0;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .servico-section h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--olive-deep);
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .servico-section p {
+    line-height: 1.8;
+    margin-bottom: 18px;
+    color: var(--taupe);
+  }
+
+  .servico-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Lista numerada */
+  .servico-lista {
+    padding-left: 1.5rem;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    color: var(--taupe);
+    line-height: 1.8;
+  }
+
+  .servico-lista li strong {
+    color: var(--olive-deep);
+  }
+
+  /* Bullets */
+  .servico-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .servico-bullets li {
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.7;
+    color: var(--taupe);
+  }
+
+  .servico-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--bronze);
+    font-weight: 600;
+  }
+
+  /* Cautela */
+  .cautela {
+    background: var(--sand-warm);
+    border-left: 3px solid var(--bronze);
+    padding: 16px 20px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.925rem !important;
+    margin-top: 24px !important;
+  }
+
+  /* Etapas */
+  .etapas {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .etapa {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .etapa-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bronze);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .etapa p {
+    margin-bottom: 0;
+  }
+
+  /* Leituras relacionadas */
+  .servico-leituras {
+    padding-top: 8px;
+  }
+
+  .leituras-lista {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .leitura-link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bronze);
+    text-decoration: none;
+    transition: color 0.2s;
+    line-height: 1.5;
+  }
+
+  .leitura-link:hover {
+    color: var(--bronze-soft);
+  }
+
+  /* CTA block */
+  .cta-block {
+    background: var(--sand-warm);
+    border-radius: 8px;
+    padding: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .cta-block__headline {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0;
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .cta-block__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn--primary {
+    background: var(--bronze);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    background: var(--bronze-soft);
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bronze);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .link-arrow:hover {
+    color: var(--bronze-soft);
+  }
+
+  @media (max-width: 640px) {
+    .etapa {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .cta-block {
+      padding: 32px 24px;
+    }
+
+    .cta-block__actions {
+      width: 100%;
+    }
+  }
+</style>

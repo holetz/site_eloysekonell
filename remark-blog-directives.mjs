@@ -109,6 +109,36 @@ export function remarkBlogDirectives() {
         });
       }
 
+      // :::faq — container directive: ### Question\nAnswer pairs
+      if (node.type === 'containerDirective' && node.name === 'faq') {
+        const items = [];
+        const children = node.children || [];
+        let currentQuestion = null;
+        for (const child of children) {
+          if (child.type === 'heading' && child.depth === 3) {
+            currentQuestion = extractText(child);
+          } else if (currentQuestion !== null && child.type === 'paragraph') {
+            const answer = extractText(child).trim();
+            if (answer) {
+              items.push({ q: currentQuestion, a: answer });
+              currentQuestion = null;
+            }
+          }
+        }
+        const detailsHtml = items
+          .map(({ q, a }) =>
+            `<details class="faq-item"><summary class="faq-question">${escapeHtml(q)}</summary><div class="faq-answer"><p>${escapeHtml(a)}</p></div></details>`
+          )
+          .join('\n');
+        Object.assign(node, {
+          type: 'html',
+          value: `<section class="faq-block faq-block--directive">\n${detailsHtml}\n</section>`,
+          children: undefined,
+          name: undefined,
+          attributes: undefined,
+        });
+      }
+
       // :::exercise{title description} pipe-delimited items :::
       // Each line: "01 | **Question** | Hint text"
       // Uses inlineToHtml+splitAtBreaks because remark already parsed **bold** into strong nodes

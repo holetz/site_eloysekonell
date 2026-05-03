@@ -7,6 +7,15 @@ tags: ["Liderança", "Pessoas"]
 readingTime: "6 min de leitura"
 related: ["tecnico-virou-gestor", "saude-mental-estrategia", "hora-de-mudar"]
 draft: true
+faq:
+  - q: "O que considerar antes de falar como líder em uma situação difícil?"
+    a: "Quatro perguntas essenciais: O que estou sentindo agora? O que essa pessoa precisa ouvir e sentir? Qual o resultado real que quero dessa conversa? E estou no estado certo para conduzir isso agora? Se a resposta para a última for não, adie. Conversa difícil em estado emocional ruim não é coragem — é descontrole travestido de liderança."
+  - q: "Como construir uma comunicação de liderança que conecta em vez de afastar?"
+    a: "Desenvolvendo consciência sobre o que você transmite além das palavras: tom, pausa, postura, expressão. A equipe lê esses sinais antes de processar o conteúdo. Líderes que se comunicam de forma conectiva aprenderam a regular o que sentem antes de regular o que falam — porque o time responde à sua presença, não apenas às suas palavras."
+  - q: "Por que líderes com boa intenção ainda causam ruído na comunicação?"
+    a: "Porque intenção e impacto são coisas diferentes. Um líder pode querer motivar e conseguir ansiar. Pode querer dar feedback e conseguir gerar insegurança. A distância entre o que você quer dizer e o que o outro recebe é o espaço onde a inteligência emocional atua — ou deixa de atuar."
+  - q: "O que é regulação emocional na liderança e como desenvolvê-la?"
+    a: "Regulação emocional é a capacidade de reconhecer o que você está sentindo e escolher como agir a partir disso — sem reprimir nem descarregar. Na liderança, ela se desenvolve através de autoconhecimento (saber seu padrão de reação), prática de pausa (os três segundos antes de responder) e, frequentemente, acompanhamento especializado que ajude a mapear pontos cegos comportamentais."
 ---
 
 Você terminou a reunião achando que foi clara. Direta. Profissional.
@@ -23,7 +32,7 @@ Daniel Goleman, que ajudou a popularizar o conceito de inteligência emocional a
 
 E aí mora a pergunta que poucos líderes fazem antes de abrir a boca: **com o quê eu vou contagiar essa sala?**
 
-## A diferença entre falar e ser ouvido
+## Por que alguns líderes falam e são ouvidos — e outros só falam?
 
 Tem líder que entrega o feedback técnico mais preciso do mundo — e o liderado sai pensando em pedir demissão.
 Tem líder que dá uma má notícia difícil — e o time sai mais comprometido do que entrou.
@@ -34,7 +43,7 @@ Você pode dizer "obrigada pelo trabalho" de cinco formas diferentes, e cada uma
 
 Os liderados leem esse código antes de processar suas palavras. E confiam mais nele do que na sua frase.
 
-## O que você sente, vaza
+## Por que é impossível esconder o que você sente do seu time?
 
 A primeira ilusão da liderança é achar que dá pra "compor um rosto" antes de entrar na sala.
 
@@ -46,7 +55,7 @@ Liderar com inteligência emocional não é fingir calma que você não tem. É 
 
 Porque o time não escuta sua palavra. Escuta sua presença.
 
-## Quatro filtros antes de uma conversa difícil
+## Quais perguntas fazer antes de uma conversa difícil como líder?
 
 Não existe roteiro pronto. Mas existe um conjunto curto de perguntas que muda a qualidade de qualquer conversa de liderança. Use os quatro antes de entrar na sala:
 
@@ -69,7 +78,7 @@ Pausa não é fraqueza. É autoridade serena.
 
 E é talvez a habilidade de comunicação mais subestimada da liderança contemporânea — porque exige algo que ninguém ensina: **tolerância ao desconforto do silêncio**.
 
-## O que muda quando o líder muda a fala
+## O que muda no time quando o líder muda como fala?
 
 Quando um líder começa a se comunicar com inteligência emocional, três coisas acontecem na equipe — e nenhuma aparece num KPI imediato:
 

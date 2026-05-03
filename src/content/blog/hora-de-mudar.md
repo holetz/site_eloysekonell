@@ -7,13 +7,22 @@ tags: ["Pessoas"]
 readingTime: "8 min de leitura"
 coverImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=85"
 related: ["tecnico-virou-gestor", "saude-mental-estrategia", "sucessao-mal-planejada"]
+faq:
+  - q: "Como saber a hora certa de mudar de carreira sendo líder?"
+    a: "A hora certa raramente chega com certeza — ela chega com sinais: a sensação de que o caminho atual não sustenta mais o que você quer construir, o esgotamento que vai além do cansaço pontual, e a percepção de que você parou de crescer. Quando esses sinais se repetem, vale investigar, não ignorar."
+  - q: "Por que é mais difícil mudar de carreira para quem lidera?"
+    a: "Para líderes, a identidade profissional está muito entrelaçada com o cargo. Mudar de direção significa questionar a própria trajetória. Somado ao peso da visibilidade e ao isolamento típico das posições de topo, o processo exige um nível de coragem e clareza que a maioria das pessoas não encontra sozinha."
+  - q: "Qual é o papel da mentoria executiva em uma transição de carreira?"
+    a: "A mentoria oferece o que líderes em transição mais precisam e raramente encontram: um espaço seguro para pensar sem julgamento, uma perspectiva externa ao sistema no qual estão inseridos, e um processo estruturado para transformar a mudança de um salto no escuro em uma travessia consciente."
+  - q: "Mudar de carreira depois dos 40 é possível para líderes sênior?"
+    a: "Não apenas possível — muitas vezes é o melhor momento. A experiência acumulada, a rede de relacionamentos e o autoconhecimento que vêm com anos de liderança são ativos transferíveis. O que falta, na maioria dos casos, não é capacidade — é clareza sobre o destino e suporte para o caminho."
 ---
 
 Você já acordou com a sensação de que algo não encaixa mais? Não é o salário. Não é a equipe. Não é nem a empresa, necessariamente. É algo mais profundo: a percepção de que o caminho que te trouxe até aqui não é mais o caminho que te leva adiante.
 
 Se você é líder e está sentindo isso, saiba: você está longe de ser o único.
 
-## O cenário que ninguém conta nos bastidores da liderança
+## O que os dados revelam sobre líderes que pensam em mudar?
 
 Dados recentes revelam um panorama impressionante. **Cerca de 70% dos profissionais estão ativamente considerando uma mudança de carreira.** Entre líderes de nível sênior, diretores e C-level, esse número cresce à medida que o mundo do trabalho se transforma.
 
@@ -23,7 +32,7 @@ E o que acontece com o líder nesse cenário? Ele fica preso entre a pressão po
 
 ::pullquote["A pergunta não é se você vai precisar se reinventar. É quando."]
 
-## Por que mudar é tão difícil para quem lidera?
+## Por que mudar é tão difícil para quem já chegou ao topo?
 
 Para a maioria dos profissionais, uma transição de carreira é um desafio logístico. Para líderes, a questão é muito mais profunda. A identidade profissional de um líder está entrelaçada com o cargo. Decidir mudar significa, em certa medida, questionar a própria identidade.
 
@@ -32,7 +41,7 @@ Para a maioria dos profissionais, uma transição de carreira é um desafio log�
 - **O medo do recomeço.** Começar algo novo depois de décadas construindo expertise pode parecer um retrocesso. Mas raramente é
 - **O isolamento na decisão.** Líderes costumam ser procurados para aconselhar os outros. Quando são eles que precisam de direção, frequentemente não sabem a quem recorrer
 
-## O que mais de 10 anos com líderes me ensinaram
+## O que mais de 10 anos acompanhando líderes em transição me ensinou?
 
 O que aprendi nesse tempo é que a mudança não precisa ser um salto no escuro. Com o direcionamento certo, ela se transforma em uma transição consciente, com etapas definidas, riscos calculados e clareza sobre o que realmente importa.
 

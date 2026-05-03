@@ -1,0 +1,763 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
+import { credenciais } from '../../data/credenciais';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const title = 'Assessment de Liderança | Eloyse Konell';
+const description =
+  'Avaliação aprofundada de potencial e gap de líderes — base científica (DISC, neurociência, comportamento) para decisões de pessoas.';
+const canonical = `${SITE_URL}/servicos/assessment/`;
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/servicos/' },
+  { label: 'Assessment' },
+];
+
+const analiseComportamental = credenciais.formacao.find((f) => f.sigla === 'GROU');
+const pcc = credenciais.formacao.find((f) => f.titulo.includes('PCC'));
+const assessmentsRealizados = credenciais.assessmentsRealizados;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/servicos/assessment/#service`,
+  name: 'Assessment Executivo',
+  serviceType: 'Assessment Executivo',
+  description:
+    'Processo estruturado de avaliação de potencial, comportamento e prontidão de líderes — para decisões de promoção, sucessão e desenvolvimento.',
+  provider: {
+    '@id': `${SITE_URL}#eloyse`,
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: 'Brasil',
+  },
+  url: `${SITE_URL}/servicos/assessment/`,
+};
+
+const faqs = [
+  {
+    q: 'Quanto tempo dura o processo?',
+    a: 'Depende do escopo. Um assessment individual completo — com aplicação de instrumentos, análise e devolutiva — costuma levar entre duas e quatro semanas. Processos corporativos com múltiplos avaliados são planejados conforme a demanda da empresa.',
+  },
+  {
+    q: 'Os resultados ficam só para o avaliado ou a empresa também vê?',
+    a: 'Isso é definido no briefing inicial. No assessment corporativo, o relatório é entregue ao decisor (RH ou liderança solicitante) com foco estratégico. No assessment individual, a devolutiva é exclusivamente para o próprio avaliado — a empresa não tem acesso.',
+  },
+  {
+    q: 'É o mesmo que DISC?',
+    a: 'Não. O DISC é uma das ferramentas que pode compor o processo, mas o assessment aqui é mais amplo: combina análise comportamental avançada, entrevistas estruturadas e, quando pertinente, outros instrumentos. O resultado não é um perfil de personalidade — é uma leitura de potencial, comportamento e prontidão para o contexto específico do avaliado.',
+  },
+  {
+    q: 'Funciona remotamente?',
+    a: 'Sim. A aplicação dos instrumentos é feita online. As entrevistas e devolutivas acontecem por videoconferência. O processo é igualmente robusto no formato remoto — a grande maioria dos assessments é conduzida dessa forma.',
+  },
+  {
+    q: 'Qual o investimento?',
+    a: 'O investimento depende do escopo: número de avaliados, profundidade do processo e entregáveis esperados. Entre em contato para conversarmos sobre o que faz sentido para o seu contexto.',
+  },
+];
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  breadcrumb={breadcrumb}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    slot="hero"
+    eyebrow="Serviço"
+    title="Assessment de Liderança"
+    deck="Transformar percepção em dados objetivos. Base para decisões de desenvolvimento, promoção e sucessão — sem achismo."
+  />
+
+  <!-- O QUE É ASSESSMENT -->
+  <section class="page-section assessment-intro">
+    <h2>O que é assessment de liderança?</h2>
+    <p>
+      Assessment de liderança não é um teste de personalidade. É um processo estruturado de leitura
+      de potencial, comportamento e ajuste ao contexto — conduzido com método, instrumentos validados
+      e análise interpretativa.
+    </p>
+    <p>
+      A diferença importa. Um teste de personalidade descreve quem a pessoa é. Um assessment de
+      liderança avalia o que ela é capaz de entregar naquela função, naquele momento, com aqueles
+      desafios. São perguntas completamente diferentes — e demandam abordagens completamente
+      diferentes.
+    </p>
+    <p>
+      O processo combina análise comportamental (incluindo DISC e instrumentos complementares),
+      entrevistas estruturadas e, quando aplicável, análise de histórico de desempenho. O resultado
+      é uma leitura integrada: o que move essa pessoa, como ela decide sob pressão, onde estão seus
+      pontos cegos e o que ela precisa desenvolver para entregar o que o negócio precisa.
+    </p>
+    <p>
+      Com mais de {assessmentsRealizados} assessments realizados, o processo que uso é calibrado
+      pela prática — não só pela teoria. Cada avaliação parte do contexto específico: o cargo, o
+      desafio, o momento da empresa. Não existe laudo genérico aqui.
+    </p>
+  </section>
+
+  <!-- QUANDO USAR -->
+  <section class="page-section assessment-quando">
+    <h2>Quando usar assessment?</h2>
+    <p class="assessment-lead">
+      Assessment não é solução para todo problema. Mas há momentos em que tomar uma decisão
+      importante sobre pessoas sem dados objetivos é um risco desnecessário. Esses são os momentos
+      em que o processo faz mais sentido:
+    </p>
+    <ol class="assessment-momentos">
+      <li>
+        <strong>Promoção interna:</strong> quando alguém está sendo considerado para um papel de maior
+        responsabilidade e você quer confirmar — ou contestar — essa percepção com dados.
+      </li>
+      <li>
+        <strong>Planejamento de sucessão:</strong> para mapear quem tem potencial real para assumir
+        posições críticas e o que cada candidato ainda precisa desenvolver.
+      </li>
+      <li>
+        <strong>Contratação executiva:</strong> quando o custo de erro é alto e a entrevista
+        tradicional não é suficiente para avaliar fit comportamental e potencial de liderança.
+      </li>
+      <li>
+        <strong>Redesenho de squad ou time:</strong> para entender os perfis presentes, identificar
+        lacunas e redistribuir papéis com base em dados — não em impressão.
+      </li>
+      <li>
+        <strong>Conflito recorrente ou queda de performance:</strong> quando o problema é de
+        comportamento ou dinâmica de liderança, o assessment ajuda a nomear o que está acontecendo
+        de verdade.
+      </li>
+      <li>
+        <strong>Dúvida sobre desenvolvimento:</strong> quando você não sabe por onde começar com
+        um líder — o assessment define prioridades e evita investir no lugar errado.
+      </li>
+      <li>
+        <strong>Decisão de carreira individual:</strong> quando o próprio líder quer clareza sobre
+        seu perfil, seus limites e seu próximo passo — sem depender da percepção da empresa.
+      </li>
+    </ol>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="page-section assessment-processo">
+    <h2>Como funciona o processo?</h2>
+    <p class="assessment-lead">
+      Cada assessment é conduzido em etapas sequenciais, do briefing à devolutiva. A estrutura é
+      sempre a mesma; o conteúdo se adapta ao contexto.
+    </p>
+    <ol class="processo-lista">
+      <li class="processo-etapa">
+        <span class="processo-numero">01</span>
+        <div class="processo-content">
+          <h3>Briefing</h3>
+          <p>
+            Conversa inicial com quem solicitou o assessment — empresa ou o próprio líder, no caso
+            individual. Objetivo: entender o contexto, o cargo, os desafios esperados e o que a
+            avaliação precisa responder. Sem esse passo, o processo fica sem norte.
+          </p>
+          <p>
+            É no briefing que se define qual pergunta o assessment vai responder. Não é a mesma
+            coisa avaliar prontidão para uma promoção, fit cultural para uma contratação ou risco
+            de sucessão em três anos — cada um exige recortes diferentes da análise. Quando o
+            briefing é pulado ou conduzido apenas por e-mail, o processo entrega um retrato
+            genérico que não decide nada — e o cliente sai com mais um relatório na gaveta.
+          </p>
+        </div>
+      </li>
+      <li class="processo-etapa">
+        <span class="processo-numero">02</span>
+        <div class="processo-content">
+          <h3>Aplicação dos instrumentos</h3>
+          <p>
+            Ferramentas de análise comportamental — incluindo DISC e instrumentos de análise
+            comportamental avançada (metodologia {analiseComportamental?.sigla}) — são aplicadas ao
+            avaliado. O processo é online e não demanda presença física.
+          </p>
+          <p>
+            A combinação de instrumentos não é aleatória. DISC sozinho fica raso; um inventário
+            avançado sem DISC perde a leitura rápida do estilo de comunicação. O cuidado aqui é
+            usar o instrumento certo para a pergunta do briefing — e não aplicar tudo de uma vez
+            para parecer mais completo. Um assessment inflado de questionários produz fadiga no
+            avaliado e ruído no resultado.
+          </p>
+        </div>
+      </li>
+      <li class="processo-etapa">
+        <span class="processo-numero">03</span>
+        <div class="processo-content">
+          <h3>Entrevistas</h3>
+          <p>
+            Entrevistas estruturadas com o avaliado e, quando pertinente, com stakeholders próximos.
+            O objetivo é triangular os dados dos instrumentos com comportamentos reais e histórico
+            de decisões. A certificação PCC® ({pcc?.sigla?.split('—')[0]?.trim()}) informa como
+            essas conversas são conduzidas — com escuta técnica, não apenas empática.
+          </p>
+          <p>
+            Sem entrevista, o assessment vira interpretação de questionário — e questionário não
+            captura como a pessoa decide quando o time está em conflito ou quando o cliente
+            ameaça sair. A entrevista é onde os dados ganham contexto: o que parecia um traço
+            no instrumento aparece como padrão repetido em situações reais — ou se mostra
+            apenas circunstancial.
+          </p>
+        </div>
+      </li>
+      <li class="processo-etapa">
+        <span class="processo-numero">04</span>
+        <div class="processo-content">
+          <h3>Análise e interpretação</h3>
+          <p>
+            Os dados brutos dos instrumentos e das entrevistas são analisados de forma integrada.
+            Padrões de comportamento, drivers de motivação, pontos de desenvolvimento e riscos são
+            cruzados com as exigências do cargo e do contexto. Neurociência do comportamento informa
+            a interpretação — entender como o cérebro decide sob pressão muda a leitura dos dados.
+          </p>
+          <p>
+            É também aqui que a armadilha mais comum aparece: confundir traço com defeito.
+            Um líder altamente analítico não é um líder lento; um perfil mais executor não é
+            necessariamente impulsivo. A interpretação cruza o perfil com a exigência real do
+            cargo — o que é força num contexto pode ser fragilidade em outro, e vice-versa.
+          </p>
+        </div>
+      </li>
+      <li class="processo-etapa">
+        <span class="processo-numero">05</span>
+        <div class="processo-content">
+          <h3>Relatório e devolutiva</h3>
+          <p>
+            O relatório documenta os achados com linguagem clara — sem jargão técnico inacessível.
+            A devolutiva é síncrona: uma sessão ao vivo (presencial ou remota) para que o avaliado
+            — e, no caso corporativo, o decisor — compreenda o que os dados significam e o que
+            fazer com eles.
+          </p>
+          <p>
+            Relatório entregue por e-mail sem devolutiva é o erro mais frequente do mercado: o
+            avaliado lê fora de contexto, se defende internamente do que não entendeu e o
+            documento perde força. A devolutiva síncrona evita essa ruptura — é nela que o
+            avaliado faz perguntas, contesta o que não reconhece e sai com um plano de ação
+            que faz sentido para ele.
+          </p>
+        </div>
+      </li>
+      <li class="processo-etapa">
+        <span class="processo-numero">06</span>
+        <div class="processo-content">
+          <h3>Plano de desenvolvimento</h3>
+          <p>
+            Com base nos achados, é construído um plano de desenvolvimento individual: o que
+            priorizar, como trabalhar cada ponto e com que horizonte de tempo. O assessment sem
+            plano é diagnóstico sem tratamento.
+          </p>
+          <p>
+            O plano define até três frentes prioritárias — não dez. Tentar trabalhar tudo ao
+            mesmo tempo dilui o esforço e desestimula o avaliado nas primeiras semanas.
+            Priorizar exige escolha: o que muda mais a entrega no próximo ciclo, o que pode
+            esperar, o que talvez não precise mudar.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- PARA QUEM É -->
+  <section class="page-section assessment-publico">
+    <h2>Para quem é o assessment?</h2>
+    <p class="assessment-lead">
+      O processo atende dois públicos distintos, com propósitos e entregáveis diferentes. Entender
+      essa diferença é fundamental para escolher o formato certo.
+    </p>
+    <div class="publico-grid">
+      <div class="publico-card">
+        <span class="publico-eyebrow">Para empresas</span>
+        <h3>Tomadores de decisão e RH</h3>
+        <p>
+          O assessment corporativo serve a quem precisa tomar decisões objetivas sobre pessoas —
+          promoção, sucessão, contratação ou redistribuição de papéis.
+        </p>
+        <p>
+          O decisor recebe um relatório executivo que traduz os dados em recomendações estratégicas:
+          esse líder está pronto para a promoção? Qual o risco de nomeá-lo agora? O que ele precisa
+          desenvolver antes de assumir a posição?
+        </p>
+        <p>
+          O avaliado também recebe sua devolutiva individual — o processo é transparente, não uma
+          auditoria secreta. Mas o relatório consolidado e as recomendações estratégicas são
+          entregues ao solicitante.
+        </p>
+        <p>
+          Cenários típicos vão de transições de empresa familiar — em que o filho do fundador
+          precisa ser avaliado contra parâmetros de mercado, sem cortesia — até processos de
+          sucessão pré-IPO, em que o board exige evidência objetiva de prontidão antes de
+          confirmar nomes-chave. Outro caso recorrente é o do técnico promovido a gestor: a
+          empresa não sabe se está perdendo um bom especialista para ganhar um líder mediano,
+          e o assessment torna esse risco visível antes da nomeação.
+        </p>
+        <ul class="publico-usos">
+          <li>Mapeamento de potencial para sucessão</li>
+          <li>Decisão de promoção com base objetiva</li>
+          <li>Diagnóstico de squad antes de redesenho</li>
+          <li>Seleção para posições executivas</li>
+        </ul>
+        <a
+          href={`https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Corporativo.`}
+          class="btn-publico"
+          target="_blank"
+          rel="noopener"
+        >
+          Solicitar Assessment Corporativo
+        </a>
+      </div>
+
+      <div class="publico-card">
+        <span class="publico-eyebrow">Para o líder</span>
+        <h3>Autoconhecimento e decisão de carreira</h3>
+        <p>
+          O assessment individual é para quem quer clareza sobre si mesmo — independente da empresa
+          onde trabalha ou do que o gestor acha.
+        </p>
+        <p>
+          Ideal para líderes em transição de carreira, profissionais questionando seu próximo passo,
+          ou quem quer entender seus próprios padrões de comportamento antes de tomar uma decisão
+          importante.
+        </p>
+        <p>
+          A devolutiva é exclusivamente para o avaliado. A empresa não tem acesso. O processo é
+          confidencial e pertence a quem foi avaliado.
+        </p>
+        <p>
+          Os perfis mais frequentes incluem o líder convidado para uma posição C-level que quer
+          confirmar se aquele desafio é o seu próximo passo ou um movimento do ego; o gestor
+          experiente avaliando uma proposta de outra empresa e querendo entender se a frustração
+          atual é da função ou do lugar; e o profissional técnico que recebeu uma promoção a
+          gestor e precisa avaliar, antes de aceitar, se quer mesmo trocar entrega individual
+          por liderança de pessoas.
+        </p>
+        <ul class="publico-usos">
+          <li>Clareza sobre perfil e pontos cegos</li>
+          <li>Decisão de mudança de cargo ou empresa</li>
+          <li>Preparação para uma promoção</li>
+          <li>Direcionamento de desenvolvimento pessoal</li>
+        </ul>
+        <a
+          href={`https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Individual.`}
+          class="btn-publico"
+          target="_blank"
+          rel="noopener"
+        >
+          Quero fazer meu Assessment
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTREGÁVEIS -->
+  <section class="page-section assessment-entregaveis">
+    <h2>Que entregáveis você recebe?</h2>
+    <p>
+      O que sai de um processo de assessment não é só um documento — é uma base concreta para
+      decisão e desenvolvimento. Dependendo do escopo e do formato (corporativo ou individual), os
+      entregáveis incluem:
+    </p>
+    <ul class="entregaveis-lista">
+      <li>
+        <strong>Relatório individual:</strong> documento escrito que apresenta o perfil
+        comportamental do avaliado, drivers de motivação, padrões sob pressão, pontos fortes,
+        pontos cegos e riscos cruzados com a exigência do cargo. A linguagem é executiva — sem
+        jargão técnico — e cada achado é justificado pelos dados que o sustentam, não por
+        opinião do avaliador. É o documento que pode ser lido e compreendido por quem nunca viu
+        um teste comportamental antes.
+      </li>
+      <li>
+        <strong>Relatório consolidado</strong> (quando múltiplos avaliados): visão integrada do
+        grupo ou squad, com mapeamento de perfis, lacunas coletivas, riscos de complementaridade
+        e recomendações estratégicas. Permite enxergar o time como sistema — não apenas como
+        soma de indivíduos — e identificar o que falta antes do redesenho ou da contratação
+        seguinte.
+      </li>
+      <li>
+        <strong>Devolutiva síncrona:</strong> sessão ao vivo, presencial ou por videoconferência,
+        para apresentar os resultados, responder perguntas e garantir que o avaliado — e, quando
+        aplicável, o decisor — compreenda o que os dados significam. É na devolutiva que o
+        relatório vira plano de ação: as dúvidas são tratadas, o que não foi reconhecido é
+        debatido e o que precisa ser aprofundado fica registrado.
+      </li>
+      <li>
+        <strong>Plano de desenvolvimento individual:</strong> documento conciso com até três
+        frentes prioritárias, ações concretas para cada uma e horizonte de tempo recomendado.
+        Não é um cardápio de competências a desenvolver; é uma rota com prioridade clara — o
+        que mexer primeiro, o que vem depois, o que pode esperar.
+      </li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="page-section assessment-faq">
+    <FaqBlock
+      title="Perguntas frequentes sobre assessment"
+      faqs={faqs}
+    />
+  </section>
+
+  <!-- POSTS RELACIONADOS -->
+  <section class="page-section assessment-posts">
+    <h2>Leituras relacionadas</h2>
+    <p class="assessment-lead">
+      Aprofunde o tema antes de decidir:
+    </p>
+    <ul class="posts-lista">
+      <li>
+        <a href="/blog/cadeira-vazia/">
+          A cadeira vazia — quando ninguém está pronto para assumir a liderança
+        </a>
+      </li>
+      <li>
+        <a href="/blog/hora-de-mudar/">
+          Quando é hora de mudar de cargo — sinais que o assessment revela
+        </a>
+      </li>
+      <li>
+        <a href="/blog/identificar-potencial-de-lideranca/">
+          Como identificar potencial de liderança antes da promoção
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="page-section assessment-cta">
+    <div class="assessment-cta-inner">
+      <p class="assessment-cta-texto">
+        Pronto para tomar decisões sobre pessoas com mais precisão?
+      </p>
+      <p class="assessment-cta-sub">
+        Vamos conversar sobre o escopo certo para o seu contexto.
+      </p>
+      <a href="/contato/" class="btn-primary">Falar com a Eloyse</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .assessment-lead {
+    max-width: 680px;
+    margin-bottom: 40px;
+    color: var(--taupe);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  /* Intro */
+  .assessment-intro p {
+    max-width: 740px;
+    line-height: 1.75;
+    color: var(--taupe);
+    margin-bottom: 20px;
+  }
+
+  .assessment-intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quando usar */
+  .assessment-momentos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    counter-reset: momento;
+  }
+
+  .assessment-momentos li {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--taupe);
+    line-height: 1.65;
+    max-width: 740px;
+  }
+
+  .assessment-momentos li:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .assessment-momentos li strong {
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+
+  /* Processo */
+  .processo-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .processo-etapa {
+    display: flex;
+    gap: 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .processo-etapa:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .processo-numero {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--bronze);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 56px;
+    padding-top: 4px;
+  }
+
+  .processo-content h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 12px;
+  }
+
+  .processo-content p {
+    margin: 0 0 12px;
+    color: var(--taupe);
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  .processo-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Para quem é */
+  .publico-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .publico-card {
+    background: var(--sand-warm);
+    border: 1px solid var(--sand-deep);
+    border-radius: 4px;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .publico-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--bronze);
+  }
+
+  .publico-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0;
+  }
+
+  .publico-card p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  .publico-usos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .publico-usos li {
+    color: var(--taupe);
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .publico-usos li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 2px;
+    background: var(--bronze);
+  }
+
+  .btn-publico {
+    display: inline-block;
+    background: var(--olive-deep);
+    color: var(--sand);
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 2px;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .btn-publico:hover {
+    background: var(--bronze);
+  }
+
+  /* Entregáveis */
+  .entregaveis-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .entregaveis-lista li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--taupe);
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  .entregaveis-lista li:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .entregaveis-lista li strong {
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+
+  /* Posts */
+  .posts-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .posts-lista li a {
+    color: var(--bronze);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .posts-lista li a:hover {
+    border-color: var(--bronze-soft);
+  }
+
+  /* CTA */
+  .assessment-cta-inner {
+    background: var(--olive-deep);
+    border-radius: 4px;
+    padding: 64px 56px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .assessment-cta-texto {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--sand);
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+
+  .assessment-cta-sub {
+    color: var(--taupe-soft);
+    font-size: 1rem;
+    margin: 0 0 40px;
+    line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--bronze);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--bronze-soft);
+  }
+
+  /* FAQ section */
+  .assessment-faq {
+    max-width: 740px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .publico-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .processo-etapa {
+      flex-direction: column;
+      gap: 12px;
+      padding: 28px 0;
+    }
+
+    .processo-numero {
+      font-size: 2rem;
+      width: auto;
+    }
+
+    .assessment-cta-inner {
+      padding: 48px 28px;
+    }
+  }
+</style>

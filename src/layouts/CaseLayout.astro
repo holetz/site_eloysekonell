@@ -1,0 +1,371 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import BreadcrumbList from '../components/BreadcrumbList.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  client: string;
+  clientUrl?: string;
+  sector: string;
+  problem: string;
+  approach: string;
+  result: string;
+  metric?: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  ogImage?: string;
+  slug: string;
+}
+
+const {
+  title,
+  description,
+  client,
+  clientUrl,
+  sector,
+  problem,
+  approach,
+  result,
+  metric,
+  pubDate,
+  updatedDate,
+  ogImage,
+  slug,
+} = Astro.props;
+
+const SITE_URL = 'https://eloysekonell.com.br';
+const canonical = `${SITE_URL}/cases/${slug}/`;
+const dateIso = pubDate.toISOString();
+const dateFormatted = pubDate.toLocaleDateString('pt-BR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const metaDescription = description || `Case de consultoria: ${client} — ${problem}`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: metaDescription,
+  url: canonical,
+  datePublished: dateIso,
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@id': `${SITE_URL}/#eloyse` },
+  publisher: { '@id': `${SITE_URL}/#business` },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+  about: {
+    '@type': 'Organization',
+    name: client,
+    ...(clientUrl && { url: clientUrl }),
+  },
+  mentions: [
+    {
+      '@type': 'Organization',
+      name: client,
+      ...(clientUrl && { url: clientUrl }),
+    },
+  ],
+  ...(ogImage && { image: ogImage }),
+};
+---
+
+<Layout
+  title={title}
+  description={metaDescription}
+  canonical={canonical}
+  ogType="article"
+  ogImage={ogImage}
+  articleDate={dateIso}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <Nav />
+
+  <main class="case-main">
+    <div class="wrap">
+      <BreadcrumbList items={[
+        { label: 'Início', href: '/' },
+        { label: 'Cases', href: '/cases/' },
+        { label: title },
+      ]} />
+    </div>
+
+    <header class="case-header">
+      <div class="wrap">
+        <div class="case-header__meta">
+          <span class="eyebrow">{sector}</span>
+          <time class="case-date" datetime={dateIso}>{dateFormatted}</time>
+        </div>
+
+        <h1 class="case-header__title">{title}</h1>
+
+        {metric && (
+          <div class="case-header__metric">
+            <span class="metric-highlight">{metric}</span>
+          </div>
+        )}
+
+        <dl class="case-summary">
+          <div class="case-summary__item">
+            <dt>Cliente</dt>
+            <dd>
+              {clientUrl
+                ? <a href={clientUrl} target="_blank" rel="noopener noreferrer">{client}</a>
+                : client
+              }
+            </dd>
+          </div>
+          <div class="case-summary__item">
+            <dt>Desafio</dt>
+            <dd>{problem}</dd>
+          </div>
+          <div class="case-summary__item">
+            <dt>Abordagem</dt>
+            <dd>{approach}</dd>
+          </div>
+          <div class="case-summary__item">
+            <dt>Resultado</dt>
+            <dd>{result}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="case-body">
+      <div class="wrap">
+        <div class="case-prose">
+          <slot />
+        </div>
+      </div>
+    </div>
+
+    <div class="case-cta">
+      <div class="wrap">
+        <div class="cta-block">
+          <span class="eyebrow">Próximo passo</span>
+          <h3>Seu contexto tem potencial semelhante?</h3>
+          <p>
+            Cada organização tem seu próprio ponto de partida. Uma conversa inicial
+            basta para identificar onde a consultoria pode gerar mais impacto.
+          </p>
+          <a href="/contato/" class="btn">Falar com Eloyse</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .case-main {
+    padding-bottom: 0;
+  }
+
+  .case-main .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .case-main .breadcrumb {
+    padding-top: 100px;
+    font-size: 12px;
+    color: var(--taupe);
+    letter-spacing: 1px;
+  }
+
+  .case-header {
+    padding: 60px 0 80px;
+    background: var(--sand-warm);
+    margin-top: 32px;
+  }
+
+  .case-header__meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .case-date {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--taupe-soft);
+    text-transform: uppercase;
+  }
+
+  .case-header__title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--olive-deep);
+    margin-bottom: 32px;
+    max-width: 820px;
+  }
+
+  .case-header__metric {
+    margin-bottom: 40px;
+  }
+
+  .metric-highlight {
+    display: inline-block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    color: var(--bronze);
+    padding: 12px 20px;
+    border: 1px solid var(--bronze);
+    background: var(--sand);
+  }
+
+  .case-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 40px;
+    max-width: 900px;
+    border-top: 1px solid var(--line);
+    padding-top: 36px;
+  }
+
+  .case-summary__item dt {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 6px;
+    font-family: var(--sans);
+  }
+
+  .case-summary__item dd {
+    font-size: 0.98rem;
+    color: var(--olive-deep);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .case-summary__item dd a {
+    color: var(--bronze);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .case-summary__item dd a:hover {
+    border-color: var(--bronze);
+  }
+
+  .case-body {
+    padding: 80px 0;
+  }
+
+  .case-prose {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .case-prose :global(p) {
+    font-size: 1.08rem;
+    line-height: 1.78;
+    color: var(--olive);
+    margin-bottom: 24px;
+  }
+
+  .case-prose :global(h2) {
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    margin: 56px 0 22px;
+    color: var(--olive-deep);
+    font-weight: 500;
+  }
+
+  .case-prose :global(h3) {
+    font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+    margin: 40px 0 14px;
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+
+  .case-prose :global(strong) {
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+
+  .case-prose :global(em) {
+    font-style: italic;
+    color: var(--taupe);
+  }
+
+  .case-prose :global(ul) {
+    margin: 22px 0 28px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .case-prose :global(ul li) {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 14px;
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: var(--olive);
+  }
+
+  .case-prose :global(ul li::before) {
+    content: '—';
+    color: var(--bronze);
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .case-prose :global(blockquote) {
+    margin: 40px 0;
+    padding: 28px 36px;
+    border-left: 2px solid var(--bronze);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: var(--olive-deep);
+    background: var(--sand-warm);
+  }
+
+  .case-cta {
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 900px) {
+    .case-main .breadcrumb {
+      padding-top: 80px;
+    }
+
+    .case-header {
+      padding: 40px 0 60px;
+    }
+
+    .case-summary {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .case-body {
+      padding: 56px 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .case-main .wrap {
+      padding: 0 22px;
+    }
+  }
+</style>
