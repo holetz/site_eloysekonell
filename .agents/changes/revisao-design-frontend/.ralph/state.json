@@ -1,0 +1,193 @@
+{
+  "current_phase": 2,
+  "phases": [
+    { "id": 1, "name": "Foundation", "status": "completed" },
+    { "id": 2, "name": "Independent fixes + parallel tracks", "status": "not_started" },
+    { "id": 3, "name": "Consolidation (sobre + a11y)", "status": "not_started" },
+    { "id": 4, "name": "Final sweep + docs", "status": "not_started" }
+  ],
+  "tasks": {
+    "01": {
+      "id": "01",
+      "phase": 1,
+      "title": "Design tokens (foundation)",
+      "complexity": "low",
+      "depends_on": [],
+      "files": ["src/styles/global.css"],
+      "status": "completed",
+      "commit": "df81cf2",
+      "feedback": null
+    },
+    "02": {
+      "id": "02",
+      "phase": 2,
+      "title": "Reveal observer fix + prefers-reduced-motion",
+      "complexity": "low",
+      "depends_on": ["01"],
+      "files": ["src/layouts/Layout.astro", "src/styles/global.css"],
+      "status": "completed",
+      "commit": "31c9c23",
+      "feedback": null
+    },
+    "03": {
+      "id": "03",
+      "phase": 2,
+      "title": "Typography refinement",
+      "complexity": "low",
+      "depends_on": ["02"],
+      "files": ["src/styles/global.css"],
+      "status": "completed",
+      "commit": "c5635c0",
+      "feedback": null
+    },
+    "04": {
+      "id": "04",
+      "phase": 2,
+      "title": "Button system consolidation",
+      "complexity": "high",
+      "depends_on": ["03"],
+      "files": [
+        "src/styles/global.css",
+        "src/components/Hero.astro",
+        "src/components/Cta.astro",
+        "src/components/AssessmentSpotlight.astro",
+        "src/components/Campanha.astro",
+        "src/pages/servicos/index.astro",
+        "src/pages/contato.astro",
+        "src/pages/sobre.astro",
+        "src/pages/metodologia.astro",
+        "src/pages/faq.astro",
+        "src/pages/servicos/desenvolvimento-de-liderancas.astro",
+        "src/pages/servicos/gestao-estrategica-de-pessoas.astro",
+        "src/pages/servicos/assessment.astro",
+        "src/pages/servicos/mentoria-executiva.astro"
+      ],
+      "status": "completed",
+      "commit": "37422ba",
+      "feedback": null
+    },
+    "05": {
+      "id": "05",
+      "phase": 2,
+      "title": "Cards, dividers, filter presets",
+      "complexity": "medium",
+      "depends_on": ["04"],
+      "files": [
+        "src/styles/global.css",
+        "src/components/Testimonials.astro",
+        "src/components/Clients.astro",
+        "src/components/About.astro",
+        "src/components/Hero.astro",
+        "src/components/CaseCard.astro",
+        "src/components/ServiceCard.astro",
+        "src/components/FaqBlock.astro"
+      ],
+      "status": "completed",
+      "commit": "781a847",
+      "feedback": null
+    },
+    "06": {
+      "id": "06",
+      "phase": 2,
+      "title": "Spacing migration to tokens",
+      "complexity": "high",
+      "depends_on": ["05"],
+      "files": [
+        "src/styles/global.css",
+        "src/pages/sobre.astro",
+        "src/pages/contato.astro",
+        "src/pages/metodologia.astro",
+        "src/pages/faq.astro",
+        "src/pages/servicos/index.astro",
+        "src/pages/servicos/desenvolvimento-de-liderancas.astro",
+        "src/pages/servicos/gestao-estrategica-de-pessoas.astro",
+        "src/pages/servicos/assessment.astro",
+        "src/pages/servicos/mentoria-executiva.astro"
+      ],
+      "status": "completed",
+      "commit": "641e327",
+      "feedback": null
+    },
+    "07": {
+      "id": "07",
+      "phase": 2,
+      "title": "SVG icons em /servicos (substitui emojis)",
+      "complexity": "medium",
+      "depends_on": ["01"],
+      "files": [
+        "src/assets/icons/leadership.svg",
+        "src/assets/icons/strategy.svg",
+        "src/assets/icons/assessment.svg",
+        "src/assets/icons/mentoring.svg",
+        "src/components/ServiceCard.astro",
+        "src/pages/servicos/index.astro"
+      ],
+      "status": "incomplete",
+      "commit": "1c6b5a3",
+      "feedback": "INTEGRAÇÃO FALHOU: o commit 1c6b5a3 existe no repositório mas NÃO está na branch dev-design (commit órfão — não alcançável por nenhuma branch). O trabalho foi feito em worktree paralelo e nunca mergeado. Resultado: src/assets/icons/ não existe na branch, ServiceCard.astro ainda usa prop `icon: string` com font-size:2rem, servicos/index.astro ainda tem emojis (🎯🏗️🔍💬). Reexecutar a task: criar os 4 SVGs em src/assets/icons/, atualizar ServiceCard para iconHtml + set:html, atualizar servicos/index.astro para importar ?raw e passar iconHtml. O build passa apenas porque Astro não falha em renderizar emojis — a regressão é visual, não de compilação."
+    },
+    "08": {
+      "id": "08",
+      "phase": 2,
+      "title": "Performance / Core Web Vitals pass",
+      "complexity": "low",
+      "depends_on": ["01"],
+      "files": ["src/layouts/Layout.astro", "src/components/Hero.astro"],
+      "status": "completed",
+      "commit": "fe97eac",
+      "feedback": null
+    },
+    "09": {
+      "id": "09",
+      "phase": 3,
+      "title": "sobre.astro style reduction",
+      "complexity": "medium",
+      "depends_on": ["06"],
+      "files": ["src/pages/sobre.astro", "src/styles/global.css"],
+      "status": "not_started",
+      "commit": null,
+      "feedback": null
+    },
+    "10": {
+      "id": "10",
+      "phase": 3,
+      "title": "Accessibility pass",
+      "complexity": "medium",
+      "depends_on": ["09"],
+      "files": [
+        "src/styles/global.css",
+        "src/components/Nav.astro",
+        "src/components/AssessmentSpotlight.astro",
+        "src/components/FaqBlock.astro",
+        "src/components/Cta.astro",
+        "src/components/BreadcrumbList.astro",
+        "src/layouts/Layout.astro"
+      ],
+      "status": "not_started",
+      "commit": null,
+      "feedback": null
+    },
+    "11": {
+      "id": "11",
+      "phase": 4,
+      "title": "Cross-page visual regression sweep",
+      "complexity": "medium",
+      "depends_on": ["02", "03", "04", "05", "06", "07", "08", "09", "10"],
+      "files": [],
+      "status": "not_started",
+      "commit": null,
+      "feedback": null
+    },
+    "12": {
+      "id": "12",
+      "phase": 4,
+      "title": "Documentation update (CLAUDE.md)",
+      "complexity": "low",
+      "depends_on": ["11"],
+      "files": ["CLAUDE.md"],
+      "status": "not_started",
+      "commit": null,
+      "feedback": null
+    }
+  }
+}
