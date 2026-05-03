@@ -600,6 +600,17 @@
   .reveal.delay-2{transition-delay:.24s}
   .reveal.delay-3{transition-delay:.36s}
 
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.delay-1,
+    .reveal.delay-2,
+    .reveal.delay-3 {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   ::selection{background:var(--bronze);color:var(--olive-deep)}
 
   /* FOOTER — portfólio link */
