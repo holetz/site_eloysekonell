@@ -38,7 +38,7 @@ const breadcrumb = [
   <section class="sobre-page wrap">
 
     <!-- Foto + Trajetória -->
-    <div class="sobre-grid reveal">
+    <div class="page-content-grid reveal">
       <div class="sobre-foto">
         <Image
           src={portraitImg}
@@ -77,20 +77,20 @@ const breadcrumb = [
           soluções que chegam à ponta.
         </p>
 
-        <div class="sobre-stats">
-          <div class="sobre-stat">
+        <div class="stats-strip">
+          <div class="stat-entry">
             <span class="num">{credenciais.anosAtuacao}+</span>
             <span class="label">Anos de atuação</span>
           </div>
-          <div class="sobre-stat">
+          <div class="stat-entry">
             <span class="num">{credenciais.empresasAtendidas}+</span>
             <span class="label">Empresas atendidas</span>
           </div>
-          <div class="sobre-stat">
+          <div class="stat-entry">
             <span class="num">{credenciais.lideresDesenvolvidos}+</span>
             <span class="label">Líderes desenvolvidos</span>
           </div>
-          <div class="sobre-stat">
+          <div class="stat-entry">
             <span class="num">{credenciais.assessmentsRealizados}+</span>
             <span class="label">Assessments realizados</span>
           </div>
@@ -101,19 +101,19 @@ const breadcrumb = [
     <!-- Formação -->
     <div class="sobre-formacao reveal delay-1">
       <h2>Formação</h2>
-      <ul class="formacao-lista">
+      <ul class="ledger-list">
         {credenciais.formacao.map((item) => (
-          <li class={`formacao-item formacao-item--${item.tipo}`}>
-            <span class="formacao-tipo">{item.tipo === 'graduacao' ? 'Graduação' : item.tipo === 'pos' ? 'Pós-graduação' : item.tipo === 'mba' ? 'MBA' : 'Certificação'}</span>
-            <span class="formacao-titulo">{item.titulo}</span>
-            <span class="formacao-instituicao">{item.sigla}</span>
+          <li class={`ledger-item ledger-item--${item.tipo}`}>
+            <span class="ledger-badge">{item.tipo === 'graduacao' ? 'Graduação' : item.tipo === 'pos' ? 'Pós-graduação' : item.tipo === 'mba' ? 'MBA' : 'Certificação'}</span>
+            <span class="ledger-title">{item.titulo}</span>
+            <span class="ledger-sup">{item.sigla}</span>
           </li>
         ))}
       </ul>
     </div>
 
     <!-- Como atuo -->
-    <div class="sobre-metodologia reveal delay-2">
+    <div class="prose-section reveal delay-2">
       <h2>Como atuo</h2>
       <p>
         A abordagem de Eloyse une neurociência, análise comportamental e visão estratégica de
@@ -130,14 +130,14 @@ const breadcrumb = [
     </div>
 
     <!-- Onde me encontro -->
-    <div class="sobre-localizacao reveal delay-3">
+    <div class="prose-section reveal delay-3">
       <h2>Onde me encontro</h2>
       <p>
         Baseada em {credenciais.localizacao.cidade}-{credenciais.localizacao.estado}, no{' '}
         {credenciais.localizacao.regiao}, atende presencialmente empresas da região Sul e
         remotamente em todo o Brasil.
       </p>
-      <div class="sobre-redes">
+      <div class="link-group">
         <a
           href="https://www.linkedin.com/in/eloysekonell"
           target="_blank"
@@ -154,9 +154,9 @@ const breadcrumb = [
     </div>
 
     <!-- CTA Final -->
-    <div class="cta-block reveal">
-      <p class="cta-block__headline">Vamos conversar sobre sua liderança?</p>
-      <div class="cta-block__actions">
+    <div class="sobre-cta reveal">
+      <p class="sobre-cta__headline">Vamos conversar sobre sua liderança?</p>
+      <div class="sobre-cta__actions">
         <a
           href="https://wa.me/5547991443844"
           target="_blank"
@@ -177,19 +177,10 @@ const breadcrumb = [
     padding-bottom: var(--space-10);
   }
 
-  /* Grid foto + texto */
-  .sobre-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: var(--space-9);
-    align-items: start;
-    margin-bottom: var(--space-10);
-  }
-
   .sobre-foto img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     object-fit: cover;
     display: block;
   }
@@ -204,32 +195,6 @@ const breadcrumb = [
     line-height: 1.75;
   }
 
-  /* Stats */
-  .sobre-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-    margin-top: var(--space-7);
-    padding-top: var(--space-7);
-    border-top: 1px solid var(--line);
-  }
-
-  .sobre-stat .num {
-    display: block;
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: var(--bronze);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .sobre-stat .label {
-    font-size: 0.85rem;
-    color: var(--taupe);
-    line-height: 1.4;
-  }
-
   /* Formação */
   .sobre-formacao {
     margin-bottom: var(--space-10);
@@ -239,92 +204,11 @@ const breadcrumb = [
     margin-bottom: var(--space-7);
   }
 
-  .formacao-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .formacao-item {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-4);
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .formacao-item:first-child {
-    border-top: 1px solid var(--line);
-  }
-
-  .formacao-tipo {
-    flex-shrink: 0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--taupe-soft);
-    width: var(--space-11);
-  }
-
-  .formacao-titulo {
-    flex: 1;
-    font-size: 0.95rem;
-    color: var(--olive-deep);
-    line-height: 1.5;
-  }
-
-  .formacao-instituicao {
-    flex-shrink: 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--bronze);
-  }
-
-  /* Como atuo */
-  .sobre-metodologia {
-    margin-bottom: var(--space-10);
-    max-width: 720px;
-  }
-
-  .sobre-metodologia h2 {
-    margin-bottom: var(--space-5);
-  }
-
-  .sobre-metodologia p {
-    margin-bottom: var(--space-4);
-    line-height: 1.75;
-  }
-
-  /* Onde me encontro */
-  .sobre-localizacao {
-    margin-bottom: var(--space-10);
-    max-width: 720px;
-  }
-
-  .sobre-localizacao h2 {
-    margin-bottom: var(--space-5);
-  }
-
-  .sobre-localizacao p {
-    line-height: 1.75;
-    margin-bottom: var(--space-5);
-  }
-
-  .sobre-redes {
-    display: flex;
-    gap: var(--space-6);
-    flex-wrap: wrap;
-  }
-
-  /* CTA block */
-  .cta-block {
+  /* CTA inline (flex row) — distinto do .cta-block global (centrado) */
+  .sobre-cta {
     background: var(--sand-warm);
-    border-radius: 8px;
-    padding: var(--space-9) var(--space-9);
+    border-radius: var(--radius-md);
+    padding: var(--space-9);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -333,7 +217,7 @@ const breadcrumb = [
     margin-top: var(--space-4);
   }
 
-  .cta-block__headline {
+  .sobre-cta__headline {
     font-family: var(--serif);
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
     font-weight: 500;
@@ -343,47 +227,27 @@ const breadcrumb = [
     min-width: 240px;
   }
 
-  .cta-block__actions {
+  .sobre-cta__actions {
     display: flex;
     align-items: center;
     gap: var(--space-6);
     flex-wrap: wrap;
   }
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    .sobre-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-7);
-    }
-
-    .sobre-foto img {
-      max-height: 400px;
-      object-fit: cover;
-    }
-  }
-
   @media (max-width: 640px) {
-    .sobre-stats {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4);
-    }
-
-    .formacao-item {
-      flex-wrap: wrap;
-      gap: var(--space-1);
-    }
-
-    .formacao-tipo {
-      width: auto;
-    }
-
-    .cta-block {
+    .sobre-cta {
       padding: var(--space-7) var(--space-6);
     }
 
-    .cta-block__actions {
+    .sobre-cta__actions {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .sobre-foto img {
+      max-height: 400px;
+      object-fit: cover;
     }
   }
 </style>

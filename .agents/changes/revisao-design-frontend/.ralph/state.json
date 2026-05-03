@@ -1,8 +1,8 @@
 {
-  "current_phase": 2,
+  "current_phase": 3,
   "phases": [
     { "id": 1, "name": "Foundation", "status": "completed" },
-    { "id": 2, "name": "Independent fixes + parallel tracks", "status": "not_started" },
+    { "id": 2, "name": "Independent fixes + parallel tracks", "status": "completed" },
     { "id": 3, "name": "Consolidation (sobre + a11y)", "status": "not_started" },
     { "id": 4, "name": "Final sweep + docs", "status": "not_started" }
   ],
@@ -144,7 +144,7 @@
       "complexity": "medium",
       "depends_on": ["06"],
       "files": ["src/pages/sobre.astro", "src/styles/global.css"],
-      "status": "not_started",
+      "status": "in_progress",
       "commit": null,
       "feedback": null
     },

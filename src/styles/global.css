@@ -1196,3 +1196,103 @@
   @media (max-width: 768px) {
     .page-section { padding: var(--space-9) 0; }
   }
+
+  /* ─── UTILITÁRIOS DE PÁGINA INTERNA ─── */
+
+  /* Grid 2 colunas: foto/imagem + texto (páginas como /sobre) */
+  .page-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--space-9);
+    align-items: start;
+    margin-bottom: var(--space-10);
+  }
+  @media (max-width: 900px) {
+    .page-content-grid { grid-template-columns: 1fr; gap: var(--space-7); }
+  }
+
+  /* Bloco de prosa com max-width e separação vertical */
+  .prose-section {
+    margin-bottom: var(--space-10);
+    max-width: 720px;
+  }
+  .prose-section h2 { margin-bottom: var(--space-5); }
+  .prose-section p { margin-bottom: var(--space-4); line-height: 1.75; }
+
+  /* Flex row de links */
+  .link-group {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  /* Stats em grid 2×2 com separador */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-7);
+    padding-top: var(--space-7);
+    border-top: var(--border-line);
+  }
+  @media (max-width: 640px) {
+    .stats-strip { gap: var(--space-4); }
+  }
+  .stat-entry .num {
+    display: block;
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--bronze);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-entry .label {
+    font-size: 0.85rem;
+    color: var(--taupe);
+    line-height: 1.4;
+  }
+
+  /* Lista tipo ledger (formação, experiências) */
+  .ledger-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .ledger-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
+    padding: 18px 0;
+    border-bottom: var(--border-line);
+  }
+  .ledger-item:first-child { border-top: var(--border-line); }
+  @media (max-width: 640px) {
+    .ledger-item { flex-wrap: wrap; gap: var(--space-1); }
+  }
+  .ledger-badge {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--taupe-soft);
+    width: var(--space-11);
+  }
+  @media (max-width: 640px) {
+    .ledger-badge { width: auto; }
+  }
+  .ledger-title {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--olive-deep);
+    line-height: 1.5;
+  }
+  .ledger-sup {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bronze);
+  }
