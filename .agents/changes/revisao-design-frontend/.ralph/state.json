@@ -173,9 +173,9 @@
       "title": "Cross-page visual regression sweep",
       "complexity": "medium",
       "depends_on": ["02", "03", "04", "05", "06", "07", "08", "09", "10"],
-      "files": [],
-      "status": "not_started",
-      "commit": null,
+      "files": ["src/components/PageHero.astro", "src/styles/global.css", ".agents/changes/revisao-design-frontend/regressao-achados.md"],
+      "status": "completed",
+      "commit": "TBD",
       "feedback": null
     },
     "12": {
