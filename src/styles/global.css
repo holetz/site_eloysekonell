@@ -491,6 +491,7 @@
   .campanha .campanha-sub{
     color:rgba(241,235,224,.78);font-size:1.06rem;line-height:1.72;margin-bottom:36px;
   }
+  .campanha-left .btn{margin-bottom:var(--space-5)}
   .campanha-meta{
     display:block;font-size:0.78rem;
     color:rgba(241,235,224,.5);letter-spacing:0.06em;
