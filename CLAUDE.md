@@ -132,6 +132,45 @@ site_eloysekonell/
 
 ---
 
+## Design Tokens
+
+Todos os tokens estão definidos em `:root` no [src/styles/global.css](src/styles/global.css). Use-os em vez de literais sempre que possível.
+
+### Spacing scale (4px base)
+`--space-1` (4px) · `--space-2` (8px) · `--space-3` (12px) · `--space-4` (16px) · `--space-5` (20px) · `--space-6` (24px) · `--space-7` (32px) · `--space-8` (40px) · `--space-9` (56px) · `--space-10` (72px) · `--space-11` (96px) · `--space-12` (120px) · `--space-13` (160px)
+
+### Tipografia (clamp scales + variáveis)
+`--fs-h1` · `--fs-h2` · `--fs-h3` · `--fs-h4` · `--fs-body` · `--fs-eyebrow`. h1 usa `font-weight: 400` + `letter-spacing: -0.015em` para autoridade executiva.
+
+### Shadow scale
+`--shadow-sm` (cards leves) · `--shadow-md` (hover de cards) · `--shadow-lg` (mobile menu, hero mark)
+
+### Radius scale
+`--radius-sm` (4px, foco/inputs) · `--radius-md` (8px, cards e CTAs eventuais)
+
+### Filter presets (imagens)
+`--filter-photo-warm` (fotos da Eloyse) · `--filter-photo-neutral` (fotos secundárias) · `--filter-logo-mute` (logos de clientes)
+
+### Z-index scale
+`--z-base` (1) · `--z-sticky` (50) · `--z-header` (100) · `--z-modal` (200)
+
+### Border tokens
+`--border-line` (1px solid var(--line)) · `--border-accent` (2px solid var(--bronze))
+
+---
+
+## Sistema de botões
+
+Existem **exatamente 3 variantes** canônicas em `global.css`. Não criar variantes scoped novas em componentes.
+
+- `.btn` — primary (background bronze, uso para CTA principal). Ex.: WhatsApp em Hero, Cta, Campanha.
+- `.btn-ghost` — secondary (outline olive-deep, transparente). Ex.: "Falar com Eloyse" em /servicos.
+- `.link-arrow` — CTA textual com seta (bronze, underline). Ex.: "Ver mais →" em prose de blog.
+
+`.btn` e `.btn-ghost` têm o **mesmo box** (padding `var(--space-4) var(--space-8)`); só mudam fill e border.
+
+---
+
 ## Convenções de desenvolvimento
 
 ### Astro components
@@ -176,6 +215,12 @@ site_eloysekonell/
 - **Cover de posts** de blog: pode ser URL externa (Unsplash) ou arquivo em `public/images/blog/`
 - **Nunca** usar base64 inline no HTML/CSS
 - OG cover: `public/images/og-cover.jpg` (1200×630px)
+
+### Acessibilidade
+- Foco visível global via `:focus-visible` (outline `var(--bronze)` 2px offset 3px) — não remover.
+- Animações respeitam `prefers-reduced-motion: reduce`.
+- Skip link presente em `Layout.astro` (#main-content).
+- Mobile menu, tabs (`AssessmentSpotlight`), accordion (`FaqBlock`) e breadcrumb com ARIA correto.
 
 ---
 
