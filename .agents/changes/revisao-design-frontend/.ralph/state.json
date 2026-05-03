@@ -63,7 +63,7 @@
         "src/pages/servicos/mentoria-executiva.astro"
       ],
       "status": "completed",
-      "commit": "37422ba",
+      "commit": "e93dd48",
       "feedback": null
     },
     "05": {
@@ -122,9 +122,9 @@
         "src/components/ServiceCard.astro",
         "src/pages/servicos/index.astro"
       ],
-      "status": "incomplete",
-      "commit": "1c6b5a3",
-      "feedback": "INTEGRAÇÃO FALHOU: o commit 1c6b5a3 existe no repositório mas NÃO está na branch dev-design (commit órfão — não alcançável por nenhuma branch). O trabalho foi feito em worktree paralelo e nunca mergeado. Resultado: src/assets/icons/ não existe na branch, ServiceCard.astro ainda usa prop `icon: string` com font-size:2rem, servicos/index.astro ainda tem emojis (🎯🏗️🔍💬). Reexecutar a task: criar os 4 SVGs em src/assets/icons/, atualizar ServiceCard para iconHtml + set:html, atualizar servicos/index.astro para importar ?raw e passar iconHtml. O build passa apenas porque Astro não falha em renderizar emojis — a regressão é visual, não de compilação."
+      "status": "completed",
+      "commit": "cc853dd",
+      "feedback": null
     },
     "08": {
       "id": "08",
