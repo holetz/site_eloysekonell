@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import heroImg from '../assets/photos/eloyse-hero.jpg';
 ---
 <!-- HERO -->
@@ -20,7 +21,16 @@ import heroImg from '../assets/photos/eloyse-hero.jpg';
         </div>
       </div>
       <div class="hero-visual reveal delay-2">
-        <div class="photo" style={`background-image:url('${heroImg.src}')`}></div>
+        <div class="photo">
+          <Image
+            src={heroImg}
+            alt="Eloyse Konell — Consultora em Liderança e Gestão Estratégica de Pessoas"
+            loading="eager"
+            fetchpriority="high"
+            widths={[460, 920]}
+            sizes="(max-width: 900px) 360px, 460px"
+          />
+        </div>
         <div class="hero-mark">
           <strong>+10 anos</strong>
           Desenvolvendo líderes e transformando estruturas de pessoas em vantagem competitiva.
