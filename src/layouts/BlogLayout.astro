@@ -90,14 +90,12 @@ const articleSchema = {
 >
   <Nav />
 
-  <main class="article-main">
-    <div class="wrap">
-      <BreadcrumbList items={[
-        { label: 'Início', href: SITE_URL },
-        { label: 'Blog', href: `${SITE_URL}/blog/` },
-        { label: title },
-      ]} />
-    </div>
+  <main class="blog-main">
+    <BreadcrumbList items={[
+      { label: 'Início', href: SITE_URL },
+      { label: 'Blog', href: `${SITE_URL}/blog/` },
+      { label: title },
+    ]} />
 
     <header class="article-header">
       {category && <div class="cat-tag">{category}</div>}
@@ -121,9 +119,7 @@ const articleSchema = {
     </article>
 
     {faq && faq.length > 0 && (
-      <div class="wrap faq-wrap">
-        <FaqBlock faqs={faq} />
-      </div>
+      <FaqBlock faqs={faq} />
     )}
 
     <div class="author-bio">

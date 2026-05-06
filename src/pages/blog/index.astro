@@ -42,257 +42,249 @@ function formatDate(date: Date) {
 >
   <Nav />
 
-  <main class="blog-main">
-    <!-- HERO -->
-    <section class="b-hero">
-      <div class="wrap">
-        <span class="b-eyebrow">Insights & Perspectivas</span>
-        <h1>
-          Reflexões sobre liderança, estratégia e a
-          <em>arte de fazer pessoas performarem</em>.
-        </h1>
-        <p class="b-hero-lead">
-          Conteúdo para líderes e profissionais que entendem que resultado e
-          gente são, no fundo, o mesmo assunto.
-        </p>
-      </div>
-    </section>
+  <!-- HERO — full-bleed, fora do page-main -->
+  <section class="b-hero">
+    <div class="wrap">
+      <span class="b-eyebrow">Insights & Perspectivas</span>
+      <h1>
+        Reflexões sobre liderança, estratégia e a
+        <em>arte de fazer pessoas performarem</em>.
+      </h1>
+      <p class="b-hero-lead">
+        Conteúdo para líderes e profissionais que entendem que resultado e
+        gente são, no fundo, o mesmo assunto.
+      </p>
+    </div>
+  </section>
 
+  <main class="page-main">
     {!featured ? (
       <section class="b-section">
-        <div class="wrap">
-          <p class="no-posts">Novos artigos em breve.</p>
-        </div>
+        <p class="no-posts">Novos artigos em breve.</p>
       </section>
     ) : (
       <>
         <!-- EM DESTAQUE -->
         <section class="b-section">
-          <div class="wrap">
-            <div class="section-title">
-              <h2>Em destaque</h2>
-              <div class="line"></div>
-            </div>
-
-            <a href={`/blog/${featured.slug}`} class="featured-card">
-              <div
-                class="featured-img"
-                style={featured.data.coverImage
-                  ? `background-image:url('${featured.data.coverImage}')`
-                  : ''}
-              ></div>
-              <div class="featured-body">
-                <div class="featured-head">
-                  <span class="b-eyebrow">
-                    {featured.data.tags[0]} · {featured.data.readingTime}
-                  </span>
-                  <h3>{featured.data.title}</h3>
-                  <p>{featured.data.deck}</p>
-                </div>
-                <div class="featured-foot">
-                  <time datetime={featured.data.pubDate.toISOString()}>
-                    {formatDate(featured.data.pubDate)}
-                  </time>
-                  <span class="btn btn-bronze">Ler artigo</span>
-                </div>
-              </div>
-            </a>
+          <div class="section-title">
+            <h2>Em destaque</h2>
+            <div class="line"></div>
           </div>
+
+          <a href={`/blog/${featured.slug}`} class="featured-card">
+            <div
+              class="featured-img"
+              style={featured.data.coverImage
+                ? `background-image:url('${featured.data.coverImage}')`
+                : ''}
+            ></div>
+            <div class="featured-body">
+              <div class="featured-head">
+                <span class="b-eyebrow">
+                  {featured.data.tags[0]} · {featured.data.readingTime}
+                </span>
+                <h3>{featured.data.title}</h3>
+                <p>{featured.data.deck}</p>
+              </div>
+              <div class="featured-foot">
+                <time datetime={featured.data.pubDate.toISOString()}>
+                  {formatDate(featured.data.pubDate)}
+                </time>
+                <span class="btn btn-bronze">Ler artigo</span>
+              </div>
+            </div>
+          </a>
         </section>
 
         {rest.length > 0 && (
           <!-- ARTIGOS RECENTES -->
           <section class="b-section b-section-articles" id="artigos">
-            <div class="wrap">
-              <div class="section-title">
-                <h2>Artigos recentes</h2>
-                <div class="line"></div>
-              </div>
+            <div class="section-title">
+              <h2>Artigos recentes</h2>
+              <div class="line"></div>
+            </div>
 
-              <div class="categories">
-                <button class="cat-pill active" data-filter="todos" type="button">
-                  Todos
+            <div class="categories">
+              <button class="cat-pill active" data-filter="todos" type="button">
+                Todos
+              </button>
+              {categories.map((cat) => (
+                <button
+                  class="cat-pill"
+                  data-filter={slugifyTag(cat)}
+                  type="button"
+                >
+                  {cat}
                 </button>
-                {categories.map((cat) => (
-                  <button
-                    class="cat-pill"
-                    data-filter={slugifyTag(cat)}
-                    type="button"
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
+              ))}
+            </div>
 
-              <div class="articles-grid">
-                {rest.map((post: any) => (
-                  <article
-                    class="article"
-                    data-cat={post.data.tags.map(slugifyTag).join(' ')}
-                  >
-                    <a href={`/blog/${post.slug}`} class="article-link">
-                      <div
-                        class="article-img"
-                        style={post.data.coverImage
-                          ? `background-image:url('${post.data.coverImage}')`
-                          : ''}
-                      ></div>
-                      <div class="article-body">
-                        <span class="b-eyebrow">
-                          {post.data.tags[0]} · {post.data.readingTime}
-                        </span>
-                        <h3>{post.data.title}</h3>
-                        <p>{post.data.description}</p>
-                        <span class="read">Ler mais →</span>
-                      </div>
-                    </a>
-                  </article>
-                ))}
-              </div>
+            <div class="articles-grid">
+              {rest.map((post: any) => (
+                <article
+                  class="article"
+                  data-cat={post.data.tags.map(slugifyTag).join(' ')}
+                >
+                  <a href={`/blog/${post.slug}`} class="article-link">
+                    <div
+                      class="article-img"
+                      style={post.data.coverImage
+                        ? `background-image:url('${post.data.coverImage}')`
+                        : ''}
+                    ></div>
+                    <div class="article-body">
+                      <span class="b-eyebrow">
+                        {post.data.tags[0]} · {post.data.readingTime}
+                      </span>
+                      <h3>{post.data.title}</h3>
+                      <p>{post.data.description}</p>
+                      <span class="read">Ler mais →</span>
+                    </div>
+                  </a>
+                </article>
+              ))}
             </div>
           </section>
         )}
       </>
     )}
 
-    <!-- NEWSLETTER · O FATOR HUMANO -->
-    <section class="nl-section" id="newsletter">
-      <div class="nl-grid">
-        <div class="nl-left">
-          <span class="nl-eyebrow">Newsletter</span>
-          <h2 class="nl-name">O <em>Fator<br />Humano</em></h2>
-          <p class="nl-tagline">
-            A leitura dos bastidores de quem decide sobre pessoas no topo da
-            operação.
-          </p>
-          <div class="nl-meta">
-            <div class="nl-meta-item">
-              <span class="nl-meta-num">15</span>
-              <span class="nl-meta-label">Em 15 dias</span>
-            </div>
-            <div class="nl-meta-item">
-              <span class="nl-meta-num">10min</span>
-              <span class="nl-meta-label">De leitura</span>
-            </div>
-          </div>
-        </div>
-        <div class="nl-right">
-          <p class="nl-promise">
-            Receba insights que normalmente
-            <em>só meus clientes veem</em>.
-          </p>
-          <ul class="nl-list">
-            <li>Análises sobre estratégia e liderança aplicadas ao dia a dia</li>
-            <li>Bastidores de projetos reais, com decisões e desfechos</li>
-            <li>Provocações que ajudam você a ler melhor o seu negócio</li>
-          </ul>
-          <a
-            href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7449821423914844162"
-            target="_blank"
-            rel="noopener"
-            class="btn-linkedin"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/>
-            </svg>
-            Assinar no LinkedIn
-          </a>
-          <p class="nl-disclaimer">
-            Você recebe direto no seu feed. Sem spam, sem cadastro extra.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- SOBRE A AUTORA -->
     <section class="b-section b-author-section">
-      <div class="wrap">
-        <div class="author">
-          <div
-            class="author-photo"
-            style={`background-image:url('${authorPhoto.src}')`}
-            aria-label="Eloyse Konell"
-          ></div>
-          <div class="author-content">
-            <span class="b-eyebrow">Sobre a autora</span>
-            <h2>Eloyse <em>Konell</em></h2>
-            <p class="author-tag">
-              Psicóloga de formação, estrategista de liderança na prática.
-            </p>
-            <p>
-              Há mais de uma década, ajudo empresas a transformar liderança em
-              resultado. Trabalho onde o comportamento humano encontra a
-              estratégia de negócio, formando líderes do zero em contextos
-              complexos, conduzindo <em>assessments</em> que revelam o que
-              nenhuma ferramenta sozinha mostra e desenhando jornadas que
-              sustentam crescimento real.
-            </p>
-            <p>
-              Não vendo método pronto: entrego clareza, decisão e gente
-              preparada para o que vem.
-            </p>
-            <p>
-              Se sua empresa está crescendo ou se transformando mais rápido do
-              que sua liderança consegue acompanhar, esse é exatamente o tipo
-              de desafio que eu resolvo.
-            </p>
-            <a href="/" class="btn">Conhecer meu trabalho</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PARCEIROS -->
-    <section class="partners">
-      <div class="wrap">
-        <div class="partners-header">
-          <span class="b-eyebrow">Conteúdo de parceiros</span>
-          <h2>Vozes que <em>respeito</em></h2>
-          <p>
-            Espaço dedicado a artigos de parceiros estratégicos e referências
-            do mercado que complementam a conversa.
+      <div class="author">
+        <div
+          class="author-photo"
+          style={`background-image:url('${authorPhoto.src}')`}
+          aria-label="Eloyse Konell"
+        ></div>
+        <div class="author-content">
+          <span class="b-eyebrow">Sobre a autora</span>
+          <h2>Eloyse <em>Konell</em></h2>
+          <p class="author-tag">
+            Psicóloga de formação, estrategista de liderança na prática.
           </p>
-        </div>
-        <div class="partners-grid">
-          <div class="partner-card">
-            <div
-              class="partner-logo"
-              style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=85')"
-              aria-hidden="true"
-            ></div>
-            <div>
-              <span class="b-eyebrow">Parceiro convidado</span>
-              <h3>Em breve: o primeiro artigo convidado</h3>
-              <p>
-                Espaço reservado para uma voz do mercado que complementa a
-                conversa.
-              </p>
-            </div>
-          </div>
-          <div class="partner-card">
-            <div
-              class="partner-logo"
-              style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=85')"
-              aria-hidden="true"
-            ></div>
-            <div>
-              <span class="b-eyebrow">Seja parceiro</span>
-              <h3>Quer publicar aqui?</h3>
-              <p>
-                Aceito contribuições selecionadas de profissionais com visão
-                alinhada.
-                <a
-                  href="https://wa.me/5547991443844"
-                  target="_blank"
-                  rel="noopener"
-                >Fale comigo</a>.
-              </p>
-            </div>
-          </div>
+          <p>
+            Há mais de uma década, ajudo empresas a transformar liderança em
+            resultado. Trabalho onde o comportamento humano encontra a
+            estratégia de negócio, formando líderes do zero em contextos
+            complexos, conduzindo <em>assessments</em> que revelam o que
+            nenhuma ferramenta sozinha mostra e desenhando jornadas que
+            sustentam crescimento real.
+          </p>
+          <p>
+            Não vendo método pronto: entrego clareza, decisão e gente
+            preparada para o que vem.
+          </p>
+          <p>
+            Se sua empresa está crescendo ou se transformando mais rápido do
+            que sua liderança consegue acompanhar, esse é exatamente o tipo
+            de desafio que eu resolvo.
+          </p>
+          <a href="/" class="btn">Conhecer meu trabalho</a>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- NEWSLETTER — full-bleed, fora do page-main -->
+  <section class="nl-section" id="newsletter">
+    <div class="nl-grid">
+      <div class="nl-left">
+        <span class="nl-eyebrow">Newsletter</span>
+        <h2 class="nl-name">O <em>Fator<br />Humano</em></h2>
+        <p class="nl-tagline">
+          A leitura dos bastidores de quem decide sobre pessoas no topo da
+          operação.
+        </p>
+        <div class="nl-meta">
+          <div class="nl-meta-item">
+            <span class="nl-meta-num">15</span>
+            <span class="nl-meta-label">Em 15 dias</span>
+          </div>
+          <div class="nl-meta-item">
+            <span class="nl-meta-num">10min</span>
+            <span class="nl-meta-label">De leitura</span>
+          </div>
+        </div>
+      </div>
+      <div class="nl-right">
+        <p class="nl-promise">
+          Receba insights que normalmente
+          <em>só meus clientes veem</em>.
+        </p>
+        <ul class="nl-list">
+          <li>Análises sobre estratégia e liderança aplicadas ao dia a dia</li>
+          <li>Bastidores de projetos reais, com decisões e desfechos</li>
+          <li>Provocações que ajudam você a ler melhor o seu negócio</li>
+        </ul>
+        <a
+          href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7449821423914844162"
+          target="_blank"
+          rel="noopener"
+          class="btn-linkedin"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+          Assinar no LinkedIn
+        </a>
+        <p class="nl-disclaimer">
+          Você recebe direto no seu feed. Sem spam, sem cadastro extra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS — full-bleed, fora do page-main -->
+  <section class="partners">
+    <div class="wrap">
+      <div class="partners-header">
+        <span class="b-eyebrow">Conteúdo de parceiros</span>
+        <h2>Vozes que <em>respeito</em></h2>
+        <p>
+          Espaço dedicado a artigos de parceiros estratégicos e referências
+          do mercado que complementam a conversa.
+        </p>
+      </div>
+      <div class="partners-grid">
+        <div class="partner-card">
+          <div
+            class="partner-logo"
+            style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=85')"
+            aria-hidden="true"
+          ></div>
+          <div>
+            <span class="b-eyebrow">Parceiro convidado</span>
+            <h3>Em breve: o primeiro artigo convidado</h3>
+            <p>
+              Espaço reservado para uma voz do mercado que complementa a
+              conversa.
+            </p>
+          </div>
+        </div>
+        <div class="partner-card">
+          <div
+            class="partner-logo"
+            style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=85')"
+            aria-hidden="true"
+          ></div>
+          <div>
+            <span class="b-eyebrow">Seja parceiro</span>
+            <h3>Quer publicar aqui?</h3>
+            <p>
+              Aceito contribuições selecionadas de profissionais com visão
+              alinhada.
+              <a
+                href="https://wa.me/5547991443844"
+                target="_blank"
+                rel="noopener"
+              >Fale comigo</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <Footer />
 </Layout>
@@ -316,10 +308,8 @@ function formatDate(date: Date) {
 </script>
 
 <style>
-  .blog-main { padding-top: 0; }
-
-  /* Override site default eyebrow inside blog (no leading line) */
-  .blog-main .b-eyebrow {
+  /* Override site default eyebrow no blog (sem linha decorativa) */
+  .b-eyebrow {
     font-family: var(--sans);
     font-size: 0.7rem;
     letter-spacing: 0.22em;
@@ -330,8 +320,8 @@ function formatDate(date: Date) {
   }
 
   /* Section spacing */
-  .blog-main .b-section { padding: 90px 0; }
-  .blog-main .b-section-articles { padding-top: 0; }
+  .b-section { padding: 90px 0; }
+  .b-section-articles { padding-top: 0; }
 
   /* HERO */
   .b-hero {
@@ -784,7 +774,7 @@ function formatDate(date: Date) {
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .b-hero { padding: 120px 0 70px; }
-    .blog-main .b-section { padding: 60px 0; }
+    .b-section { padding: 60px 0; }
 
     .featured-card { grid-template-columns: 1fr; }
     .featured-img { min-height: 240px; }
