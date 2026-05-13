@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "A Cadeira Vazia na Sala de Reuniões: O Custo Invisível de Não Preparar Seus Líderes"
 description: "Como o assessment estratégico transforma a fragilidade da sucessão em vantagem competitiva."
 deck: "Mais de 60% das empresas brasileiras não têm plano de sucessão estruturado. E quando a fragilidade aparece, já é tarde."

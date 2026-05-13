@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Quando Chega a Hora de Mudar"
 description: "O ponto de inflexão de quem ocupa o topo — e por que a mentoria se torna o diferencial decisivo na travessia."
 deck: "O ponto de inflexão de quem ocupa o topo — e por que a mentoria se torna o diferencial decisivo na travessia."

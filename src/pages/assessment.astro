@@ -1,0 +1,553 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import { credenciais } from '../data/credenciais';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const title = 'Diagnóstico de Liderança — Assessment | Eloyse Konell';
+const description =
+  'Assessment de liderança para decisões de promoção, sucessão e contratação. Dados objetivos sobre potencial e comportamento de líderes — sem achismo.';
+const canonical = `${SITE_URL}/assessment/`;
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Assessment' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/assessment/#service`,
+  name: 'Diagnóstico de Liderança — Assessment',
+  serviceType: 'Assessment de Liderança',
+  description,
+  provider: { '@id': `${SITE_URL}#eloyse` },
+  areaServed: { '@type': 'Place', name: 'Brasil' },
+  url: canonical,
+};
+
+const faqs = [
+  {
+    q: 'Quanto tempo dura o processo de assessment?',
+    a: 'Um assessment individual completo — com aplicação de instrumentos, análise e devolutiva — costuma levar entre duas e quatro semanas. Processos com múltiplos avaliados são planejados conforme a demanda da empresa.',
+  },
+  {
+    q: 'O relatório fica só para o avaliado ou a empresa também acessa?',
+    a: 'Isso é definido no briefing inicial. No assessment corporativo, o relatório executivo é entregue ao decisor (RH ou liderança solicitante). No assessment individual, a devolutiva é exclusivamente para o próprio avaliado — a empresa não tem acesso.',
+  },
+  {
+    q: 'O assessment funciona remotamente?',
+    a: 'Sim. A aplicação dos instrumentos é feita online. As entrevistas e devolutivas acontecem por videoconferência. A grande maioria dos assessments é conduzida dessa forma, com a mesma robustez do presencial.',
+  },
+  {
+    q: 'Qual o investimento?',
+    a: 'O valor depende do escopo: número de avaliados, profundidade do processo e entregáveis esperados. Entre em contato para conversarmos sobre o que faz sentido para o seu contexto.',
+  },
+];
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  breadcrumb={breadcrumb}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    slot="hero"
+    eyebrow="Diagnóstico de Liderança"
+    title="Decisões sobre pessoas com dados, não com intuição"
+    deck={`Assessment estruturado para promoção, sucessão e contratação — mais de ${credenciais.assessmentsRealizados} processos conduzidos.`}
+  />
+
+  <!-- O QUE É -->
+  <section class="page-section assessment-intro wrap">
+    <div class="assessment-intro-grid">
+      <div>
+        <h2>O que é, de fato, um assessment de liderança?</h2>
+        <p>
+          Assessment de liderança não é um teste de personalidade. É um processo estruturado de
+          leitura de potencial, comportamento e ajuste ao contexto — conduzido com método,
+          instrumentos validados e análise interpretativa.
+        </p>
+        <p>
+          A diferença importa. Um teste de personalidade descreve quem a pessoa é. Um assessment
+          avalia o que ela é capaz de entregar naquela função, naquele momento, com aqueles desafios.
+          São perguntas completamente diferentes — e demandam abordagens completamente diferentes.
+        </p>
+        <p>
+          O processo combina análise comportamental (DISC e instrumentos complementares),
+          entrevistas estruturadas e, quando aplicável, análise de histórico de desempenho. O
+          resultado é uma leitura integrada: o que move essa pessoa, como ela decide sob pressão,
+          onde estão seus pontos cegos e o que ela precisa desenvolver.
+        </p>
+      </div>
+      <div class="assessment-num-col">
+        <div class="num-stat">
+          <span class="num-stat__value">{credenciais.assessmentsRealizados}+</span>
+          <span class="num-stat__label">assessments realizados</span>
+        </div>
+        <div class="num-stat">
+          <span class="num-stat__value">{credenciais.anosAtuacao}+</span>
+          <span class="num-stat__label">anos de prática</span>
+        </div>
+        <p class="num-stat__obs">
+          Cada avaliação parte do contexto específico: o cargo, o desafio, o momento da empresa.
+          Não existe laudo genérico aqui.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUANDO USAR -->
+  <section class="page-section assessment-quando wrap">
+    <h2>Quando usar assessment?</h2>
+    <p class="section-lead">
+      Há momentos em que tomar uma decisão importante sobre pessoas sem dados objetivos é um risco
+      desnecessário. Esses são os momentos em que o processo faz mais sentido:
+    </p>
+    <div class="momentos-grid">
+      <div class="momento-card">
+        <span class="momento-num">01</span>
+        <h3>Promoção interna</h3>
+        <p>Confirmar — ou contestar — a percepção sobre um candidato com dados antes da nomeação.</p>
+      </div>
+      <div class="momento-card">
+        <span class="momento-num">02</span>
+        <h3>Planejamento de sucessão</h3>
+        <p>Mapear quem tem potencial real para posições críticas e o que cada candidato ainda precisa desenvolver.</p>
+      </div>
+      <div class="momento-card">
+        <span class="momento-num">03</span>
+        <h3>Contratação executiva</h3>
+        <p>Quando o custo de erro é alto e a entrevista tradicional não é suficiente para avaliar fit e potencial.</p>
+      </div>
+      <div class="momento-card">
+        <span class="momento-num">04</span>
+        <h3>Redesenho de time</h3>
+        <p>Entender os perfis presentes, identificar lacunas e redistribuir papéis com base em dados.</p>
+      </div>
+      <div class="momento-card">
+        <span class="momento-num">05</span>
+        <h3>Decisão de carreira individual</h3>
+        <p>Clareza sobre perfil, pontos cegos e próximo passo — sem depender da percepção da empresa.</p>
+      </div>
+      <div class="momento-card">
+        <span class="momento-num">06</span>
+        <h3>Dúvida sobre desenvolvimento</h3>
+        <p>Quando você não sabe por onde começar com um líder — o assessment define prioridades e evita investir no lugar errado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section class="page-section assessment-publico wrap">
+    <h2>Para quem é?</h2>
+    <div class="publico-grid">
+      <div class="publico-card">
+        <span class="publico-eyebrow">Para empresas</span>
+        <h3>Tomadores de decisão e RH</h3>
+        <p>
+          Para quem precisa tomar decisões objetivas sobre pessoas — promoção, sucessão,
+          contratação ou redistribuição de papéis. O decisor recebe um relatório executivo que
+          traduz os dados em recomendações estratégicas claras.
+        </p>
+        <ul class="publico-lista">
+          <li>Mapeamento de potencial para sucessão</li>
+          <li>Decisão de promoção com base objetiva</li>
+          <li>Diagnóstico de squad antes de redesenho</li>
+          <li>Seleção para posições executivas</li>
+        </ul>
+        <a
+          href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Corporativo."
+          class="btn"
+          target="_blank"
+          rel="noopener"
+        >Solicitar Assessment Corporativo</a>
+      </div>
+
+      <div class="publico-card">
+        <span class="publico-eyebrow">Para o líder</span>
+        <h3>Autoconhecimento e direção de carreira</h3>
+        <p>
+          Para quem quer clareza sobre si mesmo — independente da empresa onde trabalha ou do
+          que o gestor acha. Ideal para líderes em transição, profissionais avaliando o próximo
+          passo ou quem quer entender seus próprios padrões antes de uma decisão importante.
+        </p>
+        <ul class="publico-lista">
+          <li>Clareza sobre perfil e pontos cegos</li>
+          <li>Decisão de mudança de cargo ou empresa</li>
+          <li>Preparação para uma promoção</li>
+          <li>Direcionamento de desenvolvimento pessoal</li>
+        </ul>
+        <a
+          href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20Individual."
+          class="btn"
+          target="_blank"
+          rel="noopener"
+        >Quero fazer meu Assessment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE VOCÊ RECEBE -->
+  <section class="page-section assessment-entregaveis wrap">
+    <h2>O que você recebe</h2>
+    <p class="section-lead">
+      O que sai de um processo de assessment não é só um documento — é uma base concreta para
+      decisão e desenvolvimento.
+    </p>
+    <div class="entregaveis-grid">
+      <div class="entregavel">
+        <h3>Relatório individual</h3>
+        <p>Perfil comportamental, drivers de motivação, padrões sob pressão, pontos fortes, pontos cegos e riscos cruzados com a exigência do cargo. Linguagem executiva — sem jargão técnico.</p>
+      </div>
+      <div class="entregavel">
+        <h3>Relatório consolidado</h3>
+        <p>Para múltiplos avaliados: visão integrada do grupo com mapeamento de perfis, lacunas coletivas e recomendações estratégicas. Permite enxergar o time como sistema.</p>
+      </div>
+      <div class="entregavel">
+        <h3>Devolutiva síncrona</h3>
+        <p>Sessão ao vivo, presencial ou por vídeo, para apresentar os resultados, responder perguntas e garantir que o avaliado compreenda o que os dados significam.</p>
+      </div>
+      <div class="entregavel">
+        <h3>Plano de desenvolvimento</h3>
+        <p>Documento conciso com até três frentes prioritárias, ações concretas para cada uma e horizonte de tempo. Uma rota com prioridade clara — não um cardápio de competências.</p>
+      </div>
+    </div>
+    <div class="entregaveis-link">
+      <a href="/servicos/assessment/" class="link-arrow">Ver o processo completo em detalhes →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="page-section wrap">
+    <FaqBlock
+      title="Perguntas frequentes"
+      faqs={faqs}
+    />
+  </section>
+
+  <!-- CTA -->
+  <section class="page-section assessment-cta wrap">
+    <div class="assessment-cta-inner">
+      <p class="cta-titulo">Pronto para decidir sobre pessoas com dados?</p>
+      <p class="cta-sub">Vamos conversar sobre o escopo certo para o seu contexto.</p>
+      <div class="cta-actions">
+        <a
+          href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20no%20Assessment%20de%20Lideran%C3%A7a."
+          class="btn"
+          target="_blank"
+          rel="noopener"
+        >Iniciar conversa no WhatsApp</a>
+        <a href="/contato/" class="link-arrow">Outras formas de contato →</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Intro grid */
+  .assessment-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .assessment-intro-grid p {
+    color: var(--taupe);
+    line-height: 1.75;
+    margin-bottom: var(--space-4);
+  }
+
+  .assessment-intro-grid p:last-child { margin-bottom: 0; }
+
+  .assessment-num-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    background: var(--sand-warm);
+    border: 1px solid var(--sand-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-7);
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-6));
+  }
+
+  .num-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .num-stat__value {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--bronze);
+    line-height: 1;
+  }
+
+  .num-stat__label {
+    font-size: 0.875rem;
+    color: var(--taupe);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .num-stat__obs {
+    font-size: 0.875rem;
+    color: var(--taupe-soft);
+    line-height: 1.6;
+    margin: 0;
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-4);
+  }
+
+  /* Seção lead */
+  .section-lead {
+    color: var(--taupe);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: var(--space-9);
+  }
+
+  /* Momentos grid */
+  .momentos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .momento-card {
+    background: var(--sand-warm);
+    border: 1px solid var(--sand-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-7) var(--space-6);
+  }
+
+  .momento-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--bronze);
+    display: block;
+    margin-bottom: var(--space-3);
+    line-height: 1;
+  }
+
+  .momento-card h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 var(--space-3);
+  }
+
+  .momento-card p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.6;
+    font-size: 0.9375rem;
+  }
+
+  /* Público */
+  .publico-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+
+  .publico-card {
+    background: var(--sand-warm);
+    border: 1px solid var(--sand-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-8) var(--space-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .publico-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--bronze);
+  }
+
+  .publico-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0;
+  }
+
+  .publico-card p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+    font-size: 0.9375rem;
+  }
+
+  .publico-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .publico-lista li {
+    color: var(--taupe);
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .publico-lista li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 2px;
+    background: var(--bronze);
+  }
+
+  .publico-card .btn { align-self: flex-start; margin-top: auto; }
+
+  /* Entregáveis */
+  .entregaveis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-7);
+  }
+
+  .entregavel {
+    padding: var(--space-7) var(--space-7);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .entregavel:nth-child(even) { border-right: none; }
+  .entregavel:nth-child(n+3) { border-bottom: none; }
+
+  .entregavel h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 var(--space-3);
+  }
+
+  .entregavel p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+    font-size: 0.9375rem;
+  }
+
+  .entregaveis-link { text-align: center; }
+
+  /* CTA */
+  .assessment-cta-inner {
+    background: var(--olive-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-10) var(--space-9);
+    text-align: center;
+  }
+
+  .cta-titulo {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--sand);
+    margin: 0 0 var(--space-4);
+    line-height: 1.2;
+  }
+
+  .cta-sub {
+    color: var(--taupe-soft);
+    font-size: 1rem;
+    margin: 0 0 var(--space-8);
+    line-height: 1.6;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-7);
+    flex-wrap: wrap;
+  }
+
+  .cta-actions .link-arrow { color: var(--sand); opacity: 0.8; }
+  .cta-actions .link-arrow:hover { opacity: 1; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .assessment-intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .assessment-num-col {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .num-stat__obs {
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding-top: var(--space-4);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .momentos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .publico-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .entregaveis-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .entregavel:nth-child(even) { border-right: none; }
+    .entregavel:nth-child(n+3) { border-bottom: 1px solid var(--line); }
+    .entregavel:last-child { border-bottom: none; }
+  }
+
+  @media (max-width: 640px) {
+    .momentos-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .assessment-cta-inner {
+      padding: var(--space-9) var(--space-7);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+    }
+  }
+</style>

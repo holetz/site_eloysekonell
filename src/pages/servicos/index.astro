@@ -21,47 +21,47 @@ const breadcrumb = [
 
 const services = [
   {
-    title: 'Desenvolvimento de Líderes',
-    deck: 'Para empresas que precisam preparar gestores para o próximo nível de complexidade.',
-    href: '/servicos/desenvolvimento-de-liderancas/',
-    iconHtml: leadershipIcon,
-    bullets: [
-      'Programas sob medida para líderes em formação e gestores em transição',
-      'Abordagem baseada em neurociência e análise comportamental',
-      'Acompanhamento contínuo com metas e indicadores claros',
-    ],
-  },
-  {
-    title: 'Gestão Estratégica de Pessoas',
-    deck: 'Para PMEs que crescem e precisam estruturar gestão de pessoas sem montar um RH inteiro.',
-    href: '/servicos/gestao-estrategica-de-pessoas/',
-    iconHtml: strategyIcon,
-    bullets: [
-      'Diagnóstico e estruturação de processos de pessoas',
-      'Políticas, trilhas de carreira e retenção de talentos',
-      'Implantação prática, não apenas consultoria teórica',
-    ],
-  },
-  {
-    title: 'Assessment',
-    deck: 'Para tomadores de decisão que querem clareza sobre o potencial e o gap dos seus líderes.',
+    title: 'Assessment e Diagnóstico de Liderança',
+    deck: 'Para empresas e líderes que precisam de dados objetivos antes de decisões críticas de promoção, sucessão ou contratação.',
     href: '/servicos/assessment/',
     iconHtml: assessmentIcon,
     bullets: [
-      'Mapeamento comportamental e de competências com ferramentas certificadas',
-      'Relatórios executivos para decisões de promoção, sucessão e equipes',
-      'Devolutivas individuais com plano de desenvolvimento',
+      'Combinação de instrumentos validados — DISC e análise comportamental avançada',
+      'Relatório executivo com recomendações estratégicas claras para o decisor',
+      'Devolutiva individual e plano de desenvolvimento com prioridades definidas',
     ],
   },
   {
-    title: 'Mentoria Executiva',
-    deck: 'Para executivos em transição ou em novos desafios — espaço seguro para pensar a própria liderança.',
+    title: 'Estratégias de Sucessão',
+    deck: 'Para empresas que precisam estruturar quem vai sustentar o próximo ciclo — antes que a cadeira fique vazia.',
+    href: '/servicos/estrategias-de-sucessao/',
+    iconHtml: strategyIcon,
+    bullets: [
+      'Mapeamento de potencial e prontidão dos candidatos internos com critérios objetivos',
+      'Plano de sucessão estruturado com cronograma e responsáveis definidos',
+      'Acompanhamento do desenvolvimento dos sucessores até a transição',
+    ],
+  },
+  {
+    title: 'Mentoria de Transição de Carreira para Líderes',
+    deck: 'Para líderes que estão mudando de papel, empresa ou nível — e precisam de um espaço estratégico para pensar com clareza.',
     href: '/servicos/mentoria-executiva/',
     iconHtml: mentoringIcon,
     bullets: [
-      'Processo individual com foco em resultados e autoconhecimento',
-      'Desenvolvimento de repertório para decisões de alta complexidade',
-      'Acompanhamento de 3 a 6 meses com sessões estruturadas',
+      'Processo individual focado em decisão e direção em momentos de transição',
+      'Análise comportamental integrada para mapear padrões que limitam ou impulsionam',
+      'Acompanhamento de 3 a 6 meses com sessões estruturadas e metas claras',
+    ],
+  },
+  {
+    title: 'Desenvolvimento de Líderes',
+    deck: 'Para empresas que precisam preparar gestores para o próximo nível de complexidade com método, não com treinamento genérico.',
+    href: '/servicos/desenvolvimento-de-liderancas/',
+    iconHtml: leadershipIcon,
+    bullets: [
+      'Programas sob medida para líderes em formação e gestores em transição de papel',
+      'Abordagem baseada em neurociência, análise comportamental e contexto real do negócio',
+      'Acompanhamento contínuo com indicadores claros de mudança de comportamento',
     ],
   },
 ];
@@ -76,10 +76,10 @@ const collectionPageSchema = {
   inLanguage: 'pt-BR',
   isPartOf: { '@id': `${SITE_URL}/#business` },
   hasPart: [
-    { '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service` },
-    { '@id': `${SITE_URL}/servicos/gestao-estrategica-de-pessoas/#service` },
     { '@id': `${SITE_URL}/servicos/assessment/#service` },
+    { '@id': `${SITE_URL}/servicos/estrategias-de-sucessao/#service` },
     { '@id': `${SITE_URL}/servicos/mentoria-executiva/#service` },
+    { '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service` },
   ],
 };
 ---
@@ -103,11 +103,11 @@ const collectionPageSchema = {
 
   <div class="wrap servicos-wrap">
     <p class="servicos-intro">
-      Cada empresa atravessa momentos distintos: há quem precise formar líderes do zero, quem precise
-      estruturar o RH que nunca existiu, quem precise de um diagnóstico preciso antes de tomar uma
-      decisão estratégica, e quem precise de um espaço para pensar com clareza. Os quatro serviços
-      abaixo foram desenhados para esses momentos — não como pacotes genéricos, mas como respostas
-      a perguntas reais que líderes e empresas me trazem todos os dias.
+      Cada empresa atravessa momentos distintos: há quem precise formar líderes que ainda não existem
+      no pipeline, quem precise estruturar processos de liderança que sustentem o crescimento, quem
+      precise de um diagnóstico preciso antes de promover, suceder ou contratar, e quem precise de um
+      espaço estratégico para pensar liderança com clareza. As quatro frentes abaixo foram desenhadas
+      para esses momentos — não como pacotes genéricos, mas como respostas a perguntas reais.
     </p>
 
     <div class="servicos-grid">

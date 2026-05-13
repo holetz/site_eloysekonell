@@ -17,11 +17,10 @@ function isCurrent(href: string) {
   <nav class="menu" id="mobile-menu" aria-label="Navegação principal">
     <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Início</a>
     <a href="/sobre/" aria-current={isCurrent('/sobre/') ? 'page' : undefined}>Sobre</a>
-    <a href="/metodologia/" aria-current={isCurrent('/metodologia/') ? 'page' : undefined}>Consultoria</a>
     <a href="/servicos/" aria-current={isCurrent('/servicos/') ? 'page' : undefined}>Serviços</a>
+    <a href="/assessment/" aria-current={isCurrent('/assessment/') ? 'page' : undefined}>Assessment</a>
     <a href="/#depoimentos">Depoimentos</a>
     <a href="/blog/" aria-current={isCurrent('/blog/') ? 'page' : undefined}>Blog</a>
-    <a href="/cases/" aria-current={isCurrent('/cases/') ? 'page' : undefined}>Cases</a>
     <a href="/contato/" class="btn-ghost btn-ghost--light" aria-current={isCurrent('/contato/') ? 'page' : undefined}>Conversar</a>
   </nav>
   <button

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Sua Empresa Tem um Sucessor. Mas Tem uma Sucessão?"
 description: "A maioria das empresas tem um nome. Quase nenhuma tem o processo. E a diferença entre os dois custa bilhões."
 deck: "A maioria das empresas tem um nome. Quase nenhuma tem o processo. E a diferença entre os dois custa bilhões."

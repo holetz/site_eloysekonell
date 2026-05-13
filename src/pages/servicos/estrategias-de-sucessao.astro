@@ -1,0 +1,328 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
+import { credenciais } from '../../data/credenciais';
+
+const SITE_URL = 'https://eloysekonell.com.br';
+
+const title = 'Estratégias de Sucessão | Eloyse Konell';
+const description =
+  'Planejamento de sucessão estruturado para empresas que precisam preparar quem vai sustentar o próximo ciclo — com critérios objetivos, não impressões.';
+const canonical = `${SITE_URL}/servicos/estrategias-de-sucessao/`;
+
+const breadcrumb = [
+  { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/servicos/' },
+  { label: 'Estratégias de Sucessão' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE_URL}/servicos/estrategias-de-sucessao/#service`,
+  name: 'Estratégias de Sucessão',
+  serviceType: 'Planejamento de Sucessão',
+  description,
+  provider: { '@id': `${SITE_URL}#eloyse` },
+  areaServed: { '@type': 'Place', name: 'Brasil' },
+  url: canonical,
+};
+
+const faqs = [
+  {
+    q: 'Quando é o momento certo para estruturar um plano de sucessão?',
+    a: 'Antes de precisar. A maioria das empresas só pensa em sucessão quando já estão em crise — um líder-chave pediu demissão, adoeceu ou saiu sem aviso. Nesse ponto, a empresa está reativamente preenchendo uma cadeira vazia, não planejando estrategicamente. O momento certo é quando o negócio está crescendo e há pessoas no pipeline com potencial a ser mapeado.',
+  },
+  {
+    q: 'Quem deve ser incluído no processo de planejamento de sucessão?',
+    a: 'Depende do escopo. Um processo completo começa pelos cargos críticos — aqueles cuja ausência travaria o negócio ou comprometeria o crescimento — e mapeia candidatos internos com potencial real para assumir essas posições. O processo não precisa ser para todos os cargos ao mesmo tempo; o foco estratégico é o que diferencia um plano de sucessão que funciona de um documento que fica na gaveta.',
+  },
+  {
+    q: 'O processo envolve assessment dos candidatos?',
+    a: 'Sim, quando pertinente. O mapeamento de potencial e prontidão dos sucessores internos inclui análise comportamental e, dependendo do escopo, um assessment estruturado. Isso garante que as decisões sobre quem está no banco de sucessores sejam baseadas em dados, não apenas em tempo de casa ou afinidade com a liderança atual.',
+  },
+  {
+    q: 'Funciona para empresas familiares?',
+    a: 'Especialmente para elas. Empresas familiares concentram os desafios mais complexos de sucessão: a sobreposição entre família e empresa, a dificuldade de avaliar parentes com a mesma objetividade que se avaliaria um executivo de mercado, e a ausência histórica de critérios claros. O processo é desenhado para lidar com essas dinâmicas sem ignorá-las.',
+  },
+];
+
+const etapas = [
+  {
+    num: '01',
+    titulo: 'Diagnóstico de risco',
+    texto: 'Mapeamos quais cargos são críticos, quais dependem de uma única pessoa e quais não têm substituto identificado. Esse diagnóstico transforma um risco invisível em algo gerenciável — e urgente quando precisa ser.',
+  },
+  {
+    num: '02',
+    titulo: 'Identificação de sucessores',
+    texto: 'Com critérios definidos, avaliamos quem no pipeline tem potencial real para assumir posições críticas. A avaliação combina análise comportamental, histórico de desempenho e prontidão estimada — não impressões.',
+  },
+  {
+    num: '03',
+    titulo: 'Plano de desenvolvimento individual',
+    texto: 'Para cada sucessor identificado, construímos um plano de desenvolvimento com foco nas lacunas específicas para o cargo-alvo. O desenvolvimento é direcionado, não genérico — cada ação conectada a uma exigência real da posição que virá.',
+  },
+  {
+    num: '04',
+    titulo: 'Estruturação do processo de transição',
+    texto: 'Quando a transição se aproxima, estruturamos o processo: sobreposição de funções, transferência de relacionamentos, marcos de entrega e indicadores de prontidão. A transição planejada evita o "buraco de liderança" que aparece quando ela não tem roteiro.',
+  },
+  {
+    num: '05',
+    titulo: 'Revisão periódica',
+    texto: 'Contextos mudam — as pessoas saem, crescem, mudam de interesse. O plano de sucessão não é um documento estático; é uma visão que precisa ser revisada. Acompanhamos o processo com revisões periódicas para garantir que o banco de sucessores continue refletindo a realidade.',
+  },
+];
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  breadcrumb={breadcrumb}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <PageHero
+    slot="hero"
+    eyebrow="Serviço"
+    title="Estratégias de Sucessão"
+    deck="Para empresas que precisam estruturar quem vai sustentar o próximo ciclo — antes que a cadeira fique vazia."
+  />
+
+  <!-- INTRO -->
+  <section class="page-section suc-intro">
+    <h2>O custo invisível de não planejar a sucessão</h2>
+    <p>
+      Toda empresa tem posições críticas que dependem de uma única pessoa. Enquanto ela está lá,
+      esse risco é invisível. Quando ela sai — por demissão, doença, burnout ou uma proposta
+      irrecusável — o custo aparece: decisões travadas, clientes inseguros, time sem norte.
+    </p>
+    <p>
+      Planejamento de sucessão não é pessimismo — é a diferença entre uma empresa que depende de
+      indivíduos e uma empresa que tem estrutura. O objetivo não é substituir pessoas; é garantir
+      que o negócio não trave quando as inevitáveis mudanças acontecerem.
+    </p>
+    <p>
+      Com mais de {credenciais.anosAtuacao} anos mapeando pipelines de liderança e conduzindo
+      processos de sucessão em empresas de diferentes setores — incluindo empresas familiares em
+      transição de geração — o que fica claro é: o maior obstáculo não é a falta de candidatos.
+      É a ausência de critérios objetivos para avaliá-los.
+    </p>
+  </section>
+
+  <!-- ETAPAS -->
+  <section class="page-section suc-etapas">
+    <h2>Como o processo funciona</h2>
+    <p class="suc-lead">
+      Um plano de sucessão que funciona não é um documento — é um processo vivo, com etapas
+      claras e revisões periódicas.
+    </p>
+    <ol class="etapas-lista">
+      {etapas.map((e) => (
+        <li class="etapa-item">
+          <span class="etapa-numero">{e.num}</span>
+          <div class="etapa-content">
+            <h3>{e.titulo}</h3>
+            <p>{e.texto}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section class="page-section suc-publico">
+    <h2>Para quem é esse serviço?</h2>
+    <div class="publico-grid">
+      <div class="publico-card">
+        <h3>Empresas em crescimento acelerado</h3>
+        <p>
+          Que estão aumentando o número de líderes e precisam garantir que o pipeline interno
+          acompanhe o ritmo — antes de depender exclusivamente de contratações externas.
+        </p>
+      </div>
+      <div class="publico-card">
+        <h3>Empresas familiares em transição</h3>
+        <p>
+          Onde a próxima geração precisa ser avaliada com a mesma objetividade que se avaliaria
+          um executivo de mercado — sem favor, sem comparação com o fundador, com critérios claros.
+        </p>
+      </div>
+      <div class="publico-card">
+        <h3>PMEs com posições críticas sem substituto</h3>
+        <p>
+          Que têm uma ou mais pessoas insubstituíveis e sabem que esse é um risco real — mas
+          ainda não estruturaram um processo formal para endereçá-lo.
+        </p>
+      </div>
+      <div class="publico-card">
+        <h3>Organizações antes de um movimento estratégico</h3>
+        <p>
+          Fusão, aquisição, expansão ou reestruturação — momentos que exigem clareza sobre quem
+          está pronto para assumir o que virá e quem ainda precisa desenvolver o quê.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="page-section suc-faq">
+    <FaqBlock
+      title="Perguntas frequentes sobre sucessão"
+      faqs={faqs}
+    />
+  </section>
+
+  <!-- CTA -->
+  <section class="page-section suc-cta">
+    <div class="suc-cta-inner">
+      <p class="cta-titulo">Sua empresa tem quem assumir as posições críticas?</p>
+      <p class="cta-sub">Vamos mapear o risco e estruturar um plano antes que ele vire problema.</p>
+      <a
+        href="https://api.whatsapp.com/send/?phone=5547991443844&text=Ol%C3%A1%20Eloyse%2C%20vim%20pelo%20site.%20Tenho%20interesse%20em%20Estrat%C3%A9gias%20de%20Sucess%C3%A3o."
+        class="btn"
+        target="_blank"
+        rel="noopener"
+      >Conversar sobre sucessão</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .suc-intro p {
+    line-height: 1.75;
+    color: var(--taupe);
+    margin-bottom: 20px;
+  }
+
+  .suc-intro p:last-child { margin-bottom: 0; }
+
+  .suc-lead {
+    margin-bottom: var(--space-9);
+    color: var(--taupe);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  /* Etapas */
+  .etapas-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .etapa-item {
+    display: flex;
+    gap: var(--space-8);
+    padding: var(--space-7) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .etapa-item:first-child { border-top: 1px solid var(--line); }
+
+  .etapa-numero {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--bronze);
+    line-height: 1;
+    flex-shrink: 0;
+    width: var(--space-9);
+    padding-top: var(--space-1);
+  }
+
+  .etapa-content h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 12px;
+  }
+
+  .etapa-content p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+  }
+
+  /* Para quem */
+  .publico-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .publico-card {
+    background: var(--sand-warm);
+    border: 1px solid var(--sand-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-7) var(--space-6);
+  }
+
+  .publico-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--olive-deep);
+    margin: 0 0 var(--space-4);
+  }
+
+  .publico-card p {
+    margin: 0;
+    color: var(--taupe);
+    line-height: 1.65;
+    font-size: 0.9375rem;
+  }
+
+  /* CTA */
+  .suc-cta-inner {
+    background: var(--olive-deep);
+    border-radius: var(--radius-md);
+    padding: var(--space-10) var(--space-9);
+    text-align: center;
+  }
+
+  .cta-titulo {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--sand);
+    margin: 0 0 var(--space-4);
+    line-height: 1.2;
+  }
+
+  .cta-sub {
+    color: var(--taupe-soft);
+    font-size: 1rem;
+    margin: 0 0 var(--space-8);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .publico-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .etapa-item {
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .etapa-numero {
+      font-size: 2rem;
+      width: auto;
+    }
+
+    .suc-cta-inner {
+      padding: var(--space-9) var(--space-7);
+    }
+  }
+</style>

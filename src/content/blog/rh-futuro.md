@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Da Intenção à Execução: O RH do Futuro Não Se Constrói com Palavras"
 description: "Os sinais não são sutis. Eles estão gritando. E o RH que permanece relevante é o RH antifrágil."
 deck: "Os sinais não são sutis. Eles estão gritando. E o RH que permanece relevante é o RH antifrágil."

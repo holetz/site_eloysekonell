@@ -7,7 +7,7 @@
  */
 export const credenciais = {
   /** Quantidade de anos atuando na área */
-  anosAtuacao: 18,
+  anosAtuacao: 10,
 
   /** Número mínimo de empresas atendidas */
   empresasAtendidas: 15,

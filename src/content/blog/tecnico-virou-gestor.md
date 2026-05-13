@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "O Melhor Técnico do Time Virou Gestor. E Tudo Desmoronou."
 description: "Competência técnica e competência de gestão não são a mesma coisa. E o sistema que confunde as duas está quebrando times inteiros."
 deck: "Competência técnica e competência de gestão não são a mesma coisa. E o sistema que confunde as duas está quebrando times inteiros."

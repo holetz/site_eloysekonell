@@ -5,6 +5,7 @@ http://localhost:4321/
 
 http://localhost:4321/sobre/
 Consultora em liderança de alta performance e gestão estratégica de pessoas, baseada em Blumenau-SC ajustar para: Psicóloga & Consultora Estratégica de Lideranças
+
 Trajetória, ajustar para: 
 Com mais de 10 anos de atuação na interseção entre liderança, performance de times e estratégia de pessoas, Eloyse Konell construiu sua trajetória dentro de contextos reais de negócio, onde decisões sobre líderes impactam diretamente resultado, cultura e continuidade.
 

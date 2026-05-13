@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Os Impactos da Sucessão Mal Planejada nas Organizações"
 description: "O que acontece quando o capitão desaparece e não há ninguém preparado para assumir o leme."
 deck: "O que acontece quando o capitão desaparece e não há ninguém preparado para assumir o leme."
