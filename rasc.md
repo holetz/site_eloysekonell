@@ -90,6 +90,3 @@ incluir depoimento:
 "O assessment entregou uma leitura de profundidade, coerência e precisão, com sensibilidade para o contexto de uma operação jurídica massificada. Abordou de forma equilibrada fortalezas e pontos de desenvolvimento, com um plano maduro e ações objetivas, aderentes aos desafios de escala e formação de lideranças. Sem dúvida, trata-se de um material diferenciado e de relevância para meu desenvolvimento executivo e para os próximos passos da gestão."
 Cintia Senem Cavichiolli
 Advogada e Sócia - Oliveira e Antunes Advogados
-
-http://localhost:4321/blog/
-remover artigos que ainda naõ foram validados e publicados
