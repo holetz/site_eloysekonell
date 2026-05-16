@@ -2,6 +2,8 @@
 
 > Leia este arquivo antes de qualquer tarefa neste repositório.
 > Ele descreve a arquitetura, convenções e restrições do projeto.
+>
+> **Regras críticas de execução para agentes AI**: ver também [`_bmad-output/project-context.md`](_bmad-output/project-context.md) — captura pegadinhas, anti-padrões e validações que CLAUDE.md não detalha.
 
 ---
 
@@ -25,7 +27,6 @@ site_eloysekonell/
 ├── astro.config.mjs               # config Astro (outDir: docs, sitemap)
 ├── package.json
 ├── remark-blog-directives.mjs     # plugin remark para diretivas customizadas
-├── tsconfig.json
 │
 ├── public/                        # Arquivos copiados 1:1 para docs/
 │   ├── CNAME
@@ -182,18 +183,31 @@ Existem **exatamente 3 variantes** canônicas em `global.css`. Não criar varian
 
 ### Blog (Content Collections)
 - Posts em `src/content/blog/*.md`
-- Frontmatter obrigatório: `title`, `description`, `pubDate`, `tags`
-- `draft: true` oculta o post na listagem e rota
-- Cover de post pode ser URL externa (ex: Unsplash) ou caminho em `public/images/blog/`
-- Slugs são derivados automaticamente do nome do arquivo
-- Campo opcional `faq: [{q: ..., a: ...}]` — renderiza `<FaqBlock>` e emite schema `FAQPage`
+- Frontmatter obrigatório: `title`, `description`, `deck`, `pubDate`, `readingTime`
+- Frontmatter opcional: `updatedDate`, `coverImage` (URL completa), `ogImage` (URL), `tags` (default `[]`), `draft` (default `false`), `related` (default `[]`), `faq[]`
+- `coverImage` é validado como `z.string().url()` — **só aceita URL completa**, não path local. Para hospedar imagem própria, mover para `public/images/blog/` e usar URL absoluta (`https://eloysekonell.com.br/images/blog/foo.jpg`)
+- `draft: true` oculta o post na listagem e rota (filtro aplicado em `getStaticPaths()`)
+- Slugs são derivados automaticamente do nome do arquivo (kebab-case ASCII)
+- Campo opcional `faq: [{q: ..., a: ...}]` — renderiza `<FaqBlock>` e emite schema `FAQPage` no `<head>`
 
 ### Cases (Content Collections)
 - Cases em `src/content/cases/*.md`
 - **Sempre criar com `draft: true`** — Eloyse ativa manualmente após aprovar
-- Frontmatter obrigatório: `title`, `description`, `pubDate`, `client`, `sector`, `results`
-- Schema definido em `src/content/config.ts`
+- Frontmatter obrigatório: `title`, `client`, `sector`, `problem`, `approach`, `result` (singular), `pubDate`
+- Frontmatter opcional: `clientUrl` (URL), `updatedDate`, `coverImage` (URL completa), `metric`, `tags`, `draft`
+- Schema definido em `src/content/config.ts` — frontmatter inválido quebra `npm run build`
 - Slugs kebab-case ASCII (ex: `datarunk`, `nuvme`, `grupo-top`)
+
+### Diretivas customizadas de Markdown
+Plugin `remark-blog-directives.mjs` adiciona estas diretivas (sintaxe `remark-directive`) para uso em posts e cases. **Usar as diretivas em vez de HTML inline** para manter consistência visual:
+
+- **`::pullquote[texto da citação]`** — citação destacada inline.
+- **`:::data-grid` … `num | label` por linha … `:::`** — grid de números/labels.
+- **`:::inline-cta{eyebrow="..." heading="..." link="..."}` … texto do CTA … `:::`** — bloco CTA WhatsApp (link default é o número da Eloyse).
+- **`:::faq` … `### Pergunta` + parágrafo de resposta … `:::`** — accordion `<details>` (alternativa ao campo `faq` no frontmatter).
+- **`:::exercise{title="..." description="..."}` … `01 | **Pergunta** | dica` por linha … `:::`** — checklist de exercícios (suporta `**bold**` nas perguntas).
+
+Não permitir que conteúdo de usuário externo (formulário, API) passe por essas diretivas sem revisão — elas fazem HTML-injection direta após `escapeHtml` interno básico.
 
 ### Dados factuais
 - Importar **sempre** de `src/data/credenciais.ts` — nunca duplicar números em `.astro` ou `.md`
@@ -212,7 +226,7 @@ Existem **exatamente 3 variantes** canônicas em `global.css`. Não criar varian
 ### Imagens
 - **Imagens de uso interno** (componentes Astro): ficam em `src/assets/` e são importadas via `astro:assets` com `<Image>` para WebP/AVIF automático e CLS zero
 - **Imagens públicas** (favicon, og-cover, portfólio PDF): ficam em `public/`
-- **Cover de posts** de blog: pode ser URL externa (Unsplash) ou arquivo em `public/images/blog/`
+- **Cover de posts** de blog: `coverImage` aceita **apenas URL completa**. Para hospedar próprio, colocar em `public/images/blog/` e referenciar via URL absoluta
 - **Nunca** usar base64 inline no HTML/CSS
 - OG cover: `public/images/og-cover.jpg` (1200×630px)
 
@@ -291,12 +305,24 @@ npm run preview
 O deploy é automático via GitHub Actions ao fazer push na branch `main`.  
 O workflow está em `.github/workflows/deploy.yml`.
 
+`npm run build` faz **type-check do Astro + validação Zod do frontmatter de todo conteúdo + geração do sitemap**. Roda como smoke test antes de qualquer entrega — se quebrar local, quebra no CI também.
+
+### Convenção de commits
+Mensagens curtas em pt-BR, no infinitivo ou no passado (ex: `ajusta CTA do hero`, `adiciona case Datarunk`). **Sem prefixo convencional** (`feat:`, `fix:`) — repositório não usa.
+
 ---
 
 ## Restrições importantes
 
 - **Não alterar** a estrutura visual do site sem aprovação explícita
-- **Não remover** o CNAME (`eloysekonell.com.br`)
+- **Não remover** o CNAME (`eloysekonell.com.br`) — existe em **dois lugares** (`/CNAME` e `public/CNAME`); os dois precisam estar presentes e idênticos
 - **Não committar** imagens base64 inline no HTML/CSS — sempre extrair para arquivo
 - **Não alterar** `astro.config.mjs` sem entender o impacto no sitemap e CNAME
 - O `outDir: './docs'` é obrigatório para GitHub Pages funcionar
+- **Ao criar nova página em `/servicos/*`**: adicionar entrada manualmente ao `hasOfferCatalog` em `Layout.astro` — caso contrário o catálogo SEO fica desatualizado
+- **Ao criar rota dinâmica nova**: filtrar `draft: true` no `getStaticPaths()` — sem isso, posts/cases draft ficam acessíveis por URL direta
+- **`public/llms.txt` é índice manual** — ao criar página ou post relevante, atualizar este arquivo (não é gerado automaticamente)
+- **Link do WhatsApp aparece em múltiplos arquivos** (`Cta.astro`, `AssessmentSpotlight.astro`, `Campanha.astro`, e na diretiva `:::inline-cta`) — trocar o número implica atualizar todos. Considerar centralizar em `credenciais.ts` antes de qualquer troca
+- **Não duplicar JSON-LD global** (`Person`, `ProfessionalService`, `WebSite`) em páginas filhas — `Layout.astro` já emite
+- **JSON-LD por página** precisa `@id` único e canônico: `https://eloysekonell.com.br/<rota>/#<tipo>`
+- **Não introduzir** ESLint, Prettier, Vitest, Jest, Playwright ou qualquer framework de teste sem solicitação explícita
