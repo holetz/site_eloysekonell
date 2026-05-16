@@ -100,10 +100,10 @@ const professionalServiceSchema = {
     { '@type': 'Country', name: 'Brasil' },
   ],
   serviceType: [
-    'Desenvolvimento de Liderança',
-    'Gestão Estratégica de Pessoas',
     'Assessment de Liderança',
-    'Mentoria Executiva',
+    'Estratégias de Sucessão',
+    'Mentoria de Transição de Carreira',
+    'Desenvolvimento de Líderes',
   ],
   sameAs: [
     'https://www.instagram.com/ek_gestaoeconsultoria',
@@ -117,20 +117,6 @@ const professionalServiceSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          '@id': `${SITE_URL}/servicos/gestao-estrategica-de-pessoas/#service`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
           '@id': `${SITE_URL}/servicos/assessment/#service`,
         },
       },
@@ -138,7 +124,21 @@ const professionalServiceSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          '@id': `${SITE_URL}/servicos/mentoria-executiva/#service`,
+          '@id': `${SITE_URL}/servicos/estrategias-de-sucessao/#service`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${SITE_URL}/servicos/mentoria-transicao-carreira/#service`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service`,
         },
       },
     ],

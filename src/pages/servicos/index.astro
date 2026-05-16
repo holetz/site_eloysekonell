@@ -22,46 +22,43 @@ const breadcrumb = [
 const services = [
   {
     title: 'Assessment e Diagnóstico de Liderança',
-    deck: 'Para empresas e líderes que precisam de dados objetivos antes de decisões críticas de promoção, sucessão ou contratação.',
-    href: '/servicos/assessment/',
+    deck: 'Para empresas e líderes que precisam de dados objetivos antes de decisões críticas de desenvolvimento e sucessão.',
     iconHtml: assessmentIcon,
     bullets: [
-      'Combinação de instrumentos validados — DISC e análise comportamental avançada',
+      'Combinação de instrumentos validados — DISC, Teique, HPTI, Dilemas de Gestão',
       'Relatório executivo com recomendações estratégicas claras para o decisor',
-      'Devolutiva individual e plano de desenvolvimento com prioridades definidas',
+      'Devolutiva personalizada e plano de desenvolvimento robusto com prioridades definidas',
     ],
   },
   {
     title: 'Estratégias de Sucessão',
-    deck: 'Para empresas que precisam estruturar quem vai sustentar o próximo ciclo — antes que a cadeira fique vazia.',
-    href: '/servicos/estrategias-de-sucessao/',
+    deck: 'Para empresas que precisam estruturar quem vai sustentar o próximo ciclo.',
     iconHtml: strategyIcon,
     bullets: [
-      'Mapeamento de potencial e prontidão dos candidatos internos com critérios objetivos',
-      'Plano de sucessão estruturado com cronograma e responsáveis definidos',
-      'Acompanhamento do desenvolvimento dos sucessores até a transição',
+      'Mapeamento de potencial e prontidão de profissionais com critérios objetivos',
+      'Diagnóstico e desenho de plano de sucessão estruturado',
+      'Acompanhamento do desenvolvimento de sucessores até a transição',
     ],
   },
   {
     title: 'Mentoria de Transição de Carreira para Líderes',
-    deck: 'Para líderes que estão mudando de papel, empresa ou nível — e precisam de um espaço estratégico para pensar com clareza.',
-    href: '/servicos/mentoria-executiva/',
+    deck: 'Para profissionais que estão mudando de papel, nível ou empresa, e precisam de um espaço estratégico para pensar com clareza.',
     iconHtml: mentoringIcon,
     bullets: [
-      'Processo individual focado em decisão e direção em momentos de transição',
-      'Análise comportamental integrada para mapear padrões que limitam ou impulsionam',
-      'Acompanhamento de 3 a 6 meses com sessões estruturadas e metas claras',
+      'Mentoria focada em decisão e direção para momentos de transição',
+      'Análise comportamental e de cenário integrada para mapear padrões que limitam ou impulsionam',
+      'Acompanhamento de 3 a 4 meses com sessões estruturadas e metas claras',
     ],
   },
   {
     title: 'Desenvolvimento de Líderes',
-    deck: 'Para empresas que precisam preparar gestores para o próximo nível de complexidade com método, não com treinamento genérico.',
-    href: '/servicos/desenvolvimento-de-liderancas/',
+    deck: 'Para empresas que precisam preparar líderes para o próximo nível de complexidade com método.',
     iconHtml: leadershipIcon,
     bullets: [
-      'Programas sob medida para líderes em formação e gestores em transição de papel',
-      'Abordagem baseada em neurociência, análise comportamental e contexto real do negócio',
-      'Acompanhamento contínuo com indicadores claros de mudança de comportamento',
+      'Mapeamento e diagnóstico de cenário para entender a realidade antes de agir',
+      'Programas de desenvolvimento desenhados sob medida para lideranças conforme pipeline',
+      'Abordagem ancorada em neurociência, análise comportamental e contexto real do negócio',
+      'Relatório final com a evolução da liderança ao longo do programa e indicações de próximos passos',
     ],
   },
 ];
@@ -78,7 +75,7 @@ const collectionPageSchema = {
   hasPart: [
     { '@id': `${SITE_URL}/servicos/assessment/#service` },
     { '@id': `${SITE_URL}/servicos/estrategias-de-sucessao/#service` },
-    { '@id': `${SITE_URL}/servicos/mentoria-executiva/#service` },
+    { '@id': `${SITE_URL}/servicos/mentoria-transicao-carreira/#service` },
     { '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service` },
   ],
 };
@@ -98,16 +95,19 @@ const collectionPageSchema = {
     slot="hero"
     eyebrow="Serviços"
     title="Como posso ajudar"
-    deck="Quatro frentes de atuação para empresas e líderes que querem método, não treinamento de prateleira."
+    deck="Quatro frentes de atuação para empresas e líderes que querem decidir sobre pessoas com o mesmo critério que usam para decidir sobre o negócio."
   />
 
   <div class="wrap servicos-wrap">
     <p class="servicos-intro">
-      Cada empresa atravessa momentos distintos: há quem precise formar líderes que ainda não existem
-      no pipeline, quem precise estruturar processos de liderança que sustentem o crescimento, quem
-      precise de um diagnóstico preciso antes de promover, suceder ou contratar, e quem precise de um
-      espaço estratégico para pensar liderança com clareza. As quatro frentes abaixo foram desenhadas
-      para esses momentos — não como pacotes genéricos, mas como respostas a perguntas reais.
+      Cada empresa atravessa momentos distintos: há quem precise formar líderes que ainda não
+      existem no pipeline, quem precise estruturar processos de liderança que sustentem o
+      crescimento, quem precise de um diagnóstico preciso antes de promover, suceder ou
+      contratar, e quem precise de um espaço estratégico para pensar liderança com clareza.
+    </p>
+    <p class="servicos-intro">
+      As quatro frentes abaixo foram desenhadas para esses momentos, não como pacotes genéricos,
+      mas como respostas a perguntas reais.
     </p>
 
     <div class="servicos-grid">

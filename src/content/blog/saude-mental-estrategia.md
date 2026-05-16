@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "Liderança no Limite: Saúde Mental Não é Luxo, é Estratégia"
 description: "Fala-se muito de saúde mental nas empresas, mas pouco da saúde mental de quem lidera. E o impacto reverbera em cascata."
 deck: "Fala-se muito de saúde mental nas empresas, mas pouco da saúde mental de quem lidera. E o impacto reverbera em cascata."

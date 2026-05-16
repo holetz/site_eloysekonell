@@ -73,21 +73,7 @@ export async function GET() {
     lastmod: (post.data.updatedDate ?? post.data.pubDate).toISOString().split('T')[0],
   }));
 
-  // Cases (collection created in task 16 — tolerate absence)
-  let caseEntries: { url: string; priority: string; changefreq: string; lastmod: string }[] = [];
-  try {
-    const cases = await getCollection('cases' as any, ({ data }: any) => !data.draft);
-    caseEntries = cases.map((c: any) => ({
-      url: `/cases/${c.slug}/`,
-      priority: '0.7',
-      changefreq: 'monthly',
-      lastmod: (c.data.updatedDate ?? c.data.pubDate).toISOString().split('T')[0],
-    }));
-  } catch {
-    // Collection 'cases' not yet defined — skip silently
-  }
-
-  const allPages = [...staticEntries, ...postEntries, ...caseEntries];
+  const allPages = [...staticEntries, ...postEntries];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

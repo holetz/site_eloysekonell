@@ -43,8 +43,8 @@ export const credenciais = {
       sigla: 'FURB',
     },
     {
-      tipo: 'mba',
-      titulo: 'MBA em Neurociência e Comportamento',
+      tipo: 'pos',
+      titulo: 'Pós-graduação em Neurociência e Comportamento',
       instituicao: 'Pontifícia Universidade Católica do Rio Grande do Sul',
       sigla: 'PUCRS',
     },
@@ -62,8 +62,8 @@ export const credenciais = {
     },
     {
       tipo: 'certificacao',
-      titulo: 'Certificação em Análise Comportamental Avançada',
-      instituicao: 'GROU',
+      titulo: 'Certificação Internacional em Analista Comportamental PDA Assessment',
+      instituicao: 'Grou',
       sigla: 'GROU',
     },
   ],
