@@ -1,328 +1,62 @@
-# CLAUDE.md — Contexto do projeto para LLMs
+# CLAUDE.md
 
-> Leia este arquivo antes de qualquer tarefa neste repositório.
-> Ele descreve a arquitetura, convenções e restrições do projeto.
->
-> **Regras críticas de execução para agentes AI**: ver também [`_bmad-output/project-context.md`](_bmad-output/project-context.md) — captura pegadinhas, anti-padrões e validações que CLAUDE.md não detalha.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
----
+## Project Overview
 
-## Visão geral
+Site oficial de Eloyse Konell — consultoria em liderança e gestão estratégica de pessoas. Static site built with Astro 4, deployed to GitHub Pages at `eloysekonell.com.br`. All content is in **pt-BR**.
 
-**Site:** eloysekonell.com.br  
-**Proprietária:** Eloyse Konell  
-**Propósito:** Site institucional de consultoria em Liderança de Alta Performance e Gestão Estratégica de Pessoas.  
-**Tecnologia:** [Astro](https://astro.build/) (SSG) + GitHub Pages  
-**Deploy:** GitHub Actions → pasta `docs/` → GitHub Pages com domínio customizado
-
----
-
-## Estrutura do projeto
-
-```
-site_eloysekonell/
-├── .github/workflows/deploy.yml   # CI/CD: build Astro → docs/ → GitHub Pages
-├── CLAUDE.md                      # Este arquivo
-├── CNAME                          # domínio raiz (não editar)
-├── astro.config.mjs               # config Astro (outDir: docs, sitemap)
-├── package.json
-├── remark-blog-directives.mjs     # plugin remark para diretivas customizadas
-│
-├── public/                        # Arquivos copiados 1:1 para docs/
-│   ├── CNAME
-│   ├── robots.txt
-│   ├── llms.txt                   # Índice de conteúdo para LLMs/AI crawlers
-│   ├── files/
-│   │   └── portfolio_eloyse_konell.pdf
-│   └── images/
-│       ├── logo.png               # Logo principal (nav + favicon)
-│       ├── og-cover.jpg           # Imagem OG (1200×630) — criar se ausente
-│       ├── photos/                # Fotos para uso via URL pública
-│       ├── logos/                 # Logos dos clientes (uso público)
-│       │   ├── logo_datarunk.png
-│       │   ├── logo_dgsis.png
-│       │   ├── logo_grupo_top.png
-│       │   ├── logo_guion.png
-│       │   ├── logo_mtech.png
-│       │   ├── logo_nuvme.png
-│       │   ├── logo_possibilitar.png
-│       │   ├── logo_rosa_claro.webp
-│       │   ├── logo_straas.png
-│       │   └── logo_techlinker.webp
-│       └── backgrounds/           # Imagens de fundo (reserva)
-│
-├── src/
-│   ├── assets/                    # Imagens importadas via astro:assets (WebP/AVIF otimizados)
-│   │   ├── photos/                # Fotos da Eloyse (hero, portrait, study)
-│   │   └── logos/                 # Logos dos clientes (para <Image> em componentes)
-│   ├── components/                # Componentes reutilizáveis
-│   │   ├── Nav.astro              # Navegação principal (home + páginas internas)
-│   │   ├── Hero.astro             # Hero da landing page
-│   │   ├── About.astro            # Seção Sobre (home)
-│   │   ├── Consultoria.astro      # Seção Consultoria (home)
-│   │   ├── Proposito.astro        # Seção Propósito (home)
-│   │   ├── Services.astro         # Seção Serviços (home)
-│   │   ├── AssessmentSpotlight.astro  # Seção Assessment (home)
-│   │   ├── Testimonials.astro     # Depoimentos (home)
-│   │   ├── Clients.astro          # Grid de logos de clientes
-│   │   ├── Cta.astro              # CTA WhatsApp
-│   │   ├── Campanha.astro         # Banner de campanha (home)
-│   │   ├── Footer.astro           # Rodapé
-│   │   ├── BreadcrumbList.astro   # Breadcrumb + schema BreadcrumbList (NOVO)
-│   │   ├── PageHero.astro         # Hero para páginas internas (NOVO)
-│   │   ├── ServiceCard.astro      # Card de serviço para /servicos (NOVO)
-│   │   ├── CaseCard.astro         # Card de case study para /cases (NOVO)
-│   │   └── FaqBlock.astro         # Bloco FAQ com schema FAQPage (NOVO)
-│   ├── content/
-│   │   ├── config.ts              # Schema Zod para blog e cases
-│   │   ├── blog/                  # Posts de blog em Markdown (.md)
-│   │   └── cases/                 # Case studies em Markdown (.md) — draft: true por padrão
-│   ├── data/
-│   │   └── credenciais.ts         # Fonte única de verdade para dados factuais (anos, números)
-│   ├── layouts/
-│   │   ├── Layout.astro           # Layout base com SEO completo (Person + ProfessionalService JSON-LD)
-│   │   ├── BlogLayout.astro       # Layout para posts de blog (Article JSON-LD + FaqBlock)
-│   │   ├── PageLayout.astro       # Layout para páginas internas com breadcrumb (NOVO)
-│   │   └── CaseLayout.astro       # Layout para case studies (NOVO)
-│   ├── pages/
-│   │   ├── index.astro            # Landing page principal (home)
-│   │   ├── sobre.astro            # Página /sobre (NOVO)
-│   │   ├── contato.astro          # Página /contato (NOVO)
-│   │   ├── metodologia.astro      # Página /metodologia (NOVO)
-│   │   ├── faq.astro              # Página /faq com schema FAQPage (NOVO)
-│   │   ├── sitemap.xml.ts         # Sitemap dinâmico (auto-detect de rotas)
-│   │   ├── servicos/
-│   │   │   ├── index.astro        # Listagem de serviços /servicos (NOVO)
-│   │   │   ├── desenvolvimento-de-liderancas.astro
-│   │   │   ├── gestao-estrategica-de-pessoas.astro
-│   │   │   ├── assessment.astro
-│   │   │   └── mentoria-executiva.astro
-│   │   ├── cases/
-│   │   │   ├── index.astro        # Listagem de cases /cases (NOVO)
-│   │   │   └── [slug].astro       # Rota dinâmica para cada case
-│   │   └── blog/
-│   │       ├── index.astro        # Listagem do blog
-│   │       └── [...slug].astro    # Rota dinâmica dos posts
-│   └── styles/
-│       └── global.css             # Todo o CSS do site
-│
-└── files/                         # Arquivos para download (fonte)
-    └── portfolio_eloyse_konell.pdf
-```
-
----
-
-## Paleta de cores (CSS variables)
-
-| Variável          | Hex / valor                     | Uso                        |
-|-------------------|---------------------------------|----------------------------|
-| `--sand`          | `#F1EBE0`                       | Background principal       |
-| `--sand-warm`     | `#E8DED0`                       | Cards, hover suave         |
-| `--sand-deep`     | `#D9CDB8`                       | Bordas leves               |
-| `--taupe`         | `#6B5D4E`                       | Texto secundário           |
-| `--taupe-soft`    | `#8A7E6C`                       | Meta, labels               |
-| `--olive`         | `#3F3E30`                       | Fundo nav / menu mobile    |
-| `--olive-deep`    | `#2E2D22`                       | Texto principal            |
-| `--bronze`        | `#A88656`                       | Acento principal (CTAs)    |
-| `--bronze-soft`   | `#C2A679`                       | Hover do bronze            |
-| `--line`          | `rgba(46,45,34,0.14)`           | Divisores                  |
-
-**Fontes:**  
-- Títulos: `Cormorant Garamond` (serif, Google Fonts)  
-- Corpo/UI: `Manrope` (sans-serif, Google Fonts)
-
----
-
-## Design Tokens
-
-Todos os tokens estão definidos em `:root` no [src/styles/global.css](src/styles/global.css). Use-os em vez de literais sempre que possível.
-
-### Spacing scale (4px base)
-`--space-1` (4px) · `--space-2` (8px) · `--space-3` (12px) · `--space-4` (16px) · `--space-5` (20px) · `--space-6` (24px) · `--space-7` (32px) · `--space-8` (40px) · `--space-9` (56px) · `--space-10` (72px) · `--space-11` (96px) · `--space-12` (120px) · `--space-13` (160px)
-
-### Tipografia (clamp scales + variáveis)
-`--fs-h1` · `--fs-h2` · `--fs-h3` · `--fs-h4` · `--fs-body` · `--fs-eyebrow`. h1 usa `font-weight: 400` + `letter-spacing: -0.015em` para autoridade executiva.
-
-### Shadow scale
-`--shadow-sm` (cards leves) · `--shadow-md` (hover de cards) · `--shadow-lg` (mobile menu, hero mark)
-
-### Radius scale
-`--radius-sm` (4px, foco/inputs) · `--radius-md` (8px, cards e CTAs eventuais)
-
-### Filter presets (imagens)
-`--filter-photo-warm` (fotos da Eloyse) · `--filter-photo-neutral` (fotos secundárias) · `--filter-logo-mute` (logos de clientes)
-
-### Z-index scale
-`--z-base` (1) · `--z-sticky` (50) · `--z-header` (100) · `--z-modal` (200)
-
-### Border tokens
-`--border-line` (1px solid var(--line)) · `--border-accent` (2px solid var(--bronze))
-
----
-
-## Sistema de botões
-
-Existem **exatamente 3 variantes** canônicas em `global.css`. Não criar variantes scoped novas em componentes.
-
-- `.btn` — primary (background bronze, uso para CTA principal). Ex.: WhatsApp em Hero, Cta, Campanha.
-- `.btn-ghost` — secondary (outline olive-deep, transparente). Ex.: "Falar com Eloyse" em /servicos.
-- `.link-arrow` — CTA textual com seta (bronze, underline). Ex.: "Ver mais →" em prose de blog.
-
-`.btn` e `.btn-ghost` têm o **mesmo box** (padding `var(--space-4) var(--space-8)`); só mudam fill e border.
-
----
-
-## Convenções de desenvolvimento
-
-### Astro components
-- Cada seção da landing page tem seu próprio componente em `src/components/`
-- Props tipadas com interfaces TypeScript no frontmatter (`---`)
-- Scripts interativos ficam dentro do componente, com tag `<script>`
-- Estilos de escopo de componente usam `<style>` dentro do `.astro`
-- Estilos globais ficam exclusivamente em `src/styles/global.css`
-
-### Blog (Content Collections)
-- Posts em `src/content/blog/*.md`
-- Frontmatter obrigatório: `title`, `description`, `deck`, `pubDate`, `readingTime`
-- Frontmatter opcional: `updatedDate`, `coverImage` (URL completa), `ogImage` (URL), `tags` (default `[]`), `draft` (default `false`), `related` (default `[]`), `faq[]`
-- `coverImage` é validado como `z.string().url()` — **só aceita URL completa**, não path local. Para hospedar imagem própria, mover para `public/images/blog/` e usar URL absoluta (`https://eloysekonell.com.br/images/blog/foo.jpg`)
-- `draft: true` oculta o post na listagem e rota (filtro aplicado em `getStaticPaths()`)
-- Slugs são derivados automaticamente do nome do arquivo (kebab-case ASCII)
-- Campo opcional `faq: [{q: ..., a: ...}]` — renderiza `<FaqBlock>` e emite schema `FAQPage` no `<head>`
-
-### Cases (Content Collections)
-- Cases em `src/content/cases/*.md`
-- **Sempre criar com `draft: true`** — Eloyse ativa manualmente após aprovar
-- Frontmatter obrigatório: `title`, `client`, `sector`, `problem`, `approach`, `result` (singular), `pubDate`
-- Frontmatter opcional: `clientUrl` (URL), `updatedDate`, `coverImage` (URL completa), `metric`, `tags`, `draft`
-- Schema definido em `src/content/config.ts` — frontmatter inválido quebra `npm run build`
-- Slugs kebab-case ASCII (ex: `datarunk`, `nuvme`, `grupo-top`)
-
-### Diretivas customizadas de Markdown
-Plugin `remark-blog-directives.mjs` adiciona estas diretivas (sintaxe `remark-directive`) para uso em posts e cases. **Usar as diretivas em vez de HTML inline** para manter consistência visual:
-
-- **`::pullquote[texto da citação]`** — citação destacada inline.
-- **`:::data-grid` … `num | label` por linha … `:::`** — grid de números/labels.
-- **`:::inline-cta{eyebrow="..." heading="..." link="..."}` … texto do CTA … `:::`** — bloco CTA WhatsApp (link default é o número da Eloyse).
-- **`:::faq` … `### Pergunta` + parágrafo de resposta … `:::`** — accordion `<details>` (alternativa ao campo `faq` no frontmatter).
-- **`:::exercise{title="..." description="..."}` … `01 | **Pergunta** | dica` por linha … `:::`** — checklist de exercícios (suporta `**bold**` nas perguntas).
-
-Não permitir que conteúdo de usuário externo (formulário, API) passe por essas diretivas sem revisão — elas fazem HTML-injection direta após `escapeHtml` interno básico.
-
-### Dados factuais
-- Importar **sempre** de `src/data/credenciais.ts` — nunca duplicar números em `.astro` ou `.md`
-- Contém: anos de atuação, empresas atendidas, líderes desenvolvidos, assessments realizados
-
-### SEO
-- `Layout.astro` gerencia todos os meta tags (OG, Twitter, canonical, JSON-LD)
-- JSON-LD global: `Person` + `ProfessionalService` + `WebSite` em todas as páginas
-- `BlogLayout.astro`: emite `Article` JSON-LD; renderiza `<FaqBlock>` se frontmatter tiver `faq`
-- `PageLayout.astro`: inclui `<BreadcrumbList>` automático
-- `CaseLayout.astro`: emite `Article` JSON-LD para cases
-- Sitemap dinâmico via `src/pages/sitemap.xml.ts` (auto-detect de rotas)
-- `robots.txt` em `public/robots.txt`
-- `llms.txt` em `public/llms.txt` (índice para AI crawlers)
-
-### Imagens
-- **Imagens de uso interno** (componentes Astro): ficam em `src/assets/` e são importadas via `astro:assets` com `<Image>` para WebP/AVIF automático e CLS zero
-- **Imagens públicas** (favicon, og-cover, portfólio PDF): ficam em `public/`
-- **Cover de posts** de blog: `coverImage` aceita **apenas URL completa**. Para hospedar próprio, colocar em `public/images/blog/` e referenciar via URL absoluta
-- **Nunca** usar base64 inline no HTML/CSS
-- OG cover: `public/images/og-cover.jpg` (1200×630px)
-
-### Acessibilidade
-- Foco visível global via `:focus-visible` (outline `var(--bronze)` 2px offset 3px) — não remover.
-- Animações respeitam `prefers-reduced-motion: reduce`.
-- Skip link presente em `Layout.astro` (#main-content).
-- Mobile menu, tabs (`AssessmentSpotlight`), accordion (`FaqBlock`) e breadcrumb com ARIA correto.
-
----
-
-## Seções da landing page (ordem)
-
-1. **Nav** (`#nav`) — fixo, scroll-shrink, menu hambúrguer mobile
-2. **Hero** — CTA principal, foto via CSS background
-3. **Sobre** (`#sobre`) — bio, foto portrait, stats
-4. **Consultoria** (`#consultoria`) — proposta de valor, foto
-5. **Propósito** (`#proposito`) — 3 pilares
-6. **Serviços** (`#servicos`) — 2 colunas: Liderança | Consultoria
-7. **Assessment** (`#assessment`) — tabs Empresas / Individual
-8. **Depoimentos** (`#depoimentos`) — 3 cards
-9. **Clientes** (`.clients`) — grid de logos
-10. **CTA / Contato** (`#contato`) — WhatsApp CTA
-11. **Footer** — nav, contato, redes sociais, link portfólio
-
----
-
-## Tarefas recorrentes comuns
-
-### Adicionar um novo post de blog
-1. Criar `src/content/blog/[slug].md` com frontmatter correto
-2. Opcional: adicionar imagem OG em `public/images/blog/` ou usar URL externa
-3. `npm run build` para verificar
-
-### Adicionar FAQ a um post
-1. No frontmatter do post, adicionar `faq: [{q: "Pergunta?", a: "Resposta."}, ...]`
-2. O bloco `<FaqBlock>` renderiza automaticamente após o corpo do post
-3. Schema `FAQPage` é emitido automaticamente no `<head>`
-
-### Adicionar um novo case study
-1. Criar `src/content/cases/[slug].md` com frontmatter completo (ver schema em `src/content/config.ts`)
-2. **Sempre usar `draft: true`** — Eloyse ativa manualmente após aprovar
-3. `npm run build` para verificar
-
-### Adicionar uma nova página de serviço
-1. Criar `src/pages/servicos/[slug].astro` usando `<PageLayout>` e `<PageHero>`
-2. Emitir `Service` schema JSON-LD com `@id` estável: `https://eloysekonell.com.br/servicos/[slug]/#service`
-3. Adicionar entrada ao `hasOfferCatalog` em `src/layouts/Layout.astro`
-
-### Adicionar depoimento
-- Editar array `testimonials` em `src/components/Testimonials.astro`
-
-### Adicionar logo de cliente
-1. Adicionar imagem em `public/images/logos/` (uso via URL pública) ou `src/assets/logos/` (uso via `<Image>`)
-2. Adicionar entrada ao array `clients` em `src/components/Clients.astro`
-
-### Alterar informações de contato
-- Email/telefone: `src/components/Footer.astro`
-- Link WhatsApp: `src/components/Cta.astro` e `src/components/AssessmentSpotlight.astro`
-
----
-
-## Build e deploy
+## Commands
 
 ```bash
-# Desenvolvimento local
-npm run dev          # http://localhost:4321
-
-# Build de produção (gera docs/)
-npm run build
-
-# Preview local do build
-npm run preview
+npm run dev       # Start dev server (localhost:4321)
+npm run build     # Build to ./docs (not dist)
+npm run preview   # Preview production build
 ```
 
-O deploy é automático via GitHub Actions ao fazer push na branch `main`.  
-O workflow está em `.github/workflows/deploy.yml`.
+No test runner. No linter configured.
 
-`npm run build` faz **type-check do Astro + validação Zod do frontmatter de todo conteúdo + geração do sitemap**. Roda como smoke test antes de qualquer entrega — se quebrar local, quebra no CI também.
+## Architecture
 
-### Convenção de commits
-Mensagens curtas em pt-BR, no infinitivo ou no passado (ex: `ajusta CTA do hero`, `adiciona case Datarunk`). **Sem prefixo convencional** (`feat:`, `fix:`) — repositório não usa.
+**Framework:** Astro 4 in static mode. No React/Vue — components are `.astro` files only.
 
----
+**Content:** Astro Content Collections with Zod validation in [src/content/config.ts](src/content/config.ts).
+- `src/content/blog/` — 13 markdown articles; fields: title, description, deck, pubDate, tags, readingTime, draft, related[], faq[]
+- `src/content/cases/` — case studies; mostly draft, not linked from nav
 
-## Restrições importantes
+**Single source of truth for credentials/stats:** [src/data/credenciais.ts](src/data/credenciais.ts) — years of experience, companies served, education, certifications. Update here, not per-page.
 
-- **Não alterar** a estrutura visual do site sem aprovação explícita
-- **Não remover** o CNAME (`eloysekonell.com.br`) — existe em **dois lugares** (`/CNAME` e `public/CNAME`); os dois precisam estar presentes e idênticos
-- **Não committar** imagens base64 inline no HTML/CSS — sempre extrair para arquivo
-- **Não alterar** `astro.config.mjs` sem entender o impacto no sitemap e CNAME
-- O `outDir: './docs'` é obrigatório para GitHub Pages funcionar
-- **Ao criar nova página em `/servicos/*`**: adicionar entrada manualmente ao `hasOfferCatalog` em `Layout.astro` — caso contrário o catálogo SEO fica desatualizado
-- **Ao criar rota dinâmica nova**: filtrar `draft: true` no `getStaticPaths()` — sem isso, posts/cases draft ficam acessíveis por URL direta
-- **`public/llms.txt` é índice manual** — ao criar página ou post relevante, atualizar este arquivo (não é gerado automaticamente)
-- **Link do WhatsApp aparece em múltiplos arquivos** (`Cta.astro`, `AssessmentSpotlight.astro`, `Campanha.astro`, e na diretiva `:::inline-cta`) — trocar o número implica atualizar todos. Considerar centralizar em `credenciais.ts` antes de qualquer troca
-- **Não duplicar JSON-LD global** (`Person`, `ProfessionalService`, `WebSite`) em páginas filhas — `Layout.astro` já emite
-- **JSON-LD por página** precisa `@id` único e canônico: `https://eloysekonell.com.br/<rota>/#<tipo>`
-- **Não introduzir** ESLint, Prettier, Vitest, Jest, Playwright ou qualquer framework de teste sem solicitação explícita
+**Layouts:**
+- `src/layouts/Layout.astro` — base with SEO meta, JSON-LD (Person/WebSite/ProfessionalService schemas), Intersection Observer for `.reveal` animations
+- `src/layouts/BlogLayout.astro` — article template with author bio, related posts, social share, FAQ block
+- `src/layouts/PageLayout.astro` — internal pages with breadcrumb/hero slots
+
+**Design system:** Single file at [src/styles/global.css](src/styles/global.css) (~1300 lines). No Tailwind — uses CSS custom properties.
+- Colors: `--sand`, `--olive`, `--olive-deep`, `--taupe`, `--bronze`, `--bronze-soft`
+- Typography: Cormorant Garamond (headings/quotes), Manrope (body/UI)
+- Spacing: `--space-1` (4px) through `--space-13` (160px)
+- Responsive breakpoints: 900px, 768px, 600px, 500px
+- Key utility classes: `.eyebrow`, `.btn`, `.btn-ghost`, `.reveal`, `.pullquote`, `.data-grid`, `.inline-cta`
+
+**Custom Markdown directives** ([remark-blog-directives.mjs](remark-blog-directives.mjs)):
+- `::pullquote[text]` — styled block quote
+- `:::data-grid` — 3-column data viz (num | label)
+- `:::inline-cta{eyebrow,heading,link}` — CTA block
+- `:::faq` — FAQ accordion (### Q / answer pairs)
+- `:::exercise{title,description}` — numbered exercise (num | question | hint)
+
+**Build output:** `./docs` (GitHub Pages reads from this dir). Configured in `astro.config.mjs` via `outDir: './docs'`.
+
+## Deployment
+
+Push to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`): `npm ci` → `npm run build` → deploys `./docs` to `gh-pages` branch with CNAME `eloysekonell.com.br`. No manual deploy needed.
+
+## Page Routes
+
+- `/` — Homepage
+- `/sobre/` — About Eloyse
+- `/servicos/` + four sub-pages (`assessment`, `estrategias-de-sucessao`, `desenvolvimento-de-liderancas`, `mentoria-transicao-carreira`)
+- `/assessment/` — Assessment spotlight
+- `/blog/` + `/blog/[...slug]/` — Blog listing and articles
+- `/contato/`, `/faq/`, `/metodologia/`
+- `/sitemap.xml` — generated dynamically

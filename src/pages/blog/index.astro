@@ -15,7 +15,7 @@ const categoryOrder = ['Estratégia', 'Liderança', 'Performance', 'Pessoas'];
 const tagSet = new Set<string>();
 allPosts.forEach((p: any) => p.data.tags.forEach((t: string) => tagSet.add(t)));
 const categories = categoryOrder.filter((c) => tagSet.has(c));
-const authorPhoto = await getImage({ src: authorPhotoSrc, width: 120, height: 120, format: 'webp' });
+const authorPhoto = await getImage({ src: authorPhotoSrc, width: 640, height: 800, format: 'webp' });
 
 function slugifyTag(tag: string) {
   return tag

@@ -98,7 +98,7 @@ const collectionPageSchema = {
     deck="Quatro frentes de atuação para empresas e líderes que querem decidir sobre pessoas com o mesmo critério que usam para decidir sobre o negócio."
   />
 
-  <div class="wrap servicos-wrap">
+  <div class="servicos-wrap">
     <p class="servicos-intro">
       Cada empresa atravessa momentos distintos: há quem precise formar líderes que ainda não
       existem no pipeline, quem precise estruturar processos de liderança que sustentem o
@@ -139,6 +139,10 @@ const collectionPageSchema = {
     line-height: 1.75;
     color: var(--taupe);
     margin: 0 0 var(--space-10);
+  }
+
+  .servicos-intro + .servicos-intro {
+    margin-top: var(--space-10);
   }
 
   .servicos-grid {

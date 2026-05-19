@@ -535,8 +535,7 @@
   .testimonials-head h2{margin:var(--space-6) 0 var(--space-5)}
   .testimonials-head h2 em{font-style:italic;color:var(--taupe)}
 
-  .testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-7);max-width:900px;margin:0 auto}
-  @media (max-width:900px){.testimonials-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}}
+  /* testimonials-grid layout moved to component scoped styles (carousel) */
 
   .testimonial{
     background:var(--sand);padding:var(--space-8) var(--space-8);border-top:var(--border-accent); /* exception: original 44px vertical → space-8 (40px, -4px tolerable) */

@@ -33,17 +33,109 @@ const testimonials = [
       <span class="eyebrow">Depoimentos</span>
       <h2>O que dizem os líderes <em>e organizações.</em></h2>
     </div>
-    <div class="testimonials-grid">
-      {testimonials.map(({ quote, name, role, company, delay }) => (
-        <div class={`testimonial reveal ${delay}`}>
-          <span class="mark">"</span>
-          <blockquote>{quote}</blockquote>
-          <cite>
-            {name}
-            <small>{role} • {company}</small>
-          </cite>
-        </div>
-      ))}
+    <div class="testimonials-carousel">
+      <button class="testimonials-prev" aria-label="Anterior">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="testimonials-grid">
+        {testimonials.map(({ quote, name, role, company, delay }) => (
+          <div class={`testimonial reveal ${delay}`}>
+            <span class="mark">"</span>
+            <blockquote>{quote}</blockquote>
+            <cite>
+              {name}
+              <small>{role} • {company}</small>
+            </cite>
+          </div>
+        ))}
+      </div>
+      <button class="testimonials-next" aria-label="Próximo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
+
+<style>
+  .testimonials-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .testimonials-grid {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-7);
+    flex: 1;
+    /* hide scrollbar visually */
+    scrollbar-width: none;
+  }
+  .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial {
+    flex: 0 0 calc(100% / 1.5);
+    scroll-snap-align: start;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial {
+      flex: 0 0 100%;
+    }
+    .testimonials-prev,
+    .testimonials-next {
+      display: none;
+    }
+  }
+
+  .testimonials-prev,
+  .testimonials-next {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid var(--taupe);
+    color: var(--taupe);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    padding: 0;
+  }
+  .testimonials-prev:hover,
+  .testimonials-next:hover {
+    border-color: var(--olive);
+    color: var(--olive);
+  }
+</style>
+
+<script>
+  const carousel = document.querySelector('.testimonials-carousel');
+  if (carousel) {
+    const grid = carousel.querySelector('.testimonials-grid') as HTMLElement;
+    const prev = carousel.querySelector('.testimonials-prev') as HTMLButtonElement;
+    const next = carousel.querySelector('.testimonials-next') as HTMLButtonElement;
+
+    prev.addEventListener('click', () => {
+      const cardWidth = (grid.firstElementChild as HTMLElement).offsetWidth + parseInt(getComputedStyle(grid).gap);
+      grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', () => {
+      const cardWidth = (grid.firstElementChild as HTMLElement).offsetWidth + parseInt(getComputedStyle(grid).gap);
+      grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  }
+</script>

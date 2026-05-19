@@ -20,8 +20,8 @@ const faqSchema = {
 };
 ---
 
-<section class="faq-block">
-  <h2 class="faq-title">{title}</h2>
+<div class="faq-block" role="region" aria-labelledby="faq-title">
+  <h2 class="faq-title" id="faq-title">{title}</h2>
   <div class="faq-list">
     {faqs.map(({ q, a }, i) => (
       <div class="faq-item">
@@ -47,7 +47,7 @@ const faqSchema = {
       </div>
     ))}
   </div>
-</section>
+</div>
 
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 

@@ -58,7 +58,7 @@ if (related.length > 0) {
 const shareUrl = encodeURIComponent(canonical);
 const shareTitle = encodeURIComponent(title);
 
-const authorPhoto = await getImage({ src: authorPhotoSrc, width: 120, height: 120, format: 'webp' });
+const authorPhoto = await getImage({ src: authorPhotoSrc, width: 640, height: 800, format: 'webp' });
 
 const articleSchema = {
   '@context': 'https://schema.org',
