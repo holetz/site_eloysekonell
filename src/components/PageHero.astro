@@ -22,8 +22,9 @@ const {
 <header class={`page-hero page-hero--${align}${image ? ' page-hero--has-image' : ''}`}>
   <div class="page-hero__content">
     {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <slot name="media" />
     <h1 class="page-hero__title">{title}</h1>
-    {deck && <p class="page-hero__deck">{deck}</p>}
+    {deck && <p class="page-hero__deck" set:html={deck} />}
     <slot />
   </div>
   {image && (

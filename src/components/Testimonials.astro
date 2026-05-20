@@ -6,7 +6,6 @@ const testimonials = [
     name: 'Patrícia Stazak',
     role: 'People Partner',
     company: 'DataRunk',
-    delay: '',
   },
   {
     quote:
@@ -14,7 +13,6 @@ const testimonials = [
     name: 'Thomas Otte Corrêa',
     role: 'Head de Mercado',
     company: 'Nuvme',
-    delay: 'delay-1',
   },
   {
     quote:
@@ -22,7 +20,6 @@ const testimonials = [
     name: 'Cintia Senem Cavichiolli',
     role: 'Advogada e Sócia',
     company: 'Oliveira e Antunes Advogados',
-    delay: 'delay-2',
   },
 ];
 ---
@@ -33,29 +30,36 @@ const testimonials = [
       <span class="eyebrow">Depoimentos</span>
       <h2>O que dizem os líderes <em>e organizações.</em></h2>
     </div>
-    <div class="testimonials-carousel">
+    <div class="testimonials-carousel reveal">
       <button class="testimonials-prev" aria-label="Anterior">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
-      <div class="testimonials-grid">
-        {testimonials.map(({ quote, name, role, company, delay }) => (
-          <div class={`testimonial reveal ${delay}`}>
-            <span class="mark">"</span>
-            <blockquote>{quote}</blockquote>
-            <cite>
-              {name}
-              <small>{role} • {company}</small>
-            </cite>
-          </div>
-        ))}
+      <div class="testimonials-viewport">
+        <div class="testimonials-grid">
+          {testimonials.map(({ quote, name, role, company }, i) => (
+            <div class="testimonial" data-index={i} aria-hidden={i === 0 ? 'false' : 'true'}>
+              <span class="mark">"</span>
+              <blockquote>{quote}</blockquote>
+              <cite>
+                {name}
+                <small>{role} • {company}</small>
+              </cite>
+            </div>
+          ))}
+        </div>
       </div>
       <button class="testimonials-next" aria-label="Próximo">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
+    </div>
+    <div class="testimonials-dots" role="tablist" aria-label="Selecionar depoimento">
+      {testimonials.map((_, i) => (
+        <button class="testimonials-dot" data-index={i} aria-label={`Depoimento ${i + 1}`}></button>
+      ))}
     </div>
   </div>
 </section>
@@ -68,33 +72,42 @@ const testimonials = [
     gap: var(--space-5);
   }
 
+  /* janela que recorta os depoimentos laterais */
+  .testimonials-viewport {
+    flex: 1;
+    overflow: hidden;
+    padding: var(--space-4) 0;
+  }
+
   .testimonials-grid {
     display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     gap: var(--space-7);
-    flex: 1;
-    /* hide scrollbar visually */
-    scrollbar-width: none;
-  }
-  .testimonials-grid::-webkit-scrollbar {
-    display: none;
+    transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
   }
 
   .testimonial {
-    flex: 0 0 calc(100% / 1.5);
-    scroll-snap-align: start;
+    flex: 0 0 60%;
+    /* cada cartão escala/desfoca conforme entra ou sai do foco */
+    transform: scale(0.85);
+    opacity: 0.55;
+    filter: blur(1px);
+    cursor: pointer;
+    transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0.55s ease, filter 0.55s ease;
+  }
+
+  /* o depoimento selecionado fica centralizado, nítido e em tamanho cheio */
+  .testimonial.is-active {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+    cursor: default;
   }
 
   @media (max-width: 768px) {
     .testimonial {
-      flex: 0 0 100%;
-    }
-    .testimonials-prev,
-    .testimonials-next {
-      display: none;
+      flex: 0 0 82%;
     }
   }
 
@@ -111,7 +124,7 @@ const testimonials = [
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, opacity 0.2s;
     padding: 0;
   }
   .testimonials-prev:hover,
@@ -119,23 +132,94 @@ const testimonials = [
     border-color: var(--olive);
     color: var(--olive);
   }
+  .testimonials-prev:disabled,
+  .testimonials-next:disabled {
+    opacity: 0.25;
+    cursor: default;
+    border-color: var(--taupe);
+    color: var(--taupe);
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-prev,
+    .testimonials-next {
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+  .testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-7);
+  }
+  .testimonials-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--taupe);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .testimonials-dot:hover {
+    border-color: var(--olive);
+  }
+  .testimonials-dot.is-active {
+    background: var(--bronze);
+    border-color: var(--bronze);
+    transform: scale(1.15);
+  }
 </style>
 
 <script>
   const carousel = document.querySelector('.testimonials-carousel');
   if (carousel) {
     const grid = carousel.querySelector('.testimonials-grid') as HTMLElement;
+    const viewport = carousel.querySelector('.testimonials-viewport') as HTMLElement;
     const prev = carousel.querySelector('.testimonials-prev') as HTMLButtonElement;
     const next = carousel.querySelector('.testimonials-next') as HTMLButtonElement;
+    const cards = Array.from(grid.children) as HTMLElement[];
+    const dots = Array.from(
+      document.querySelectorAll('.testimonials-dot')
+    ) as HTMLButtonElement[];
 
-    prev.addEventListener('click', () => {
-      const cardWidth = (grid.firstElementChild as HTMLElement).offsetWidth + parseInt(getComputedStyle(grid).gap);
-      grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-    });
+    let index = 0;
 
-    next.addEventListener('click', () => {
-      const cardWidth = (grid.firstElementChild as HTMLElement).offsetWidth + parseInt(getComputedStyle(grid).gap);
-      grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    });
+    function render() {
+      const card = cards[index];
+      // centraliza o cartão ativo na janela
+      const offset =
+        viewport.clientWidth / 2 - (card.offsetLeft + card.offsetWidth / 2);
+      grid.style.transform = `translateX(${offset}px)`;
+
+      cards.forEach((c, i) => {
+        c.classList.toggle('is-active', i === index);
+        c.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+
+      prev.disabled = index === 0;
+      next.disabled = index === cards.length - 1;
+    }
+
+    function goTo(i: number) {
+      index = Math.max(0, Math.min(cards.length - 1, i));
+      render();
+    }
+
+    prev.addEventListener('click', () => goTo(index - 1));
+    next.addEventListener('click', () => goTo(index + 1));
+    cards.forEach((c, i) =>
+      c.addEventListener('click', () => {
+        if (i !== index) goTo(i);
+      })
+    );
+    dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+    window.addEventListener('resize', render);
+    render();
   }
 </script>
