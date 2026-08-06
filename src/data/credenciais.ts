@@ -19,6 +19,7 @@ export const credenciais = {
   assessmentsRealizados: 500,
 
   localizacao: {
+    endereco: 'R. Teresópolis, 660 - Itoupava Seca, Blumenau - SC',
     cidade: 'Blumenau',
     estado: 'SC',
     regiao: 'Vale do Itajaí',
