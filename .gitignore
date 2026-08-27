@@ -7,8 +7,8 @@ node_modules/
 docs/
 dist/
 
-# HTML legado (substituído pelo Astro)
-index.html
+# HTML legado (substituído pelo Astro) — apenas o da raiz
+/index.html
 
 # Astro
 .astro/
