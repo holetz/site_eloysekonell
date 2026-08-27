@@ -1028,10 +1028,7 @@ const FUNCOES = [
 /* ============================================================
    5. ESTADO
    ============================================================ */
-/* Armazenamento de sessão: o histórico vive só enquanto esta aba estiver
-   aberta. Fechou a aba, os dados somem — nada fica no computador de quem
-   preenche. Para guardar, use o backup em JSON na tela de histórico. */
-const SS_KEY = "ek_regua_decisoria_v1";
+const LS_KEY = "ek_regua_decisoria_v1";
 
 function novoEstado(){
   const b = {};
@@ -1893,13 +1890,13 @@ function viewDevolutiva(){
 /* ---------- 8.6 Histórico ---------- */
 function carregarHist(){
   try{
-    const raw = sessionStorage.getItem(SS_KEY);
+    const raw = localStorage.getItem(LS_KEY);
     const arr = raw ? JSON.parse(raw) : [];
     return Array.isArray(arr) ? arr : [];
   }catch(e){ return []; }
 }
 function gravarHist(arr){
-  try{ sessionStorage.setItem(SS_KEY, JSON.stringify(arr)); return true; }
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(arr)); return true; }
   catch(e){ return false; }
 }
 function salvarAvaliacao(){
@@ -1920,8 +1917,8 @@ function salvarAvaliacao(){
     ajuste:S.ajuste
   };
   arr.push(rec);
-  if(gravarHist(arr)) toast("Avaliação salva no histórico desta sessão. Exporte o backup antes de fechar a aba.");
-  else toast("Não foi possível salvar. O navegador está bloqueando o armazenamento de sessão.");
+  if(gravarHist(arr)) toast("Avaliação salva no histórico deste navegador.");
+  else toast("Não foi possível salvar. O navegador está bloqueando o armazenamento local.");
   renderNav();
 }
 
@@ -1967,9 +1964,9 @@ function viewHistorico(){
   main.innerHTML =
   '<div class="stack-lg">'+
     '<div class="pagehead">'+
-      '<div class="eyebrow">Registros desta sessão</div>'+
+      '<div class="eyebrow">Registros salvos neste navegador</div>'+
       '<h1>Histórico de avaliações</h1>'+
-      '<p class="lede">As avaliações ficam guardadas apenas enquanto esta aba estiver aberta — ao fechá-la, elas são descartadas e nada permanece no computador. Para preservar os dados ou consolidar o time, exporte o backup antes de sair.</p>'+
+      '<p class="lede">As avaliações ficam armazenadas apenas neste computador e neste navegador. Para consolidar o time ou preservar os dados, exporte o backup periodicamente.</p>'+
     '</div>'+
     '<div class="card">'+
       (arr.length ?
@@ -1980,7 +1977,7 @@ function viewHistorico(){
     '</div>'+
     '<div class="card stack">'+
       '<div class="eyebrow">Backup</div>'+
-      '<p class="small muted">Fechar esta aba apaga o histórico. Exporte o arquivo de backup ao final da conversa e importe-o aqui quando quiser retomar as avaliações.</p>'+
+      '<p class="small muted">O armazenamento do navegador pode ser apagado ao limpar dados de navegação. Exporte um arquivo de backup ao final de cada ciclo de avaliações.</p>'+
       '<div class="sl-actions">'+
         '<button class="btn btn-sm" id="btnExp">Exportar backup (JSON)</button>'+
         '<button class="btn btn-sm" id="btnImp">Importar backup</button>'+
