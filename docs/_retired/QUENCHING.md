@@ -229,7 +229,7 @@ and proves the result with `mkdocs build --strict` — reporting `unverified` ra
 a build that never ran.
 
 It **never touches a page.** A section with no `index.md`, an unstamped page, or an absolute
-`/.docs/<other-home>/…` link that dies in the built HTML is **reported** with the command that
+`/docs/<other-home>/…` link that dies in the built HTML is **reported** with the command that
 fixes it (`/docs:align`, `/docs:add`). The site is rooted at `documentation/` — the other homes
 are your internal surface and stay unpublished; re-aiming `docs_dir` is its own confirmation.
 Run it after adding pages, after a section is created, or whenever the nav looks wrong.

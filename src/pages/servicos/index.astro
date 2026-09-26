@@ -6,12 +6,14 @@ import leadershipIcon from '../../assets/icons/leadership.svg?raw';
 import strategyIcon from '../../assets/icons/strategy.svg?raw';
 import assessmentIcon from '../../assets/icons/assessment.svg?raw';
 import mentoringIcon from '../../assets/icons/mentoring.svg?raw';
+import successionIcon from '../../assets/icons/succession.svg?raw';
+import peopleStrategyIcon from '../../assets/icons/people-strategy.svg?raw';
 
 const SITE_URL = 'https://eloysekonell.com.br';
 
 const title = 'Serviços — Eloyse Konell | Liderança e Gestão Estratégica de Pessoas';
 const description =
-  'Desenvolvimento de líderes, gestão estratégica de pessoas, assessment executivo e mentoria para empresas e líderes no Sul do Brasil. Conheça as frentes de atuação.';
+  'Diagnóstico e arquitetura organizacional, assessment de lideranças, sucessão, desenvolvimento de líderes, mentoria e consultoria em gestão de pessoas para empresas no Sul do Brasil.';
 const canonical = `${SITE_URL}/servicos/`;
 
 const breadcrumb = [
@@ -21,44 +23,69 @@ const breadcrumb = [
 
 const services = [
   {
-    title: 'Assessment e Diagnóstico de Liderança',
-    deck: 'Para empresas e líderes que precisam de dados objetivos antes de decisões críticas de desenvolvimento e sucessão.',
+    title: 'Diagnóstico Integrado e Arquitetura Organizacional',
+    deck: 'Para empresas que cresceram e precisam saber se a estrutura atual, a começar pela liderança, sustenta o próximo ciclo do negócio.',
+    iconHtml: strategyIcon,
+    bullets: [
+      'Leitura da estrutura a partir da liderança: desenho, tamanho e o time que cada líder carrega',
+      'Análise cruzada de estratégia, estrutura e pessoas para avaliar se os times sustentam o negócio',
+      'Arquitetura-alvo de lideranças e times, com as posições críticas mapeadas',
+      'Plano de transição priorizado, com marcos e sequenciamento',
+    ],
+  },
+  {
+    title: 'Assessment para Lideranças',
+    deck: 'Para empresas que precisam de uma leitura objetiva de quem lidera hoje antes de decidir sobre promoção, sucessão, contratação ou investimento em desenvolvimento.',
     iconHtml: assessmentIcon,
     bullets: [
-      'Combinação de instrumentos validados — DISC, Teique, HPTI, Dilemas de Gestão',
-      'Relatório executivo com recomendações estratégicas claras para o decisor',
-      'Devolutiva personalizada e plano de desenvolvimento robusto com prioridades definidas',
+      'Instrumentos psicométricos validados — PDA/DISC, TEIQue, HPTI e Dilemas de Gestão — combinados a uma entrevista de profundidade',
+      'Análise lida à luz do contexto, da estratégia e dos desafios concretos de cada posição, sem relatórios genéricos',
+      'Relatório individual, devolutiva ao avaliado e síntese executiva ao patrocinador',
+      'Indicação clara de onde investir primeiro em desenvolvimento',
     ],
   },
   {
     title: 'Estratégias de Sucessão',
-    deck: 'Para empresas que precisam estruturar quem vai sustentar o próximo ciclo.',
-    iconHtml: strategyIcon,
+    deck: 'Para empresas que precisam proteger o negócio nos ciclos de transição e deixar de decidir movimentações de forma reativa.',
+    iconHtml: successionIcon,
     bullets: [
-      'Mapeamento de potencial e prontidão de profissionais com critérios objetivos',
-      'Diagnóstico e desenho de plano de sucessão estruturado',
-      'Acompanhamento do desenvolvimento de sucessores até a transição',
-    ],
-  },
-  {
-    title: 'Mentoria de Transição de Carreira para Líderes',
-    deck: 'Para profissionais que estão mudando de papel, nível ou empresa, e precisam de um espaço estratégico para pensar com clareza.',
-    iconHtml: mentoringIcon,
-    bullets: [
-      'Mentoria focada em decisão e direção para momentos de transição',
-      'Análise comportamental e de cenário integrada para mapear padrões que limitam ou impulsionam',
-      'Acompanhamento de 3 a 4 meses com sessões estruturadas e metas claras',
+      'Mapeamento das posições críticas e dos profissionais com potencial para ocupá-las',
+      'Avaliação de prontidão e potencial de cada sucessor frente à criticidade do cargo',
+      'Planos de desenvolvimento dirigidos às lacunas críticas, com sucessores preparados em camadas',
+      'Planejamento de carreira e governança do pipeline de sucessão',
     ],
   },
   {
     title: 'Desenvolvimento de Líderes',
-    deck: 'Para empresas que precisam preparar líderes para o próximo nível de complexidade com método.',
+    deck: 'Para empresas que precisam preparar a liderança para a próxima fase de crescimento, com programas ligados à estratégia e não a um catálogo pronto de treinamentos.',
     iconHtml: leadershipIcon,
     bullets: [
-      'Mapeamento e diagnóstico de cenário para entender a realidade antes de agir',
-      'Programas de desenvolvimento desenhados sob medida para lideranças conforme pipeline',
-      'Abordagem ancorada em neurociência, análise comportamental e contexto real do negócio',
-      'Relatório final com a evolução da liderança ao longo do programa e indicações de próximos passos',
+      'Diagnóstico do grupo — competências, estilos e contexto estratégico — antes de desenhar o programa',
+      'Jornadas customizadas pelo Método LIA, com cases do próprio negócio e aplicação em desafios reais',
+      'Mentorias individuais em paralelo para cada líder',
+      'Medição da evolução comportamental antes e depois, não apenas da satisfação ao final',
+    ],
+  },
+  {
+    title: 'Mentoria',
+    deck: 'Para quem quer liderar melhor ou precisa reposicionar a carreira com clareza, em um processo individual e orientado a resultado.',
+    iconHtml: mentoringIcon,
+    bullets: [
+      'Desenvolvimento de liderança pelo Método LIA (Ler, Integrar e Agir), em 8 encontros, nas trilhas “Virei líder, e agora?” e “Nova altitude”',
+      'Transição de carreira em 6 encontros e quatro pilares: identidade, voz e essência, direção e movimento',
+      'Tarefas práticas entre encontros, aplicadas no trabalho e na carreira real',
+      'Plano de ação e PDI com linha de base para medir a evolução',
+    ],
+  },
+  {
+    title: 'Consultoria Estratégica de Gestão de Pessoas',
+    deck: 'Para empresas que querem que a gestão de pessoas deixe de ser reativa e passe a trabalhar a serviço da estratégia do negócio.',
+    iconHtml: peopleStrategyIcon,
+    bullets: [
+      'Diagnóstico da gestão de pessoas — práticas, cultura, políticas e estrutura — frente à estratégia',
+      'Projetos de cultura, pesquisa de clima, avaliação de desempenho, cargos e salários e recrutamento e seleção',
+      'Contratação por projeto, com escopo e prazo fechados, ou como RH as a Service, em parceria mensal para empresas sem RH estruturado',
+      'Acompanhamento recorrente, com síntese executiva periódica',
     ],
   },
 ];
@@ -77,6 +104,8 @@ const collectionPageSchema = {
     { '@id': `${SITE_URL}/servicos/estrategias-de-sucessao/#service` },
     { '@id': `${SITE_URL}/servicos/mentoria-transicao-carreira/#service` },
     { '@id': `${SITE_URL}/servicos/desenvolvimento-de-liderancas/#service` },
+    { '@type': 'Service', name: 'Diagnóstico Integrado e Arquitetura Organizacional' },
+    { '@type': 'Service', name: 'Consultoria Estratégica de Gestão de Pessoas' },
   ],
 };
 ---
@@ -95,19 +124,21 @@ const collectionPageSchema = {
     slot="hero"
     eyebrow="Serviços"
     title="Como posso ajudar"
-    deck="Quatro frentes de atuação para empresas e líderes que querem decidir sobre pessoas com o mesmo critério que usam para decidir sobre o negócio."
+    deck="Seis serviços para empresas e líderes que querem decidir sobre pessoas com o mesmo critério que usam para decidir sobre o negócio."
   />
 
   <div class="servicos-wrap">
     <p class="servicos-intro">
-      Cada empresa atravessa momentos distintos: há quem precise formar líderes que ainda não
-      existem no pipeline, quem precise estruturar processos de liderança que sustentem o
-      crescimento, quem precise de um diagnóstico preciso antes de promover, suceder ou
-      contratar, e quem precise de um espaço estratégico para pensar liderança com clareza.
+      Pessoas movem negócios, e quem move as pessoas dentro de uma organização é a liderança.
+      Quando ela não acompanha o momento da empresa, a estratégia perde força onde mais importa:
+      na execução.
     </p>
     <p class="servicos-intro">
-      As quatro frentes abaixo foram desenhadas para esses momentos, não como pacotes genéricos,
-      mas como respostas a perguntas reais.
+      Por isso parto sempre da leitura do negócio e coloco a liderança no centro: a estrutura em
+      que ela opera, as práticas de gestão de pessoas que a apoiam e o desenvolvimento que a
+      prepara para o próximo ciclo. Os seis serviços abaixo se organizam em três frentes
+      integradas — estruturar, avaliar e desenvolver — e foram desenhados como respostas a
+      perguntas reais, não como pacotes genéricos.
     </p>
 
     <div class="servicos-grid">

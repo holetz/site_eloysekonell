@@ -8,7 +8,7 @@ Eloyse Konell é psicóloga e consultora estratégica de lideranças. Há mais d
 
 - [Início](https://eloysekonell.com.br/): apresentação, serviços, depoimentos e clientes
 - [Sobre](https://eloysekonell.com.br/sobre/): trajetória, formação, certificações e abordagem
-- [Serviços](https://eloysekonell.com.br/servicos/): hub com as 4 frentes de atuação
+- [Serviços](https://eloysekonell.com.br/servicos/): hub com os 6 serviços, organizados em três frentes: estruturar, avaliar e desenvolver
 - [Assessment e Diagnóstico de Liderança](https://eloysekonell.com.br/assessment/): instrumentos validados, devolutiva e plano de desenvolvimento para decisões críticas
 - [Estratégias de Sucessão](https://eloysekonell.com.br/servicos/estrategias-de-sucessao/): mapeamento de potencial, plano de sucessão e acompanhamento até a transição
 - [Mentoria de Transição de Carreira para Líderes](https://eloysekonell.com.br/servicos/mentoria-transicao-carreira/): mentoria 1-1 para líderes em transição de papel, nível ou empresa
@@ -30,10 +30,12 @@ Eloyse Konell é psicóloga e consultora estratégica de lideranças. Há mais d
 
 ## Áreas de atuação
 
-- Assessment e diagnóstico de liderança
+- Diagnóstico integrado e arquitetura organizacional
+- Assessment para lideranças
 - Estratégias de sucessão
-- Mentoria de transição de carreira para líderes
-- Desenvolvimento de líderes
+- Desenvolvimento de líderes (Método LIA)
+- Mentoria de desenvolvimento de liderança e de transição de carreira
+- Consultoria estratégica de gestão de pessoas (por projeto ou RH as a Service)
 
 ## Público
 
