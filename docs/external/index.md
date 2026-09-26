@@ -1,10 +1,10 @@
-# `reference/` — EXTERNAL reference material
+# `external/` — EXTERNAL reference material
 
 **Factual material about what WE CONSUME** — tool docs, library docs, regulatory
 standards. External to what we produce; background, **never** our contract. Each doc
-carries `type: reference`.
+carries `type: external`.
 
-**Boundary** (the subtlest one): `reference/` = "facts about what **WE CONSUME**
+**Boundary** (the subtlest one): `external/` = "facts about what **WE CONSUME**
 (external)" — distinct from [standards/](/docs/standards/index.md) ("how **WE** do it") and
 catalog/ ("our **data**"). Example: the text of a regulation (a
 PDF) lives in [regulations/](regulations/index.md) via a sidecar; **our interface** to it

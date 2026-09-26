@@ -1,33 +1,34 @@
-# `knowledge/` — generic knowledge we hold
+# `concepts/` — generic knowledge we hold
 
 **Cross-cutting understanding the team carries** — domain concepts, glossaries,
 mental models, explanations, learnings and background insight that inform the work
 but are not a contract, a procedure, or a fact about a specific external asset. The
-**Diátaxis "explanation" quadrant** raised to a home. Each doc carries `type: knowledge`.
+**Diátaxis "explanation" quadrant** raised to a home. Each doc carries `type: concept`.
 
 **Boundary** (what lands here vs. its neighbors):
 
 - vs. [standards/](/docs/standards/index.md) — standards are "how **WE** do it" (a
   current, code-derived **contract**); knowledge is "what we **understand**"
   (explanatory, non-binding). If it binds how code is written, it is a standard.
-- vs. [reference/](/docs/reference/index.md) — reference is facts about a **specific
+- vs. [external/](/docs/external/index.md) — reference is facts about a **specific
   external asset WE CONSUME** (a named tool / library / regulation); knowledge is
   **generic** understanding not tied to one consumed asset (a domain concept, a
   learning). If it documents a named dependency, it is reference.
-- vs. documentation/ — documentation is the published,
-  human-facing product site (how-to, tutorials, product reference/concepts); knowledge is
-  internal team understanding. If it is a page for the docs site, it is documentation.
+- vs. the reader-facing quadrants `tutorials/`,
+  `how-to/`, `explanation/` and
+  `project/` (none installed in this repo yet) — those are the published, human-facing pages; knowledge is
+  internal team understanding. If it is a page for the docs site, it belongs to a quadrant.
 - vs. vision/ — vision is future **direction**; knowledge is
   present **understanding**.
 
 ## Fixed doc
 
-* [Glossary](glossary.md) — the repo's A–Z term lookup. **Resolve any unfamiliar
+* [Glossary](/docs/glossary.md) — the repo's A–Z term lookup. **Resolve any unfamiliar
   repo term here first** (Ctrl-F / `grep`); it is the one file that ships with the
-  home and the one deliberate exception to "one concept per file" (a flat, sorted
+  bundle and the one deliberate exception to "one concept per file" (a flat, sorted
   bullet list — the same syntax every `index.md` uses — of term → one-line meaning
   → link to the full doc, or unlinked when none exists yet). Enriched by
-  `quenching-docs-define` on demand, `quenching-docs-glossary-backfill` in bulk, and, as a tail
+  `quenching:knowledge:define` on demand, `quenching:knowledge:glossary-backfill` in bulk, and, as a tail
   step, by the other knowledge skills.
 
 ## How to organize

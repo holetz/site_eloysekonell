@@ -12,7 +12,7 @@ kept on a single taxonomy by the
 `/skill:new`, `/skill:agent:new`, `/skill:hook:new`, `/skill:eval`, `/skill:retro`, and the
 sweep `/skill:align`.
 
-Its siblings: `../docs/QUENCHING.md` (the knowledge bundle) and
+Its siblings: `../docs/_retired/QUENCHING.md` (the knowledge bundle) and
 `../specs/QUENCHING.md` (the plan workspace).
 
 ---
@@ -30,7 +30,7 @@ Its siblings: `../docs/QUENCHING.md` (the knowledge bundle) and
   references/<name>/    # shared procedure — outside commands/, cited by path
   evals/<path>/         # measured case sets — outside commands/ too
   hooks/
-    okf-validate.py     # the OKF conformance checker (see ../docs/QUENCHING.md §5)
+    okf-validate.py     # the OKF conformance checker (see ../docs/_retired/QUENCHING.md §5)
     hooks-config.json   # its config — commit it
 ```
 
@@ -230,7 +230,7 @@ only on your word.
 
 The plugin's own `okf-validate.py` keeps `docs/` conformant after every edit — wired automatically
 via the plugin's `hooks/hooks.json`, never installed into this repo. Full behavior, every config
-knob, and the finding codes are in `../docs/QUENCHING.md` §5 and §7.
+knob, and the finding codes are in `../docs/_retired/QUENCHING.md` §5 and §7.
 
 - `settings.json` — this repo's own hook wiring and permissions, if any. **Commit it**; it is
   shared configuration.
@@ -264,7 +264,7 @@ fallback — so `/docs:align` offers to remove one rather than upgrade it.
 
 | Front | Manual | Status (read-only) | Align |
 | --- | --- | --- | --- |
-| `docs/` — the OKF knowledge bundle | `../docs/QUENCHING.md` | `/docs:status` | `/docs:align` |
+| `docs/` — the OKF knowledge bundle | `../docs/_retired/QUENCHING.md` | `/docs:status` | `/docs:align` |
 | `specs/` — the spec-driven plan workspace | `../specs/QUENCHING.md` | `/specs:status` | `/specs:align` |
 | `.claude/` — this surface | this file | — | `/skill:align` |
 
