@@ -7,10 +7,10 @@ but are not a contract, a procedure, or a fact about a specific external asset. 
 
 **Boundary** (what lands here vs. its neighbors):
 
-- vs. [standards/](/.docs/standards/index.md) — standards are "how **WE** do it" (a
+- vs. [standards/](/docs/standards/index.md) — standards are "how **WE** do it" (a
   current, code-derived **contract**); knowledge is "what we **understand**"
   (explanatory, non-binding). If it binds how code is written, it is a standard.
-- vs. [reference/](/.docs/reference/index.md) — reference is facts about a **specific
+- vs. [reference/](/docs/reference/index.md) — reference is facts about a **specific
   external asset WE CONSUME** (a named tool / library / regulation); knowledge is
   **generic** understanding not tied to one consumed asset (a domain concept, a
   learning). If it documents a named dependency, it is reference.

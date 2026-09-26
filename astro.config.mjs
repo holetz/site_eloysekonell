@@ -4,7 +4,7 @@ import { remarkBlogDirectives } from './remark-blog-directives.mjs';
 
 export default defineConfig({
   site: 'https://eloysekonell.com.br',
-  outDir: './docs',
+  outDir: './dist',
   build: {
     assets: '_astro',
   },

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Language: pt-BR — the contract is .docs/standards/agents/communication.md
+Language: pt-BR — the contract is docs/standards/agents/communication.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -12,7 +12,7 @@ Site oficial de Eloyse Konell — consultoria em liderança e gestão estratégi
 
 ```bash
 npm run dev       # Start dev server (localhost:4321)
-npm run build     # Build to ./docs (not dist)
+npm run build     # Build to ./dist
 npm run preview   # Preview production build
 ```
 
@@ -47,11 +47,13 @@ No test runner. No linter configured.
 - `:::faq` — FAQ accordion (### Q / answer pairs)
 - `:::exercise{title,description}` — numbered exercise (num | question | hint)
 
-**Build output:** `./docs` (GitHub Pages reads from this dir). Configured in `astro.config.mjs` via `outDir: './docs'`.
+**Build output:** `./dist` (published by the deploy workflow). Configured in `astro.config.mjs` via `outDir: './dist'`.
+
+**Knowledge base:** `docs/` is the quenching OKF bundle (git-tracked) — not build output.
 
 ## Deployment
 
-Push to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`): `npm ci` → `npm run build` → deploys `./docs` to `gh-pages` branch with CNAME `eloysekonell.com.br`. No manual deploy needed.
+Push to `main` triggers GitHub Actions (`.github/workflows/deploy.yml`): `npm ci` → `npm run build` → deploys `./dist` to `gh-pages` branch with CNAME `eloysekonell.com.br`. No manual deploy needed.
 
 ## Page Routes
 

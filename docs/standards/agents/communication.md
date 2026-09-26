@@ -2,7 +2,7 @@
 type: standard
 title: Agent communication
 description: The language a repo declares for the prose its agents author — one BCP-47 tag on the root harness line, governing artifact and conversation alike — and the conduct contract that holds in every repo whether or not a language is declared
-resource: .docs/**, specs/**
+resource: docs/**, specs/**
 tags: [agents, language, communication, harness]
 timestamp: 2026-07-30
 audience: both
@@ -26,7 +26,7 @@ A repo declares its language as **one BCP-47 tag**, on a single line of its **ro
 (`CLAUDE.md` / `AGENTS.md`):
 
 ```
-Language: pt-BR — the contract is .docs/standards/agents/communication.md
+Language: pt-BR — the contract is docs/standards/agents/communication.md
 ```
 
 That line carries **a value and a citation, and nothing else**. It never paraphrases the rule below:
