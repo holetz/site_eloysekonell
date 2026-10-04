@@ -10,6 +10,8 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     coverImage: z.string().url().optional(),
     ogImage: z.string().url().optional(),
+    // Edição de origem na newsletter O Fator Humano (LinkedIn). Chave de sincronização: não remover.
+    linkedinUrl: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
     readingTime: z.string(),
     draft: z.boolean().default(false),
