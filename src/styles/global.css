@@ -809,6 +809,44 @@
     top: 0;
   }
 
+  .article-body ol {
+    margin: var(--space-6) 0 var(--space-7);
+    padding-left: var(--space-7);
+  }
+  .article-body ol li {
+    padding-left: var(--space-2);
+    margin-bottom: 14px; /* exception: 14px tight list rhythm */
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--olive);
+  }
+  .article-body ol li::marker {
+    color: var(--bronze);
+    font-weight: 600;
+  }
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-6) 0 var(--space-8);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--olive);
+  }
+  .article-body th,
+  .article-body td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-line);
+    text-align: left;
+  }
+  .article-body th {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--bronze);
+    border-bottom: 1px solid var(--bronze);
+  }
+
   /* PULLQUOTE */
   .pullquote {
     margin: var(--space-9) calc(var(--space-9) * -1);
