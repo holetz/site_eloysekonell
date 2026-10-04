@@ -169,11 +169,11 @@ const collectionPageSchema = {
     font-size: 1.05rem;
     line-height: 1.75;
     color: var(--taupe);
-    margin: 0 0 var(--space-10);
+    margin: 0 0 var(--space-5);
   }
 
-  .servicos-intro + .servicos-intro {
-    margin-top: var(--space-10);
+  .servicos-intro:last-of-type {
+    margin-bottom: var(--space-10);
   }
 
   .servicos-grid {
@@ -208,7 +208,7 @@ const collectionPageSchema = {
   }
 
   @media (max-width: 768px) {
-    .servicos-intro {
+    .servicos-intro:last-of-type {
       margin-bottom: var(--space-8);
     }
 
