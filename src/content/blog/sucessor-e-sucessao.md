@@ -7,16 +7,17 @@ pubDate: 2026-04-28
 tags: ["Estratégia"]
 readingTime: "9 min de leitura"
 coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85"
+linkedinUrl: "https://www.linkedin.com/pulse/sua-empresa-tem-um-sucessor-mas-uma-sucess%C3%A3o-eloyse-konell-owwof"
 related: ["cadeira-vazia", "sucessao-mal-planejada", "tecnico-virou-gestor"]
 faq:
   - q: "Qual a diferença entre ter um sucessor nomeado e ter um processo de sucessão?"
-    a: "Ter um sucessor nomeado é uma decisão. Ter um processo de sucessão é uma construção que leva anos. O nome no organograma não prepara ninguém para tomar decisões complexas sob pressão, gerir conflitos ou navegar a ambiguidade estratégica. Sem exposição progressiva e desenvolvimento real, o nome é apenas um símbolo — não uma garantia de continuidade."
+    a: "Ter um sucessor nomeado é uma decisão. Ter um processo de sucessão é uma construção que leva anos. O nome no organograma não prepara ninguém para tomar decisões complexas sob pressão, gerir conflitos ou navegar a ambiguidade estratégica. Sem exposição progressiva e desenvolvimento real, o nome é apenas um símbolo, não uma garantia de continuidade."
   - q: "Em quanto tempo se prepara um sucessor de forma adequada?"
     a: "Entre três e sete anos, dependendo da complexidade do cargo e do nível de desenvolvimento atual do candidato. Isso inclui exposição a decisões progressivamente mais complexas, formação em áreas de baixo domínio, autonomia real sobre projetos estratégicos e acompanhamento com feedback estruturado."
   - q: "Como identificar se a pessoa escolhida como sucessor é a certa?"
-    a: "O critério mais confiável não é lealdade, senioridade ou semelhança com o fundador — é capacidade de aprender e adaptar em contextos novos. O perfil que mais falha é o do excelente executor promovido a estrategista. A pergunta decisiva: essa pessoa consegue tomar decisões difíceis em ambiguidade, sem necessidade constante de validação?"
+    a: "O critério mais confiável não é lealdade, senioridade ou semelhança com o fundador. É a capacidade de aprender e adaptar em contextos novos. O perfil que mais falha é o do excelente executor promovido a estrategista. A pergunta decisiva: essa pessoa consegue tomar decisões difíceis em ambiguidade, sem necessidade constante de validação?"
   - q: "O que fazer quando o sucessor escolhido não está performando como esperado?"
-    a: "Primeiro, separar dois problemas distintos: o candidato não está pronto, ou o processo de preparação foi insuficiente? Na maioria dos casos, é o segundo. Se a pessoa foi nomeada sem exposição adequada, o problema não é dela — é do processo. A resposta é ajustar o plano de desenvolvimento, não necessariamente substituir a pessoa."
+    a: "Primeiro, separar dois problemas distintos: o candidato não está pronto, ou o processo de preparação foi insuficiente? Na maioria dos casos, é o segundo. Se a pessoa foi nomeada sem exposição adequada, o problema não é dela, é do processo. A resposta é ajustar o plano de desenvolvimento, não necessariamente substituir a pessoa."
   - q: "Sucessão em empresas familiares tem diferenças em relação a empresas não familiares?"
     a: "Sim. Em empresas familiares, a sucessão acontece em três dimensões simultâneas: gestão, propriedade e família. Uma transição bem-sucedida exige alinhar as expectativas nos três planos, o que torna o processo mais complexo e exige muito mais comunicação explícita sobre papéis, direitos e critérios de decisão."
 ---
@@ -37,7 +38,7 @@ Existe uma confusão que custa caro: tratar "plano de sucessão" e "construção
 
 **Plano de sucessão** é o documento. Tem nome do candidato, prazo estimado, talvez uma matriz de competências preenchida. Dura uma reunião de conselho.
 
-**Construção de sucessão** é o processo. Leva entre três e sete anos. Envolve formar a pessoa em decisões progressivamente mais complexas, expô-la a contextos que ela não domina, dar autonomia real — não simulada — sobre áreas que importam, e criar mecanismos para que ela aprenda a errar antes de assumir a cadeira definitiva.
+**Construção de sucessão** é o processo. Leva entre três e sete anos. Envolve formar a pessoa em decisões progressivamente mais complexas, expô-la a contextos que ela não domina, dar autonomia real (não simulada) sobre áreas que importam, e criar mecanismos para que ela aprenda a errar antes de assumir a cadeira definitiva.
 
 Pesquisa da PwC Family Business Survey indica que **apenas 34% das empresas familiares americanas** têm um plano de sucessão robusto, documentado e comunicado. E plano comunicado, vale dizer, ainda é menos do que sucessão construída.
 
@@ -71,7 +72,7 @@ US$ 1,4bi | perda extra em valor de mercado em transições não planejadas
 E há o custo invisível. Cultura organizacional que se quebra. Time da segunda linha que perde referência e começa a sair. Clientes que percebem instabilidade. Decisões estratégicas congeladas por seis a doze meses enquanto a empresa "espera o novo líder se firmar". Esse custo silencioso reorganiza o resultado dos próximos cinco anos.
 
 :::exercise{title="Exercício prático" description="Três perguntas que definem se você está construindo sucessão, ou só nomeando alguém:"}
-01 | **Se você precisasse sair em seis meses, quem assumiria — e o que essa pessoa precisaria aprender nos próximos três anos?** | Se a resposta para a segunda parte for "muita coisa", você tem um nome. Não tem uma sucessão.
+01 | **Se você precisasse sair em seis meses, quem assumiria, e o que essa pessoa precisaria aprender nos próximos três anos?** | Se a resposta para a segunda parte for "muita coisa", você tem um nome. Não tem uma sucessão.
 02 | **Quantas decisões estratégicas, no último trimestre, passaram exclusivamente por você?** | Cada decisão que só você consegue tomar é uma decisão que ninguém ao seu lado está sendo formado para tomar. E é também um ponto de fragilidade do negócio.
 03 | **Existe alguém na sua empresa hoje que pode te dizer "não" e ser ouvido?** | Sucessores não se formam em ambientes onde só uma voz importa. Se ninguém te confronta, ninguém está aprendendo a ocupar o seu lugar.
 :::
