@@ -55,6 +55,23 @@ export function remarkBlogDirectives() {
   return (tree) => {
     visit(tree, (node) => {
 
+      // Texto como "1:1" ou "10:30" é lido pelo remark-directive como diretiva
+      // inline (":1", ":30") e sumia do HTML. O blog não usa diretivas inline:
+      // devolve o texto original.
+      if (node.type === 'textDirective') {
+        const hasLabel = (node.children || []).length > 0;
+        const hasAttrs = Object.keys(node.attributes || {}).length > 0;
+        if (!hasLabel && !hasAttrs) {
+          Object.assign(node, {
+            type: 'text',
+            value: `:${node.name}`,
+            children: undefined,
+            name: undefined,
+            attributes: undefined,
+          });
+        }
+      }
+
       // ::pullquote[text] — leaf directive
       if (node.type === 'leafDirective' && node.name === 'pullquote') {
         const text = extractText(node);
