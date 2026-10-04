@@ -59,3 +59,18 @@ vendor/
 coverage/
 .cache/
 tmp/
+
+# Build antigo gerado em docs/ (antes do outDir ir para dist/) — docs/ é só a base OKF
+/docs/_astro/
+/docs/index.html
+/docs/CNAME
+/docs/llms.txt
+/docs/robots.txt
+/docs/sitemap.xml
+/docs/assessment/
+/docs/blog/
+/docs/contato/
+/docs/files/
+/docs/images/
+/docs/servicos/
+/docs/sobre/

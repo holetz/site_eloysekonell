@@ -575,7 +575,8 @@
     filter:var(--filter-logo-mute);
     transition:filter .4s ease, transform .4s ease;
   }
-  .client-logo:hover{filter:brightness(0) opacity(1);transform:scale(1.05)}
+  .client-logo:hover,.client-link:hover .client-logo,.client-link:focus-visible .client-logo{filter:brightness(0) opacity(1);transform:scale(1.05)}
+  .client-link{display:inline-flex;flex:0 0 auto}
 
   /* CTA */
   .cta{background:var(--olive-deep);color:var(--sand);text-align:center;position:relative;overflow:hidden}

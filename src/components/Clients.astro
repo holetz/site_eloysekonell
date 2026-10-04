@@ -16,20 +16,20 @@ import logoSingularis from '../assets/logos/logo_singularis.svg';
 import logoStraasSchool from '../assets/logos/logo_straas_school.webp';
 
 const clients = [
-  { src: logoDatarunk,    alt: 'Datarunk' },
-  { src: logoDgsis,       alt: 'DGSis' },
-  { src: logoGrupoTop,    alt: 'Grupo Top' },
+  { src: logoDatarunk,    alt: 'DataRunk',     href: 'https://datarunk.com/' },
+  { src: logoDgsis,       alt: 'DG SYS',       href: 'https://dgsys.com.br/' },
+  { src: logoGrupoTop,    alt: 'GTOP',         href: 'https://www.gtopdistribuicao.com.br/' },
   { src: logoPossibilitar,alt: 'Possibilitar' },
-  { src: logoNuvme,       alt: 'Nuvme' },
-  { src: logoStraas,      alt: 'Straas' },
-  { src: logoColablife,   alt: 'Colablife' },
-  { src: logoTechlinker,  alt: 'Techlinker' },
-  { src: logoMtech,       alt: 'Mtech' },
-  { src: logoGuion,       alt: 'Guion' },
-  { src: logoOliveiraEAntunes, alt: 'Oliveira e Antunes' },
-  { src: logoDati,        alt: 'Dati' },
-  { src: logoSingularis,  alt: 'Singularis' },
-  { src: logoStraasSchool, alt: 'Straas School' },
+  { src: logoNuvme,       alt: 'Nuvme',        href: 'https://nuvme.com.br/' },
+  { src: logoStraas,      alt: 'Straas',       href: 'https://straas.co/' },
+  { src: logoColablife,   alt: 'ColabLife',    href: 'https://colablife.dgsys.com.br/' },
+  { src: logoTechlinker,  alt: 'TechLinker',   href: 'https://techlinker.com.br/' },
+  { src: logoMtech,       alt: 'MTech Systems', href: 'https://mtechsystems.io/' },
+  { src: logoGuion,       alt: 'Greentex Química', href: 'https://www.greentexquimica.com.br/' },
+  { src: logoOliveiraEAntunes, alt: 'Oliveira & Antunes Advogados', href: 'https://www.oliveiraeantunes.com.br/' },
+  { src: logoDati,        alt: 'Dati',         href: 'https://dati.com.br/' },
+  { src: logoSingularis,  alt: 'Singularis RH', href: 'https://www.singularisrh.com.br/' },
+  { src: logoStraasSchool, alt: 'straas.school', href: 'https://straas.school/' },
 ];
 ---
 <!-- CLIENTES -->
@@ -39,17 +39,24 @@ const clients = [
       <span class="eyebrow">Alianças que Transformam</span>
     </div>
     <div class="clients-grid reveal delay-1">
-      {clients.map(({ src, alt }) => (
-        <Image
-          class="client-logo"
-          src={src}
-          alt={alt}
-          width={240}
-          height={80}
-          loading="lazy"
-          formats={['avif', 'webp']}
-        />
-      ))}
+      {clients.map(({ src, alt, href }) => {
+        const logo = (
+          <Image
+            class="client-logo"
+            src={src}
+            alt={alt}
+            width={240}
+            height={80}
+            loading="lazy"
+            formats={['avif', 'webp']}
+          />
+        );
+        return href ? (
+          <a class="client-link" href={href} target="_blank" rel="noopener noreferrer" title={alt}>
+            {logo}
+          </a>
+        ) : logo;
+      })}
     </div>
   </div>
 </section>

@@ -9,6 +9,12 @@ export const credenciais = {
   /** Quantidade de anos atuando na área */
   anosAtuacao: 10,
 
+  /** Anos de atuação em gestão de pessoas */
+  anosGestaoPessoas: 15,
+
+  /** Anos à frente de lideranças */
+  anosLideranca: 10,
+
   /** Número mínimo de empresas atendidas */
   empresasAtendidas: 15,
 
