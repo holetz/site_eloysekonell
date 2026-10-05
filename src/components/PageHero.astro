@@ -7,6 +7,7 @@ export interface Props {
   title: string;
   deck?: string;
   align?: 'left' | 'center';
+  wideDeck?: boolean;
   image?: ImageMetadata;
 }
 
@@ -15,6 +16,7 @@ const {
   title,
   deck,
   align = 'left',
+  wideDeck = false,
   image,
 } = Astro.props;
 ---
@@ -24,7 +26,7 @@ const {
     {eyebrow && <span class="eyebrow">{eyebrow}</span>}
     <slot name="media" />
     <h1 class="page-hero__title">{title}</h1>
-    {deck && <p class="page-hero__deck" set:html={deck} />}
+    {deck && <p class={`page-hero__deck${wideDeck ? ' page-hero__deck--wide' : ''}`} set:html={deck} />}
     <slot />
   </div>
   {image && (
@@ -71,6 +73,10 @@ const {
     color: var(--taupe);
     max-width: 640px;
     margin: 0;
+  }
+
+  .page-hero__deck--wide {
+    max-width: none;
   }
 
   .page-hero--center .page-hero__deck {
