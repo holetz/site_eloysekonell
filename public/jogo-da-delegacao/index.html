@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jogo dos 7 níveis de delegação da mentoria Virei líder, e agora? — Encontro 5.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://eloysekonell.com.br/jogo-da-delegacao/">
+<title>Jogo dos 7 níveis de delegação &middot; EK Gestão e Consultoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ee;--card:#fff;--ink:#1f2a2e;--muted:#6b7478;--line:#e4ded4;
+  --accent:#1f5f5b;--accent-soft:#e3efed;--warm:#c7764a;--warm-soft:#f6e6dc;--ok:#3f7d4f;--ok-soft:#e2efe4;
+  --l1:#8a3b2f;--l2:#b25a3a;--l3:#c88a3e;--l4:#9a9a48;--l5:#5f8f6a;--l6:#3f7d78;--l7:#2b5d78;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 22px 50px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.top h1{font-size:26px}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 16px;font:500 15px Inter,sans-serif;cursor:pointer;color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.big{padding:14px 26px;font-size:17px;border-radius:12px}
+.btn.ghost{background:transparent}
+.btn:disabled{opacity:.4;cursor:default}
+.muted{color:var(--muted)}.small{font-size:13px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.screen{display:none}.screen.on{display:block}
+
+/* setup */
+.setup{display:grid;grid-template-columns:360px 1fr;gap:20px}
+.teams{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.teams .row{display:flex;gap:8px;align-items:center}
+.teams input{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit}
+.sw{width:14px;height:14px;border-radius:4px;flex-shrink:0}
+.x{border:0;background:none;color:var(--muted);cursor:pointer;font-size:18px}
+.rules{background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-size:14px;margin-top:14px}
+.bank{display:flex;flex-direction:column;gap:8px;max-height:560px;overflow:auto;margin-top:10px;padding-right:4px}
+.bank .it{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.bank .it input[type=checkbox]{margin-top:4px;width:18px;height:18px;accent-color:var(--accent)}
+.bank .it .txt{flex:1}
+.bank .it .lv{font:600 13px Inter;color:#fff;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.bank .it button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:13px;text-decoration:underline}
+.bankhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* jogo */
+.prog{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+.prog .bar{flex:1;height:6px;background:var(--line);border-radius:6px;overflow:hidden;min-width:120px}
+.prog .bar i{display:block;height:100%;background:var(--accent)}
+.sit{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 34px;margin-bottom:16px}
+.sit .num{font:600 13px Inter;letter-spacing:.08em;color:var(--accent)}
+.sit h2{font-size:34px;line-height:1.2;margin:6px 0 10px}
+.sit .ctx{font-size:19px;color:#3a4549;margin:0}
+.timer{display:flex;align-items:center;gap:8px}
+.timer .t{font:600 26px Fraunces,serif;min-width:64px;text-align:center}
+.timer .t.end{color:var(--warm)}
+.levels{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px}
+.lv7{border-radius:12px;padding:10px;background:var(--card);border:1px solid var(--line);border-top:5px solid var(--c);transition:.2s}
+.lv7 b{font:600 22px Fraunces,serif;color:var(--c)}
+.lv7 .t{font-weight:600;font-size:15px}
+.lv7 .d{font-size:12.5px;color:var(--muted)}
+.lv7.right{background:var(--c);color:#fff;transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.lv7.right b,.lv7.right .d{color:#fff}
+.lv7.acc{outline:3px dashed var(--c);outline-offset:-3px}
+.lv7 .votes{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;min-height:18px}
+.lv7 .votes span{width:16px;height:16px;border-radius:50%;border:2px solid #fff}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.choice{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line);border-top:5px solid var(--tc);border-radius:14px;padding:14px 16px}
+.choice .head{display:flex;justify-content:space-between;align-items:center}
+.choice .nm{font-size:18px}
+.choice .nm{display:flex;gap:8px;align-items:center;font-weight:600}
+.choice .opts{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.choice .opts button{border:1.5px solid var(--line);border-radius:10px;background:#fff;padding:12px 0;font:600 20px Fraunces,serif;cursor:pointer;color:var(--c)}
+.choice .opts button.sel{background:var(--c);border-color:var(--c);color:#fff}
+.choice .opts button:disabled{cursor:default}
+.choice .res{font-weight:600;font-size:18px}
+.res.ok{color:var(--ok)}.res.mid{color:var(--warm)}.res.no{color:var(--muted)}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+.answer{display:none;margin-top:16px;border-radius:18px;padding:22px 26px;background:var(--ok-soft)}
+.answer.on{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.answer h3{font-size:24px}
+.answer p{margin:8px 0;font-size:17px}
+.answer .disc{background:#fff;border-radius:12px;padding:12px 14px;margin-top:10px}
+
+/* placar */
+.score{display:flex;flex-direction:column;gap:10px;max-width:760px;margin:0 auto}
+.srow{display:grid;grid-template-columns:40px 1fr 80px;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.srow .pos{font:600 24px Fraunces,serif;color:var(--muted)}
+.srow .bar{height:10px;border-radius:10px;margin-top:6px}
+.srow .pts{font:600 26px Fraunces,serif;text-align:right}
+.srow.first{border-color:var(--accent);box-shadow:0 8px 24px rgba(31,95,91,.12)}
+.mini{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(20,30,30,.4);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal.on{display:flex}
+.modal .box{background:#fff;border-radius:16px;padding:22px;max-width:620px;width:100%;max-height:90vh;overflow:auto}
+.form{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.form label{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.form input,.form textarea,.form select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;color:var(--ink)}
+.form textarea{min-height:60px;resize:vertical}
+.accs{display:flex;gap:10px;flex-wrap:wrap}
+.accs label{flex-direction:row;align-items:center;gap:4px;color:var(--ink)}
+footer{margin-top:30px;font-size:12px;color:var(--muted)}
+@media(max-width:900px){.choices{grid-template-columns:1fr}.setup{grid-template-columns:1fr}.levels{grid-template-columns:repeat(4,1fr)}.choice{grid-template-columns:1fr}.sit h2{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>Jogo dos 7 níveis de delegação</h1>
+    <div style="display:flex;gap:8px">
+      <button class="btn ghost" id="toSetup">Configurar</button>
+      <button class="btn ghost" id="toScore">Placar</button>
+    </div>
+  </div>
+
+  <!-- SETUP -->
+  <section class="screen on" id="sSetup">
+    <div class="setup">
+      <div class="panel">
+        <h3 style="font-size:20px">Equipes</h3>
+        <div class="teams" id="teams"></div>
+        <p class="small muted" style="margin:0">O jogo é disputado entre duas equipes. Dê um nome a cada uma.</p>
+        <div class="rules">
+          <b>Como funciona</b><br>
+          1. Você projeta a situação e lê em voz alta.<br>
+          2. As duas equipes discutem e escolhem um nível de 1 a 7.<br>
+          3. Você registra a escolha de cada equipe e clica em <b>Revelar</b>.<br><br>
+          <b>Pontuação</b><br>
+          Nível de referência: <b>3 pontos</b><br>
+          Nível aceitável (vizinho defensável): <b>1 ponto</b>
+        </div>
+        <div style="margin-top:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span class="small muted">Tempo por rodada</span>
+          <select id="tempo" class="btn" style="padding:6px 10px">
+            <option value="0">Sem cronômetro</option><option value="30">30 s</option><option value="60">1 min</option><option value="90">1 min 30</option><option value="120">2 min</option>
+          </select>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="bankhead">
+          <div><h3 style="font-size:20px">Situações</h3><span class="small muted" id="selCount"></span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" id="selAll">Marcar todas</button>
+            <button class="btn" id="newSit">+ Nova situação</button>
+          </div>
+        </div>
+        <div class="bank" id="bank"></div>
+        <div style="display:flex;justify-content:flex-end;margin-top:16px">
+          <button class="btn primary big" id="start">Começar o jogo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOGO -->
+  <section class="screen" id="sGame">
+    <div class="prog">
+      <span class="small muted" id="progTxt"></span>
+      <div class="bar"><i id="progBar"></i></div>
+      <div class="timer" id="timerBox"></div>
+    </div>
+    <div class="sit">
+      <div class="num" id="sitNum"></div>
+      <h2 id="sitTitle"></h2>
+      <p class="ctx" id="sitCtx"></p>
+    </div>
+    <div class="levels" id="levels"></div>
+    <div class="choices" id="choices"></div>
+    <div class="answer" id="answer"></div>
+    <div class="actions">
+      <button class="btn" id="prev">Voltar</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn primary big" id="reveal">Revelar resposta</button>
+        <button class="btn primary big" id="next" style="display:none">Próxima situação</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLACAR -->
+  <section class="screen" id="sScore">
+    <h2 style="font-size:30px;text-align:center;margin-bottom:6px">Placar</h2>
+    <p class="muted" style="text-align:center;margin-top:0" id="scoreSub"></p>
+    <div class="score" id="score"></div>
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:22px;flex-wrap:wrap">
+      <button class="btn" id="backGame">Voltar ao jogo</button>
+      <button class="btn primary" id="newGame">Novo jogo</button>
+    </div>
+  </section>
+
+  <footer>Baseado nos 7 níveis de delegação de Jurgen Appelo (Management 3.0). As respostas são referências para discussão: o contexto real de cada time pode justificar outro nível.</footer>
+</div>
+
+<div class="modal" id="modal"><div class="box" id="mbox"></div></div>
+
+<script>
+const LV=[
+ {n:1,t:"Dizer",d:"Eu direi a elas",c:"var(--l1)"},
+ {n:2,t:"Vender",d:"Eu tentarei vender a elas",c:"var(--l2)"},
+ {n:3,t:"Consultar",d:"Eu consultarei e então decidirei",c:"var(--l3)"},
+ {n:4,t:"Concordar",d:"Nós concordaremos juntos",c:"var(--l4)"},
+ {n:5,t:"Aconselhar",d:"Eu aconselharei, mas eles decidem",c:"var(--l5)"},
+ {n:6,t:"Perguntar",d:"Eu perguntarei após eles decidirem",c:"var(--l6)"},
+ {n:7,t:"Delegar",d:"Eu delegarei completamente",c:"var(--l7)"}
+];
+const COLORS=["#1f5f5b","#c7764a","#6a4c7d","#3d6fa3","#a3833d","#8a3b5f","#4f7f3a","#5a5a5a"];
+const DEFAULT=[
+ {id:"d1",t:"Incidente de segurança",ctx:"Um vazamento de dados de clientes acaba de ser detectado. É preciso decidir em minutos quais sistemas desligar.",lv:1,acc:[2],why:"Crise, risco alto e urgência extrema. Não há tempo para consulta: o líder decide e comunica com clareza. Depois da crise, vale abrir uma conversa com o time sobre o que aprender.",q:"O que muda na relação com o time se o líder usar o nível 1 em situações que não são crise?"},
+ {id:"d2",t:"Mudança vinda da diretoria",ctx:"A diretoria decidiu que todos passam a trabalhar 3 dias presenciais por semana. Você precisa implementar isso no seu time.",lv:2,acc:[1],why:"A decisão já foi tomada acima. Fingir consulta seria pior. O papel do líder é explicar o porquê e buscar adesão, abrindo espaço para o time ajudar no como.",q:"Como o líder pode levar a decisão sem se colocar como vítima da diretoria?"},
+ {id:"d3",t:"Novo sistema de tarefas",ctx:"Vocês vão contratar uma ferramenta de gestão de tarefas que o time usará todos os dias. O orçamento é seu e a palavra final também.",lv:3,acc:[4],why:"O time conhece as necessidades do dia a dia e precisa ser ouvido, mas o líder responde pelo orçamento e pela integração com outras áreas.",q:"Depois de consultar, como mostrar ao time o que foi considerado na decisão?"},
+ {id:"d4",t:"Combinados do time",ctx:"Definir regras de convivência: horário das reuniões, uso do WhatsApp e prazo para responder mensagens.",lv:4,acc:[5],why:"São acordos que só funcionam se todos se comprometerem. Construir juntos aumenta a adesão.",q:"O que fazer quando alguém do time não concorda com o consenso?"},
+ {id:"d5",t:"Redesenho de processo",ctx:"Uma analista sênior, com 8 anos de casa, vai redesenhar um processo que ela domina. Você também conhece o tema e tem opiniões.",lv:5,acc:[6],why:"Ela tem domínio técnico e maturidade. O líder contribui com a visão, mas a decisão é dela. É uma oportunidade de desenvolvimento.",q:"Se ela decidir diferente do que você aconselhou, você sustenta a decisão dela?"},
+ {id:"d6",t:"Escala de plantão",ctx:"O time, experiente e unido, vai organizar a escala de plantão do fim de ano. Já fez isso outras vezes sem problemas.",lv:6,acc:[5,7],why:"O time domina a tarefa e tem histórico positivo. O líder só precisa saber o resultado para se planejar.",q:"Como perguntar depois sem soar como auditoria?"},
+ {id:"d7",t:"Confraternização",ctx:"Escolher o restaurante da confraternização de fim de ano, dentro do orçamento já definido pela empresa.",lv:7,acc:[6],why:"Baixo risco, limites claros (orçamento) e nenhuma necessidade de intervenção do líder.",q:"Por que líderes às vezes têm dificuldade de soltar até decisões simples como essa?"},
+ {id:"d11",t:"Cliente estratégico insatisfeito",ctx:"Um cliente estratégico ameaça cancelar o contrato. O analista que atende a conta tem 3 meses de casa.",lv:3,acc:[2,4],why:"Alto impacto e pessoa ainda em desenvolvimento. O analista traz a informação e participa, mas o líder conduz a decisão. Na próxima, o nível pode subir.",q:"Como transformar essa situação em aprendizado para o analista?"},
+];
+const KEY="ek-jogo-delegacao-v1";
+let S={teams:[{n:"Equipe A"},{n:"Equipe B"}],custom:[],selected:null,tempo:0,game:null};
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+S.teams=[S.teams[0]||{n:"Equipe A"},S.teams[1]||{n:"Equipe B"}];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const all=()=>[...DEFAULT,...S.custom];
+if(!S.selected) S.selected=DEFAULT.map(d=>d.id);
+const col=i=>COLORS[i%COLORS.length];
+
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id))}
+$("#toSetup").onclick=()=>{stopTimer();show("sSetup");renderSetup()};
+$("#toScore").onclick=()=>{stopTimer();renderScore();show("sScore")};
+
+/* setup */
+function renderSetup(){
+  $("#teams").innerHTML=S.teams.map((t,i)=>`<div class="row"><span class="sw" style="background:${col(i)}"></span><input data-i="${i}" value="${esc(t.n)}"></div>`).join("");
+  document.querySelectorAll("#teams input").forEach(x=>x.oninput=e=>{S.teams[+x.dataset.i].n=e.target.value;save()});
+  $("#tempo").value=S.tempo;
+  $("#bank").innerHTML=all().map(s=>`<div class="it"><input type="checkbox" data-id="${s.id}" ${S.selected.includes(s.id)?"checked":""}><div class="txt"><b>${esc(s.t)}</b><div class="small muted">${esc(s.ctx)}</div>${String(s.id).startsWith("c")?`<button data-ed="${s.id}">editar</button> <button data-rm="${s.id}">excluir</button>`:""}</div><span class="lv" style="background:${LV[s.lv-1].c}">${s.lv} ${LV[s.lv-1].t}</span></div>`).join("");
+  document.querySelectorAll("#bank input").forEach(x=>x.onchange=()=>{const id=x.dataset.id;S.selected=x.checked?[...S.selected,id]:S.selected.filter(v=>v!==id);save();count()});
+  document.querySelectorAll("#bank [data-ed]").forEach(x=>x.onclick=()=>editSit(x.dataset.ed));
+  document.querySelectorAll("#bank [data-rm]").forEach(x=>x.onclick=()=>{S.custom=S.custom.filter(c=>c.id!==x.dataset.rm);S.selected=S.selected.filter(v=>v!==x.dataset.rm);save();renderSetup()});
+  count();
+}
+function count(){const n=all().filter(s=>S.selected.includes(s.id)).length;$("#selCount").textContent=`${n} selecionada(s) para o jogo`;$("#start").disabled=!n}
+$("#tempo").onchange=e=>{S.tempo=+e.target.value;save()};
+$("#selAll").onclick=()=>{const ids=all().map(s=>s.id);S.selected=S.selected.length===ids.length?[]:ids;save();renderSetup()};
+$("#newSit").onclick=()=>editSit(null);
+
+function editSit(id){
+  const s=id?S.custom.find(c=>c.id===id):{t:"",ctx:"",lv:3,acc:[],why:"",q:""};
+  $("#mbox").innerHTML=`<h3 style="font-size:20px">${id?"Editar":"Nova"} situação</h3>
+  <div class="form">
+    <label>Título<input id="fT" value="${esc(s.t)}" placeholder="Ex.: Aprovar férias do time"></label>
+    <label>Contexto (o que a sala precisa saber para decidir)<textarea id="fC">${esc(s.ctx)}</textarea></label>
+    <label>Nível de referência<select id="fL">${LV.map(l=>`<option value="${l.n}" ${s.lv===l.n?"selected":""}>${l.n}. ${l.t}</option>`).join("")}</select></label>
+    <label>Níveis também aceitáveis (1 ponto)<div class="accs" id="fA">${LV.map(l=>`<label><input type="checkbox" value="${l.n}" ${s.acc.includes(l.n)?"checked":""}> ${l.n}</label>`).join("")}</div></label>
+    <label>Por que esse nível<textarea id="fW">${esc(s.why)}</textarea></label>
+    <label>Pergunta para discussão<input id="fQ" value="${esc(s.q)}"></label>
+  </div>
+  <div class="actions"><button class="btn" id="mC">Cancelar</button><button class="btn primary" id="mS">Salvar</button></div>`;
+  $("#modal").classList.add("on");
+  $("#mC").onclick=()=>$("#modal").classList.remove("on");
+  $("#mS").onclick=()=>{
+    const lv=+$("#fL").value;
+    const d={id:id||"c"+Math.random().toString(36).slice(2,8),t:$("#fT").value.trim()||"Situação sem título",ctx:$("#fC").value.trim(),lv,acc:[...document.querySelectorAll("#fA input:checked")].map(x=>+x.value).filter(v=>v!==lv),why:$("#fW").value.trim(),q:$("#fQ").value.trim()};
+    if(id){S.custom=S.custom.map(c=>c.id===id?d:c)}else{S.custom.push(d);S.selected.push(d.id)}
+    save();$("#modal").classList.remove("on");renderSetup();
+  };
+}
+$("#modal").onclick=e=>{if(e.target.id==="modal")$("#modal").classList.remove("on")};
+
+/* jogo */
+$("#start").onclick=()=>{
+  const ids=all().filter(s=>S.selected.includes(s.id)).map(s=>s.id);
+  S.game={ids,i:0,picks:{},revealed:{}};save();show("sGame");renderGame();
+};
+function cur(){const g=S.game;return all().find(s=>s.id===g.ids[g.i])}
+function pts(s,v){if(!v)return 0;if(v===s.lv)return 3;if(s.acc.includes(v))return 1;return 0}
+function renderGame(){
+  const g=S.game,s=cur();if(!s){show("sSetup");renderSetup();return}
+  const rev=!!g.revealed[s.id],picks=g.picks[s.id]||{};
+  $("#progTxt").textContent=`Situação ${g.i+1} de ${g.ids.length}`;
+  $("#progBar").style.width=((g.i+(rev?1:0))/g.ids.length*100)+"%";
+  $("#sitNum").textContent=`SITUAÇÃO ${g.i+1}`;
+  $("#sitTitle").textContent=s.t;$("#sitCtx").textContent=s.ctx;
+  $("#levels").innerHTML=LV.map(l=>{
+    const who=S.teams.map((t,i)=>picks[i]===l.n?`<span style="background:${col(i)}" title="${esc(t.n)}"></span>`:"").join("");
+    const cls=rev?(s.lv===l.n?"right":s.acc.includes(l.n)?"acc":""):"";
+    return `<div class="lv7 ${cls}" style="--c:${l.c}"><b>${l.n}</b><div class="t">${l.t}</div><div class="d">${l.d}</div><div class="votes">${who}</div></div>`}).join("");
+  $("#choices").innerHTML=S.teams.map((t,i)=>{
+    const v=picks[i],p=pts(s,v);
+    const res=rev?(v?(p===3?`<span class="res ok">+3</span>`:p===1?`<span class="res mid">+1</span>`:`<span class="res no">0</span>`):`<span class="res no">sem resposta</span>`):"";
+    return `<div class="choice" style="--tc:${col(i)}"><div class="head"><div class="nm"><span class="sw" style="background:${col(i)}"></span>${esc(t.n)}</div><div class="res">${res}</div></div><div class="opts">${LV.map(l=>`<button style="--c:${l.c}" class="${v===l.n?"sel":""}" data-t="${i}" data-n="${l.n}" ${rev?"disabled":""}>${l.n}</button>`).join("")}</div></div>`}).join("");
+  document.querySelectorAll(".choice .opts button").forEach(b=>b.onclick=()=>{
+    const p=g.picks[s.id]||(g.picks[s.id]={});const t=+b.dataset.t,n=+b.dataset.n;p[t]=p[t]===n?undefined:n;save();renderGame()});
+  const a=$("#answer");
+  if(rev){
+    const L=LV[s.lv-1];
+    a.innerHTML=`<div class="small" style="font-weight:600;color:var(--ok)">NÍVEL DE REFERÊNCIA</div><h3 style="color:${L.c}">${L.n}. ${L.t}</h3><p>${esc(s.why)}</p>${s.acc.length?`<p class="small muted">Também aceitável: ${s.acc.map(n=>`${n}. ${LV[n-1].t}`).join(", ")}</p>`:""}${s.q?`<div class="disc"><b>Para discutir:</b> ${esc(s.q)}</div>`:""}`;
+    a.classList.add("on");
+  }else{a.classList.remove("on");a.innerHTML=""}
+  $("#reveal").style.display=rev?"none":"";
+  $("#next").style.display=rev?"":"none";
+  $("#next").textContent=g.i===g.ids.length-1?"Ver placar final":"Próxima situação";
+  $("#prev").disabled=g.i===0;
+  if(!rev) startTimer(); else stopTimer();
+}
+$("#reveal").onclick=()=>{S.game.revealed[cur().id]=true;save();renderGame()};
+$("#next").onclick=()=>{const g=S.game;if(g.i<g.ids.length-1){g.i++;save();renderGame()}else{stopTimer();renderScore();show("sScore")}};
+$("#prev").onclick=()=>{if(S.game.i>0){S.game.i--;save();renderGame()}};
+
+/* timer */
+let tm=null,left=0,running=false;
+function startTimer(){
+  stopTimer();
+  if(!S.tempo){$("#timerBox").innerHTML="";return}
+  left=S.tempo;running=false;drawTimer();
+}
+function drawTimer(){
+  const m=Math.floor(left/60),s=String(left%60).padStart(2,"0");
+  $("#timerBox").innerHTML=`<span class="t ${left===0?"end":""}">${m}:${s}</span><button class="btn" id="tBtn">${left===0?"Reiniciar":running?"Pausar":"Iniciar"}</button>`;
+  $("#tBtn").onclick=()=>{
+    if(left===0){left=S.tempo;running=false;drawTimer();return}
+    if(running){clearInterval(tm);running=false;drawTimer()}
+    else{running=true;drawTimer();tm=setInterval(()=>{left--;if(left<=0){left=0;clearInterval(tm);running=false}drawTimer()},1000)}
+  };
+}
+function stopTimer(){clearInterval(tm);running=false}
+
+/* placar */
+function renderScore(){
+  const g=S.game;
+  if(!g){$("#score").innerHTML=`<p class="muted" style="text-align:center">Nenhum jogo em andamento.</p>`;$("#scoreSub").textContent="";return}
+  const rows=S.teams.map((t,i)=>{let total=0,exact=0;const mk=[];
+    g.ids.forEach(id=>{const s=all().find(x=>x.id===id);if(!s||!g.revealed[id])return;const v=(g.picks[id]||{})[i];const p=pts(s,v);total+=p;if(p===3)exact++;mk.push(p)});
+    return{t,i,total,exact,mk}}).sort((a,b)=>b.total-a.total||b.exact-a.exact);
+  const nrev=g.ids.filter(id=>g.revealed[id]).length;
+  $("#scoreSub").textContent=`${nrev} de ${g.ids.length} situações reveladas`;
+  const max=Math.max(1,nrev*3);
+  $("#score").innerHTML=rows.map((r,k)=>`<div class="srow ${k===0&&r.total>0?"first":""}"><div class="pos">${k+1}º</div><div><b>${esc(r.t.n)}</b> <span class="small muted">${r.exact} acerto(s) exato(s)</span><div class="bar" style="width:${Math.max(4,r.total/max*100)}%;background:${col(r.i)}"></div></div><div class="pts">${r.total}</div></div>`).join("");
+}
+$("#backGame").onclick=()=>{if(S.game){show("sGame");renderGame()}else{show("sSetup");renderSetup()}};
+$("#newGame").onclick=()=>{S.game=null;save();show("sSetup");renderSetup()};
+
+renderSetup();
+</script>
+</body>
+</html>
