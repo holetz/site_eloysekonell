@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Quadro de liderança situacional da mentoria Virei líder, e agora?">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://eloysekonell.com.br/quadro-do-time/">
+<title>Quadro de enquadramento do time &middot; EK Gestão e Consultoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head>
+<body>
+<style>
+:root {
+  --bg: #F3F0E4;
+  --surface: #FBF9F2;
+  --fg: #1F2937;
+  --muted: #5B6470;
+  --brand: #18342A;
+  --gold: #8A6D3B;
+  --gold-soft: #C3A862;
+  --line: #D9D2BE;
+  --hero: #0E2C24;
+  --hero-fg: #F1EBDD;
+  --hero-sage: #A9C4A4;
+  --q-m1: #EFE3C6;
+  --q-m2: #F6D9A8;
+  --q-m3: #DCE6D6;
+  --q-m4: #C5D9C4;
+  --curve: #FBF9F2;
+  --chart-ink: #1F2937;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E2C24;
+    --surface: #16382F;
+    --fg: #F1EBDD;
+    --muted: #A9B8A8;
+    --brand: #A9C4A4;
+    --gold: #C3A862;
+    --gold-soft: #C3A862;
+    --line: #2E4D43;
+    --hero: #0A1815;
+    --hero-fg: #F1EBDD;
+    --hero-sage: #A9C4A4;
+    --q-m1: #4A4128;
+    --q-m2: #5A4A22;
+    --q-m3: #2E4A3C;
+    --q-m4: #355A46;
+    --curve: #0E2C24;
+    --chart-ink: #F1EBDD;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E2C24;
+  --surface: #16382F;
+  --fg: #F1EBDD;
+  --muted: #A9B8A8;
+  --brand: #A9C4A4;
+  --gold: #C3A862;
+  --gold-soft: #C3A862;
+  --line: #2E4D43;
+  --hero: #0A1815;
+  --hero-fg: #F1EBDD;
+  --hero-sage: #A9C4A4;
+  --q-m1: #4A4128;
+  --q-m2: #5A4A22;
+  --q-m3: #2E4A3C;
+  --q-m4: #355A46;
+  --curve: #0E2C24;
+  --chart-ink: #F1EBDD;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 56px;
+}
+.wrap { max-width: 680px; margin: 0 auto; }
+
+header.hero {
+  background: var(--hero);
+  color: var(--hero-fg);
+  margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding: 28px max(16px, env(safe-area-inset-left, 0px)) 24px;
+  border-bottom: 2px solid var(--gold-soft);
+}
+header.hero .wrap { padding: 0; }
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+h1 {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+h1 em { color: var(--hero-sage); font-weight: 500; }
+.lead { margin: 10px 0 0; color: var(--hero-fg); opacity: 0.88; }
+
+h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0 0 8px;
+  color: var(--brand);
+}
+main { padding-top: 24px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+  min-width: 0;
+}
+
+/* Desenho do modelo */
+.chart { width: 100%; height: auto; display: block; }
+.chart text { fill: var(--chart-ink); font-family: "Source Sans 3", system-ui, sans-serif; }
+.chart .qlabel { font-size: 15px; font-weight: 700; }
+.chart .qsub { font-size: 12px; }
+.chart .axis { font-size: 12px; letter-spacing: 0.04em; }
+.chart .curve { fill: none; stroke: var(--curve); stroke-width: 3; stroke-linecap: round; }
+.legend { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 14px; }
+@media (min-width: 520px) { .legend { grid-template-columns: 1fr 1fr; } }
+.lg {
+  background: var(--c);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-width: 0;
+  color: var(--fg);
+}
+.lg b { display: block; font-size: 15px; font-weight: 700; }
+.lg span { display: block; font-size: 14px; opacity: 0.85; }
+.lg i { display: block; font-size: 14px; margin-top: 4px; }
+
+/* Abas */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 8px 0 16px; }
+.tab {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 10px 14px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.tab[aria-selected="true"] { color: var(--brand); border-bottom-color: var(--gold); }
+.tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+#count {
+  display: inline-block;
+  min-width: 22px;
+  padding: 0 6px;
+  margin-left: 4px;
+  border-radius: 10px;
+  background: var(--line);
+  color: var(--fg);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Formulário e cartões */
+.field { margin-bottom: 12px; min-width: 0; }
+.field > label, .field > .flabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+input[type="text"], textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 16px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 44px;
+}
+textarea { min-height: 64px; resize: vertical; }
+input:focus-visible, textarea:focus-visible, .btn:focus-visible, .qbtn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.hint { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+.form-title { margin: 0 0 12px; }
+
+.qrow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+@media (min-width: 520px) { .qrow { grid-template-columns: repeat(4, 1fr); } }
+.qbtn {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px 6px;
+  min-height: 52px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.25;
+}
+.qbtn small { display: block; font-weight: 400; color: var(--fg); opacity: 0.8; font-size: 12px; }
+.qbtn.q1 { background: var(--q-m1); }
+.qbtn.q2 { background: var(--q-m2); }
+.qbtn.q3 { background: var(--q-m3); }
+.qbtn.q4 { background: var(--q-m4); }
+.qbtn[aria-pressed="true"] {
+  border-color: var(--brand);
+  box-shadow: inset 0 -3px 0 var(--gold);
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: var(--bg);
+  cursor: pointer;
+  min-height: 44px;
+}
+.btn.ghost { background: transparent; color: var(--muted); border-color: var(--line); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+
+.person {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 14px;
+  min-width: 0;
+}
+.person .ini { font-size: 20px; font-weight: 700; color: var(--brand); margin: 0 0 10px; }
+.row { margin-bottom: 10px; min-width: 0; }
+.row .k {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.row .v { white-space: pre-wrap; overflow-wrap: anywhere; }
+.row .v.vazio { color: var(--muted); font-style: italic; }
+.person .actions { margin-top: 12px; }
+
+.empty-state {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+}
+.saved { font-size: 14px; color: var(--muted); margin: 8px 0 0; min-height: 1em; }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Mentoria Virei líder, e agora? · Encontro 4</p>
+    <h1>Quadro de enquadramento <em>do time</em></h1>
+    <p class="lead">Responsabilidade e resultado esperado primeiro, depois a evidência, depois o quadrante que o líder define e o próximo passo.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="card" aria-labelledby="modelo">
+      <h2 id="modelo">Os quatro quadrantes</h2>
+      <svg class="chart" viewBox="0 0 400 380" role="img" aria-labelledby="chart-title chart-desc">
+        <title id="chart-title">Quadro de liderança situacional</title>
+        <desc id="chart-desc">Eixo horizontal: comportamento diretivo, de baixo a alto. Eixo vertical: comportamento de apoio, de baixo a alto. Quadrante de cima à esquerda: Apoiar, M3. Cima à direita: Orientar, M2. Baixo à esquerda: Delegar, M4. Baixo à direita: Direcionar, M1.</desc>
+
+        <!-- Quadrantes -->
+        <rect x="50" y="14" width="160" height="166" style="fill: var(--q-m3)"></rect>
+        <rect x="210" y="14" width="160" height="166" style="fill: var(--q-m2)"></rect>
+        <rect x="50" y="180" width="160" height="166" style="fill: var(--q-m4)"></rect>
+        <rect x="210" y="180" width="160" height="166" style="fill: var(--q-m1)"></rect>
+
+        <!-- Curva do modelo: simétrica em torno da linha vertical (x 210) e cruza a linha horizontal (y 180) em dois pontos iguais -->
+        <path class="curve" d="M 62 262 C 110 262, 130 140, 210 140 C 290 140, 310 262, 358 262"></path>
+
+        <!-- Rótulos dos quadrantes, nos cantos -->
+        <text class="qlabel" x="58" y="38">Apoiar</text>
+        <text class="qsub" x="58" y="56">M3 · competente com apoio</text>
+
+        <text class="qlabel" x="218" y="38">Orientar</text>
+        <text class="qsub" x="218" y="56">M2 · em desenvolvimento</text>
+
+        <text class="qlabel" x="58" y="316">Delegar</text>
+        <text class="qsub" x="58" y="334">M4 · autônomo</text>
+
+        <text class="qlabel" x="218" y="316">Direcionar</text>
+        <text class="qsub" x="218" y="334">M1 · começando</text>
+
+        <!-- Eixos -->
+        <line x1="50" y1="346" x2="50" y2="14" stroke="var(--chart-ink)" stroke-width="1.2"></line>
+        <line x1="50" y1="346" x2="370" y2="346" stroke="var(--chart-ink)" stroke-width="1.2"></line>
+        <text class="axis" x="16" y="183" transform="rotate(-90 16 183)" text-anchor="middle">Comportamento de apoio</text>
+        <text class="axis" x="210" y="374" text-anchor="middle">Comportamento diretivo</text>
+        <text class="axis" x="44" y="22" text-anchor="end">Alto</text>
+        <text class="axis" x="44" y="350" text-anchor="end">Baixo</text>
+        <text class="axis" x="370" y="368" text-anchor="end">Alto</text>
+
+        <!-- Iniciais das pessoas, no quadrante escolhido -->
+        <g id="pins"></g>
+      </svg>
+
+      <div class="legend" aria-hidden="true">
+        <div class="lg" style="--c: var(--q-m1)"><b>M1 · Direcionar</b><span>começando</span><i>"Faça assim"</i></div>
+        <div class="lg" style="--c: var(--q-m2)"><b>M2 · Orientar</b><span>em desenvolvimento</span><i>"Mostrar antes"</i></div>
+        <div class="lg" style="--c: var(--q-m3)"><b>M3 · Apoiar</b><span>competente com apoio</span><i>"Ok, você já sabe"</i></div>
+        <div class="lg" style="--c: var(--q-m4)"><b>M4 · Delegar</b><span>autônomo</span><i>"Preciso disto"</i></div>
+      </div>
+
+      <p class="hint" style="margin-top:14px">Pergunte: como essa pessoa faria esta tarefa sozinha? A evidência ajuda a escolher o quadrante.</p>
+    </section>
+
+    <nav class="tabs" role="tablist" aria-label="Pessoas do time">
+      <button class="tab" type="button" role="tab" id="tab-novo" data-tab="novo" aria-selected="true" aria-controls="panel-novo">Nova pessoa</button>
+      <button class="tab" type="button" role="tab" id="tab-hist" data-tab="hist" aria-selected="false" aria-controls="panel-hist">Histórico <span id="count">0</span></button>
+    </nav>
+
+    <p class="hint" style="margin:0 0 12px">Use só iniciais, sem nomes de pessoas, empresas ou clientes. As iniciais aparecem no quadrante escolhido.</p>
+
+    <div id="panel-novo" role="tabpanel" aria-labelledby="tab-novo"></div>
+    <div id="panel-hist" role="tabpanel" aria-labelledby="tab-hist" hidden></div>
+
+    <p class="saved" id="saved" aria-live="polite"></p>
+
+  </div>
+</main>
+
+<script>
+(function () {
+  // M1 a M4, com o nível de maturidade de cada quadrante.
+  var Q = {
+    "1": { nome: "Direcionar", dev: "começando" },
+    "2": { nome: "Orientar", dev: "em desenvolvimento" },
+    "3": { nome: "Apoiar", dev: "competente com apoio" },
+    "4": { nome: "Delegar", dev: "autônomo" }
+  };
+
+  // Posição de cada quadrante no desenho (canto superior esquerdo) e se é quadrante de cima.
+  var QPOS = {
+    "1": { x: 210, y: 180, top: false },
+    "2": { x: 210, y: 14, top: true },
+    "3": { x: 50, y: 14, top: true },
+    "4": { x: 50, y: 180, top: false }
+  };
+
+  var KEY = "quadro-enquadramento-v2";
+  var people = [];          // pessoas já adicionadas
+  var draft = blank();      // pessoa em preenchimento na aba "Nova pessoa"
+  var tab = "novo";
+
+  function blank() {
+    return { id: null, ini: "", resp: "", result: "", evid: "", q: "", passo: "" };
+  }
+  function newId() {
+    return String(Date.now()) + Math.random().toString(36).slice(2, 6);
+  }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // Guarda só neste navegador. Se falhar, a página continua funcionando.
+  function load() {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (raw) people = JSON.parse(raw) || [];
+    } catch (e) { people = []; }
+  }
+  function persist(msg) {
+    try {
+      window.localStorage.setItem(KEY, JSON.stringify(people));
+      $("saved").textContent = msg;
+    } catch (e) {
+      $("saved").textContent = "Não foi possível salvar neste navegador. Copie o que for importante.";
+    }
+  }
+
+  function indexOfId(id) {
+    for (var i = 0; i < people.length; i++) if (people[i].id === id) return i;
+    return -1;
+  }
+
+  function quadBtns(p) {
+    var out = "";
+    ["1", "2", "3", "4"].forEach(function (k) {
+      var on = p.q === k ? "true" : "false";
+      out += '<button type="button" class="qbtn q' + k + '" data-q="' + k + '" aria-pressed="' + on + '">M' + k +
+             '<small>' + Q[k].nome + ' · ' + Q[k].dev + '</small></button>';
+    });
+    return out;
+  }
+
+  function renderForm() {
+    var editing = draft.id !== null;
+    $("panel-novo").innerHTML =
+      '<section class="card">' +
+        '<h2 class="form-title">' + (editing ? "Editar pessoa" : "Nova pessoa") + '</h2>' +
+        '<div class="field"><label for="f-ini">Iniciais</label>' +
+          '<input type="text" id="f-ini" data-f="ini" maxlength="6" value="' + esc(draft.ini) + '"></div>' +
+        '<div class="field"><label for="f-resp">Responsabilidade atual</label>' +
+          '<input type="text" id="f-resp" data-f="resp" value="' + esc(draft.resp) + '"></div>' +
+        '<div class="field"><label for="f-result">Resultado esperado do profissional</label>' +
+          '<input type="text" id="f-result" data-f="result" value="' + esc(draft.result) + '"></div>' +
+        '<div class="field"><label for="f-evid">Evidência: já fez algo parecido? Onde travou?</label>' +
+          '<textarea id="f-evid" data-f="evid">' + esc(draft.evid) + '</textarea></div>' +
+        '<div class="field"><span class="flabel">Quadrante (o líder define)</span>' +
+          '<div class="qrow">' + quadBtns(draft) + '</div></div>' +
+        '<div class="field"><label for="f-passo">Próximo passo para evolução do quadrante</label>' +
+          '<textarea id="f-passo" data-f="passo">' + esc(draft.passo) + '</textarea></div>' +
+        '<div class="actions">' +
+          '<button class="btn" type="button" data-act="save">' + (editing ? "Salvar alterações" : "Adicionar pessoa") + '</button>' +
+          (editing ? '<button class="btn ghost" type="button" data-act="cancel">Cancelar edição</button>' : '') +
+        '</div>' +
+        '<p class="hint" id="formMsg" aria-live="polite"></p>' +
+      '</section>';
+  }
+
+  function valueOrEmpty(v) {
+    return v && String(v).trim() ? '<span class="v">' + esc(v) + '</span>'
+                                 : '<span class="v vazio">não preenchido</span>';
+  }
+
+  function renderHist() {
+    if (!people.length) {
+      $("panel-hist").innerHTML = '<div class="empty-state">Ainda não há pessoas. Adicione na aba “Nova pessoa”.</div>';
+      return;
+    }
+    $("panel-hist").innerHTML = people.map(function (p) {
+      var quad = p.q ? "M" + p.q + " · " + Q[p.q].nome + " · " + Q[p.q].dev : "Sem quadrante definido";
+      return (
+        '<article class="person" data-id="' + p.id + '">' +
+          '<p class="ini">' + esc(p.ini) + '</p>' +
+          '<div class="row"><span class="k">Responsabilidade atual</span>' + valueOrEmpty(p.resp) + '</div>' +
+          '<div class="row"><span class="k">Resultado esperado do profissional</span>' + valueOrEmpty(p.result) + '</div>' +
+          '<div class="row"><span class="k">Evidência</span>' + valueOrEmpty(p.evid) + '</div>' +
+          '<div class="row"><span class="k">Quadrante</span><span class="v">' + esc(quad) + '</span></div>' +
+          '<div class="row"><span class="k">Próximo passo para evolução do quadrante</span>' + valueOrEmpty(p.passo) + '</div>' +
+          '<div class="actions">' +
+            '<button class="btn ghost" type="button" data-act="edit">Editar</button>' +
+            '<button class="btn ghost" type="button" data-act="del">Remover</button>' +
+          '</div>' +
+        '</article>'
+      );
+    }).join("");
+  }
+
+  // Mostra as iniciais no quadrante escolhido. Até 4 por linha dentro do quadrante.
+  function renderPins() {
+    var counts = {};
+    var out = "";
+    people.forEach(function (p) {
+      if (!p.q || !p.ini) return;
+      var pos = QPOS[p.q];
+      var n = counts[p.q] || 0;
+      counts[p.q] = n + 1;
+      var cx = pos.x + 30 + (n % 4) * 36;
+      var cy = pos.y + (pos.top ? 80 : 42) + Math.floor(n / 4) * 34;
+      out += '<g><circle cx="' + cx + '" cy="' + cy + '" r="15" fill="var(--surface)" stroke="var(--brand)" stroke-width="1.5"></circle>' +
+             '<text x="' + cx + '" y="' + cy + '" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="700" fill="var(--brand)">' + esc(p.ini) + '</text></g>';
+    });
+    $("pins").innerHTML = out;
+  }
+
+  function renderAll() {
+    renderPins();
+    renderForm();
+    renderHist();
+    $("count").textContent = people.length;
+  }
+
+  function setTab(name) {
+    tab = name;
+    $("tab-novo").setAttribute("aria-selected", name === "novo" ? "true" : "false");
+    $("tab-hist").setAttribute("aria-selected", name === "hist" ? "true" : "false");
+    $("panel-novo").hidden = name !== "novo";
+    $("panel-hist").hidden = name !== "hist";
+  }
+
+  // Adiciona ou atualiza a pessoa e limpa o formulário para a próxima.
+  function saveDraft() {
+    if (!draft.ini.trim()) {
+      $("formMsg").textContent = "Escreva as iniciais para adicionar.";
+      return;
+    }
+    var item = {
+      id: draft.id || newId(),
+      ini: draft.ini.trim(),
+      resp: draft.resp,
+      result: draft.result,
+      evid: draft.evid,
+      q: draft.q,
+      passo: draft.passo
+    };
+    var idx = indexOfId(item.id);
+    if (idx >= 0) people[idx] = item; else people.push(item);
+    draft = blank();
+    persist(idx >= 0 ? "Alterações salvas." : "Pessoa adicionada. Pode incluir a próxima.");
+    renderAll();
+  }
+
+  // Cliques no formulário.
+  $("panel-novo").addEventListener("click", function (ev) {
+    var t = ev.target.closest("button");
+    if (!t) return;
+    if (t.hasAttribute("data-q")) {
+      var k = t.getAttribute("data-q");
+      draft.q = draft.q === k ? "" : k;
+      renderForm();
+      return;
+    }
+    var act = t.getAttribute("data-act");
+    if (act === "save") saveDraft();
+    if (act === "cancel") { draft = blank(); renderAll(); }
+  });
+
+  // Digitar não redesenha a tela, para não perder o foco.
+  $("panel-novo").addEventListener("input", function (ev) {
+    var f = ev.target.getAttribute("data-f");
+    if (!f) return;
+    draft[f] = ev.target.value;
+  });
+
+  // Cliques no histórico.
+  $("panel-hist").addEventListener("click", function (ev) {
+    var t = ev.target.closest("button");
+    if (!t) return;
+    var card = t.closest(".person");
+    if (!card) return;
+    var id = card.getAttribute("data-id");
+    var idx = indexOfId(id);
+    if (idx < 0) return;
+    var act = t.getAttribute("data-act");
+    if (act === "edit") {
+      draft = Object.assign({}, people[idx]);
+      renderForm();
+      setTab("novo");
+      $("saved").textContent = "Editando a pessoa. Salve para atualizar o quadro.";
+      return;
+    }
+    if (act === "del") {
+      people.splice(idx, 1);
+      if (draft.id === id) draft = blank();
+      persist("Pessoa removida.");
+      renderAll();
+    }
+  });
+
+  $("tab-novo").addEventListener("click", function () { setTab("novo"); });
+  $("tab-hist").addEventListener("click", function () { setTab("hist"); });
+
+  load();
+  renderAll();
+  setTab("novo");
+})();
+</script>
+
+</body></html>

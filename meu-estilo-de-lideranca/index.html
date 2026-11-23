@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Questionário de autoleitura da mentoria Virei líder, e agora?">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://eloysekonell.com.br/meu-estilo-de-lideranca/">
+<title>Meu estilo de liderança &middot; EK Gestão e Consultoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head>
+<body>
+<style>
+/* Layout: uma coluna estreita, cabeçalho verde escuro, perguntas uma por vez.
+   Cada estilo tem uma cor própria, a mesma em todo o questionário. */
+:root {
+  --bg: #F3F0E4;
+  --surface: #FBF9F2;
+  --fg: #1F2937;
+  --muted: #5B6470;
+  --brand: #18342A;
+  --gold: #8A6D3B;
+  --gold-soft: #C3A862;
+  --line: #D9D2BE;
+  --hero: #0E2C24;
+  --hero-fg: #F1EBDD;
+  --hero-sage: #A9C4A4;
+  --s1: #1E8F55;
+  --s2: #2B3D8F;
+  --s3: #A3246E;
+  --s4: #E65A2C;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E2C24;
+    --surface: #16382F;
+    --fg: #F1EBDD;
+    --muted: #A9B8A8;
+    --brand: #A9C4A4;
+    --gold: #C3A862;
+    --gold-soft: #C3A862;
+    --line: #2E4D43;
+    --hero: #0A1815;
+    --hero-fg: #F1EBDD;
+    --hero-sage: #A9C4A4;
+    --s1: #2FB574;
+    --s2: #5A6FD0;
+    --s3: #D0508F;
+    --s4: #F07A4E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E2C24;
+  --surface: #16382F;
+  --fg: #F1EBDD;
+  --muted: #A9B8A8;
+  --brand: #A9C4A4;
+  --gold: #C3A862;
+  --gold-soft: #C3A862;
+  --line: #2E4D43;
+  --hero: #0A1815;
+  --hero-fg: #F1EBDD;
+  --hero-sage: #A9C4A4;
+  --s1: #2FB574;
+  --s2: #5A6FD0;
+  --s3: #D0508F;
+  --s4: #F07A4E;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+.wrap { max-width: 640px; margin: 0 auto; }
+
+header.hero {
+  background: var(--hero);
+  color: var(--hero-fg);
+  margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding: 32px max(16px, env(safe-area-inset-left, 0px)) 28px;
+  border-bottom: 2px solid var(--gold-soft);
+}
+header.hero .wrap { padding: 0; }
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+h1 {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+h1 em { color: var(--hero-sage); font-weight: 500; }
+.lead { margin: 12px 0 0; color: var(--hero-fg); opacity: 0.88; max-width: 52ch; }
+
+h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  color: var(--brand);
+  text-wrap: balance;
+}
+h3 {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 28px 0 10px;
+  font-weight: 700;
+}
+p { margin: 0 0 12px; }
+.muted { color: var(--muted); }
+
+main { padding-top: 28px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* Os quatro estilos, em cor */
+.chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0 4px; }
+@media (min-width: 520px) { .chips { grid-template-columns: repeat(4, 1fr); } }
+.chip {
+  background: var(--s);
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 10px 9px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  min-width: 0;
+}
+.chip span { display: block; font-size: 12px; font-weight: 400; opacity: 0.92; margin-top: 2px; }
+.s1 { --s: var(--s1); }
+.s2 { --s: var(--s2); }
+.s3 { --s: var(--s3); }
+.s4 { --s: var(--s4); }
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: var(--bg);
+  cursor: pointer;
+  min-height: 44px;
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--brand);
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:focus-visible, label.opt:focus-within {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.progress {
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0 0 8px;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  width: 0;
+  transition: width 200ms ease;
+}
+.counter {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+.case-text { font-size: 18px; margin: 0 0 18px; line-height: 1.5; }
+
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend { padding: 0; margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+label.opt {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 14px;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background: var(--bg);
+}
+label.opt:has(input:checked) {
+  border-color: var(--brand);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+label.opt input { margin-top: 4px; accent-color: var(--brand); flex: none; width: 18px; height: 18px; }
+label.opt .letter {
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 18px;
+}
+
+.bars { margin: 8px 0 4px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(0, 150px) 1fr 36px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.bar-row > span:first-child { font-weight: 700; color: var(--s); }
+.bar-track { background: var(--line); height: 14px; border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--s); border-radius: 3px; }
+.bar-row .n { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+
+table.adh {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  margin: 8px 0 4px;
+}
+table.adh th, table.adh td {
+  text-align: left;
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.adh th { font-weight: 700; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+table.adh td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.adh td.sty { font-weight: 700; color: var(--s); white-space: nowrap; }
+
+.big {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--brand);
+  font-weight: 600;
+  margin: 4px 0 6px;
+}
+.result-band {
+  background: var(--s);
+  color: #fff;
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin: 0 0 14px;
+}
+.result-band .style-name { font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; font-weight: 700; line-height: 1.1; margin: 0 0 4px; color: #fff; }
+.result-band .kicker { color: #fff; opacity: 0.9; margin: 0 0 6px; }
+.result-band p { margin: 0; }
+
+/* Leitura: quatro blocos, um por estilo */
+.quad { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 8px; }
+@media (min-width: 520px) { .quad { grid-template-columns: 1fr 1fr; } }
+.quad .q {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 0;
+}
+.quad .q .qh { background: var(--s); color: #fff; padding: 12px 14px; }
+.quad .q .qh .m { display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.92; }
+.quad .q .qh strong { display: block; font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; line-height: 1.1; font-weight: 700; }
+.quad .q .qb { padding: 12px 14px 14px; font-size: 15px; }
+.quad .q .qb p { margin: 0; }
+
+.legend-note {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+ol.steps, ul.plain { padding-left: 20px; margin: 8px 0 12px; }
+ol.steps li, ul.plain li { margin-bottom: 8px; }
+ol.steps li::marker { color: var(--gold); font-weight: 700; }
+.source { font-size: 13px; color: var(--muted); margin-top: 24px; border-top: 1px solid var(--line); padding-top: 12px; }
+
+.axes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 8px 0 4px;
+}
+.axes div {
+  border-radius: 4px;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 15px;
+}
+.axes strong { display: block; color: var(--brand); font-size: 16px; margin-bottom: 4px; }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Mentoria Virei líder, e agora? · Encontro 4</p>
+    <h1>Meu estilo <em>de liderança</em></h1>
+    <p class="lead">Doze situações do dia a dia. Em cada uma, escolha o que você faria. Não há resposta certa para a pessoa que você é; o objetivo é ver o padrão que aparece.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- Tela 1: abertura -->
+    <section id="intro">
+      <div class="card">
+        <h2>Antes de começar</h2>
+        <p>São 12 situações, com 4 opções em cada. Leva cerca de 10 minutos.</p>
+        <div class="chips" aria-hidden="true">
+          <div class="chip s1">Direcionar<span>começando</span></div>
+          <div class="chip s2">Orientar<span>em desenvolvimento</span></div>
+          <div class="chip s3">Apoiar<span>competente com apoio</span></div>
+          <div class="chip s4">Delegar<span>autônomo</span></div>
+        </div>
+        <p class="muted" style="margin-top:16px">Este questionário é uma autoleitura. O resultado aparece só para você. Ele não é enviado a ninguém, não é uma avaliação e não entra em decisão sobre pessoas.</p>
+        <div class="actions">
+          <button class="btn" id="startBtn" type="button">Começar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tela 2: perguntas -->
+    <section id="quiz" hidden>
+      <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+      <p class="counter" id="counter" aria-live="polite"></p>
+      <div class="card">
+        <p class="case-text" id="caseText"></p>
+        <fieldset>
+          <legend>Como você reagiria?</legend>
+          <div id="options"></div>
+        </fieldset>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" id="prevBtn" type="button">Anterior</button>
+        <button class="btn" id="nextBtn" type="button">Próximo</button>
+      </div>
+      <p class="muted" id="hint" style="margin-top:12px;font-size:14px"></p>
+    </section>
+
+    <!-- Tela 3: resultado -->
+    <section id="result" hidden>
+      <div class="card">
+        <p class="kicker" style="color:var(--gold)">Seu resultado</p>
+        <h2>Seu estilo mais usado</h2>
+        <div class="result-band" id="domBand">
+          <p class="style-name" id="domName"></p>
+          <p id="domDesc"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Quantas vezes você escolheu cada estilo</h3>
+        <div class="bars" id="bars"></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Adaptação à situação</h3>
+        <p class="big" id="adhScore"></p>
+        <p id="adhText"></p>
+        <table class="adh">
+          <thead>
+            <tr><th>Situação</th><th>Estilo pedido</th><th class="num">Você escolheu</th></tr>
+          </thead>
+          <tbody id="adhRows"></tbody>
+        </table>
+        <p class="muted" style="font-size:14px">Cada situação pede um estilo, de acordo com o nível de maturidade da pessoa naquela tarefa.</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn ghost" id="redoBtn" type="button">Refazer</button>
+      </div>
+
+      <!-- Material de leitura -->
+      <div class="card" style="margin-top:28px">
+        <p class="kicker" style="color:var(--gold)">Material de leitura</p>
+        <h2>Liderança situacional</h2>
+        <p>A ideia central é simples: não existe um estilo certo para todas as pessoas. O estilo certo depende de duas coisas: quanto a pessoa já sabe fazer aquela tarefa e quanto ela precisa de direção e de apoio nela.</p>
+
+        <h3>Os dois eixos</h3>
+        <div class="axes">
+          <div><strong>Direção</strong>Quanto você diz o que fazer, como e quando.</div>
+          <div><strong>Apoio</strong>Quanto você escuta, explica, acompanha e reconhece.</div>
+        </div>
+
+        <h3>Os quatro estilos</h3>
+        <div class="quad">
+          <div class="q s1">
+            <div class="qh"><span class="m">Estilo 1 · M1 começando</span><strong>Direcionar</strong></div>
+            <div class="qb"><p>A pessoa ainda está aprendendo a tarefa, com baixa competência e alto comprometimento. Você supervisiona de perto, dá instruções claras e celebra os resultados positivos. Indicado quando ela ainda não sabe fazer a tarefa.</p></div>
+          </div>
+          <div class="q s2">
+            <div class="qh"><span class="m">Estilo 2 · M2 em desenvolvimento</span><strong>Orientar</strong></div>
+            <div class="qb"><p>A pessoa ainda não está totalmente confiante, mas está chegando lá. Você supervisiona com feedback contínuo, coleta sugestões e deixa a equipe participar mais da decisão. Indicado quando ela já tenta, mas ainda erra.</p></div>
+          </div>
+          <div class="q s3">
+            <div class="qh"><span class="m">Estilo 3 · M3 competente com apoio</span><strong>Apoiar</strong></div>
+            <div class="qb"><p>A pessoa é competente e ganha autonomia, mas ainda pode oscilar no comprometimento. Você apoia, ouve e deixa de dar instruções detalhadas, mantendo o monitoramento da qualidade. Indicado quando ela sabe fazer, mas hesita.</p></div>
+          </div>
+          <div class="q s4">
+            <div class="qh"><span class="m">Estilo 4 · M4 autônomo</span><strong>Delegar</strong></div>
+            <div class="qb"><p>A pessoa é altamente competente e comprometida, toma decisões e assume a responsabilidade pelo resultado. Você se afasta e delega com acompanhamento mínimo, definindo o resultado e o prazo. Indicado quando ela domina a tarefa.</p></div>
+          </div>
+        </div>
+
+        <h3>Como usar na semana</h3>
+        <ol class="steps">
+          <li>Escolha uma tarefa específica da pessoa, de preferência a que você pretende delegar ou acompanhar.</li>
+          <li>Busque evidência: quando ela fez algo parecido e onde travou.</li>
+          <li>Classifique a maturidade nessa tarefa, não na pessoa como um todo.</li>
+          <li>Escolha o estilo e a primeira frase. Depois, marque a data para rever.</li>
+        </ol>
+
+        <h3>Três erros comuns</h3>
+        <ul class="plain">
+          <li>Tratar quem domina a tarefa como quem está começando. A pessoa percebe falta de confiança e para de se mover.</li>
+          <li>Tratar quem está começando como quem domina. Você delega o resultado e some, e a pessoa não sabe por onde começar.</li>
+          <li>Rotular a pessoa. “Ele é M1” não diz nada útil. Diga “ele está em M1 nesta tarefa”.</li>
+        </ul>
+
+        <p class="source">Base: modelo de liderança situacional, de Paul Hersey e Kenneth Blanchard. As descrições de cada estilo seguem como referência o infográfico “Os 4 estilos da liderança situacional”, da Setting Consultoria. Adaptação de EK Gestão e Consultoria para esta mentoria. Os casos deste questionário foram elaborados para a mentoria e não reproduzem outros instrumentos.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+(function () {
+  // Casos originais. m = maturidade (1 a 4) exigida pela situação.
+  // Cada opção aponta para o estilo que ela representa (e = 1 a 4).
+  // Estilos: 1 Direcionar, 2 Orientar, 3 Apoiar, 4 Delegar.
+  var CASES = [
+    { m: 1, q: "Um colaborador novo vai emitir o relatório mensal pela primeira vez. Ele nunca viu o modelo.", o: [
+      { t: "Pergunto como ele pretende fazer e deixo que escolha o formato.", e: 4 },
+      { t: "Mostro o modelo, digo o passo a passo e o prazo, e confiro a primeira entrega com ele.", e: 1 },
+      { t: "Explico para que o relatório serve e ouço o que ele acha do formato.", e: 2 },
+      { t: "Combinamos juntos como ele vai se organizar, com um ponto de checagem antes do prazo.", e: 3 } ] },
+    { m: 2, q: "Uma pessoa já fez o relatório duas vezes e repete o mesmo erro na fórmula. Ela ainda tem dúvidas.", o: [
+      { t: "Explico por que o erro acontece, faço a próxima linha junto com ela e peço que repita.", e: 2 },
+      { t: "Digo exatamente o que corrigir e a data da próxima entrega.", e: 1 },
+      { t: "Pergunto onde ela acha que está o problema e deixo que resolva sozinha.", e: 4 },
+      { t: "Conversamos sobre as dificuldades e decidimos juntos o que ajustar.", e: 3 } ] },
+    { m: 3, q: "Uma pessoa faz bem o relatório, mas hesita em apresentá-lo à diretoria.", o: [
+      { t: "Digo como apresentar, em que ordem, e vou junto à reunião.", e: 1 },
+      { t: "Pergunto como ela pensou em abrir a apresentação, escuto e combinamos um ponto de checagem.", e: 3 },
+      { t: "Deixo que apresente sozinha, sem nenhuma interferência.", e: 4 },
+      { t: "Explico por que a diretoria precisa desse relatório e reforço a confiança no trabalho dela.", e: 2 } ] },
+    { m: 4, q: "Uma pessoa domina o relatório há meses e propõe mudar o formato para atender melhor a diretoria.", o: [
+      { t: "Peço uma proposta com o passo a passo e revisamos cada etapa.", e: 1 },
+      { t: "Explico o contexto da diretoria e conversamos sobre as possibilidades.", e: 2 },
+      { t: "Peço que ela decida o formato, combinamos o resultado e o prazo, e ela me avisa se precisar.", e: 4 },
+      { t: "Discutimos a proposta juntos e decidimos em conjunto.", e: 3 } ] },
+    { m: 2, q: "Uma pessoa entende a tarefa de atendimento, mas se mostra insegura e pede aprovação para tudo.", o: [
+      { t: "Dou orientações claras sobre cada decisão e peço que me consulte antes.", e: 1 },
+      { t: "Explico o raciocínio por trás de cada decisão e mostro como eu decido em um caso real.", e: 2 },
+      { t: "Pergunto em quais decisões ela se sente segura e deixo que decida sem me consultar.", e: 4 },
+      { t: "Converso sobre a insegurança, pergunto o que ajudaria e combinamos juntos os limites.", e: 3 } ] },
+    { m: 1, q: "Um colaborador vai assumir o fechamento mensal, tarefa que nunca fez, e o prazo é curto.", o: [
+      { t: "Mostro o processo passo a passo e acompanho as primeiras entregas de perto.", e: 1 },
+      { t: "Pergunto como ele pretende conduzir o fechamento e deixo que defina a forma.", e: 4 },
+      { t: "Explico por que cada etapa existe e ouço o que ele acha do processo.", e: 2 },
+      { t: "Combinamos juntos como ele vai se organizar, com um ponto de checagem antes do prazo.", e: 3 } ] },
+    { m: 1, q: "Um colaborador novo, vindo de outra área, pede orientação em todas as etapas porque ainda não conhece o trabalho.", o: [
+      { t: "Pergunto o que ele já sabe e deixo que descubra o processo no próprio ritmo.", e: 4 },
+      { t: "Explico o motivo de cada etapa e vou mostrando o trabalho com ele.", e: 2 },
+      { t: "Escuto as sugestões dele e combinamos juntos como organizar a primeira semana.", e: 3 },
+      { t: "Oriento passo a passo, com um roteiro e acompanhamento diário na primeira semana.", e: 1 } ] },
+    { m: 4, q: "Uma pessoa lidera a área de atendimento há anos e entrega acima da meta.", o: [
+      { t: "Explico as prioridades da empresa e defendo a estratégia com ela.", e: 2 },
+      { t: "Acompanho de perto para garantir que tudo esteja dentro do padrão.", e: 1 },
+      { t: "Defino a meta e o prazo, e deixo que ela monte a equipe e os processos.", e: 4 },
+      { t: "Converso sobre os planos dela e ouço as ideias antes de decidir.", e: 3 } ] },
+    { m: 3, q: "Uma pessoa com boa técnica conduz reuniões de equipe, mas hesita em cobrar colegas que não cumprem o combinado.", o: [
+      { t: "Escrevo a cobrança com ela, passo a passo, e acompanho a reunião.", e: 1 },
+      { t: "Explico por que cobrar faz parte do papel e mostro como eu faço isso.", e: 2 },
+      { t: "Deixo que conduza do jeito que quiser e verifico só o resultado.", e: 4 },
+      { t: "Pergunto como ela pretende cobrar e combinamos um ponto de checagem depois da reunião.", e: 3 } ] },
+    { m: 2, q: "Um especialista recém-promovido a coordenador entende o trabalho técnico, mas ainda não sabe delegar e se sente inseguro.", o: [
+      { t: "Digo quais tarefas delegar, para quem, e qual é o prazo de cada uma.", e: 1 },
+      { t: "Pergunto quais tarefas ele se sente pronto para delegar e deixo que decida.", e: 4 },
+      { t: "Ensino como delegar, explico o motivo de cada etapa e faço a primeira delegação com ele.", e: 2 },
+      { t: "Converso sobre o receio dele e combinamos juntos o que delegar primeiro.", e: 3 } ] },
+    { m: 4, q: "Você foi promovido, e a equipe já entrega bem, com qualidade e no prazo, sem supervisão constante.", o: [
+      { t: "Crio um cronograma detalhado e faço follow-ups constantes.", e: 1 },
+      { t: "Mantenho a autonomia da equipe e acompanho apenas os resultados.", e: 4 },
+      { t: "Explico a direção da área e como a minha visão se conecta com o trabalho deles.", e: 2 },
+      { t: "Chamo a equipe para as decisões e peço a contribuição de cada um.", e: 3 } ] },
+    { m: 3, q: "Um time competente vem tendo conflitos repetidos sobre prioridades, e os resultados estão caindo.", o: [
+      { t: "Defino as prioridades e a ordem do trabalho, e cobro o cumprimento.", e: 1 },
+      { t: "Explico o motivo das prioridades e mostro como elas se conectam aos resultados.", e: 2 },
+      { t: "Deixo que o time resolva sozinho, sem interferir no conflito.", e: 4 },
+      { t: "Ouço cada pessoa, pergunto como ela vê o problema e decidimos juntos, com um ponto de checagem.", e: 3 } ] }
+  ];
+
+  var STYLE = {
+    1: { nome: "Direcionar", cor: "#1E8F55", desc: "Você costuma dizer o que fazer, como e quando, e acompanha de perto. Essa postura funciona quando a pessoa está começando na tarefa. Pode virar controle quando ela já domina o que faz." },
+    2: { nome: "Orientar", cor: "#2B3D8F", desc: "Você explica o porquê, orienta e ouve. Essa postura funciona quando a pessoa está em desenvolvimento: já tenta, mas ainda erra. Pode virar excesso de explicação com quem já sabe." },
+    3: { nome: "Apoiar", cor: "#A3246E", desc: "Você apoia, ouve e decide junto, sem instruções detalhadas. Essa postura funciona quando a pessoa é competente, mas ainda oscila no comprometimento. Pode virar demora quando a tarefa pede direção rápida." },
+    4: { nome: "Delegar", cor: "#E65A2C", desc: "Você define o resultado e deixa a pessoa decidir como fazer. Essa postura funciona quando a pessoa é autônoma na tarefa. Pode virar abandono quando ela ainda não está pronta." }
+  };
+  var M_LABEL = {
+    1: "Quando a pessoa está começando (M1)",
+    2: "Quando está em desenvolvimento (M2)",
+    3: "Quando é competente com apoio (M3)",
+    4: "Quando é autônoma (M4)"
+  };
+
+  var answers = [];
+  for (var k = 0; k < CASES.length; k++) answers.push(null);
+  var current = 0;
+
+  function $(id) { return document.getElementById(id); }
+  function show(id) {
+    ["intro", "quiz", "result"].forEach(function (s) {
+      $(s).hidden = s !== id;
+    });
+    window.scrollTo(0, 0);
+  }
+  function answeredCount() {
+    return answers.filter(function (a) { return a !== null; }).length;
+  }
+
+  function renderQuiz() {
+    var c = CASES[current];
+    $("counter").textContent = "Situação " + (current + 1) + " de " + CASES.length;
+    $("bar").style.width = ((current) / CASES.length * 100) + "%";
+    $("caseText").textContent = c.q;
+
+    var html = "";
+    c.o.forEach(function (op, i) {
+      var letter = String.fromCharCode(97 + i);
+      var checked = answers[current] === op.e ? " checked" : "";
+      html += '<label class="opt" style="border-left-color: ' + STYLE[op.e].cor + '"><input type="radio" name="opt" value="' + op.e + '"' + checked + '>' +
+              '<span class="letter">' + letter + ')</span><span>' + op.t + '</span></label>';
+    });
+    $("options").innerHTML = html;
+
+    $("prevBtn").disabled = current === 0;
+    var last = current === CASES.length - 1;
+    $("nextBtn").textContent = last ? "Ver meu resultado" : "Próximo";
+    var canFinish = answeredCount() === CASES.length;
+    $("nextBtn").disabled = !answers[current] || (last && !canFinish);
+    $("hint").textContent = !answers[current]
+      ? "Escolha uma opção para seguir."
+      : (last && !canFinish ? "Ainda há situações sem resposta. Volte e confira." : "");
+  }
+
+  function renderResult() {
+    var counts = [0, 0, 0, 0];
+    var hits = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    var total = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    var adh = 0;
+    CASES.forEach(function (c, i) {
+      var e = answers[i];
+      counts[e - 1]++;
+      total[c.m]++;
+      if (e === c.m) { adh++; hits[c.m]++; }
+    });
+
+    var dom = 0;
+    for (var j = 1; j < 4; j++) if (counts[j] > counts[dom]) dom = j;
+    var domE = dom + 1;
+    $("domBand").style.background = STYLE[domE].cor;
+    $("domName").textContent = STYLE[domE].nome + " (estilo " + domE + ")";
+    $("domDesc").textContent = STYLE[domE].desc;
+
+    var barsHtml = "";
+    counts.forEach(function (n, i) {
+      var pct = Math.round(n / CASES.length * 100);
+      barsHtml += '<div class="bar-row s' + (i + 1) + '"><span>' + STYLE[i + 1].nome + '</span>' +
+                  '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
+                  '<span class="n">' + n + '</span></div>';
+    });
+    $("bars").innerHTML = barsHtml;
+
+    $("adhScore").textContent = adh + " de " + CASES.length;
+    var txt;
+    if (adh >= 9) txt = "Você se adaptou ao que a situação pedia na maioria dos casos.";
+    else if (adh >= 6) txt = "Você se adaptou em parte dos casos. Vale olhar os casos em que escolheu outro estilo.";
+    else txt = "Na maior parte dos casos, você escolheu um estilo diferente do que a situação pedia. Isso é informação, não julgamento. O próximo passo é perguntar o que a pessoa precisava em cada tarefa.";
+    $("adhText").textContent = txt;
+
+    var rows = "";
+    [1, 2, 3, 4].forEach(function (m) {
+      rows += '<tr><td>' + M_LABEL[m] + '</td><td class="sty" style="color:' + STYLE[m].cor + '">' + STYLE[m].nome + '</td>' +
+              '<td class="num">' + hits[m] + ' de ' + total[m] + '</td></tr>';
+    });
+    $("adhRows").innerHTML = rows;
+
+    show("result");
+  }
+
+  $("startBtn").addEventListener("click", function () { current = 0; show("quiz"); renderQuiz(); });
+
+  $("options").addEventListener("change", function (ev) {
+    if (ev.target && ev.target.name === "opt") {
+      answers[current] = parseInt(ev.target.value, 10);
+      renderQuiz();
+    }
+  });
+
+  $("prevBtn").addEventListener("click", function () {
+    if (current > 0) { current--; renderQuiz(); }
+  });
+
+  $("nextBtn").addEventListener("click", function () {
+    if (current < CASES.length - 1) { current++; renderQuiz(); }
+    else if (answeredCount() === CASES.length) { renderResult(); }
+  });
+
+  $("redoBtn").addEventListener("click", function () {
+    for (var i = 0; i < answers.length; i++) answers[i] = null;
+    current = 0;
+    show("intro");
+  });
+})();
+</script>
+
+</body></html>

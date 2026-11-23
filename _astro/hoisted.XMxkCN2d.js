@@ -1,0 +1,1 @@
+import"./hoisted.B5duqY9X.js";import"./hoisted.B7NoOoRk.js";document.querySelectorAll(".copy-link-btn").forEach(t=>{t.addEventListener("click",()=>{navigator.clipboard.writeText(t.dataset.url||""),t.setAttribute("title","Link copiado!"),setTimeout(()=>t.setAttribute("title",""),2e3)})});
